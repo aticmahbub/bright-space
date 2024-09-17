@@ -1,6 +1,6 @@
 # Project BrightSpace
 
-BrightSpace is a Learning Management System (LMS) designed to streamline educational processes by providing an all-in-one platform for managing online courses, assessments, and student progress. The platform supports collaboration between students and instructors, integrates with various tools, and offers features such as real-time grading, automated feedback, and progress reports, fostering an engaging and organized digital learning environment.
+BrightSpace is a Learning Management System designed to streamline educational processes by providing an all-in-one platform for managing online courses, assessments, and student progress. The platform supports collaboration between students and instructors, integrates with various tools, and offers features such as real-time grading, automated feedback, and progress reports, fostering an engaging and organized digital learning environment.
 
 ### Project Collaborators
 

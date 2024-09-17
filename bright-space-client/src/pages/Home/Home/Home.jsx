@@ -1,8 +1,9 @@
+import Banner from "../../shared/Banner";
 
 const Home = () => {
     return (
         <div>
-            Home
+           <Banner></Banner>
         </div>
     );
 };

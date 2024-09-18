@@ -81,7 +81,7 @@ const Navbar = () => {
             </MenuList>
         </Menu> */}
         <NavLink href="#" className='mainMenu-style'>Home</NavLink>
-        <NavLink href="#" className='mainMenu-style'>About</NavLink>
+        <NavLink to={'/about'} className='mainMenu-style'>About</NavLink>
         <NavLink href="#" className='mainMenu-style'>Features</NavLink>
     </>
 

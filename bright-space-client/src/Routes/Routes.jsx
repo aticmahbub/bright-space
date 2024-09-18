@@ -2,8 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/shared/Authentication/Login/Login";
-import Login from "../pages/shared/Authentication/Registration/Registration";
+import Registration from "../pages/shared/Authentication/Registration/Registration";
 import Dashboard from "../Layouts/Dashboard";
+import About from "../pages/About/About/About";
 
 
 export const router = createBrowserRouter([
@@ -21,17 +22,22 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/registration',
-                element: <Registration/>
+                element: <Registration />
             },
+            // Added By Hisam
+            {
+                path: '/about',
+                element: <About />
+            }
         ]
     },
     {
         path: 'dashboard',
-        element: <Dashboard/>,
-        children:[
+        element: <Dashboard />,
+        children: [
             // student routes
             {
-                
+
             }
         ]
     }

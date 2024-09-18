@@ -34,7 +34,7 @@ const Footer = () => {
               Still You Need Our{" "}
               <span className="text-blue-400">Support ?</span>
             </h1>
-            <p className="text-sm">
+            <p className="text-sm font-medium">
               Don't Wait make A Smart & Logical Quote Here. Its Pretty Easy.
             </p>
           </div>

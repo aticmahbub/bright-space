@@ -4,7 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/shared/Authentication/Login/Login";
 import Registration from "../pages/shared/Authentication/Registration/Registration";
 import Dashboard from "../Layouts/Dashboard";
-import About from "../pages/About/About/About";
+import About from "../pages/About/About";
 import Features from "../pages/Features/Features";
 import Contact from "../pages/Contact/Contact";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/registration',
-                element: <Registration />
+                element: <Registration/>
             },
             {
                 path: '/about',
@@ -59,8 +59,8 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard />,
-        children: [
+        element: <Dashboard/>,
+        children:[
             // student routes
             {
                 path: 'studentProfile',

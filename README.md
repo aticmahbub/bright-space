@@ -6,7 +6,7 @@ BrightSpace is a Learning Management System designed to streamline educational p
 
 - Atic Mahbub Arnob
 - Abu Naim
-- Ahmed Sharif
+- Jalal Uddin Sharif
 - Asaduzzaman Hisam
 - Saidul Islam
 - Abid Hasan Rafi

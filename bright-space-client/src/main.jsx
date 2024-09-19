@@ -8,6 +8,7 @@ import './index.css'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 const fonts = {
+  heading: `'Poppins', sans-serif`,
   body: `'Poppins', sans-serif`,
 }
 
@@ -23,6 +24,18 @@ const colors = {
     700: '#B30030',
     800: '#860025',
     900: '#59001A',
+  },
+  secondary: {
+    50: '#E5E7F7',  // lightest shade
+    100: '#C0C4F0',
+    200: '#9BA1E8',
+    300: '#767EDD',
+    400: '#515BD3',
+    500: '#2A3290',  // base color
+    600: '#242A7D',
+    700: '#1E236A',
+    800: '#181C56',
+    900: '#121543',  // darkest shade
   },
 };
 

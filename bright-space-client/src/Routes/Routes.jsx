@@ -12,6 +12,7 @@ import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
+import Classes from "../pages/Classes/Classes";
 
 
 export const router = createBrowserRouter([
@@ -29,48 +30,52 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/registration',
-                element: <Registration/>
+                element: <Registration />
             },
             {
                 path: '/about',
-                element: <About/>
+                element: <About />
             },
             {
                 path: '/features',
-                element: <Features/>
+                element: <Features />
             },
             {
                 path: '/contact',
-                element: <Contact/>
+                element: <Contact />
             },
             {
                 path: '/blog',
-                element: <Blog/>
+                element: <Blog />
             },
             {
                 path: '/forum',
-                element: <Forum/>
+                element: <Forum />
+            },
+            {
+                path: '/classes',
+                element: <Classes />
             },
             {
                 path: '/userProfile',
-                element: <UserProfile/>
+                element: <UserProfile />
             },
         ]
     },
     {
         path: 'dashboard',
-        element: <Dashboard/>,
-        children:[
+        element: <Dashboard />,
+        children: [
             // student routes
             {
                 path: 'studentProfile',
-                element: <StudentProfile/>
+                element: <StudentProfile />
             },
 
             // teacher routes
             {
                 path: 'teacherProfile',
-                element: <TeacherProfile/>
+                element: <TeacherProfile />
             }
         ]
     }

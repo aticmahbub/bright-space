@@ -1,0 +1,15 @@
+.welcome_message {
+    @apply text-primary_color_1 font-medium text-xl uppercase;
+}
+
+.middle_text {
+    @apply text-[40px] font-bold text-[#000];
+}
+
+.about_text {
+    @apply text-horizontal_line_color text-xl font-medium;
+}
+
+.list_style {
+    @apply flex items-center gap-2 text-xl my-4 font-medium;
+}

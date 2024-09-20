@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "image": "https://media.istockphoto.com/id/1808213142/photo/businesswoman-giving-presentation-on-business-workshop.jpg?s=2048x2048&w=is&k=20&c=yHEOh9dD4zmBp_T4goAC4jyeOcixsdFvdw5_CEoR9iI=",
+    "Title": "How Virtual Classrooms Enhance Learning",
+    "authorName": "Dr. Alice",
+    "date": "Mar 19, 2020"
+  },
+  {
+    "id": 2,
+    "image": "https://images.unsplash.com/photo-1659301254614-8d6a9d46f26a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Title": "The Role of Technology in Modern Education",
+    "authorName": "Prof. James",
+    "date": "Apr 5, 2021"
+  },
+  {
+    "id": 3,
+    "image": "https://example.com/classroom3.jpg",
+    "Title": "Effective Online Teaching Strategies",
+    "authorName": "Emily Carter",
+    "date": "May 12, 2022"
+  },
+  {
+    "id": 4,
+    "image": "https://example.com/classroom4.jpg",
+    "Title": "Building Engagement in Virtual Classrooms",
+    "authorName": "Michael Adams",
+    "date": "Jun 20, 2020"
+  },
+  {
+    "id": 5,
+    "image": "https://media.istockphoto.com/id/1808213142/photo/businesswoman-giving-presentation-on-business-workshop.jpg?s=2048x2048&w=is&k=20&c=yHEOh9dD4zmBp_T4goAC4jyeOcixsdFvdw5_CEoR9iI=",
+    "Title": "Best Practices for Remote Learning",
+    "authorName": "Chris Taylor",
+    "date": "Jul 8, 2023"
+  },
+  {
+    "id": 6,
+    "image": "https://example.com/classroom6.jpg",
+    "Title": "Using Gamification in Education",
+    "authorName": "Dr. Sarah",
+    "date": "Aug 22, 2019"
+  },
+  {
+    "id": 7,
+    "image": "https://media.istockphoto.com/id/1808213142/photo/businesswoman-giving-presentation-on-business-workshop.jpg?s=2048x2048&w=is&k=20&c=yHEOh9dD4zmBp_T4goAC4jyeOcixsdFvdw5_CEoR9iI=",
+    "Title": "The Future of Virtual Classrooms",
+    "authorName": "David Collins",
+    "date": "Sep 30, 2021"
+  },
+  {
+    "id": 8,
+    "image": "https://example.com/classroom8.jpg",
+    "Title": "Leveraging Digital Tools for Student Success",
+    "authorName": "Laura Evans",
+    "date": "Oct 10, 2022"
+  },
+  {
+    "id": 9,
+    "image": "https://example.com/classroom9.jpg",
+    "Title": "Adapting Traditional Curriculum for Online Learning",
+    "authorName": "Robert Hill",
+    "date": "Nov 18, 2020"
+  },
+  {
+    "id": 10,
+    "image": "https://example.com/classroom10.jpg",
+    "Title": "Blended Learning: Combining Online and Offline Education",
+    "authorName": "Anna Johnson",
+    "date": "Dec 5, 2023"
+  }
+]

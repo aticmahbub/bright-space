@@ -2,10 +2,10 @@ import cloud4 from '../../../assets/About Image/Cloud4.png'
 import instructor from '../../../assets/About Image/instructor.png'
 import contact from '../../../assets/About Image/contact.png'
 import award from '../../../assets/About Image/award.png'
-import bottom from '../../../assets/About Image/about_bottom_design.png'
+// import bottom from '../../../assets/About Image/about_bottom_design.png'
 
 
-const Contact = () => {
+const Achievements = () => {
     const information = [
         {
             id: 1,
@@ -43,9 +43,11 @@ const Contact = () => {
                     )}
                 </div>
             </div>
-            <img src={bottom} className='w-full' alt="" />
+            {/* <img src={bottom} className='w-full' alt="" /> */}
         </div>
     );
 };
 
-export default Contact;
+export default Achievements;
+
+

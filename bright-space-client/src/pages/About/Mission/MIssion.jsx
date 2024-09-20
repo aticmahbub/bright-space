@@ -7,19 +7,19 @@ const MIssion = () => {
     const missions = [
         {
             id: 1,
-            mission: 'Our Expert Trainers'
+            mission: 'Live Sessions, Whiteboards & Attendance'
         },
         {
             id: 2,
-            mission: 'Online Remote Learning'
+            mission: 'Online Assessments & AI-Powered Quizzes'
         },
         {
             id: 3,
-            mission: 'Easy to follow curriculum'
+            mission: 'Blog for Educational Content Sharing'
         },
         {
             id: 4,
-            mission: 'Lifetime Access'
+            mission: 'AI Chat Assistant (LLM-based)'
         },
     ]
 
@@ -36,7 +36,7 @@ const MIssion = () => {
                             Digital Online Academy: Your Path to Creative Excellence
                         </h4>
                         <p className='about_text mb-7'>
-                            Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.
+                        To create an accessible, innovative, and engaging learning platform that empowers students and educators alike to thrive in a dynamic digital environment
                         </p>
                         <ul>
                             {missions.map(mission =>

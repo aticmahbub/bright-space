@@ -24,8 +24,8 @@ const MIssion = () => {
     ]
 
     return (
-        <div className='mt-16'>
-            <div className="container mx-auto font-english_font_family -mb-4">
+        <div className=' pt-6'>
+            <div className="container mx-auto font-english_font_family">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-9">
                     <div className=''>
                         <img className='mx-auto lg:mx-0 px-16 md:px-0 lg:ml-auto' src={aGirl} alt="A Girl Photo" />

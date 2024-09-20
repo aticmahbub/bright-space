@@ -16,19 +16,19 @@ const Achievements = () => {
         {
             id: 2,
             image: instructor,
-            title: 'Top Instructor',
-            description: 'So why settle for anything less? Eduna is a super simple template specially made for educational Websites.'
+            title: 'Student Profiling System',
+            description: 'A profiling system that tracks students grades, progress, analytics, and a leaderboard. It also includes a list of enrolled and completed courses, with students able to leave reviews for teachers.'
         },
         {
             id: 3,
             image: award,
-            title: 'Award Winning',
-            description: 'So why settle for anything less? Eduna is a super simple template specially made for educational Websites.'
+            title: 'Chat Assistant',
+            description: 'for handling text and image-based queries, offering personalized academic help and guidance.'
         },
     ]
 
     return (
-        <div className='font-english_font_family'>
+        <div className='font-english_font_family mt-6'>
             {/* <img src={cloud4} className='w-full' alt="" /> */}
             <div className="container mx-auto relative  mb-16">
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>

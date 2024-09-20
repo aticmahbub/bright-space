@@ -52,8 +52,7 @@ const Faq = () => {
     ]
 
     return (
-        <div>
-            <div className="container mx-auto pt-7 px-10 mt-0">
+            <div className="container mb-10 mx-auto pt-7 lg:px-10 px-4 my-6">
                 <div className='flex flex-row md:gap-9'>
                     {/* Image container with a fixed width and height */}
                     <div className='hidden md:flex justify-center items-center w-2/12 flex-shrink-0 h-full'>
@@ -70,8 +69,6 @@ const Faq = () => {
                     </div>
                 </div>
             </div>
-            {/* <img src={cloud3} className='w-full' alt="" /> */}
-        </div>
     );
 
 

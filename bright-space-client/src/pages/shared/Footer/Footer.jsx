@@ -1,6 +1,6 @@
-import { Button, Divider, Input, Stack } from "@chakra-ui/react";
-import { div, title } from "framer-motion/client";
-import { FaFacebookF, FaFacebookSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
+import { Box, Divider } from "@chakra-ui/react";
+// import { div, title } from "framer-motion/client";
+import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
 import { IoLogoSkype } from "react-icons/io";
 
@@ -27,7 +27,7 @@ const Footer = () => {
   ];
   return (
     <div className="bg-[#0a0a28] text-white pt-10">
-      <div className="max-w-7xl lg:mx-auto">
+      <Box px={{base: 4, md: 6, xl: 10, '2xl': 44}}>
         <section className=" lg:grid grid-cols-2 space-y-3">
           <div className="space-y-2">
             <h1 className="text-4xl font-bold">
@@ -35,7 +35,7 @@ const Footer = () => {
               <span className="text-blue-400">Support ?</span>
             </h1>
             <p className="text-sm font-medium">
-              Don't Wait make A Smart & Logical Quote Here. Its Pretty Easy.
+              Don&apos;t Wait make A Smart & Logical Quote Here. Its Pretty Easy.
             </p>
           </div>
           <div className="relative w-full">
@@ -102,8 +102,8 @@ const Footer = () => {
           <div className="space-y-6">
             <h1 className="text-2xl font-bold">Recent Post</h1>
             {
-              recentPosts?.map(item=>(
-                <div className="flex gap-2">
+              recentPosts?.map((item, idx)=>(
+                <div key={idx} className="flex gap-2">
                   <img className="w-[61px] h-[54px]" src={item.image} alt="" />
                   <div>
                     <p className="text-[#9FA2CE]">{item.date}</p>
@@ -127,7 +127,7 @@ const Footer = () => {
           <IoLogoSkype size={25}/>
           </div>
         </section>
-      </div>
+      </Box>
     </div>
   );
 };

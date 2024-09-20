@@ -85,7 +85,8 @@ const Navbar = () => {
             </MenuList>
         </Menu> */}
         <NavLink to="/" className='mainMenu-style'>Home</NavLink>
-        <NavLink to="features" className='mainMenu-style'>Features</NavLink>
+        <NavLink to="/classes" className='mainMenu-style'>Classes</NavLink>
+        <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
         <NavLink to="/about" className='mainMenu-style'>About</NavLink>
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
         <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
@@ -93,9 +94,9 @@ const Navbar = () => {
     </>
 
     return (
-        <Box className='shadow-2xl shadow-[#0000001c]' py={5}>
-            <Box px={4} className='container mx-auto'>
-                <Flex h={16} alignItems="center" justifyContent="space-between">
+        <Box className='' py={7}>
+            <Box className='container mx-auto'>
+                <Flex  alignItems="center" justifyContent="space-between">
                     <HStack spacing={8} alignItems="center" className='flex justify-between w-full'>
                         {/* Logo or Brand Name */}
                         <Box color="white" fontWeight="bold" fontSize="xl">

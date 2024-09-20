@@ -1,4 +1,6 @@
 import bannerImg from '../../../assets/bannerImage.png'
+import { Button } from '@chakra-ui/react';
+
 import './css/banner.css'
 
 const Banner = () => {
@@ -13,12 +15,8 @@ const Banner = () => {
                         An interactive platform for teachers to share resources, assignments, and grades with students, making learning easy and accessible.
                     </h3>
                     <div className='mt-10 flex gap-5 md:gap-8 '>
-                        <button className='border rounded-md px-6 py-3 md:px-8 md:py-4 font-semibold bg-[#5F2EED] text-white hover:bg-white hover:text-black hover:border-[#5F2EED]'>
-                            View Courses
-                        </button>
-                        <button className='border rounded-md px-6 py-3 md:px-8 md:py-4 font-semibold bg-[#F2277E] text-white hover:bg-white hover:text-black hover:border-[#F2277E]'>
-                            Explore More
-                        </button>
+                    <Button colorScheme='secondary' size='lg' rounded='none'>View Courses</Button>
+                    <Button colorScheme='primary' size='lg' rounded='none'>Explore More</Button>
                     </div>
                 </div>
 

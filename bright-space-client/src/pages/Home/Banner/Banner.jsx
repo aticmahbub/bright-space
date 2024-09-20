@@ -32,12 +32,13 @@ const Banner = () => {
                     </div>
                 </div>
 
-                {/* image section */}
-                <div className='flex-1'>
-                    <img className='hover:animate-shake w-full' src={bannerImg} alt="Virtual Classroom" />
-                </div>
-            </div>
-        </div>
+    {/* Image section */}
+    <div className='flex-1 px-4 md:px-0'>
+      <img className='hover:animate-shake w-full max-w-sm md:max-w-full' src={bannerImg} alt="Virtual Classroom" />
+    </div>
+  </div>
+</div>
+
     );
 };
 

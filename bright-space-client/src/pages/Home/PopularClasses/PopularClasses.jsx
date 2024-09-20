@@ -1,8 +1,8 @@
-import { Box } from "@chakra-ui/react";
-import ClassCard from "../../components/ClassCard/ClassCard";
+import { Box, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import ClassCard from "../../../components/ClassCard/ClassCard";
 
-const Classes = () => {
+const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
@@ -12,8 +12,9 @@ const Classes = () => {
     }, []);
 
     return (
-        <Box display='flex' alignItems='center' py='20'>
-            <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
+        <Box py='20'>
+            <Heading>Popular Classes</Heading>
+            <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-10'>
                 {
                     classes.map((cls, idx) => <ClassCard key={idx} cls={cls} />)
                 }
@@ -22,4 +23,4 @@ const Classes = () => {
     );
 };
 
-export default Classes;
+export default PopularClasses;

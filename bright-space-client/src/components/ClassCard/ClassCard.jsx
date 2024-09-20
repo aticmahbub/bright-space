@@ -14,7 +14,7 @@ const ClassCard = ({ cls }) => {
     const { title, posted_by, image_url, price, short_description, total_enrolment } = cls;
 
     return (
-        <Card className='group' shadow='none'>
+        <Card bg='transparent' className='group' shadow='none'>
             <CardBody p='0'>
                 <Box overflow='hidden' borderRadius='2xl' cursor='pointer'>
                     <Image

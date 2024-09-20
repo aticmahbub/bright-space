@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <>
             <Navbar />
-            <Box bg='#F7F8FD' px={{base: 4, md: 6, xl: 10, '2xl': 44}}>
+            <Box bg='#F7F8FD' px={{base: 4, md: 6, xl: 10, '2xl': 44}} h='full'>
                 <Outlet />
             </Box>
             <Footer />

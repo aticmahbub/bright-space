@@ -117,19 +117,17 @@ const Footer = () => {
     </section>
 
     <section className="flex flex-col md:flex-row items-center justify-between pt-12 pb-8">
-      <div className="flex lg:flex-row flex-col items-center gap-6 md:gap-16">
-      <div>
+      <div className="flex items-center gap-6 md:gap-16">
       <Box color="white" fontWeight="bold" fontSize="xl">
                             <Text className='text-3xl'>
                                 <span className='text-[#F2277E]'>Bright</span>
                                 <span className='text-[#612FEE]'>Space</span>
                             </Text>
                         </Box>
-      </div>
-        <div><h1 className="text-md font-bold">
+        <h1 className="text-md font-bold">
           © 2024 Powered by{" "}
           <a href="#" className="text-[#612FEE] hover:text-[#F2277E]">NodeNavigators</a>.
-        </h1></div>
+        </h1>
       </div>
       <div className="flex gap-4 mt-4 md:mt-0">
         <FaFacebookSquare size={25} className="hover:text-[#F2277E]" />

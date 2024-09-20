@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "image": "https://media.istockphoto.com/id/1350649369/photo/unrecognizable-woman-wears-headphones-while-attending-meeting-with-co-workers.jpg?s=2048x2048&w=is&k=20&c=t4TnB_gwGoj60CnRPCM_JL2DVeH4qPUGpvEcnYpBAbk=",
+    "title": "Introduction to Virtual Classrooms",
+    "description": "A comprehensive guide to understanding virtual classrooms and their impact on modern education.",
+    "time": "2 Sep, 2023"
+  },
+  {
+    "id": 2,
+    "image": "https://media.istockphoto.com/id/1919863292/photo/e-learning-education-internet-lessons-and-online-learning-with-webinars-video-tutorials.jpg?s=2048x2048&w=is&k=20&c=4wwOB8IgcyYrKYOD_oUuVPGm47c7p5comDJcY_y9S8k=",
+    "title": "The Future of Online Learning",
+    "description": "Exploring the trends and technologies shaping the future of online education.",
+    "time": "15 Aug, 2023"
+  },
+  {
+    "id": 3,
+    "image": "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "Engaging Students in Virtual Classrooms",
+    "description": "Tips and techniques for keeping students engaged in a virtual learning environment.",
+    "time": "30 Jul, 2023"
+  },
+  {
+    "id": 4,
+    "image": "https://media.istockphoto.com/id/1250479244/photo/asian-boy-student-video-conference-e-learning-with-teacher-and-classmates-on-computer-in.jpg?s=1024x1024&w=is&k=20&c=dkoLAwX2F4FF0la5PHU-w310a3biyztHubraNN5b5uQ=",
+    "title": "Best Practices for Virtual Teaching",
+    "description": "Learn the best practices for effective teaching in virtual classrooms.",
+    "time": "10 Sep, 2023"
+  },
+  {
+    "id": 5,
+    "image": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "Adapting to Online Assessments",
+    "description": "Strategies to create and evaluate online assessments in virtual classrooms.",
+    "time": "25 Aug, 2023"
+  }
+]

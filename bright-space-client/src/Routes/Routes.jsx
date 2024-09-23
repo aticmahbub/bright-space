@@ -13,6 +13,7 @@ import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
+import ClassRoom from "../pages/ClassRoom/ClassRoom";
 
 
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/classroom',
+                element: <ClassRoom />
             },
             {
                 path: '/login',

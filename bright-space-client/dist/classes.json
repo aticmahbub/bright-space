@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Advanced Mathematics",
+        "posted_by": "Dr. John Smith",
+        "image_url": "https://i.postimg.cc/rm97s59B/1.png",
+        "price": 150.00,
+        "short_description": "Dive deep into advanced calculus and algebra with Dr. Smith.",
+        "long_description": "This course covers advanced topics in mathematics, including calculus, algebra, and differential equations. Dr. John Smith, a renowned mathematician, will guide you through complex concepts with practical examples and problem-solving sessions. Ideal for students looking to excel in their math skills. You'll gain a deeper understanding of mathematical theories, learn how to apply them in real-world scenarios, and prepare for higher education or professional applications in science, technology, engineering, and mathematics (STEM) fields.",
+        "total_enrolment": 120
+    },
+    {
+        "title": "Introduction to Psychology",
+        "posted_by": "Prof. Emily Johnson",
+        "image_url": "https://i.postimg.cc/q7yPfP6M/2.png",
+        "price": 100.00,
+        "short_description": "Explore the basics of human behavior and mental processes.",
+        "long_description": "Discover the fascinating world of psychology with Prof. Emily Johnson. This introductory course delves into the study of the mind, behavior, and mental processes. Topics include cognitive development, personality theories, and psychological disorders. Perfect for those interested in understanding themselves and others better. By the end of the course, you'll have a solid foundation in psychology, helping you pursue further studies or careers in counseling, social work, and other related fields.",
+        "total_enrolment": 200
+    },
+    {
+        "title": "Modern Web Development",
+        "posted_by": "Mr. Michael Brown",
+        "image_url": "https://i.postimg.cc/QdR2y8ty/3.png",
+        "price": 180.00,
+        "short_description": "Learn the latest techniques in HTML, CSS, and JavaScript.",
+        "long_description": "Join Mr. Michael Brown in this comprehensive course on modern web development. Learn to create responsive and dynamic websites using HTML, CSS, and JavaScript. The course also covers popular frameworks and libraries such as React and Node.js. Ideal for aspiring web developers and designers. Gain hands-on experience through projects, and build a professional portfolio to showcase your skills to potential employers.",
+        "total_enrolment": 250
+    }
+]

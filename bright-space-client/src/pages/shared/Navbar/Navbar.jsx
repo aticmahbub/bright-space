@@ -87,6 +87,7 @@ const Navbar = () => {
         </Menu> */}
         <NavLink to="/" className='mainMenu-style'>Home</NavLink>
         <NavLink to="/classes" className='mainMenu-style'>Classes</NavLink>
+        <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
         <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
         <NavLink to="/about" className='mainMenu-style'>About</NavLink>
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>

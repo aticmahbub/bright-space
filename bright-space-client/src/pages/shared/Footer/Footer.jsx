@@ -1,4 +1,4 @@
-import { Box, Divider } from "@chakra-ui/react";
+import { Box, Button, Divider, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 // import { div, title } from "framer-motion/client";
 import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
@@ -27,18 +27,32 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="bg-[#0a0a28] text-[#612FEE] pt-10">
+    <Box textColor='white' className="bg-[#0a0a28] pt-10">
       <Box px={{ base: 4, md: 6, xl: 10, '2xl': 44 }}>
         <section className="lg:grid grid-cols-2 gap-6 space-y-3 lg:space-y-0">
           <div className="space-y-2">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              Still Need Our <span className="text-[#F2277E]">Support?</span>
+              Still Need Our <span className="text-[#FF1949]">Support?</span>
             </h1>
             <p className="text-sm font-medium">
               Don&apos;t Wait, make A Smart & Logical Quote Here. It is Pretty Easy.
             </p>
           </div>
-          <div className="relative w-full">
+          <InputGroup size='md'>
+            <Input
+              type='email'
+              rounded='none'
+              pr='4.5rem'
+              placeholder='Enter your email'
+              // focusBorderColor="primary.400"
+            />
+            <InputRightElement width='6rem' justifyContent='end'>
+              <Button colorScheme='primary' rounded='none' size='sm' mr='1'>
+                Subscribe
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+          {/* <div className="relative w-full">
             <input
               type="text"
               placeholder="Enter your email"
@@ -47,7 +61,7 @@ const Footer = () => {
             <button className="bg-white text-[#612FEE]  absolute right-0 px-4 py-3 md:py-4 rounded-r-md hover:bg-[#F2277E] transition-all duration-300">
               Subscribe Now
             </button>
-          </div>
+          </div> */}
         </section>
 
         <Divider className="my-8 md:my-16" />
@@ -138,7 +152,7 @@ const Footer = () => {
           </div>
         </section>
       </Box>
-    </div>
+    </Box>
 
   );
 };

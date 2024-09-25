@@ -1,11 +1,11 @@
-import cloud4 from '../../../assets/About Image/Cloud4.png'
+// import cloud4 from '../../../assets/About Image/Cloud4.png'
 import instructor from '../../../assets/About Image/instructor.png'
 import contact from '../../../assets/About Image/contact.png'
 import award from '../../../assets/About Image/award.png'
-import bottom from '../../../assets/About Image/about_bottom_design.png'
+// import bottom from '../../../assets/About Image/about_bottom_design.png'
 
 
-const Contact = () => {
+const Achievements = () => {
     const information = [
         {
             id: 1,
@@ -16,21 +16,21 @@ const Contact = () => {
         {
             id: 2,
             image: instructor,
-            title: 'Top Instructor',
-            description: 'So why settle for anything less? Eduna is a super simple template specially made for educational Websites.'
+            title: 'Student Profiling System',
+            description: 'A profiling system that tracks students grades, progress, analytics, and a leaderboard. It also includes a list of enrolled and completed courses, with students able to leave reviews for teachers.'
         },
         {
             id: 3,
             image: award,
-            title: 'Award Winning',
-            description: 'So why settle for anything less? Eduna is a super simple template specially made for educational Websites.'
+            title: 'Chat Assistant',
+            description: 'for handling text and image-based queries, offering personalized academic help and guidance.'
         },
     ]
 
     return (
-        <div className='font-english_font_family'>
-            <img src={cloud4} className='w-full' alt="" />
-            <div className="container mx-auto relative -top-20 lg:-top-48 mb-16">
+        <div className='font-english_font_family mt-6'>
+            {/* <img src={cloud4} className='w-full' alt="" /> */}
+            <div className="container mx-auto relative  mb-16">
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
                     {information.map(info =>
                         <div className='text-center' key={info.id}>
@@ -43,9 +43,11 @@ const Contact = () => {
                     )}
                 </div>
             </div>
-            <img src={bottom} className='w-full' alt="" />
+            {/* <img src={bottom} className='w-full' alt="" /> */}
         </div>
     );
 };
 
-export default Contact;
+export default Achievements;
+
+

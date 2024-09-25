@@ -3,7 +3,11 @@ import './css/banner.css'
 
 const Banner = () => {
     return (
+<<<<<<< HEAD
         <div className='h-[calc(100vh-102px)]'>
+=======
+        <div className=''>
+>>>>>>> 56638ba1b2650475785c05f398009479fec4c22d
             <div className="h-full flex flex-col-reverse md:flex-row justify-between items-center gap-5 py-6">
                 {/* text section */}
                 <div className='space-y-5 flex-1'>
@@ -22,12 +26,13 @@ const Banner = () => {
                     </div>
                 </div>
 
-                {/* image section */}
-                <div className='flex-1'>
-                    <img className='hover:animate-shake w-full' src={bannerImg} alt="Virtual Classroom" />
-                </div>
-            </div>
-        </div>
+    {/* Image section */}
+    <div className='flex-1 px-4 md:px-0'>
+      <img className='hover:animate-shake w-full max-w-sm md:max-w-full' src={bannerImg} alt="Virtual Classroom" />
+    </div>
+  </div>
+</div>
+
     );
 };
 

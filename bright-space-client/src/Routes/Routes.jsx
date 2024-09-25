@@ -4,7 +4,6 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/shared/Authentication/Login/Login";
 import Registration from "../pages/shared/Authentication/Registration/Registration";
 import Dashboard from "../Layouts/Dashboard";
-import About from "../pages/About/About";
 import Features from "../pages/Features/Features";
 import Contact from "../pages/Contact/Contact";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
@@ -13,6 +12,7 @@ import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Classes from "../pages/Classes/Classes";
+import About from "../pages/About/About/About";
 
 
 export const router = createBrowserRouter([

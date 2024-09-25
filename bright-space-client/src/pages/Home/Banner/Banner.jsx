@@ -3,7 +3,11 @@ import './css/banner.css'
 
 const Banner = () => {
     return (
+<<<<<<< HEAD
+        <div className='h-[calc(100vh-102px)]'>
+=======
         <div className=''>
+>>>>>>> 56638ba1b2650475785c05f398009479fec4c22d
             <div className="h-full flex flex-col-reverse md:flex-row justify-between items-center gap-5 py-6">
                 {/* text section */}
                 <div className='space-y-5 flex-1'>

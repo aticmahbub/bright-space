@@ -14,7 +14,7 @@ import {
     NumberInputField,
 } from '@chakra-ui/react'
 
-const ModalPrimary = ({ title, isOpen, onClose }) => {
+const JoinClsModal = ({ title, isOpen, onClose }) => {
     return (
         <Modal onClose={onClose} isOpen={isOpen} isCentered>
             <ModalOverlay />
@@ -49,4 +49,4 @@ const ModalPrimary = ({ title, isOpen, onClose }) => {
     );
 };
 
-export default ModalPrimary;
+export default JoinClsModal;

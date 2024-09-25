@@ -14,6 +14,7 @@ import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
+import LiveSession from "../pages/LiveSession/LiveSession";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
             {
                 path: '/classroom',
                 element: <ClassRoom />
+            },
+            {
+                path: '/liveSession',
+                element: <LiveSession />
             },
             {
                 path: '/login',

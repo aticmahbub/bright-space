@@ -15,21 +15,8 @@ const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
-
     const { user, logOut } = useContext(AuthContext)
     console.log(user);
-
-    const navLi = <>
-        <NavLink to="/" className='mainMenu-style'>Home</NavLink>
-        <NavLink to="/allCourses" className='mainMenu-style'>Courses</NavLink>
-        <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
-        <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
-        <NavLink to="/about" className='mainMenu-style'>About</NavLink>
-        <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
-        <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
-        <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
-        <button></button>
-    </>
 
     const navItems = [
         {
@@ -75,8 +62,8 @@ const Navbar = () => {
 
 
     return (
-        <Box bg='#F7F7F8' px={{ base: 2, md: 7 }} py={7} w='full'>
-            <Flex alignItems='center' gap={{ base: 1, md: 2 }}>
+        <Box bg='#F7F7F8' px={{ base: 2, md: 7 }} py={4} w='full'>
+            <Flex maxW='1596px' mx='auto' alignItems='center' gap={{ base: 1, md: 2 }}>
                 <Box display='flex' alignItems='center' gap={{ base: 2, md: 4 }}>
                     <Show below="md">
                         <Button
@@ -120,7 +107,7 @@ const Navbar = () => {
                                     {
                                         item.name !== 'Pages' ? <BreadcrumbLink as={NavLink} to={item.path} _hover={{ color: 'primary.500', textDecoration: 'none' }} _activeLink={{ color: 'primary.500', fontWeight: 'semibold' }}>{item.name}</BreadcrumbLink> : <Menu isOpen={isOpen} isLazy placement="auto">
                                             <MenuButton onMouseEnter={onOpen} transition='all 0.001s' _hover={{ color: 'primary.500' }}>{item.name}</MenuButton>
-                                            <MenuList onMouseLeave={onClose} mt='3' borderRadius='base'>
+                                            <MenuList onMouseLeave={onClose} mt='4' borderRadius='base'>
                                                 {
                                                     item.pages.map((page, idx) => <MenuItem key={idx} as={NavLink} _activeLink={{ color: 'primary.500' }} to={page.path}>{page.name}</MenuItem>)
                                                 }
@@ -130,16 +117,6 @@ const Navbar = () => {
 
                                 </BreadcrumbItem>)
                             }
-                            {/* <Menu isOpen={isOpen} isLazy placement="auto">
-                                <MenuButton onMouseEnter={onOpen} transition='all 0.001s' _hover={{ color: 'primary.500' }}>Pages</MenuButton>
-                                <MenuList onMouseLeave={onClose} mt={8} borderRadius='base'>
-                                    <MenuItem as={NavLink} _activeLink={{ color: 'primary.500' }} to='/features'>Features</MenuItem>
-                                    <MenuItem>Events</MenuItem>
-                                </MenuList>
-                            </Menu> */}
-                            {/* <BreadcrumbItem _hover={{ color: 'primary.500' }}>
-
-                            </BreadcrumbItem> */}
                         </Breadcrumb>
                     </Box>
                 </Show>

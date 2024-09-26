@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses />
+                element: <AllCourses />
             },
             {
                 path: '/userProfile',

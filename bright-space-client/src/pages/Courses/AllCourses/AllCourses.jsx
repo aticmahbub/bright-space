@@ -5,6 +5,8 @@ import useAuth from "../../../hooks/useAuth";
 // import {useNavigate, useLocation } from "react-router-dom"
 
 const AllCourses = () => {
+
+    const {user} =useAuth()
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
@@ -26,7 +28,7 @@ const AllCourses = () => {
         <Box display='flex' alignItems='center' maxW='1596px' mx='auto' py='20'>
             <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
                 {
-                    classes.map((cls, idx) => <CourseCard key={idx} cls={cls} handleAddToCart={handleAddToCart} />)
+                    courses.map((cls, idx) => <CourseCard key={idx} cls={cls} handleAddToCart={handleAddToCart} />)
                 }
             </Box>
         </Box>

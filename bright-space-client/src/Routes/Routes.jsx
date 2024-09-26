@@ -16,6 +16,7 @@ import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
+import AiAssistant from "../pages/AiAssistant/AiAssistant";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
                 path: '/userProfile',
                 element: <UserProfile />
             },
+            {
+                path: '/support',
+                element: <AiAssistant></AiAssistant>
+            }
         ]
     },
     {

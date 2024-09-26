@@ -16,12 +16,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@smastrom/react-rating": "^1.5.0",
-<<<<<<< HEAD
-    "@tanstack/react-query": "^5.56.2",
-    "axios": "^1.7.7",
-=======
     "firebase": "^10.13.2",
->>>>>>> 04df1df22ac40e2e4b16831b3851268474475575
     "framer-motion": "^11.5.4",
     "lottie-react": "^2.4.0",
     "prop-types": "^15.8.1",

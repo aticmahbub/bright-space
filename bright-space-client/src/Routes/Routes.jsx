@@ -17,6 +17,7 @@ import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <About />
+                element: <PrivateRoute><About /></PrivateRoute>
             },
             {
                 path: '/features',

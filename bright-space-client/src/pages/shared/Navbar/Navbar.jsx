@@ -30,7 +30,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-const {user, logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     console.log(user);
 
     const navLi = <>
@@ -42,11 +42,13 @@ const {user, logOut} = useContext(AuthContext)
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
         <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
         <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
-        <button></button>
-
     </>
 
-
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     return (
         <Box px='4' py='7'>
             <Box className='container mx-auto'>
@@ -80,6 +82,7 @@ const {user, logOut} = useContext(AuthContext)
                             hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
                             bg-transparent text-[#1f2122]
                             '><a href="userProfile">Profile</a></button>
+                                <button onClick={handleLogout}>Logout</button>
                             </> : <>
                                 <ButtonGroup gap={{ base: 1, md: 2 }}>
                                     <Button as={Link} to='/login' colorScheme='primary' variant='outline' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Log In</Button>

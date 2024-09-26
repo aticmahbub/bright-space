@@ -13,7 +13,6 @@ import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 // import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
-import ClassDetails from "../pages/ClassDetails/ClassDetails";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";

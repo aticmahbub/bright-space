@@ -64,7 +64,8 @@ const ClassCard = ({ cls }) => {
                 </Stack>
             </CardBody>
             <CardFooter p='0' mt='5'>
-                <Button leftIcon={<FaCartArrowDown />} colorScheme='secondary' rounded='full' px='6'>
+                <Button 
+                leftIcon={<FaCartArrowDown />} colorScheme='secondary' rounded='full' px='6'>
                     Add to cart
                 </Button>
             </CardFooter>

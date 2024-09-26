@@ -14,7 +14,7 @@ import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 // import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
-import Courses from "../pages/Courses/AllCourses/AllCourses";
+// import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
@@ -62,8 +62,8 @@ export const router = createBrowserRouter([
                 element: <Forum />
             },
             {
-                path: '/courses',
-                element: <Courses />
+                path: '/allCourses',
+                element: <AllCourses />
             },
             {
                 path: '/userProfile',

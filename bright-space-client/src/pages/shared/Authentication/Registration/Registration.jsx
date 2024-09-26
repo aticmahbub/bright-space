@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const Registration = () => {
+
+  const {createUser} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -19,7 +22,14 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
+    const {email, password} = formData
+    createUser(email, password)
+    .then(result =>{
+      const loggedUser = result.user
+      console.log(loggedUser);
+    })
+
   };
 
   return (
@@ -51,7 +61,7 @@ const Registration = () => {
                   type="text"
                   name="fullName"
                   value={formData.fullName}
-                  // onChange={handleChange}
+                  onChange={handleChange}
                   placeholder="Enter your Name"
                   className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD]  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
@@ -59,10 +69,10 @@ const Registration = () => {
               <div className="text-start flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Email</label>
                 <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  // onChange={handleChange}
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Enter your Email"
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
@@ -72,10 +82,10 @@ const Registration = () => {
                   Password
                 </label>
                 <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  // onChange={handleChange}
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   placeholder="Enter your Password"
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
                 />

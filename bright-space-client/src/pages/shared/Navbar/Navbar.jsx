@@ -22,13 +22,15 @@ import {
     // ChevronDownIcon 
 } from '@chakra-ui/icons';
 import { Link, NavLink } from 'react-router-dom';
-import useRole from '../../../hooks/useRole';
+// import useRole from '../../../hooks/useRole';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const user = useRole()
+const {user, logOut} = useContext(AuthContext)
     console.log(user);
 
     const navLi = <>
@@ -40,8 +42,10 @@ const Navbar = () => {
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
         <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
         <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
+        <button></button>
 
     </>
+
 
     return (
         <Box px='4' py='7'>

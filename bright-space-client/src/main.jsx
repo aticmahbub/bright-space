@@ -6,7 +6,6 @@ import "./index.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import AuthProvider from "./providers/AuthProvider";
 
-
 const fonts = {
   heading: `'Poppins', sans-serif`,
   body: `'Poppins', sans-serif`,

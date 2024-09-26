@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
         // navigate(location?.state || "/");
       })
       .catch((err) => {
-        // console.log(err)
+        
       });
   };
 

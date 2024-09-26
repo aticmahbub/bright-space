@@ -32,66 +32,14 @@ const Navbar = () => {
     console.log(user);
 
     const navLi = <>
-        {/* Dropdown Menu */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Home <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>
-                    <NavLink>Home Class</NavLink>
-                </MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>
-                    <NavLink>Home Class</NavLink>
-                </MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Course <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 2</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Pages <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 2</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Blog <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 2</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
         <NavLink to="/" className='mainMenu-style'>Home</NavLink>
-        <NavLink to="/classes" className='mainMenu-style'>Classes</NavLink>
+        <NavLink to="/courses" className='mainMenu-style'>Courses</NavLink>
         <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
         <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
         <NavLink to="/about" className='mainMenu-style'>About</NavLink>
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
         <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
+        <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
 
     </>
 

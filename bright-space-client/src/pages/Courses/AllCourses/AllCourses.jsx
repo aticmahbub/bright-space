@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
-import ClassCard from "../../components/ClassCard/ClassCard";
+import ClassCard from "../../../components/ClassCard/ClassCard";
 import { useEffect, useState } from "react";
 
-const Classes = () => {
+const Courses = () => {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
@@ -22,4 +22,4 @@ const Classes = () => {
     );
 };
 
-export default Classes;
+export default Courses;

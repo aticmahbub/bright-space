@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+
 
 const Registration = () => {
 
-  const {createUser} = useContext(AuthContext)
+  const {createUser, googleLogin, githubLogin} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -23,15 +25,22 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
-    const {email, password} = formData
+    const {email, password, fullName} = formData
     createUser(email, password)
     .then(result =>{
       const loggedUser = result.user
+      updateProfile(loggedUser, {
+        displayName: fullName,
+      });
       console.log(loggedUser);
     })
-
+    .catch(err => console.log(err)
+  )
   };
 
+
+
+  console.log(formData);
   return (
     <div>
       <div className="flex flex-col md:flex-row items-center justify-center  gap-5 lg:gap-10">
@@ -122,7 +131,7 @@ const Registration = () => {
 
               <div className="text-center text-gray-500">OR</div>
 
-              <button
+              <button onClick={googleLogin}
                 type="button"
                 className="w-full bg-[#F7F7F8] text-[#000000] border border-[#bab8b8] font-medium py-2 rounded-lg flex items-center justify-center space-x-2 hover:bg-gray-50"
               >
@@ -132,6 +141,17 @@ const Registration = () => {
                   className="w-5 h-5"
                 />
                 <span>Sign Up with Google</span>
+              </button>
+              <button onClick={githubLogin}
+                type="button"
+                className="w-full bg-[#F7F7F8] text-[#000000] border border-[#bab8b8] font-medium py-2 rounded-lg flex items-center justify-center space-x-2 hover:bg-gray-50"
+              >
+                <img
+                  src="https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/github-512.png"
+                  alt="Google"
+                  className="w-5 h-5"
+                />
+                <span>Sign Up with Github</span>
               </button>
 
               <p className="text-center text-gray-500 mt-4 ">

@@ -2,7 +2,7 @@
  * Created By Hisam, 17/9/24
  */
 
-import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Heading, IconButton, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Portal, Show, Spacer, useDisclosure } from "@chakra-ui/react";
+import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Heading, IconButton, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Show, Spacer, useDisclosure } from "@chakra-ui/react";
 
 import { Link, NavLink } from 'react-router-dom';
 // import useRole from '../../../hooks/useRole';
@@ -43,6 +43,19 @@ const Navbar = () => {
         {
             name: 'Classroom',
             path: '/classroom'
+        },
+        {
+            name: 'Pages',
+            pages: [
+                {
+                    name: 'Features',
+                    path: '/features'
+                },
+                {
+                    name: 'Contact',
+                    path: '/contact'
+                },
+            ]
         },
         {
             name: 'About',
@@ -87,14 +100,12 @@ const Navbar = () => {
                                 <DrawerHeader>Menu</DrawerHeader>
 
                                 <DrawerBody>
-                                    <Button as={Link} to='/' colorScheme='primary' variant='outline' borderRadius='base' w='full'>Home</Button>
+                                    <Box display='flex' flexDir='column' gap='4'>
+                                        {
+                                            navItems.map((item, idx) => <Button key={idx} as={NavLink} to={item.path} colorScheme='primary' variant='outline' borderRadius='base' w='full'>{item.name}</Button>)
+                                        }
+                                    </Box>
                                 </DrawerBody>
-
-                                <DrawerFooter>
-                                    <Button variant='outline' mr={3} onClick={onClose}>
-                                        Cancel
-                                    </Button>
-                                </DrawerFooter>
                             </DrawerContent>
                         </Drawer>
                     </Show>
@@ -105,21 +116,30 @@ const Navbar = () => {
                     <Box>
                         <Breadcrumb separator='' spacing='5'>
                             {
-                                navItems.map((item, idx) => <BreadcrumbItem key={idx} _hover={{ color: 'primary.500' }}>
-                                    <BreadcrumbLink as={NavLink} to={item.path} _hover={{textDecoration: 'none'}} _activeLink={{ color: 'primary.500', fontWeight: 'semibold' }}>{item.name}</BreadcrumbLink>
+                                navItems.map((item, idx) => <BreadcrumbItem key={idx}>
+                                    {
+                                        item.name !== 'Pages' ? <BreadcrumbLink as={NavLink} to={item.path} _hover={{ color: 'primary.500', textDecoration: 'none' }} _activeLink={{ color: 'primary.500', fontWeight: 'semibold' }}>{item.name}</BreadcrumbLink> : <Menu isOpen={isOpen} isLazy placement="auto">
+                                            <MenuButton onMouseEnter={onOpen} transition='all 0.001s' _hover={{ color: 'primary.500' }}>{item.name}</MenuButton>
+                                            <MenuList onMouseLeave={onClose} mt='3' borderRadius='base'>
+                                                {
+                                                    item.pages.map((page, idx) => <MenuItem key={idx} as={NavLink} _activeLink={{ color: 'primary.500' }} to={page.path}>{page.name}</MenuItem>)
+                                                }
+                                            </MenuList>
+                                        </Menu>
+                                    }
+
                                 </BreadcrumbItem>)
                             }
-                            <BreadcrumbItem _hover={{ color: 'primary.500' }}>
-                                <Menu isOpen={isOpen} onClose={onClose} isLazy placement="auto">
-                                    <MenuButton onMouseEnter={onOpen} transition='all 0.001s'>Pages</MenuButton>
-                                    <Portal>
-                                        <MenuList onMouseLeave={onClose} mt={8} borderRadius='base'>
-                                            <MenuItem as={NavLink} to='/features'>Features</MenuItem>
-                                            <MenuItem>Events</MenuItem>
-                                        </MenuList>
-                                    </Portal>
-                                </Menu>
-                            </BreadcrumbItem>
+                            {/* <Menu isOpen={isOpen} isLazy placement="auto">
+                                <MenuButton onMouseEnter={onOpen} transition='all 0.001s' _hover={{ color: 'primary.500' }}>Pages</MenuButton>
+                                <MenuList onMouseLeave={onClose} mt={8} borderRadius='base'>
+                                    <MenuItem as={NavLink} _activeLink={{ color: 'primary.500' }} to='/features'>Features</MenuItem>
+                                    <MenuItem>Events</MenuItem>
+                                </MenuList>
+                            </Menu> */}
+                            {/* <BreadcrumbItem _hover={{ color: 'primary.500' }}>
+
+                            </BreadcrumbItem> */}
                         </Breadcrumb>
                     </Box>
                 </Show>

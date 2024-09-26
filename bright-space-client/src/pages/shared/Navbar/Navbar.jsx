@@ -87,14 +87,13 @@ const Navbar = () => {
                                 <DrawerHeader>Menu</DrawerHeader>
 
                                 <DrawerBody>
-                                    <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' w='full'>Home</Button>
+                                    <Button as={Link} to='/' colorScheme='primary' variant='outline' borderRadius='base' w='full'>Home</Button>
                                 </DrawerBody>
-                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' display={{ base: 'none', md: 'flex' }} size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
+
                                 <DrawerFooter>
                                     <Button variant='outline' mr={3} onClick={onClose}>
                                         Cancel
                                     </Button>
-                                    <Button colorScheme='blue'>Save</Button>
                                 </DrawerFooter>
                             </DrawerContent>
                         </Drawer>
@@ -107,7 +106,7 @@ const Navbar = () => {
                         <Breadcrumb separator='' spacing='5'>
                             {
                                 navItems.map((item, idx) => <BreadcrumbItem key={idx} _hover={{ color: 'primary.500' }}>
-                                    <BreadcrumbLink as={NavLink} to={item.path} _activeLink={{ color: 'primary.500', fontWeight: 'semibold' }}>{item.name}</BreadcrumbLink>
+                                    <BreadcrumbLink as={NavLink} to={item.path} _hover={{textDecoration: 'none'}} _activeLink={{ color: 'primary.500', fontWeight: 'semibold' }}>{item.name}</BreadcrumbLink>
                                 </BreadcrumbItem>)
                             }
                             <BreadcrumbItem _hover={{ color: 'primary.500' }}>

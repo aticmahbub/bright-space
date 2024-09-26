@@ -12,7 +12,7 @@ const PopularCourses = () => {
     }, []);
 
     return (
-        <Box py='20'>
+        <Box maxW='1596px' mx='auto' py='20'>
             <Heading>Popular Courses</Heading>
             <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-10'>
                 {

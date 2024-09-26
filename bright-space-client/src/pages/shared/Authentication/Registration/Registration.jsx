@@ -24,19 +24,19 @@ const Registration = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-center  gap-5 lg:gap-10">
-      <div>
-      <dotlottie-player
-        src="https://lottie.host/d04a48fe-d3f4-4ce1-ba2a-9b6b239d3ee0/cLJoUwPZPC.json"
-        background="transparent"
-        speed="1"
-        loop
-        autoplay
-      ></dotlottie-player>
-      </div>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-5 lg:gap-10">
+        <div>
+          <dotlottie-player
+            src="https://lottie.host/d04a48fe-d3f4-4ce1-ba2a-9b6b239d3ee0/cLJoUwPZPC.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+          ></dotlottie-player>
+        </div>
 
-        <div className="flex justify-center items-center w-full p-2 md:p-10 ">
-          <div className=" p-8 rounded-lg shadow-lg w-full bg-[#ffff]">
+        <div className="flex justify-center items-center w-full p-2 md:p-10">
+          <div className="p-8 rounded-lg shadow-lg w-full bg-[#ffff]">
             <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
             <p className="text-center text-gray-500 mb-6">
               Create an account to unlock exclusive features.
@@ -44,40 +44,36 @@ const Registration = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="text-start flex flex-col">
-                <label className="mb-2 font-medium text-gray-700">
-                  Full Name
-                </label>
+                <label className="mb-2 font-medium text-gray-700">Full Name</label>
                 <input
                   type="text"
-                  name="fullName"
+                  name="fullName" // Correct name attribute
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="Enter your Name"
-                  className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD]  focus:outline-none focus:ring focus:ring-indigo-200"
+                  className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD] focus:outline-none focus:ring focus:ring-indigo-200"
                 />
               </div>
               <div className="text-start flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Email</label>
                 <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  type="email" // Correct input type
+                  name="email" // Correct name attribute
+                  value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your Email"
-                  className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
+                  className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
                 />
               </div>
               <div className="text-start flex flex-col">
-                <label className="mb-2 font-medium text-gray-700">
-                  Password
-                </label>
+                <label className="mb-2 font-medium text-gray-700">Password</label>
                 <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  type="password" // Correct input type
+                  name="password" // Correct name attribute
+                  value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your Password"
-                  className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
+                  className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
                 />
               </div>
 
@@ -93,8 +89,8 @@ const Registration = () => {
                   I agree with{" "}
                   <a href="#" className="text-orange-500 hover:underline">
                     Terms of Use
-                  </a>
-                  and
+                  </a>{" "}
+                  and{" "}
                   <a href="#" className="text-orange-500 hover:underline">
                     Privacy Policy
                   </a>
@@ -102,13 +98,11 @@ const Registration = () => {
               </div>
 
               <button
-              type="submit"
-              className="w-full bg-[#FF9500]  py-2 rounded-lg 
-              text-[#ffff]
-              hover:bg-[#f3b051] focus:outline-none focus:ring-2 focus:ring-[#f3b051] focus:ring-opacity-50"
-            >
-              Sign Up
-            </button>
+                type="submit"
+                className="w-full bg-[#FF9500] py-2 rounded-lg text-[#ffff] hover:bg-[#f3b051] focus:outline-none focus:ring-2 focus:ring-[#f3b051] focus:ring-opacity-50"
+              >
+                Sign Up
+              </button>
 
               <div className="text-center text-gray-500">OR</div>
 

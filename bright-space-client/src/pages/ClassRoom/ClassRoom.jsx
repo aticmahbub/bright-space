@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import JoinClsModal from '../../components/JoinClsModal/JoinClsModal';
 
 const ClassRoom = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
         <Box className='h-[calc(100vh-101px)]'>
@@ -21,4 +21,4 @@ const ClassRoom = () => {
     );
 };
 
-export default ClassRoom;
+export default ClassRoom; 

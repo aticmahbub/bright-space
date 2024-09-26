@@ -22,78 +22,30 @@ import {
     // ChevronDownIcon 
 } from '@chakra-ui/icons';
 import { Link, NavLink } from 'react-router-dom';
-import useRole from '../../../hooks/useRole';
+// import useRole from '../../../hooks/useRole';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const user = useRole()
+    const { user, logOut } = useContext(AuthContext)
     console.log(user);
 
     const navLi = <>
-        {/* Dropdown Menu */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Home <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>
-                    <NavLink>Home Class</NavLink>
-                </MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>
-                    <NavLink>Home Class</NavLink>
-                </MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Course <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 2</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Pages <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 2</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
-        {/* <Menu>
-            <MenuButton className='mainMenu-style'>
-                <NavLink href="#">Blog <ChevronDownIcon h={6} w={6} /></NavLink>
-            </MenuButton>
-            <MenuList className='mt-7'>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 2</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 3</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 4</MenuItem>
-                <MenuItem px={6} py={3} className='dropdown-menuItem-style'>Home Class 5</MenuItem>
-            </MenuList>
-        </Menu> */}
         <NavLink to="/" className='mainMenu-style'>Home</NavLink>
-        <NavLink to="/classes" className='mainMenu-style'>Classes</NavLink>
+        <NavLink to="/courses" className='mainMenu-style'>Courses</NavLink>
         <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
         <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
         <NavLink to="/about" className='mainMenu-style'>About</NavLink>
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
         <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
+        <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
+        <button></button>
 
     </>
+
 
     return (
         <Box px='4' py='7'>
@@ -130,18 +82,9 @@ const Navbar = () => {
                             '><a href="userProfile">Profile</a></button>
                             </> : <>
                                 <ButtonGroup gap={{ base: 1, md: 2 }}>
-                                    <Button as={Link} to='/login' colorScheme='primary' variant='outline' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Log In</Button>
-                                    <Button as={Link} to='/registration' colorScheme='secondary' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Get Started Free</Button>
+                                    <Button as={Link} to='/registration' colorScheme='primary' variant='outline' borderRadius='base' size={{ base: 'sm', md: 'md' }} >Sign Up</Button>
+                                    <Button as={Link} to='/login' colorScheme='primary' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Login</Button>
                                 </ButtonGroup>
-                                {/* <button
-                                    className='
-                            hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
-                            bg-transparent text-[#1f2122]
-                            '><a href="login">Login</a></button>
-                                <button className='
-                            bg-[#5F2DED] text-white rounded-md px-4 py-2 border-[#5F2DED] border transition duration-300
-                            hover:bg-transparent hover:text-[#5F2DED]
-                            '><a href="registration">Get Started Free</a></button> */}
                             </>}
                         </Box>
                     </HStack>

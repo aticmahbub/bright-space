@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
 const Registration = () => {
-
+  const navigate = useNavigate()
   const {createUser, updateUserProfile} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     fullName: "",
@@ -32,6 +32,7 @@ const Registration = () => {
       updateUserProfile(formData.fullName, formData.photoURL)
       .then(()=>{
         console.log('user profile updated');
+        navigate('/')
       })
       .catch(error =>{
         console.log(error);

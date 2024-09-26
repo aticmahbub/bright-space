@@ -2,6 +2,7 @@ import classroom from '../../Lotties/classroom.json'
 import { Box, Button, Text, useDisclosure } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import JoinClsModal from '../../components/JoinClsModal/JoinClsModal';
+import { Link } from 'react-router-dom';
 
 const ClassRoom = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -13,7 +14,7 @@ const ClassRoom = () => {
                 <Lottie className='w-full md:w-96' animationData={classroom} />
                 <Box>
                     <Text textAlign='center' color='gray' mb='4'>Add a class to get started</Text>
-                    <Button colorScheme='primary' rounded='base' variant='outline'>Create Class</Button>
+                    <Button as={Link} to='/liveSession' colorScheme='primary' rounded='base' variant='outline'>Create Class</Button>
                     <Button onClick={onOpen} colorScheme='primary' rounded='base' ml='4'>Join Class</Button>
                 </Box>
             </Box>

@@ -1,6 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ClassCard from "../../../components/ClassCard/ClassCard";
+import ClassCard from "../../../components/CourseCard/CourseCard";
 
 const PopularClasses = () => {
     const [classes, setClasses] = useState([]);

@@ -14,7 +14,7 @@ const ClassRoom = () => {
                 <Box>
                     <Text textAlign='center' color='gray' mb='4'>Add a class to get started</Text>
                     <Button colorScheme='primary' rounded='base' variant='outline'>Create Class</Button>
-                    <Button onClick={onOpen} colorScheme='primary' rounded='base' ml='6'>Join Class</Button>
+                    <Button onClick={onOpen} colorScheme='primary' rounded='base' ml='4'>Join Class</Button>
                 </Box>
             </Box>
         </Box>

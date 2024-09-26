@@ -13,6 +13,7 @@ import {
     NumberInput,
     NumberInputField,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 
 const JoinClsModal = ({ title, isOpen, onClose }) => {
     return (
@@ -42,7 +43,7 @@ const JoinClsModal = ({ title, isOpen, onClose }) => {
                 </ModalBody>
                 <ModalFooter gap='4'>
                     <Button onClick={onClose} colorScheme='primary' rounded='base' variant='ghost'>Close</Button>
-                    <Button colorScheme='primary' rounded='base'>Join</Button>
+                    <Button as={Link} to='/liveSession' colorScheme='primary' rounded='base'>Join</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

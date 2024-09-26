@@ -6,7 +6,7 @@ const PopularCourses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('classes.json')
+        fetch('courses.json')
             .then(res => res.json())
             .then(data => setCourses(data))
     }, []);

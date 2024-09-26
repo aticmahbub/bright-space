@@ -11,11 +11,6 @@ const fonts = {
   body: `'Poppins', sans-serif`,
 };
 
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-
 const colors = {
   primary: {
     50: "#FFE6EB",

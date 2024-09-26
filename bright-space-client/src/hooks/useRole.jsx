@@ -1,5 +1,6 @@
 const useRole = () => {
-    return 
+    // const role ='teacher'
+    // return role
 };
 
 export default useRole;

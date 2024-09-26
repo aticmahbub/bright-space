@@ -6,60 +6,28 @@ import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Button
 
 import { Link, NavLink } from 'react-router-dom';
 // import useRole from '../../../hooks/useRole';
-import { useContext, useRef } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
-import { HamburgerIcon } from "@chakra-ui/icons";
-import NavAdvertise from "./NavAdvertise";
+import { useContext } from 'react';
 
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
-    const { user, logOut } = useContext(AuthContext)
+const {user, logOut} = useContext(AuthContext)
     console.log(user);
 
-    const navItems = [
-        {
-            name: 'Home',
-            path: '/'
-        },
-        {
-            name: 'Courses',
-            path: '/allCourses'
-        },
-        {
-            name: 'Classroom',
-            path: '/classroom'
-        },
-        {
-            name: 'Pages',
-            pages: [
-                {
-                    name: 'Features',
-                    path: '/features'
-                },
-                {
-                    name: 'Contact',
-                    path: '/contact'
-                },
-            ]
-        },
-        {
-            name: 'About',
-            path: '/about'
-        },
-        {
-            name: 'Blog',
-            path: '/blog'
-        },
-    ]
+    const navLi = <>
+        <NavLink to="/" className='mainMenu-style'>Home</NavLink>
+        <NavLink to="/courses" className='mainMenu-style'>Courses</NavLink>
+        <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
+        <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
+        <NavLink to="/about" className='mainMenu-style'>About</NavLink>
+        <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
+        <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
+        <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
+        <button></button>
 
-    const handleLogout = () => {
-        logOut()
-            .then(() => { })
-            .catch(error => console.log(error))
-    }
+    </>
 
 
     return (
@@ -122,27 +90,55 @@ const Navbar = () => {
                                 }
                             </Breadcrumb>
                         </Box>
-                    </Show>
-                    <Spacer />
-                    <Box display='flex' alignItems='center'>
-                        {
-                            user ? <Box>
-                                <Menu placement="bottom-end" isLazy>
-                                    <MenuButton as={Avatar} src={user?.photoURL} cursor='pointer' size={{ base: 'sm', md: 'md' }} />
-                                    <MenuList borderRadius='none' mt={5}>
-                                        <MenuGroup title={user?.displayName || 'Unknown User'}>
-                                            <MenuItem as={Link} to='/dashboard/profile'>Dashboard</MenuItem>
-                                            <MenuItem>FAQ</MenuItem>
-                                            <MenuItem textColor='primary.500' onClick={handleLogout}>Logout</MenuItem>
-                                        </MenuGroup>
-                                    </MenuList>
-                                </Menu>
-                            </Box> : <ButtonGroup gap={{ base: 1, md: 2 }}>
-                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' display={{ base: 'none', md: 'flex' }} size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
-                                <Button as={Link} to='/login' colorScheme='primary' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Login</Button>
-                            </ButtonGroup>
-                        }
-                    </Box>
+                        {/* Links for larger screens */}
+                        <HStack
+                            as="nav"
+                            textColor='gray'
+                            spacing={14}
+                            display={{ base: 'none', xl: 'flex' }}
+                            className='md:text-base lg:text-lg'
+                        >
+                            {navLi}
+                        </HStack>
+                        {/* Login Button */}
+                        <Box className='space-x-4 text-lg font-semibold' display={{ base: 'none', xl: 'block' }}>
+                            {user ? <>
+                                <button className='
+                            bg-[#5F2DED] text-white rounded-md px-4 py-2 border-[#5F2DED] border transition duration-300
+                            hover:bg-transparent hover:text-[#5F2DED]
+                            '><a href="dashboard">Dashboard</a></button>
+                                <button
+                                    className='
+                            hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
+                            bg-transparent text-[#1f2122]
+                            '><a href="userProfile">Profile</a></button>
+                            </> : <>
+                                <ButtonGroup gap={{ base: 1, md: 2 }}>
+                                    <Button as={Link} to='/login' colorScheme='primary' variant='outline' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Log In</Button>
+                                    <Button as={Link} to='/registration' colorScheme='secondary' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Get Started Free</Button>
+                                </ButtonGroup>
+                                {/* <button
+                                    className='
+                            hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
+                            bg-transparent text-[#1f2122]
+                            '><a href="login">Login</a></button>
+                                <button className='
+                            bg-[#5F2DED] text-white rounded-md px-4 py-2 border-[#5F2DED] border transition duration-300
+                            hover:bg-transparent hover:text-[#5F2DED]
+                            '><a href="registration">Get Started Free</a></button> */}
+                            </>}
+                        </Box>
+                    </HStack>
+
+                    {/* Hamburger Icon for mobile screens */}
+                    <IconButton
+                        size="lg"
+                        rounded='none'
+                        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+                        aria-label="Open Menu"
+                        display={{ xl: 'none' }}
+                        onClick={isOpen ? onClose : onOpen}
+                    />
                 </Flex>
             </Box>
         </Box>

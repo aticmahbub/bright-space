@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
 const Registration = () => {
-
-  const {createUser} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const {createUser, updateUserProfile} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
+    photoURL: "",
     termsAccepted: false,
   });
 
@@ -28,6 +29,14 @@ const Registration = () => {
     .then(result =>{
       const loggedUser = result.user
       console.log(loggedUser);
+      updateUserProfile(formData.fullName, formData.photoURL)
+      .then(()=>{
+        console.log('user profile updated');
+        navigate('/')
+      })
+      .catch(error =>{
+        console.log(error);
+      })
     })
 
   };
@@ -63,6 +72,19 @@ const Registration = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="Enter your Name"
+                  className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD]  focus:outline-none focus:ring focus:ring-indigo-200"
+                />
+              </div>
+              <div className="text-start flex flex-col">
+                <label className="mb-2 font-medium text-gray-700">
+                  Photo URL
+                </label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  value={formData.photoURL}
+                  onChange={handleChange}
+                  placeholder="Enter your photo url"
                   className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD]  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
               </div>

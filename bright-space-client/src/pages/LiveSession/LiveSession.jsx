@@ -6,13 +6,13 @@ const LiveSession = () => {
         // api.executeCommand('toggleChat')
     }
     return (
-        <Box className='h-[calc(100vh-101px)]'>
+        <Box maxW='1596px' mx='auto' py='6' className='h-[calc(100vh-101px)]'>
             <JaaSMeeting
 
                 appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
                 roomName="Development"
                 getIFrameRef={iframeRef => {
-                    iframeRef.style.height = 'calc(100vh - 101px)';
+                    iframeRef.style.height = '100%';
                 }}
                 // jwt=''
                 configOverwrite={{

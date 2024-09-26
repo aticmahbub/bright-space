@@ -4,7 +4,8 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes";
 import "./index.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import AuthProvider from "./pages/shared/Authentication/AuthProvider/AuthProvider";
+import AuthProvider from "./providers/AuthProvider";
+
 
 const fonts = {
   heading: `'Poppins', sans-serif`,

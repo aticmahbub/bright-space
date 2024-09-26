@@ -3,6 +3,7 @@ import { FaCartArrowDown } from 'react-icons/fa';
 import { MdOutlineStar } from 'react-icons/md';
 import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import { NavLink } from 'react-router-dom';
 const ratingStyles = {
     itemShapes: Star,
     activeFillColor: '#FED619',
@@ -11,7 +12,7 @@ const ratingStyles = {
 
 
 const ClassCard = ({ cls }) => {
-    const { title, posted_by, image_url, price, short_description, total_enrolment } = cls;
+    const { id, title, posted_by, image_url, price, short_description, total_enrolment } = cls;
 
     return (
         <Card bg='transparent' className='group' shadow='none'>
@@ -29,7 +30,11 @@ const ClassCard = ({ cls }) => {
                         <MdOutlineStar />
                         Featured
                     </Box>
-                    <Heading size='md' cursor='pointer' w='fit-content' _hover={{ textColor: 'secondary.500' }}>{title}</Heading>
+                    <Heading size='md' cursor='pointer' w='fit-content' _hover={{ textColor: 'secondary.500' }}>
+                        <NavLink to={`/classDetails/${id}`}>
+                            {title}
+                        </NavLink>
+                    </Heading>
                     <Text textColor='gray'>
                         {short_description}
                     </Text>

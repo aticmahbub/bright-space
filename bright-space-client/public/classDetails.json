@@ -1,0 +1,269 @@
+[
+  {
+    "id": 1,
+    "course_name": "Mastering Adobe Photoshop CC",
+    "image_url": "https://i.postimg.cc/q7yPfP6M/2.png",
+    "course_creator": "Jill Evans",
+    "last_update": "2023-06-15",
+    "course_difficulty": "Intermediate",
+    "course_level": "Intermediate",
+    "language": "English",
+    "sector": "Graphic Design",
+    "overview": "This comprehensive course will take you from beginner to advanced in Adobe Photoshop CC. Learn professional techniques for photo editing, digital art, and graphic design.",
+    "what_you_will_learn": [
+      "Navigate the Photoshop interface with confidence",
+      "Master essential tools and techniques for photo editing",
+      "Create stunning digital artwork and illustrations",
+      "Design professional graphics for print and web",
+      "Understand advanced concepts like layers, masks, and blend modes",
+      "Develop efficient workflows for various design projects"
+    ],
+    "target_audience": [
+      "Aspiring graphic designers",
+      "Photographers looking to enhance their editing skills",
+      "Digital artists wanting to expand their toolkit",
+      "Marketing professionals needing to create visual content"
+    ],
+    "requirements": [
+      "Basic computer skills",
+      "Adobe Photoshop CC installed (free trial available)",
+      "No prior Photoshop experience necessary"
+    ],
+    "price": 89.99,
+    "curriculum": [
+      {
+        "section": "Introduction to Photoshop",
+        "lessons": [
+          "Interface overview",
+          "Setting up your workspace",
+          "Understanding file formats"
+        ]
+      },
+      {
+        "section": "Essential Tools and Techniques",
+        "lessons": [
+          "Selection tools mastery",
+          "Working with layers",
+          "Color correction and adjustments"
+        ]
+      },
+      {
+        "section": "Advanced Techniques",
+        "lessons": [
+          "Layer masks and blend modes",
+          "Creating complex compositions",
+          "Digital painting techniques"
+        ]
+      },
+      {
+        "section": "Project Work",
+        "lessons": [
+          "Photo retouching project",
+          "Digital art creation",
+          "Designing a marketing asset"
+        ]
+      }
+    ],
+    "instructor": {
+      "name": "Jill Evans",
+      "bio": "Jill is a professional graphic designer with over 15 years of experience. She has worked with major brands and has been teaching Photoshop for the last 8 years.",
+      "expertise": ["Graphic Design", "Digital Illustration", "Photo Editing"]
+    },
+    "reviews": [
+      {
+        "user": "Michael S.",
+        "rating": 5,
+        "comment": "Excellent course! Jill's explanations are clear and the projects really helped solidify my learning."
+      },
+      {
+        "user": "Sarah L.",
+        "rating": 4,
+        "comment": "Great content, though I wish there were more exercises for beginners. Overall, very informative."
+      },
+      {
+        "user": "David R.",
+        "rating": 5,
+        "comment": "This course took my Photoshop skills to the next level. The advanced techniques section was particularly valuable."
+      }
+    ],
+    "students_enrolled": 2
+  },
+  {
+    "id": 2,
+    "course_name": "Web Development Bootcamp",
+    "image_url": "https://i.postimg.cc/QdR2y8ty/3.png",
+    "course_creator": "Alex Johnson",
+    "last_update": "2023-07-01",
+    "course_difficulty": "Beginner to Intermediate",
+    "course_level": "Beginner to Intermediate",
+    "language": "English",
+    "sector": "Web Development",
+    "overview": "Dive into the world of web development with this comprehensive bootcamp. Learn HTML, CSS, JavaScript, and modern frameworks to build responsive and dynamic websites.",
+    "what_you_will_learn": [
+      "Master HTML5 and CSS3 for structuring and styling web pages",
+      "Develop interactive websites using JavaScript",
+      "Learn popular frameworks like React and Node.js",
+      "Understand responsive design principles",
+      "Build and deploy full-stack web applications",
+      "Work with databases and APIs"
+    ],
+    "target_audience": [
+      "Aspiring web developers",
+      "Career changers looking to enter tech",
+      "Entrepreneurs wanting to build their own websites",
+      "Students interested in coding"
+    ],
+    "requirements": [
+      "Basic computer skills",
+      "No prior coding experience required",
+      "A computer with internet access"
+    ],
+    "price": 129.99,
+    "curriculum": [
+      {
+        "section": "HTML and CSS Fundamentals",
+        "lessons": [
+          "Introduction to HTML5",
+          "CSS3 styling techniques",
+          "Responsive design with CSS Grid and Flexbox"
+        ]
+      },
+      {
+        "section": "JavaScript Essentials",
+        "lessons": [
+          "JavaScript syntax and data types",
+          "DOM manipulation",
+          "Asynchronous JavaScript and Promises"
+        ]
+      },
+      {
+        "section": "Front-end Frameworks",
+        "lessons": [
+          "Introduction to React",
+          "State management with Redux",
+          "Building single-page applications"
+        ]
+      },
+      {
+        "section": "Back-end Development",
+        "lessons": [
+          "Node.js and Express.js",
+          "RESTful API development",
+          "Database integration with MongoDB"
+        ]
+      }
+    ],
+    "instructor": {
+      "name": "Alex Johnson",
+      "bio": "Alex is a full-stack developer with 10 years of industry experience. He has worked for several tech startups and loves teaching coding to beginners.",
+      "expertise": ["Web Development", "JavaScript", "React", "Node.js"]
+    },
+    "reviews": [
+      {
+        "user": "Emily T.",
+        "rating": 5,
+        "comment": "This bootcamp is exactly what I needed to start my coding journey. Alex is an excellent instructor!"
+      },
+      {
+        "user": "Mark H.",
+        "rating": 4,
+        "comment": "Comprehensive content and great projects. The pace can be a bit fast for absolute beginners."
+      },
+      {
+        "user": "Lisa W.",
+        "rating": 5,
+        "comment": "I landed my first dev job thanks to this course. The real-world projects were invaluable."
+      }
+    ],
+    "students_enrolled": 5
+  },
+  {
+    "id": 3,
+    "course_name": "Data Science and Machine Learning",
+    "image_url": "https://i.postimg.cc/rm97s59B/1.png",
+    "course_creator": "Dr. Samantha Lee",
+    "last_update": "2023-07-10",
+    "course_difficulty": "Intermediate to Advanced",
+    "course_level": "Intermediate to Advanced",
+    "language": "English",
+    "sector": "Data Science",
+    "overview": "Explore the exciting field of data science and machine learning. Learn to analyze complex datasets, build predictive models, and gain insights using Python and popular ML libraries.",
+    "what_you_will_learn": [
+      "Master data manipulation and analysis with Python",
+      "Implement machine learning algorithms from scratch",
+      "Use popular libraries like NumPy, Pandas, and Scikit-learn",
+      "Develop deep learning models with TensorFlow and Keras",
+      "Apply statistical methods for data analysis",
+      "Work on real-world data science projects"
+    ],
+    "target_audience": [
+      "Aspiring data scientists and analysts",
+      "Software engineers interested in ML",
+      "Researchers looking to apply data science in their field",
+      "Business professionals wanting to leverage data-driven insights"
+    ],
+    "requirements": [
+      "Basic Python programming skills",
+      "Familiarity with algebra and statistics",
+      "A computer with Python installed"
+    ],
+    "price": 149.99,
+    "curriculum": [
+      {
+        "section": "Python for Data Science",
+        "lessons": [
+          "Data manipulation with Pandas",
+          "Data visualization with Matplotlib and Seaborn",
+          "Statistical analysis in Python"
+        ]
+      },
+      {
+        "section": "Machine Learning Fundamentals",
+        "lessons": [
+          "Supervised learning algorithms",
+          "Unsupervised learning techniques",
+          "Model evaluation and validation"
+        ]
+      },
+      {
+        "section": "Deep Learning and Neural Networks",
+        "lessons": [
+          "Introduction to neural networks",
+          "Convolutional Neural Networks (CNNs)",
+          "Recurrent Neural Networks (RNNs)"
+        ]
+      },
+      {
+        "section": "Advanced Topics",
+        "lessons": [
+          "Natural Language Processing",
+          "Time series analysis",
+          "Reinforcement learning"
+        ]
+      }
+    ],
+    "instructor": {
+      "name": "Dr. Samantha Lee",
+      "bio": "Dr. Lee holds a Ph.D. in Computer Science and has been working in the field of AI and machine learning for over a decade. She has published numerous research papers and loves teaching data science.",
+      "expertise": ["Machine Learning", "Deep Learning", "Data Analysis", "Python"]
+    },
+    "reviews": [
+      {
+        "user": "John D.",
+        "rating": 5,
+        "comment": "Incredible course! Dr. Lee explains complex concepts in a very understandable way. The projects are challenging but rewarding."
+      },
+      {
+        "user": "Rachel M.",
+        "rating": 4,
+        "comment": "Excellent content and up-to-date with the latest in data science. Some prior math knowledge is helpful."
+      },
+      {
+        "user": "Tom K.",
+        "rating": 5,
+        "comment": "This course gave me the skills I needed to transition into a data science role. Highly recommended!"
+      }
+    ],
+    "students_enrolled": 3
+  }
+]

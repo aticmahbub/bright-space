@@ -13,6 +13,7 @@ import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
+import ClassDetails from "../pages/ClassDetails/ClassDetails";
 
 
 export const router = createBrowserRouter([
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: '/classes',
                 element: <Classes />
+            },
+            {
+                path: '/classDetails/:id',
+                element: <ClassDetails />
             },
             {
                 path: '/userProfile',

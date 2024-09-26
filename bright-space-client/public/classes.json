@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "title": "Advanced Mathematics",
         "posted_by": "Dr. John Smith",
         "image_url": "https://i.postimg.cc/rm97s59B/1.png",
@@ -9,6 +10,7 @@
         "total_enrolment": 120
     },
     {
+        "id": 2,
         "title": "Introduction to Psychology",
         "posted_by": "Prof. Emily Johnson",
         "image_url": "https://i.postimg.cc/q7yPfP6M/2.png",
@@ -18,6 +20,7 @@
         "total_enrolment": 200
     },
     {
+        "id": 3,
         "title": "Modern Web Development",
         "posted_by": "Mr. Michael Brown",
         "image_url": "https://i.postimg.cc/QdR2y8ty/3.png",

@@ -51,7 +51,7 @@ const Registration = () => {
                   type="text"
                   name="fullName"
                   value={formData.fullName}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   placeholder="Enter your Name"
                   className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD]  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
@@ -62,7 +62,7 @@ const Registration = () => {
                   type="text"
                   name="fullName"
                   value={formData.fullName}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   placeholder="Enter your Email"
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
@@ -75,7 +75,7 @@ const Registration = () => {
                   type="text"
                   name="fullName"
                   value={formData.fullName}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   placeholder="Enter your Password"
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
                 />

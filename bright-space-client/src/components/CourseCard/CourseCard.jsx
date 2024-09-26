@@ -10,9 +10,13 @@ const ratingStyles = {
 };
 
 
-const ClassCard = ({ cls }) => {
-    const { title, posted_by, image_url, price, short_description, total_enrolment } = cls;
-
+const CourseCard = ({ cls }) => {
+    const { title, posted_by, image_url, price, short_description, total_enrolment, } = cls;
+    
+    const handleAddToCart = (items) =>{
+        console.log(items);
+    }
+    console.log(handleAddToCart);
     return (
         <Card bg='transparent' className='group' shadow='none'>
             <CardBody p='0'>
@@ -65,6 +69,7 @@ const ClassCard = ({ cls }) => {
             </CardBody>
             <CardFooter p='0' mt='5'>
                 <Button 
+                onClick={() =>handleAddToCart(title)}
                 leftIcon={<FaCartArrowDown />} colorScheme='secondary' rounded='full' px='6'>
                     Add to cart
                 </Button>
@@ -73,4 +78,4 @@ const ClassCard = ({ cls }) => {
     );
 };
 
-export default ClassCard;
+export default CourseCard;

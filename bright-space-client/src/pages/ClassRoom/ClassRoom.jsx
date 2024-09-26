@@ -12,9 +12,9 @@ const ClassRoom = () => {
             <Box h='full' display='flex' gap='8' alignItems='center' justifyContent='center' flexDir='column'>
                 <Lottie className='w-full md:w-96' animationData={classroom} />
                 <Box>
-                    <Text textAlign='center' color='primary.500' mb='4'>Add a class to get started</Text>
-                    <Button colorScheme='secondary' rounded='none' variant='outline'>Create Class</Button>
-                    <Button onClick={onOpen} colorScheme='secondary' rounded='none' ml='6'>Join Class</Button>
+                    <Text textAlign='center' color='gray' mb='4'>Add a class to get started</Text>
+                    <Button colorScheme='primary' rounded='base' variant='outline'>Create Class</Button>
+                    <Button onClick={onOpen} colorScheme='primary' rounded='base' ml='6'>Join Class</Button>
                 </Box>
             </Box>
         </Box>

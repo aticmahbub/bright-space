@@ -5,12 +5,11 @@ const LiveSession = () => {
     const handleAPI = api => {
         // api.executeCommand('toggleChat')
     }
-
     return (
         <Box className='h-[calc(100vh-101px)]'>
             <JaaSMeeting
 
-                appId=''
+                appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
                 roomName="Development"
                 getIFrameRef={iframeRef => {
                     iframeRef.style.height = 'calc(100vh - 101px)';

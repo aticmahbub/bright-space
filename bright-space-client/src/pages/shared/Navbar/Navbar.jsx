@@ -92,7 +92,7 @@ const Navbar = () => {
                                     <DrawerBody>
                                         <Box display='flex' flexDir='column' gap='4'>
                                             {
-                                                navItems.map((item, idx) => <Button key={idx} as={NavLink} to={item.path} colorScheme='primary' variant='outline' borderRadius='base' w='full'>{item.name}</Button>)
+                                                navItems.map((item, idx) => <Button key={idx} onClick={onClose} as={NavLink} to={item.path} colorScheme='primary' variant='outline' borderRadius='base' w='full'>{item.name}</Button>)
                                             }
                                         </Box>
                                     </DrawerBody>

@@ -1,7 +1,7 @@
 const Assessment = () => {
     return (
         <div>
-            Assessment (Asaduzzaman Hisam)
+            Assessment (Atic Mahbub)
         </div>
     );
 };

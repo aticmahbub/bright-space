@@ -1,6 +1,6 @@
 const useRole = () => {
 
-    const role = null
+    const role = 'student'
     return role
 };
 

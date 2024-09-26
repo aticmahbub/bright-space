@@ -18,7 +18,7 @@ const Dashboard = () => {
                         <ul>
                             <li><NavLink to='/dashboard/studentProfile'>Profile</NavLink></li>
                             <li><NavLink to='/dashboard/studentProfile'>Profile</NavLink></li>
-                            <li><NavLink to='/dashboard/studentProfile'>Profile</NavLink></li>
+
                         </ul>
                         </>
                     }
@@ -28,6 +28,8 @@ const Dashboard = () => {
                         <h2 className="text-2xl">Teacher dashboard</h2>
                         <ul>
                             <li><NavLink to='/dashboard/teacherProfile'>Profile</NavLink></li>
+                            <li><NavLink to='/dashboard/CreateCourse'>Create Course</NavLink></li>
+                            <li><NavLink to='/dashboard/allCourses'>All Courses</NavLink></li>
                         </ul>
                         </>
                     }

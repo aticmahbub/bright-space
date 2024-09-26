@@ -12,12 +12,18 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
+    "@dotlottie/player-component": "^2.7.12",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@smastrom/react-rating": "^1.5.0",
+<<<<<<< HEAD
     "@tanstack/react-query": "^5.56.2",
     "axios": "^1.7.7",
+=======
+    "firebase": "^10.13.2",
+>>>>>>> 04df1df22ac40e2e4b16831b3851268474475575
     "framer-motion": "^11.5.4",
+    "lottie-react": "^2.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -37,7 +43,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.11",
+    "tailwindcss": "^3.4.13",
     "vite": "^5.4.1"
   }
 }

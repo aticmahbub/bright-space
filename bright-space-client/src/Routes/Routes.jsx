@@ -11,9 +11,14 @@ import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
-import Classes from "../pages/Classes/Classes";
+// import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
 import ClassDetails from "../pages/ClassDetails/ClassDetails";
+import ClassRoom from "../pages/ClassRoom/ClassRoom";
+import Courses from "../pages/Courses/AllCourses/AllCourses";
+import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
+import AllCourses from "../pages/Courses/AllCourses/AllCourses";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -26,6 +31,10 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
+                path: '/classroom',
+                element: <ClassRoom />
+            },
+            {
                 path: '/login',
                 element: <Login />
             },
@@ -35,7 +44,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <About />
+                element: <PrivateRoute><About /></PrivateRoute>
             },
             {
                 path: '/features',
@@ -54,12 +63,8 @@ export const router = createBrowserRouter([
                 element: <Forum />
             },
             {
-                path: '/classes',
-                element: <Classes />
-            },
-            {
-                path: '/classDetails/:id',
-                element: <ClassDetails />
+                path: '/courses',
+                element: <Courses />
             },
             {
                 path: '/userProfile',
@@ -81,7 +86,15 @@ export const router = createBrowserRouter([
             {
                 path: 'teacherProfile',
                 element: <TeacherProfile />
-            }
+            },
+            {
+                path: 'createCourse',
+                element: <CreateCourse />
+            },
+            {
+                path: 'allCourses',
+                element: <AllCourses />
+            },
         ]
     }
 ])

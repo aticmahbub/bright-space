@@ -1,4 +1,6 @@
 import bannerImg from '../../../assets/bannerImage.png'
+// import { Button } from '@chakra-ui/react';
+
 import './css/banner.css'
 
 const Banner = () => {
@@ -22,14 +24,14 @@ const Banner = () => {
                     </div>
                 </div>
 
-    {/* Image section */}
-    <div className='flex-1 px-4 md:px-0'>
-      <img className='hover:animate-shake w-full max-w-sm md:max-w-full' src={bannerImg} alt="Virtual Classroom" />
+        {/* Image section */}
+        <div className='flex-1 px-4 md:px-0'>
+          <img className='hover:animate-shake w-full max-w-sm md:max-w-full' src={bannerImg} alt="Virtual Classroom" />
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-    );
+  );
 };
 
 export default Banner;

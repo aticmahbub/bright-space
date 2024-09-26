@@ -1,8 +1,16 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import '@dotlottie/player-component';
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const Login = () => {
+
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/'
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -10,6 +18,7 @@ const Login = () => {
     termsAccepted: false,
   });
 
+  const {loginUser} = useContext(AuthContext)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -20,7 +29,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    loginUser(formData.email, formData.password)
+    .then(result =>{
+      console.log(result.user)
+      navigate(from, {replace:true})
+    })
   };
 
   return (

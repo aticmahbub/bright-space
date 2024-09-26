@@ -22,28 +22,35 @@ import {
     // ChevronDownIcon 
 } from '@chakra-ui/icons';
 import { Link, NavLink } from 'react-router-dom';
-import useRole from '../../../hooks/useRole';
+// import useRole from '../../../hooks/useRole';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const user = useRole()
+    const { user, logOut } = useContext(AuthContext)
     console.log(user);
 
     const navLi = <>
         <NavLink to="/" className='mainMenu-style'>Home</NavLink>
-        <NavLink to="/courses" className='mainMenu-style'>Courses</NavLink>
+        <NavLink to="/allCourses" className='mainMenu-style'>Courses</NavLink>
         <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
         <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
         <NavLink to="/about" className='mainMenu-style'>About</NavLink>
         <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
         <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
-        {/* <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink> */}
+        {<NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>}
         <NavLink to="/support" className='mainMenu-style'>Support</NavLink>
-
+        <NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>
     </>
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     return (
         <Box px='4' py='7'>
             <Box className='container mx-auto'>
@@ -77,6 +84,7 @@ const Navbar = () => {
                             hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
                             bg-transparent text-[#1f2122]
                             '><a href="userProfile">Profile</a></button>
+                                <button onClick={handleLogout}>Logout</button>
                             </> : <>
                                 <ButtonGroup gap={{ base: 1, md: 2 }}>
                                     <Button as={Link} to='/login' colorScheme='primary' variant='outline' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Log In</Button>

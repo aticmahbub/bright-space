@@ -63,9 +63,9 @@ const Navbar = () => {
 
 
     return (
-        <>
+        <Box px={{base: '2', lg: 8}} pt='5' bg='#F7F7F8'>
             <NavAdvertise />
-            <Box bg='#F7F7F8' px={{ base: 2, md: 7 }} py='4' w='full'>
+            <Box px={{ base: 2, md: 7 }} py='4' w='full'>
                 <Flex maxW='1596px' mx='auto' alignItems='center' gap={{ base: 1, md: 2 }}>
                     <Box display='flex' alignItems='center' gap={{ base: 2, md: 4 }}>
                         <Show below="md">
@@ -145,7 +145,7 @@ const Navbar = () => {
                     </Box>
                 </Flex>
             </Box>
-        </>
+        </Box>
     );
 
 };

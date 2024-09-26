@@ -2,11 +2,11 @@ import { Box } from "@chakra-ui/react";
 import ClassCard from "../../../components/ClassCard/ClassCard";
 import { useEffect, useState } from "react";
 
-const Courses = () => {
+const AllCourses = () => {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
-        fetch('classes.json')
+        fetch('http://localhost:3000/courses')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, []);
@@ -22,4 +22,4 @@ const Courses = () => {
     );
 };
 
-export default Courses;
+export default AllCourses;

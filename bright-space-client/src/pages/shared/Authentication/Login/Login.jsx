@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import '@dotlottie/player-component';
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
     termsAccepted: false,
   });
 
+  const {loginUser} = useContext(AuthContext)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -20,6 +22,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    loginUser(formData.email, formData.password)
+    .then(result =>{
+      console.log(result.user)
+    })
     console.log(formData);
   };
 

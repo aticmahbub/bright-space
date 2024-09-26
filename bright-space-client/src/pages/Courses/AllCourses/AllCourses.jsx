@@ -1,8 +1,14 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CourseCard from "../../../components/CourseCard/CourseCard";
+import useAuth from "../../../hooks/useAuth";
+// import {useNavigate, useLocation } from "react-router-dom"
 
 const AllCourses = () => {
+
+    const {user} =useAuth()
+    // const navigate = useNavigate()
+    // const location = useLocation()
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
@@ -11,7 +17,14 @@ const AllCourses = () => {
             .then(data => setClasses(data))
     }, []);
     const handleAddToCart = (items) =>{
-        console.log(items);
+        if(user && user?.email){
+            // send cart to db
+            console.log(items);
+        }
+        else{
+            // navigate('/login', {state:{from: location}})
+            console.log('user nai');
+        }
     }
     return (
         <Box display='flex' alignItems='center' py='20'>

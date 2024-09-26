@@ -10,13 +10,8 @@ const ratingStyles = {
 };
 
 
-const CourseCard = ({ cls }) => {
+const CourseCard = ({ cls,handleAddToCart }) => {
     const { title, posted_by, image_url, price, short_description, total_enrolment, } = cls;
-    
-    const handleAddToCart = (items) =>{
-        console.log(items);
-    }
-    console.log(handleAddToCart);
     return (
         <Card bg='transparent' className='group' shadow='none'>
             <CardBody p='0'>

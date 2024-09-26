@@ -11,10 +11,8 @@ import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
-// import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
-// import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
@@ -63,7 +61,7 @@ export const router = createBrowserRouter([
                 element: <Forum />
             },
             {
-                path: '/allCourses',
+                path: 'allCourses',
                 element: <AllCourses />
             },
             {
@@ -95,10 +93,7 @@ export const router = createBrowserRouter([
                 path: 'createCourse',
                 element: <CreateCourse />
             },
-            {
-                path: 'allCourses',
-                element: <AllCourses />
-            },
+
         ]
     }
 ])

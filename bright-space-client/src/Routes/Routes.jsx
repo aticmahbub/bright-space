@@ -16,6 +16,7 @@ import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
+import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 
 
 export const router = createBrowserRouter([
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
             {
                 path: 'createCourse',
                 element: <CreateCourse />
+            },
+            {
+                path: 'allCourses',
+                element: <AllCourses />
             },
         ]
     }

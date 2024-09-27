@@ -11,12 +11,12 @@ import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
-// import Classes from "../pages/Classes/Classes";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
-import Courses from "../pages/Courses/AllCourses/AllCourses";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
+import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <About />
+                element: <PrivateRoute><About /></PrivateRoute>
             },
             {
                 path: '/features',
@@ -61,13 +61,17 @@ export const router = createBrowserRouter([
                 element: <Forum />
             },
             {
-                path: '/courses',
-                element: <Courses />
+                path: 'allCourses',
+                element: <AllCourses />
             },
             {
                 path: '/userProfile',
                 element: <UserProfile />
             },
+            {
+                path: '/support',
+                element: <AiAssistant></AiAssistant>
+            }
         ]
     },
     {
@@ -89,10 +93,7 @@ export const router = createBrowserRouter([
                 path: 'createCourse',
                 element: <CreateCourse />
             },
-            {
-                path: 'allCourses',
-                element: <AllCourses />
-            },
+
         ]
     }
 ])

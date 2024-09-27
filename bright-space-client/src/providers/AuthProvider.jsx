@@ -1,88 +1,70 @@
 import { createContext, useEffect, useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth'
 import { app } from "../Firebase/firebase.config";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export const AuthContext = createContext(null);
-const auth = getAuth(app);
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      console.log("current user", currentUser);
-      setLoading(false);
-    });
-    return () => {
-      return unsubscribe();
-    };
-  }, []);
+export const AuthContext =createContext(null)
+const auth = getAuth(app)
+const AuthProvider = ({children}) => {
+    const [user, setUser] =useState(null)
+    const [loading, setLoading] =useState(true)
 
-  // create user
-  const createUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+    useEffect(()=>{
+       const unsubscribe= onAuthStateChanged(auth, currentUser =>{
+            setUser(currentUser)
+            console.log('current user', currentUser);
+            setLoading(false)
+        });
+        return () =>{
+            return unsubscribe()
+        }
+    } ,[])
 
-  // login user
-  const loginUser = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
 
-  //google login
-  const googleProvide = new GoogleAuthProvider();
-  const googleLogin = (location, navigate) => {
-    signInWithPopup(auth, googleProvide)
-      .then((res) => {
-        setUser(res.user);
-        //   navigate(location?.state || "/");
-      })
-      .catch((err) => {
-        //  console.log(err)
-      });
-  };
+    // create user
+    const createUser = (email, password) =>{
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
 
-  //github login
-  const githubProvider = new GithubAuthProvider();
-  const githubLogin = (location, navigate) => {
-    signInWithPopup(auth, githubProvider)
-      .then((res) => {
-        setUser(res.user);
-        // navigate(location?.state || "/");
-      })
-      .catch((err) => {
-        
-      });
-  };
 
-  // logOut
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
+    // login user
+    const loginUser = (email, password) =>{
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+    }
 
-  const authInfo = {
-    user,
-    loading,
-    createUser,
-    loginUser,
-    googleLogin, githubLogin,
-    logOut,
-  };
-  return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
-  );
+    // logOut
+    const logOut = () =>{
+        setLoading(true)
+        return signOut(auth)
+    }
+
+
+    // update user profile
+    const updateUserProfile = (name, photo) =>{
+        return updateProfile(auth.currentUser,{
+            displayName: name,
+            photoURL: photo
+        })
+    }
+
+
+    const authInfo = {
+        user,
+        loading,
+        createUser,
+        loginUser,
+        logOut,
+        updateUserProfile
+
+    }
+     return (
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthProvider;

@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
                 element: <ClassRoom />
             },
             {
-                path: '/liveSession',
+                path: '/live/:id',
                 element: <LiveSession />
             },
             {

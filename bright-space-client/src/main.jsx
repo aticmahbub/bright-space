@@ -5,6 +5,7 @@ import { router } from "./Routes/Routes";
 import "./index.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import AuthProvider from "./providers/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const fonts = {
   heading: `'Poppins', sans-serif`,
@@ -48,13 +49,17 @@ const breakpoints = {
 };
 
 const theme = extendTheme({ colors, fonts, breakpoints });
+const queryClient = new QueryClient();
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <ChakraProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ChakraProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ChakraProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ChakraProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </StrictMode>
 );

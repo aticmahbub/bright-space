@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { updateProfile } from "firebase/auth";
 import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
 import useAuth from "../../../../hooks/useAuth";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 
 const Registration = () => {
 
   const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth()
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: "",
@@ -29,17 +30,25 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    const { email, password, fullName } = formData
+    const { email, password, fullName, photoURL } = formData
     createUser(email, password)
       .then(result => {
         const loggedUser = result.user
-        updateProfile(loggedUser, {
-          displayName: fullName,
-        });
         console.log(loggedUser);
-        updateUserProfile(formData.fullName, formData.photoURL)
+        updateUserProfile(fullName, photoURL)
           .then(() => {
             console.log('user profile updated');
+
+            const userInfo={
+              name: fullName,
+              email: email,
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res =>{
+              if(res.data.insertedI){
+                console.log('user added to database');
+              }
+            })
             navigate('/')
           })
           .catch(error => {
@@ -124,6 +133,13 @@ const Registration = () => {
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
               </div>
+              <div className=" inline-block py-2 px-4 bg-[#FCFCFD] rounded-lg font-medium">
+                  Role:
+                  <select className="border ml-2 rounded-lg font-normal" name="role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                  </select>
+                </div>
 
               <div className="flex items-center">
                 <input
@@ -133,13 +149,8 @@ const Registration = () => {
                   onChange={handleChange}
                   className="h-4 w-4 text-orange-500 border-gray-300 rounded"
                 />
-                <label>
-                  Role:
-                  <select name="role">
-                    <option value="student">Student</option>
-                    <option value="banana">Teacher</option>
-                  </select>
-                </label>
+               
+                <br />
                 <label className="ml-2 text-sm text-gray-600">
                   I agree with{" "}
                   <a href="#" className="text-orange-500 hover:underline">

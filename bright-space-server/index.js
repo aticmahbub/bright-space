@@ -28,6 +28,7 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
+        const usersCollection = client.db('bright-space-db').collection('users-collection')
 
         // get all courses
         app.get('/courses', async (req, res) => {
@@ -61,6 +62,13 @@ async function run() {
             res.send(result)
         })
 
+
+        // users related api
+        app.post('/users', async(req, res) =>{
+            const user = req.body
+            const result = await usersCollection.insertOne(user)
+            res.send(result)
+        })
 
         // await client.connect();
         // Send a ping to confirm a successful connection

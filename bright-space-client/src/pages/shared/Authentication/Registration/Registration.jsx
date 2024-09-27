@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
+import useAuth from "../../../../hooks/useAuth";
 
 
 const Registration = () => {
 
-  const {createUser, googleLogin, githubLogin, updateUserProfile} = useContext(AuthContext)
-
+  const {createUser, googleLogin, githubLogin, updateUserProfile} = useAuth()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",

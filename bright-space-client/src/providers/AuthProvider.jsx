@@ -1,5 +1,19 @@
 import { createContext, useEffect, useState } from "react";
+<<<<<<< HEAD
 import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth'
+=======
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile
+} from "firebase/auth";
+>>>>>>> 345e584f0498b0a4d8951a7c9234bd2832f4de72
 import { app } from "../Firebase/firebase.config";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -50,6 +64,33 @@ const AuthProvider = ({children}) => {
         })
     }
 
+    
+    //google login
+  const googleProvide = new GoogleAuthProvider();
+  const googleLogin = (location, navigate) => {
+    signInWithPopup(auth, googleProvide)
+      .then((res) => {
+        setUser(res.user);
+        //   navigate(location?.state || "/");
+      })
+      .catch((err) => {
+        //  console.log(err)
+      });
+  };
+
+  //github login
+  const githubProvider = new GithubAuthProvider();
+  const githubLogin = (location, navigate) => {
+    signInWithPopup(auth, githubProvider)
+      .then((res) => {
+        setUser(res.user);
+        // navigate(location?.state || "/");
+      })
+      .catch((err) => {
+        
+      });
+  };
+
 
     const authInfo = {
         user,
@@ -57,7 +98,8 @@ const AuthProvider = ({children}) => {
         createUser,
         loginUser,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+         googleLogin, githubLogin,
 
     }
      return (

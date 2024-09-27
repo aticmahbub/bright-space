@@ -28,6 +28,7 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
+        const usersCollection = client.db('bright-space-db').collection('users-collection')
 
         // get all courses
         app.get('/courses', async (req, res) => {
@@ -44,22 +45,62 @@ async function run() {
 
 
         // get specific enrolls
-        app.get('/enrolls', async(req, res) =>{
+        app.get('/enrolls', async (req, res) => {
             const email = req.query.email
-            const query = {email: email}
+            const query = { email: email }
             const result = await cartCollection.find(query).toArray()
             res.send(result)
         })
 
 
         // add to cart
-        app.post('/enrolls', async(req,res)=>{
+        app.post('/enrolls', async (req, res) => {
             const cartItem = req.body
             // console.log(cartItem);
             const result = await cartCollection.insertOne(cartItem)
             // console.log(result);
             res.send(result)
         })
+
+
+
+        // users related api
+        app.post('/users', async (req, res) => {
+            const user = req.body
+            const result = await usersCollection.insertOne(user)
+            res.send(result)
+        })
+
+
+        // Fetch user's enrolled courses
+        app.get('/user/enrollments', async (req, res) => {
+            const email = req.query.email; // Fetch email from query parameter
+
+            if (!email) {
+                return res.status(400).send({ message: 'Email is required' });
+            }
+
+            try {
+                // Access the 'enrollments' collection
+                const enrollments = db.collection('courses-collection');
+
+                // Find all courses where the user has enrolled
+                const userEnrollments = await enrollments.find({ userEmail: email }).toArray();
+
+                if (!userEnrollments.length) {
+                    return res.status(404).send({ message: 'No enrollments found for this user' });
+                }
+
+                // Fetch course details from 'courses' collection
+                const courseIds = userEnrollments.map(enrollment => ObjectId(enrollment.courseId));
+                const courses = await db.collection('courses').find({ _id: { $in: courseIds } }).toArray();
+
+                res.status(200).send(courses);
+            } catch (error) {
+                console.error('Error fetching enrollments:', error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
+        });
 
 
         // await client.connect();

@@ -62,15 +62,19 @@ async function run() {
             res.send(result)
         })
 
-        app.get('/meetCode', async (req, res) => {
-            const result = await meetingCodeCollection.find().toArray();
-            console.log(result);
-            res.send(result)
+        // Meeting code related apis
+        app.get('/meetCode/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {
+                meetCode: id
+            }
+            const result = await meetingCodeCollection.findOne(query);
+            res.send(result);
         });
 
         app.post('/meetingCode', async (req, res) => {
-            const meetCode = req.body;
-            const result = await meetingCodeCollection.insertOne(meetCode);
+            const meetingCode = req.body;
+            const result = await meetingCodeCollection.insertOne(meetingCode);
             res.send(result);
         });
 

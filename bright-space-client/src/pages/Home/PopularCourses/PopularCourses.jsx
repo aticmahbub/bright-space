@@ -16,7 +16,7 @@ const PopularCourses = () => {
             <Heading>Popular Courses</Heading>
             <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-10'>
                 {
-                    courses.map((cls, idx) => <ClassCard key={idx} cls={cls} />)
+                    courses.map((course, idx) => <ClassCard key={idx} course={course} />)
                 }
             </Box>
         </Box>

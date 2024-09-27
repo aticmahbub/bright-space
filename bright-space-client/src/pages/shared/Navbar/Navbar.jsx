@@ -11,6 +11,7 @@ import { useRef } from 'react';
 import { HamburgerIcon } from "@chakra-ui/icons";
 import NavAdvertise from "./NavAdvertise";
 import useAuth from '../../../hooks/useAuth';
+import useEnrolls from "../../../hooks/useEnrolled";
 
 
 
@@ -19,8 +20,19 @@ const Navbar = () => {
     const btnRef = useRef();
 
     const { user, logOut } = useAuth()
-    console.log(user);
-
+    const [enrolls] =useEnrolls()
+    // const navLi = <>
+    //     <NavLink to="/" className='mainMenu-style'>Home</NavLink>
+    //     <NavLink to="/allCourses" className='mainMenu-style'>Courses</NavLink>
+    //     <NavLink to="/classroom" className='mainMenu-style'>Classroom</NavLink>
+    //     <NavLink to="/features" className='mainMenu-style'>Features</NavLink>
+    //     <NavLink to="/about" className='mainMenu-style'>About</NavLink>
+    //     <NavLink to="/contact" className='mainMenu-style'>Contact us</NavLink>
+    //     <NavLink to="/blog" className='mainMenu-style'>Blog</NavLink>
+    //     {<NavLink to="/addCourse" className='mainMenu-style'>AddCourse</NavLink>}
+    //     <NavLink to="/support" className='mainMenu-style'>Support</NavLink>
+        
+    // </>
     const navItems = [
         {
             name: 'Home',
@@ -54,6 +66,10 @@ const Navbar = () => {
         {
             name: 'Blog',
             path: '/blog'
+        },
+        {
+            name: 'Support',
+            path: '/support'
         },
     ]
 
@@ -132,7 +148,7 @@ const Navbar = () => {
                                     <MenuList borderRadius='none' mt={5}>
                                         <MenuGroup title={user?.displayName || 'Unknown User'}>
                                             <MenuItem as={Link} to='/dashboard'>Dashboard</MenuItem>
-                                            <MenuItem>FAQ</MenuItem>
+                                            <MenuItem>Enrolled{enrolls.length}</MenuItem>
                                             <MenuItem textColor='primary.500' onClick={handleLogout}>Logout</MenuItem>
                                         </MenuGroup>
                                     </MenuList>

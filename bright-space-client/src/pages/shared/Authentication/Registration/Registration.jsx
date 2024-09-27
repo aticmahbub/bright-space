@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
+
 
 const Registration = () => {
-  const navigate = useNavigate()
-  const {createUser, updateUserProfile} = useContext(AuthContext)
+
+  const {createUser, googleLogin, githubLogin, updateUserProfile} = useContext(AuthContext)
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -24,10 +28,13 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
-    const {email, password} = formData
+    const {email, password, fullName} = formData
     createUser(email, password)
     .then(result =>{
       const loggedUser = result.user
+      updateProfile(loggedUser, {
+        displayName: fullName,
+      });
       console.log(loggedUser);
       updateUserProfile(formData.fullName, formData.photoURL)
       .then(()=>{
@@ -38,9 +45,13 @@ const Registration = () => {
         console.log(error);
       })
     })
-
+    .catch(err => console.log(err)
+  )
   };
 
+
+
+  console.log(formData);
   return (
     <div>
       <div className="flex flex-col md:flex-row items-center justify-center  gap-5 lg:gap-10">
@@ -144,17 +155,7 @@ const Registration = () => {
 
               <div className="text-center text-gray-500">OR</div>
 
-              <button
-                type="button"
-                className="w-full bg-[#F7F7F8] text-[#000000] border border-[#bab8b8] font-medium py-2 rounded-lg flex items-center justify-center space-x-2 hover:bg-gray-50"
-              >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/480px-Google_%22G%22_logo.svg.png"
-                  alt="Google"
-                  className="w-5 h-5"
-                />
-                <span>Sign Up with Google</span>
-              </button>
+             <SocialLogin googleLogin={googleLogin} githubLogin={githubLogin}/>
 
               <p className="text-center text-gray-500 mt-4 ">
                 Already have an account?{" "}

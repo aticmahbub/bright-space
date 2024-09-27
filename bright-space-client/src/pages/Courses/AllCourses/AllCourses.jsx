@@ -4,6 +4,7 @@ import CourseCard from "../../../components/CourseCard/CourseCard";
 // import useAuth from "../../../hooks/useAuth";
 // import axios from "axios";
 // import {useNavigate, useLocation } from "react-router-dom"
+// import useEnrolls from "../../../hooks/useEnrolled";
 
 const AllCourses = () => {
 
@@ -11,6 +12,7 @@ const AllCourses = () => {
     // const navigate = useNavigate()
     // const location = useLocation()
     const [courses, setCourses] = useState([]);
+    // const [,refetch] = useEnrolls
 
     useEffect(() => {
         fetch('http://localhost:3000/courses')
@@ -25,9 +27,10 @@ const AllCourses = () => {
     //             courseId: specificCourse._id,
     //             email: user.email
     //         }
-    //         axios.post('http://localhost:3000/carts',cartItem)
+    //         axios.post('http://localhost:3000/enrolls',cartItem)
     //         .then(res =>{
     //             console.log(res.data);
+    //             refetch()
     //         })
     //     }
     //     else{

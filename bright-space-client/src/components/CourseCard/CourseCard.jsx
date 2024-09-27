@@ -5,7 +5,8 @@ import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import useAuth from '../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { axiosSecure } from '../../hooks/useAxiosSecure';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useEnrolls from '../../hooks/useEnrolled';
 const ratingStyles = {
     itemShapes: Star,
     activeFillColor: '#FED619',
@@ -16,8 +17,10 @@ const ratingStyles = {
 const CourseCard = ({course}) => {
     console.log(course);
     const {user} = useAuth()
+    const [,refetch] =useEnrolls()
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosSecure = useAxiosSecure()
     const { title, posted_by, image_url, price, short_description, total_enrolment, } = course;
 
     const handleAddToCart = (specificCourse) =>{
@@ -26,11 +29,12 @@ const CourseCard = ({course}) => {
             console.log(specificCourse);
             const cartItem = {
                 courseId: specificCourse._id,
-                email: user.email
+                email: user?.email
             }
-            axiosSecure.post('/carts',cartItem)
+            axiosSecure.post('/enrolls',cartItem)
             .then(res =>{
                 console.log(res.data);
+                refetch()
             })
         }
         else{

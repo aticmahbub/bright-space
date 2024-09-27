@@ -19,7 +19,7 @@ const Registration = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked, role } = e.target;
+    const { name, value, type, checked, } = e.target;
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
@@ -29,25 +29,25 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    // const { email, password, fullName } = formData
-    // createUser(email, password)
-    //   .then(result => {
-    //     const loggedUser = result.user
-    //     updateProfile(loggedUser, {
-    //       displayName: fullName,
-    //     });
-    //     console.log(loggedUser);
-    //     updateUserProfile(formData.fullName, formData.photoURL)
-    //       .then(() => {
-    //         console.log('user profile updated');
-    //         navigate('/')
-    //       })
-    //       .catch(error => {
-    //         console.log(error);
-    //       })
-    //   })
-    //   .catch(err => console.log(err)
-    //   )
+    const { email, password, fullName } = formData
+    createUser(email, password)
+      .then(result => {
+        const loggedUser = result.user
+        updateProfile(loggedUser, {
+          displayName: fullName,
+        });
+        console.log(loggedUser);
+        updateUserProfile(formData.fullName, formData.photoURL)
+          .then(() => {
+            console.log('user profile updated');
+            navigate('/')
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      })
+      .catch(err => console.log(err)
+      )
   };
 
 

@@ -1,6 +1,6 @@
 import Achievements from "../../About/Achievements/Achievements"
 import Banner from "../Banner/Banner";
-import PopularClasses from "../PopularClasses/PopularClasses";
+import PopularClasses from "../PopularCourses/PopularCourses";
 import Stats from "../Stats/Stats";
 
 

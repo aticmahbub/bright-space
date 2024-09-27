@@ -10,6 +10,7 @@ const Dashboard = () => {
         <div>
             <Navbar />
             <div className="flex justify-between">
+                {/* sidebar */}
                 <div className="min-w-64  min-h-screen">
                     {/* student dashboard */}
                     {
@@ -34,6 +35,7 @@ const Dashboard = () => {
                         </>
                     }
                 </div>
+                {/* content */}
                 <div><Outlet /></div>
             </div>
         </div>

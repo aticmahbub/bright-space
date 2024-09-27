@@ -13,6 +13,7 @@ import UserProfile from "../pages/UserProfile/UserProfile";
 import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
+import LiveSession from "../pages/LiveSession/LiveSession";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
@@ -33,11 +34,15 @@ export const router = createBrowserRouter([
                 element: <ClassRoom />
             },
             {
+                path: '/live/:id',
+                element: <LiveSession />
+            },
+            {
                 path: '/login',
                 element: <Login />
             },
             {
-                path: '/registration',
+                path: '/register',
                 element: <Registration />
             },
             {
@@ -61,7 +66,7 @@ export const router = createBrowserRouter([
                 element: <Forum />
             },
             {
-                path: 'allCourses',
+                path: '/allCourses',
                 element: <AllCourses />
             },
             {
@@ -93,7 +98,10 @@ export const router = createBrowserRouter([
                 path: 'createCourse',
                 element: <CreateCourse />
             },
-
+            {
+                path: 'allCourses',
+                element: <AllCourses />
+            },
         ]
     }
 ])

@@ -2,36 +2,25 @@
  * Created By Hisam, 17/9/24
  */
 
-import {
-    Box,
-    Flex,
-    HStack,
-    IconButton,
-    useDisclosure,
-    Stack,
-    Button,
-    ButtonGroup,
-    // Menu,
-    // MenuButton,
-    // MenuList,
-    // MenuItem
-} from '@chakra-ui/react';
-import {
-    HamburgerIcon,
-    CloseIcon,
-    // ChevronDownIcon 
-} from '@chakra-ui/icons';
+import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Heading, IconButton, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Show, Spacer, useDisclosure } from "@chakra-ui/react";
+
 import { Link, NavLink } from 'react-router-dom';
+// import useRole from '../../../hooks/useRole';
+import { useRef } from 'react';
+// import { AuthContext } from '../../../providers/AuthProvider';
+import { HamburgerIcon } from "@chakra-ui/icons";
+import NavAdvertise from "./NavAdvertise";
 import useAuth from '../../../hooks/useAuth';
+import useEnrolls from "../../../hooks/useEnrolled";
 
 
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const btnRef = useRef();
 
     const { user, logOut } = useAuth()
-    console.log(user);
-
+    const [enrolls] =useEnrolls()
     const navLi = <>
         <NavLink to="/" className='mainMenu-style'>Home</NavLink>
         <NavLink to="/allCourses" className='mainMenu-style'>Courses</NavLink>
@@ -44,6 +33,41 @@ const Navbar = () => {
         <NavLink to="/support" className='mainMenu-style'>Support</NavLink>
         
     </>
+    const navItems = [
+        {
+            name: 'Home',
+            path: '/'
+        },
+        {
+            name: 'Courses',
+            path: '/allCourses'
+        },
+        {
+            name: 'Classroom',
+            path: '/classroom'
+        },
+        {
+            name: 'Pages',
+            pages: [
+                {
+                    name: 'Features',
+                    path: '/features'
+                },
+                {
+                    name: 'Contact',
+                    path: '/contact'
+                },
+            ]
+        },
+        {
+            name: 'About',
+            path: '/about'
+        },
+        {
+            name: 'Blog',
+            path: '/blog'
+        },
+    ]
 
     const handleLogout = () => {
         logOut()
@@ -51,76 +75,87 @@ const Navbar = () => {
             .catch(error => console.log(error))
     }
     return (
-        <Box px='4' py='7'>
-            <Box className='container mx-auto'>
-                <Flex alignItems="center" justifyContent="space-between">
-                    <HStack spacing={8} alignItems="center" className='flex justify-between w-full'>
-                        {/* Logo or Brand Name */}
-                        <Box color="white" fontWeight="bold" fontSize="xl">
-                            <Box textColor='primary.500' fontSize='3xl'>
-                                Bright<span className='text-[#2A3290]'>Space</span>
-                            </Box>
-                        </Box>
-                        {/* Links for larger screens */}
-                        <HStack
-                            as="nav"
-                            textColor='gray'
-                            spacing={14}
-                            display={{ base: 'none', xl: 'flex' }}
-                            className='md:text-base lg:text-lg'
-                        >
-                            {navLi}
-                        </HStack>
-                        {/* Login Button */}
-                        <Box className='space-x-4 text-lg font-semibold' display={{ base: 'none', xl: 'block' }}>
-                            {user ? <>
-                                <button className='
-                            bg-[#5F2DED] text-white rounded-md px-4 py-2 border-[#5F2DED] border transition duration-300
-                            hover:bg-transparent hover:text-[#5F2DED]
-                            '><a href="dashboard">Dashboard</a></button>
-                                <button
-                                    className='
-                            hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
-                            bg-transparent text-[#1f2122]
-                            '><a href="userProfile">Profile</a></button>
-                                <button onClick={handleLogout}>Logout</button>
-                            </> : <>
-                                <ButtonGroup gap={{ base: 1, md: 2 }}>
-                                    <Button as={Link} to='/login' colorScheme='primary' variant='outline' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Log In</Button>
-                                    <Button as={Link} to='/registration' colorScheme='secondary' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Get Started Free</Button>
-                                </ButtonGroup>
-                                {/* <button
-                                    className='
-                            hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
-                            bg-transparent text-[#1f2122]
-                            '><a href="login">Login</a></button>
-                                <button className='
-                            bg-[#5F2DED] text-white rounded-md px-4 py-2 border-[#5F2DED] border transition duration-300
-                            hover:bg-transparent hover:text-[#5F2DED]
-                            '><a href="registration">Get Started Free</a></button> */}
-                            </>}
-                        </Box>
-                    </HStack>
+        <Box px={{base: '2', lg: 8}} pt='5' bg='#F7F7F8'>
+            <NavAdvertise />
+            <Box px={{ base: 2, md: 7 }} py='4' w='full'>
+                <Flex maxW='1596px' mx='auto' alignItems='center' gap={{ base: 1, md: 2 }}>
+                    <Box display='flex' alignItems='center' gap={{ base: 2, md: 4 }}>
+                        <Show below="md">
+                            <Button
+                                size={{ base: 'sm', md: 'md' }}
+                                onClick={onOpen}
+                                borderRadius='base'
+                                as={IconButton}
+                                aria-label='Options'
+                                icon={<HamburgerIcon />}
+                                variant='outline'
+                            />
+                            <Drawer
+                                isOpen={isOpen}
+                                placement='right'
+                                onClose={onClose}
+                                finalFocusRef={btnRef}
+                            >
+                                <DrawerOverlay />
+                                <DrawerContent>
+                                    <DrawerCloseButton />
+                                    <DrawerHeader>Menu</DrawerHeader>
 
-                    {/* Hamburger Icon for mobile screens */}
-                    <IconButton
-                        size="lg"
-                        rounded='none'
-                        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                        aria-label="Open Menu"
-                        display={{ xl: 'none' }}
-                        onClick={isOpen ? onClose : onOpen}
-                    />
-                </Flex>
-
-                {/* Mobile Menu */}
-                {isOpen ? (
-                    <Box pb={4} display={{ lg: 'none' }}>
-                        <Stack as="nav" spacing={4} className='text-lg font-semibold text-[#6F7B84]'>
-                            {navLi}
-                        </Stack>
+                                    <DrawerBody>
+                                        <Box display='flex' flexDir='column' gap='4'>
+                                            {
+                                                navItems.map((item, idx) => <Button key={idx} onClick={onClose} as={NavLink} to={item.path} colorScheme='primary' variant='outline' borderRadius='base' w='full'>{item.name}</Button>)
+                                            }
+                                        </Box>
+                                    </DrawerBody>
+                                </DrawerContent>
+                            </Drawer>
+                        </Show>
+                        <Heading size={{ base: 'md', md: 'lg' }} as={Link} to='/' textColor='primary.500'>Bright<span className=''>Space</span></Heading>
                     </Box>
-                ) : null}
+                    <Spacer />
+                    <Show above="lg">
+                        <Box>
+                            <Breadcrumb separator='' spacing='5'>
+                                {
+                                    navItems.map((item, idx) => <BreadcrumbItem key={idx}>
+                                        {
+                                            item.name !== 'Pages' ? <BreadcrumbLink as={NavLink} to={item.path} _hover={{ color: 'primary.500', textDecoration: 'none' }} _activeLink={{ color: 'primary.500', fontWeight: 'semibold' }}>{item.name}</BreadcrumbLink> : <Menu isOpen={isOpen} isLazy placement="bottom">
+                                                <MenuButton onMouseEnter={onOpen} transition='all 0.001s' _hover={{ color: 'primary.500' }}>{item.name}</MenuButton>
+                                                <MenuList onMouseLeave={onClose} mt='4' borderRadius='base'>
+                                                    {
+                                                        item.pages.map((page, idx) => <MenuItem key={idx} as={NavLink} _activeLink={{ color: 'primary.500' }} to={page.path}>{page.name}</MenuItem>)
+                                                    }
+                                                </MenuList>
+                                            </Menu>
+                                        }
+
+                                    </BreadcrumbItem>)
+                                }
+                            </Breadcrumb>
+                        </Box>
+                    </Show>
+                    <Spacer />
+                    <Box display='flex' alignItems='center'>
+                        {
+                            user ? <Box>
+                                <Menu placement="bottom-end" isLazy>
+                                    <MenuButton as={Avatar} src={user?.photoURL} cursor='pointer' size={{ base: 'sm', md: 'md' }} />
+                                    <MenuList borderRadius='none' mt={5}>
+                                        <MenuGroup title={user?.displayName || 'Unknown User'}>
+                                            <MenuItem as={Link} to='/dashboard'>Dashboard</MenuItem>
+                                            <MenuItem>Enrolled{enrolls.length}</MenuItem>
+                                            <MenuItem textColor='primary.500' onClick={handleLogout}>Logout</MenuItem>
+                                        </MenuGroup>
+                                    </MenuList>
+                                </Menu>
+                            </Box> : <ButtonGroup gap={{ base: 1, md: 2 }}>
+                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' display={{ base: 'none', md: 'flex' }} size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
+                                <Button as={Link} to='/login' colorScheme='primary' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Login</Button>
+                            </ButtonGroup>
+                        }
+                    </Box>
+                </Flex>
             </Box>
         </Box>
     );

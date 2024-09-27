@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import bannerImg from '../../../assets/bannerImage.png'
 // import { Button } from '@chakra-ui/react';
 
@@ -5,7 +6,7 @@ import './css/banner.css'
 
 const Banner = () => {
     return (
-        <div className=''>
+        <Box maxW='1596px' mx='auto'>
             <div className="h-full flex flex-col-reverse md:flex-row justify-between items-center gap-5 py-6">
                 {/* text section */}
                 <div className='space-y-5 flex-1'>
@@ -29,7 +30,7 @@ const Banner = () => {
           <img className='hover:animate-shake w-full max-w-sm md:max-w-full' src={bannerImg} alt="Virtual Classroom" />
         </div>
       </div>
-    </div>
+    </Box>
 
   );
 };

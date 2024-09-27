@@ -3,6 +3,9 @@ import { FaCartArrowDown } from 'react-icons/fa';
 import { MdOutlineStar } from 'react-icons/md';
 import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import useAuth from '../../hooks/useAuth';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { axiosSecure } from '../../hooks/useAxiosSecure';
 const ratingStyles = {
     itemShapes: Star,
     activeFillColor: '#FED619',
@@ -10,9 +13,31 @@ const ratingStyles = {
 };
 
 
-const CourseCard = ({course, handleAddToCart}) => {
+const CourseCard = ({course}) => {
+    console.log(course);
+    const {user} = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
     const { title, posted_by, image_url, price, short_description, total_enrolment, } = course;
-    console.log( 'func:',handleAddToCart,course);
+
+    const handleAddToCart = (specificCourse) =>{
+        if(user && user?.email){
+            // send cart to db
+            console.log(specificCourse);
+            const cartItem = {
+                courseId: specificCourse._id,
+                email: user.email
+            }
+            axiosSecure.post('/carts',cartItem)
+            .then(res =>{
+                console.log(res.data);
+            })
+        }
+        else{
+            navigate('/login', {state:{from: location}})
+            console.log('user nai');
+        }
+    }
     return (
         <Card bg='transparent' className='group' shadow='none'>
             <CardBody p='0'>

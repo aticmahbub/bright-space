@@ -1,12 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CourseCard from "../../../components/CourseCard/CourseCard";
-import useAuth from "../../../hooks/useAuth";
+// import useAuth from "../../../hooks/useAuth";
+// import axios from "axios";
 // import {useNavigate, useLocation } from "react-router-dom"
 
 const AllCourses = () => {
 
-    const {user} =useAuth()
+    // const {user} =useAuth()
     // const navigate = useNavigate()
     // const location = useLocation()
     const [courses, setCourses] = useState([]);
@@ -16,21 +17,29 @@ const AllCourses = () => {
             .then(res => res.json())
             .then(data => setCourses(data))
     }, []);
-    const handleAddToCart = (specificCourse) =>{
-        if(user && user?.email){
-            // send cart to db
-            console.log(specificCourse);
-        }
-        else{
-            // navigate('/login', {state:{from: location}})
-            console.log('user nai');
-        }
-    }
+    // const handleAddToCart = (specificCourse) =>{
+    //     if(user && user?.email){
+    //         // send cart to db
+    //         console.log(specificCourse);
+    //         const cartItem = {
+    //             courseId: specificCourse._id,
+    //             email: user.email
+    //         }
+    //         axios.post('http://localhost:3000/carts',cartItem)
+    //         .then(res =>{
+    //             console.log(res.data);
+    //         })
+    //     }
+    //     else{
+    //         navigate('/login', {state:{from: location}})
+    //         console.log('user nai');
+    //     }
+    // }
     return (
         <Box display='flex' alignItems='center' py='20'>
             <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
                 {
-                    courses.map((course, idx) => <CourseCard key={idx} course={course} handleAddToCart={handleAddToCart} />)
+                    courses.map((course, idx) => <CourseCard key={idx} course={course} />)
                 }
             </Box>
         </Box>

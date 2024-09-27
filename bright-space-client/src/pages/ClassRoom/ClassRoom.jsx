@@ -11,18 +11,22 @@ const ClassRoom = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
-    const { mutate, isSuccess } = useMutation({
+    const { mutate } = useMutation({
         mutationKey: ['meetingCode'],
         mutationFn: async (code) => {
             const res = await axiosPublic.post('/meetingCode', code);
-            return res;
+            return res.data;
+        },
+        onSuccess: (data, variables) => {
+            if (variables?.meetCode) {
+                navigate(`/live/${variables.meetCode}`);
+            }
         }
     });
 
     const generateMeetingCode = () => {
         const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
         mutate({ meetCode: meetingCode });
-        isSuccess && navigate(`/live/${meetingCode}`);
     };
 
     return (

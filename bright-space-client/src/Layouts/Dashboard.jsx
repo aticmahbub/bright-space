@@ -43,8 +43,8 @@ const Dashboard = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to='/dashboard/CreateCourse' className="dashboard-sidebar">
-                                            <LuGraduationCap /> My Classes
+                                        <NavLink to='/dashboard/myCourses' className="dashboard-sidebar">
+                                            <LuGraduationCap /> My Courses
                                         </NavLink>
                                     </li>
                                     <li>
@@ -78,8 +78,8 @@ const Dashboard = () => {
                         </div>
                     </div>
                     {/* content */}
-                    <div><Outlet /></div>
                 </div>
+                    <div><Outlet /></div>
             </div>
         </div>
     );

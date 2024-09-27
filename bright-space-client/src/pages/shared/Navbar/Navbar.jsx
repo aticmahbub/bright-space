@@ -148,7 +148,7 @@ const Navbar = () => {
                                     <MenuList borderRadius='none' mt={5}>
                                         <MenuGroup title={user?.displayName || 'Unknown User'}>
                                             <MenuItem as={Link} to='/dashboard'>Dashboard</MenuItem>
-                                            <MenuItem>Enrolled{enrolls.length}</MenuItem>
+                                            <MenuItem as={Link} to='dashboard/myCourses'>Enrolled: {enrolls.length}</MenuItem>
                                             <MenuItem textColor='primary.500' onClick={handleLogout}>Logout</MenuItem>
                                         </MenuGroup>
                                     </MenuList>

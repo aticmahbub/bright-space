@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
+import useAuth from "../../hooks/useAuth";
 
 const AiAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
+
+  const {user} =useAuth()
 
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return;
@@ -53,7 +56,7 @@ const AiAssistant = () => {
           <p className="bg-[#f1e3a3] inline-block p-2 rounded-full border">
             Using unlimited free plan
           </p>
-          <p className="text-xl lg:text-5xl my-5 text-[#95844c]">Welcome, Saidul</p>
+          <p className="text-xl lg:text-5xl my-5 text-[#95844c]">Welcome, {user?.displayName}</p>
         </div>
 
         {/* Chat messages */}

@@ -62,10 +62,16 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/meetCode', async (req, res) => {
+            const result = await meetingCodeCollection.find().toArray();
+            console.log(result);
+            res.send(result)
+        });
+
         app.post('/meetingCode', async (req, res) => {
             const meetCode = req.body;
-            const res = await meetingCodeCollection.insertOne(meetCode);
-            res.send(res);
+            const result = await meetingCodeCollection.insertOne(meetCode);
+            res.send(result);
         });
 
 

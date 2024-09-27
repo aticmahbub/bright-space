@@ -14,6 +14,7 @@ import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
+import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
 
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
                 path: '/userProfile',
                 element: <UserProfile />
             },
+            {
+                path: '/support',
+                element: <AiAssistant></AiAssistant>
+            }
         ]
     },
     {

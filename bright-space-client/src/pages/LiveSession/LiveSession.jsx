@@ -3,28 +3,18 @@ import { JaaSMeeting } from "@jitsi/react-sdk";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const LiveSession = () => {
-    const [roomName, setRoomName] = useState('');
     const axiosPublic = useAxiosPublic();
     const { id } = useParams();
-    // console.log(id, 'room', roomName);
 
-    const { data: meetCods = [], isSuccess: isMeetCodeSuccess } = useQuery({
+    const { data = {}, isSuccess: isMeetCodeSuccess } = useQuery({
         queryKey: ['meetCode'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/meetCode')
+            const res = await axiosPublic.get(`/meetCode/${id}`)
             return res.data;
         }
     });
-
-    useEffect(() => {
-        if (isMeetCodeSuccess && meetCods?.length > 0) {
-            const meetingCode = meetCods.find(code => code.meetCode === id);
-            setRoomName(meetingCode.meetCode);
-        }
-    }, [id, isMeetCodeSuccess, meetCods]);
 
     const handleAPI = api => {
         // api.executeCommand('toggleChat')
@@ -40,13 +30,13 @@ const LiveSession = () => {
             <JaaSMeeting
 
                 appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
-                roomName={roomName}
+                roomName={data.meetCode}
                 getIFrameRef={iframeRef => {
                     iframeRef.style.height = '100%';
                 }}
                 // jwt=''
                 configOverwrite={{
-                    subject: roomName,
+                    subject: data.meetCode,
                     disableThirdPartyRequests: true,
                     disableLocalVideoFlip: true,
                     backgroundAlpha: 0.5

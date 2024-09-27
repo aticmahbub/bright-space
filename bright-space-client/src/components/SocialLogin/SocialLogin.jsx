@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SocialLogin = ({googleLogin, githubLogin}) => {
     return (
         <div className='space-y-5'>

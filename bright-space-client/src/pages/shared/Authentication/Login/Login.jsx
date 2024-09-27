@@ -1,10 +1,17 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import '@dotlottie/player-component';
 import { AuthContext } from "../../../../providers/AuthProvider";
 import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
+
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/'
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -26,8 +33,8 @@ const Login = () => {
     loginUser(formData.email, formData.password)
     .then(result =>{
       console.log(result.user)
+      navigate(from, {replace:true})
     })
-    console.log(formData);
   };
 
   return (

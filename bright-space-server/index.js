@@ -27,10 +27,47 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
+        const cartCollection = client.db('bright-space-db').collection('cart-collection')
+        const usersCollection = client.db('bright-space-db').collection('users-collection')
 
         // get all courses
         app.get('/courses', async (req, res) => {
             const result = await coursesCollection.find().toArray()
+            res.send(result)
+        })
+
+
+        // get all enrolls
+        // app.get('/enrolls', async(req, res) =>{
+        //     const result = await cartCollection.find().toArray()
+        //     res.send(result)
+        // })
+
+
+        // get specific enrolls
+        app.get('/enrolls', async(req, res) =>{
+            const email = req.query.email
+            const query = {email: email}
+            const result = await cartCollection.find(query).toArray()
+            res.send(result)
+        })
+
+
+        // add to cart
+        app.post('/enrolls', async(req,res)=>{
+            const cartItem = req.body
+            // console.log(cartItem);
+            const result = await cartCollection.insertOne(cartItem)
+            // console.log(result);
+            res.send(result)
+        })
+
+
+
+        // users related api
+        app.post('/users', async(req, res)=>{
+            const user = req.body
+            const result = await usersCollection.insertOne(user)
             res.send(result)
         })
 

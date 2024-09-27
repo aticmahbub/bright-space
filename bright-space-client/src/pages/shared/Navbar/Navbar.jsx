@@ -11,6 +11,7 @@ import { useRef } from 'react';
 import { HamburgerIcon } from "@chakra-ui/icons";
 import NavAdvertise from "./NavAdvertise";
 import useAuth from '../../../hooks/useAuth';
+import useEnrolls from "../../../hooks/useEnrolled";
 
 
 
@@ -19,7 +20,7 @@ const Navbar = () => {
     const btnRef = useRef();
 
     const { user, logOut } = useAuth()
-    console.log(user);
+    const [enrolls] =useEnrolls()
 
     const navItems = [
         {
@@ -132,7 +133,7 @@ const Navbar = () => {
                                     <MenuList borderRadius='none' mt={5}>
                                         <MenuGroup title={user?.displayName || 'Unknown User'}>
                                             <MenuItem as={Link} to='/dashboard'>Dashboard</MenuItem>
-                                            <MenuItem>FAQ</MenuItem>
+                                            <MenuItem>Enrolled{enrolls.length}</MenuItem>
                                             <MenuItem textColor='primary.500' onClick={handleLogout}>Logout</MenuItem>
                                         </MenuGroup>
                                     </MenuList>

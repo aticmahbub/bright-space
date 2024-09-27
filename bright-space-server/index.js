@@ -35,8 +35,25 @@ async function run() {
             res.send(result)
         })
 
+
+        // get all enrolls
+        // app.get('/enrolls', async(req, res) =>{
+        //     const result = await cartCollection.find().toArray()
+        //     res.send(result)
+        // })
+
+
+        // get specific enrolls
+        app.get('/enrolls', async(req, res) =>{
+            const email = req.query.email
+            const query = {email: email}
+            const result = await cartCollection.find(query).toArray()
+            res.send(result)
+        })
+
+
         // add to cart
-        app.post('/carts', async(req,res)=>{
+        app.post('/enrolls', async(req,res)=>{
             const cartItem = req.body
             // console.log(cartItem);
             const result = await cartCollection.insertOne(cartItem)

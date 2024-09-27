@@ -9,7 +9,7 @@ const LiveSession = () => {
         // api.executeCommand('subject', roomName)
     }
     return (
-        <Box maxW='1596px' mx='auto' pt='8' pb='16' className='h-[calc(100vh-101px)]'>
+        <Box maxW='1596px' mx='auto' px={{base: '2', lg: 8}} pt='8' pb='16' className='h-[calc(100vh-101px)]'>
             <JaaSMeeting
 
                 appId={`${import.meta.env.VITE_JITSI_API_KEY}`}

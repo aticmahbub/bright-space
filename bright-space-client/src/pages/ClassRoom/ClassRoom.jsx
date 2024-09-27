@@ -21,8 +21,8 @@ const ClassRoom = () => {
 
     const generateMeetingCode = () => {
         const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
-        mutate(meetingCode);
-        navigate(`/live/${meetingCode}`);
+        mutate({ meetCode: meetingCode });
+        isSuccess && navigate(`/live/${meetingCode}`);
     };
 
     return (

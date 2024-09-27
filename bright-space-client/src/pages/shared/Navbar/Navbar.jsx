@@ -16,6 +16,7 @@ import {
     // MenuList,
     // MenuItem
 } from '@chakra-ui/react';
+import { RiLogoutCircleRLine } from "react-icons/ri";
 import {
     HamburgerIcon,
     CloseIcon,
@@ -70,7 +71,7 @@ const {user, logOut} = useContext(AuthContext)
                         </HStack>
                         {/* Login Button */}
                         <Box className='space-x-4 text-lg font-semibold' display={{ base: 'none', xl: 'block' }}>
-                            {user ? <>
+                            {user ? <div className='flex items-center justify-center gap-4'>
                                 <button className='
                             bg-[#5F2DED] text-white rounded-md px-4 py-2 border-[#5F2DED] border transition duration-300
                             hover:bg-transparent hover:text-[#5F2DED]
@@ -80,7 +81,13 @@ const {user, logOut} = useContext(AuthContext)
                             hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
                             bg-transparent text-[#1f2122]
                             '><a href="userProfile">Profile</a></button>
-                            </> : <>
+                                
+                                <button onClick={logOut}
+                                    className='
+                            hover:bg-[#5F2DED] hover:text-white rounded-md px-4 py-2 border-[#6f7b8455] border transition duration-300
+                            bg-transparent text-[#f53d6b]
+                            '><RiLogoutCircleRLine /></button>
+                            </div> : <>
                                 <ButtonGroup gap={{ base: 1, md: 2 }}>
                                     <Button as={Link} to='/login' colorScheme='primary' variant='outline' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Log In</Button>
                                     <Button as={Link} to='/registration' colorScheme='secondary' borderRadius='none' size={{ base: 'sm', md: 'md' }}>Get Started Free</Button>

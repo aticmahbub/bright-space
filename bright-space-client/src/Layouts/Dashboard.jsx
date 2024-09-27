@@ -17,6 +17,8 @@ const Dashboard = () => {
             <Navbar />
             <div className="flex justify-between">
                 <div className="min-w-96 h-screen border-r-2 shadow-2xl relative">
+                {/* sidebar */}
+                <div className="min-w-64  min-h-screen">
                     {/* student dashboard */}
                     {
                         role === 'student' && <>
@@ -75,6 +77,7 @@ const Dashboard = () => {
                         </button>
                     </div>
                 </div>
+                {/* content */}
                 <div><Outlet /></div>
             </div>
         </div>

@@ -45,22 +45,28 @@ async function run() {
 
 
         // get specific enrolls
-        app.get('/enrolls', async(req, res) =>{
+        app.get('/enrolls', async (req, res) => {
             const email = req.query.email
-            const query = {email: email}
+            const query = { email: email }
             const result = await cartCollection.find(query).toArray()
             res.send(result)
         })
 
 
         // add to cart
-        app.post('/enrolls', async(req,res)=>{
+        app.post('/enrolls', async (req, res) => {
             const cartItem = req.body
             // console.log(cartItem);
             const result = await cartCollection.insertOne(cartItem)
             // console.log(result);
             res.send(result)
         })
+
+        app.post('/meetingCode', async (req, res) => {
+            const meetCode = req.body;
+            const res = await meetingCodeCollection.insertOne(meetCode);
+            res.send(res);
+        });
 
 
         // await client.connect();

@@ -4,24 +4,24 @@ import Lottie from "lottie-react";
 import JoinClsModal from '../../components/JoinClsModal/JoinClsModal';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-// import { useMutation } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 const ClassRoom = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
-    // const { mutate, isSuccess } = useMutation({
-    //     mutationKey: ['meetingCode'],
-    //     mutationFn: async (code) => {
-    //         const res = await axiosPublic.post('/meetingCode', code);
-    //         return res;
-    //     }
-    // });
+    const { mutate, isSuccess } = useMutation({
+        mutationKey: ['meetingCode'],
+        mutationFn: async (code) => {
+            const res = await axiosPublic.post('/meetingCode', code);
+            return res;
+        }
+    });
 
     const generateMeetingCode = () => {
         const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
-        // mutate(meetingCode);
+        mutate(meetingCode);
         navigate(`/live/${meetingCode}`);
     };
 

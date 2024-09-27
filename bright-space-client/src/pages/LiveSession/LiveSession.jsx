@@ -2,13 +2,16 @@ import { Box } from "@chakra-ui/react";
 import { JaaSMeeting } from "@jitsi/react-sdk";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import Swal from 'sweetalert2'
 
 const LiveSession = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
     const { id } = useParams();
 
-    const { data = {}, isSuccess: isMeetCodeSuccess } = useQuery({
+    const { data = {}, isSuccess: isMeetCodeSuccess, isLoading } = useQuery({
         queryKey: ['meetCode'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/meetCode/${id}`)
@@ -16,13 +19,25 @@ const LiveSession = () => {
         }
     });
 
+    useEffect(() => {
+        if (isMeetCodeSuccess && !data) {
+            Swal.fire({
+                icon: "error",
+                title: "Invalid Code",
+                text: "Please enter the valid classroom code!",
+                // footer: '<a href="#">Why do I have this issue?</a>'
+            });
+            navigate('/classroom')
+        }
+    }, [data, isMeetCodeSuccess, navigate]);
+
+    if (isLoading) {
+        return <h1>Loading...</h1>
+    }
+
     const handleAPI = api => {
         // api.executeCommand('toggleChat')
         // api.executeCommand('subject', roomName)
-    }
-
-    if (!isMeetCodeSuccess) {
-        return <h1>Loading...</h1>
     }
 
     return (

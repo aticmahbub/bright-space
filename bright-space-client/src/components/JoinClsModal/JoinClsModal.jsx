@@ -10,12 +10,25 @@ import {
     Box,
     Text,
     Avatar,
-    NumberInput,
-    NumberInputField,
+    Input,
 } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const JoinClsModal = ({ title, isOpen, onClose }) => {
+    const [meetCode, setMeetCode] = useState('');
+    const navigate = useNavigate();
+
+    const handleMeetCode = e => {
+        e.preventDefault();
+        const code = e.target.value;
+        setMeetCode(code);
+    };
+
+    const handleJoinMeeting = () => {
+        navigate(`/live/${meetCode}`);
+    };
+
     return (
         <Modal onClose={onClose} isOpen={isOpen} isCentered>
             <ModalOverlay />
@@ -36,14 +49,12 @@ const JoinClsModal = ({ title, isOpen, onClose }) => {
                     <Box border='1px' borderColor='gray' rounded='base' p='4' mt='4'>
                         <Text>Class code</Text>
                         <Text>Ask your teacher for the class code, then enter it here.</Text>
-                        <NumberInput size='lg' maxW={52} min={7} mt='4'>
-                            <NumberInputField placeholder='Class code' rounded='base' fontSize='medium' />
-                        </NumberInput>
+                        <Input onChange={handleMeetCode} type='text' placeholder='Code' size='lg' maxW={52} min={7} mt='4' focusBorderColor='primary.500' rounded='base' />
                     </Box>
                 </ModalBody>
                 <ModalFooter gap='4'>
                     <Button onClick={onClose} colorScheme='primary' rounded='base' variant='ghost'>Close</Button>
-                    <Button as={Link} to='/liveSession' colorScheme='primary' rounded='base'>Join</Button>
+                    <Button onClick={handleJoinMeeting} colorScheme='primary' rounded='base'>Join</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

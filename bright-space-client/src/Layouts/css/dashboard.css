@@ -1,0 +1,6 @@
+.dashboard-sidebar {
+    @apply flex items-center gap-6 py-6 pl-14 transition-colors duration-200 text-2xl font-english_font_family font-medium border-l-4 border-white hover:text-primary_color_1 hover:bg-primary-50 hover:border-primary-500;
+}
+.dashboard-logOut {
+    @apply flex items-center gap-6 py-2 ml-14 transition-colors duration-200 text-2xl font-english_font_family font-medium hover:text-primary_color_1 hover:border-primary-500;
+}

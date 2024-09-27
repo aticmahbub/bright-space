@@ -27,6 +27,7 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
+        const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
 
         // get all courses
         app.get('/courses', async (req, res) => {

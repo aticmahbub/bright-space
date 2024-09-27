@@ -7,6 +7,8 @@ import useAuth from "../../../hooks/useAuth";
 const AllCourses = () => {
 
     const {user} =useAuth()
+    // const navigate = useNavigate()
+    // const location = useLocation()
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
@@ -24,11 +26,12 @@ const AllCourses = () => {
             console.log('user nai');
         }
     }
+    console.log(handleAddToCart);
     return (
-        <Box display='flex' alignItems='center' maxW='1596px' mx='auto' py='20'>
+        <Box display='flex' alignItems='center' py='20'>
             <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
                 {
-                    courses.map((cls, idx) => <CourseCard key={idx} cls={cls} handleAddToCart={handleAddToCart} />)
+                    courses.map((course, idx) => <CourseCard key={idx} course={course} handleAddToCart={handleAddToCart} />)
                 }
             </Box>
         </Box>

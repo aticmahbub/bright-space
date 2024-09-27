@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
                 element: <Forum />
             },
             {
-                path: '/courses',
+                path: '/allCourses',
                 element: <AllCourses />
             },
             {

@@ -1,25 +1,29 @@
 import { createContext, useEffect, useState } from "react";
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth'
+import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth'
 import { app } from "../Firebase/firebase.config";
+// import { useLocation, useNavigate } from "react-router-dom";
 
 
 export const AuthContext =createContext(null)
 const auth = getAuth(app)
+
 const AuthProvider = ({children}) => {
-    const [user, setUser] =useState(null)
-    const [loading, setLoading] =useState(true)
-
-    useEffect(()=>{
-       const unsubscribe= onAuthStateChanged(auth, currentUser =>{
-            setUser(currentUser)
-            console.log('current user', currentUser);
-            setLoading(false)
-        });
-        return () =>{
-            return unsubscribe()
-        }
-    } ,[])
-
+  const [user, setUser] =useState(null)
+  const [loading, setLoading] =useState(true)
+  
+  useEffect(()=>{
+    const unsubscribe= onAuthStateChanged(auth, currentUser =>{
+      setUser(currentUser)
+      console.log('current user', currentUser);
+      setLoading(false)
+    });
+    return () =>{
+      return unsubscribe()
+    }
+  } ,[])
+  
+      // const location = useLocation()
+      // const navigate = useNavigate()
 
     // create user
     const createUser = (email, password) =>{
@@ -49,6 +53,32 @@ const AuthProvider = ({children}) => {
         })
     }
 
+    //google login
+  const googleProvide = new GoogleAuthProvider();
+  const googleLogin = (location, navigate) => {
+    signInWithPopup(auth, googleProvide)
+      .then((res) => {
+        setUser(res.user);
+          navigate(location?.state || "/");
+      })
+      .catch((err) => {
+         console.log(err)
+      });
+  };
+
+  //github login
+  const githubProvider = new GithubAuthProvider();
+  const githubLogin = (location, navigate) => {
+    signInWithPopup(auth, githubProvider)
+      .then((res) => {
+        setUser(res.user);
+        navigate(location?.state || "/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
 
     const authInfo = {
         user,
@@ -56,7 +86,8 @@ const AuthProvider = ({children}) => {
         createUser,
         loginUser,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        googleLogin, githubLogin,
 
     }
      return (

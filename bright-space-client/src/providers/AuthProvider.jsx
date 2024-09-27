@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth'
 import { app } from "../Firebase/firebase.config";
-import { useLocation, useNavigate } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 
 
 export const AuthContext =createContext(null)
@@ -22,8 +22,8 @@ const AuthProvider = ({children}) => {
     }
   } ,[])
   
-      const location = useLocation()
-      const navigate = useNavigate()
+      // const location = useLocation()
+      // const navigate = useNavigate()
 
     // create user
     const createUser = (email, password) =>{

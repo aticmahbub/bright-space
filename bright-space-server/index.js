@@ -28,10 +28,20 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
         const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
+        const cartCollection = client.db('bright-space-db').collection('cart-collection')
 
         // get all courses
         app.get('/courses', async (req, res) => {
             const result = await coursesCollection.find().toArray()
+            res.send(result)
+        })
+
+        // add to cart
+        app.post('/carts', async(req,res)=>{
+            const cartItem = req.body
+            // console.log(cartItem);
+            const result = await cartCollection.insertOne(cartItem)
+            // console.log(result);
             res.send(result)
         })
 

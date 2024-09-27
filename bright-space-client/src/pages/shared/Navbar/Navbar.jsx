@@ -6,17 +6,19 @@ import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Button
 
 import { Link, NavLink } from 'react-router-dom';
 // import useRole from '../../../hooks/useRole';
-import { useContext, useRef } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
+import { useRef } from 'react';
+// import { AuthContext } from '../../../providers/AuthProvider';
 import { HamburgerIcon } from "@chakra-ui/icons";
 import NavAdvertise from "./NavAdvertise";
+import useAuth from '../../../hooks/useAuth';
+
 
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useAuth()
     console.log(user);
 
     const navItems = [
@@ -60,8 +62,6 @@ const Navbar = () => {
             .then(() => { })
             .catch(error => console.log(error))
     }
-
-
     return (
         <Box px={{base: '2', lg: 8}} pt='5' bg='#F7F7F8'>
             <NavAdvertise />
@@ -131,7 +131,7 @@ const Navbar = () => {
                                     <MenuButton as={Avatar} src={user?.photoURL} cursor='pointer' size={{ base: 'sm', md: 'md' }} />
                                     <MenuList borderRadius='none' mt={5}>
                                         <MenuGroup title={user?.displayName || 'Unknown User'}>
-                                            <MenuItem as={Link} to='/dashboard/profile'>Dashboard</MenuItem>
+                                            <MenuItem as={Link} to='/dashboard'>Dashboard</MenuItem>
                                             <MenuItem>FAQ</MenuItem>
                                             <MenuItem textColor='primary.500' onClick={handleLogout}>Logout</MenuItem>
                                         </MenuGroup>

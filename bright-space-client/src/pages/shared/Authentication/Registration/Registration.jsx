@@ -124,6 +124,13 @@ const Registration = () => {
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg  focus:outline-none focus:ring focus:ring-indigo-200"
                 />
               </div>
+              <div className=" inline-block py-2 px-4 bg-[#FCFCFD] rounded-lg font-medium">
+                  Role:
+                  <select className="border ml-2 rounded-lg font-normal" name="role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                  </select>
+                </div>
 
               <div className="flex items-center">
                 <input
@@ -133,13 +140,8 @@ const Registration = () => {
                   onChange={handleChange}
                   className="h-4 w-4 text-orange-500 border-gray-300 rounded"
                 />
-                <label>
-                  Role:
-                  <select name="role">
-                    <option value="student">Student</option>
-                    <option value="banana">Teacher</option>
-                  </select>
-                </label>
+               
+                <br />
                 <label className="ml-2 text-sm text-gray-600">
                   I agree with{" "}
                   <a href="#" className="text-orange-500 hover:underline">

@@ -65,9 +65,9 @@ const Navbar = () => {
     return (
         <Box px={{ base: '2', lg: 8 }} pt='5' bg='#F7F7F8'>
             <NavAdvertise />
-            <Box px={{ base: 2, md: 7 }} py='4' w='full'>
+            <Box px={{ base: 0, md: 7 }} py='5' w='full' borderBottom='1px' borderColor='#F1F1F3'>
                 <Flex maxW='1596px' mx='auto' alignItems='center' gap={{ base: 1, md: 2 }}>
-                    <Box display='flex' alignItems='center' gap={{ base: 2, md: 4 }}>
+                    <Box display='flex' alignItems='center' gap={{ base: 3, md: 5 }}>
                         <Show below="md">
                             <Button
                                 size={{ base: 'sm', md: 'md' }}
@@ -140,7 +140,7 @@ const Navbar = () => {
                                     </MenuList>
                                 </Menu>
                             </Box> : <ButtonGroup gap={{ base: 1, md: 2 }}>
-                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' display={{ base: 'none', md: 'flex' }} size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
+                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
                                 <Button as={Link} to='/login' colorScheme='primary' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Login</Button>
                             </ButtonGroup>
                         }

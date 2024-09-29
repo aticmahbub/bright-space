@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, CardFooter, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import { FaCartArrowDown } from 'react-icons/fa';
 // import { MdOutlineStar } from 'react-icons/md';
 // import { Rating, Star } from '@smastrom/react-rating'
@@ -43,7 +43,7 @@ const CourseCard = ({ course }) => {
         }
     }
     return (
-        <Card className='group' shadow='none' border='1px' borderColor='#F1F1F3'>
+        <Card className='group' shadow='none' border='1px' bg='#FCFCFD' borderColor='#F1F1F3'>
             <CardBody px={{base: 5, md: 9, '2xl': 12}}  pt={{base: 5, md: 9, '2xl': 12}}>
                 <Box overflow='hidden' borderRadius='base' cursor='pointer'>
                     <Image

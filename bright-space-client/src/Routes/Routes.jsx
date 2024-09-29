@@ -72,12 +72,12 @@ export const router = createBrowserRouter([
             {
                 path: '/userProfile',
                 element: <UserProfile />
-            },
-            {
-                path: '/support',
-                element: <AiAssistant></AiAssistant>
             }
         ]
+    },
+    {
+        path: '/support',
+        element: <AiAssistant></AiAssistant>
     },
     {
         path: 'dashboard',

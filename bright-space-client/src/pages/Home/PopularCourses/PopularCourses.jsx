@@ -12,9 +12,9 @@ const PopularCourses = () => {
     }, []);
 
     return (
-        <Box maxW='1596px' mx='auto' py='20'>
+        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8 }} py='20'>
             <Heading>Popular Courses</Heading>
-            <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-10'>
+            <Box className='grid grid-cols-1 lg:grid-cols-2 gap-7 mt-10'>
                 {
                     courses.map((course, idx) => <ClassCard key={idx} course={course} />)
                 }

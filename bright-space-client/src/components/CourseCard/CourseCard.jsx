@@ -43,14 +43,14 @@ const CourseCard = ({ course }) => {
         }
     }
     return (
-        <Card className='group' shadow='none' border='1px' bg='#FCFCFD' borderColor='#F1F1F3'>
+        <Card className='group' shadow='none' rounded='lg' border='1px' bg='#FCFCFD' borderColor='#F1F1F3'>
             <CardBody px={{base: 5, md: 9, '2xl': 12}}  pt={{base: 5, md: 9, '2xl': 12}}>
                 <Box overflow='hidden' borderRadius='base' cursor='pointer'>
                     <Image
                         className='group-hover:scale-110 transform transition-transform ease-in-out duration-1000'
                         src={image_url}
                         alt={`${title} class image`}
-                        borderRadius='base'
+                        borderRadius='md'
                     />
                 </Box>
                 <Stack mt='6' spacing='5'>
@@ -99,7 +99,7 @@ const CourseCard = ({ course }) => {
                 </Stack>
             </CardBody>
             <CardFooter px={{base: 5, md: 9, '2xl': 12}}  pb={{base: 5, md: 9, '2xl': 12}}>
-                <Button onClick={() => handleAddToCart(course)} w='full' leftIcon={<FaCartArrowDown />} colorScheme='gray' rounded='base' px='6'>
+                <Button onClick={() => handleAddToCart(course)} w='full' leftIcon={<FaCartArrowDown />} colorScheme='gray' px='6'>
                     Add to cart
                 </Button>
             </CardFooter>

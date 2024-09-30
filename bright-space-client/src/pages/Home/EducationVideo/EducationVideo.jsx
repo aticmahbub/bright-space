@@ -15,7 +15,7 @@ const EducationVideo = () => {
                 maxH='790px'
                 cursor='pointer'
                 objectFit='cover'
-                borderRadius='base'
+                borderRadius='lg'
                 src={eduVideo}
             />
         </Box>

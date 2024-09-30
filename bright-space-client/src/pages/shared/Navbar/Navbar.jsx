@@ -72,7 +72,6 @@ const Navbar = () => {
                             <Button
                                 size={{ base: 'sm', md: 'md' }}
                                 onClick={onOpen}
-                                borderRadius='base'
                                 as={IconButton}
                                 aria-label='Options'
                                 icon={<HamburgerIcon />}
@@ -140,8 +139,8 @@ const Navbar = () => {
                                     </MenuList>
                                 </Menu>
                             </Box> : <ButtonGroup gap={{ base: 1, md: 2 }}>
-                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
-                                <Button as={Link} to='/login' colorScheme='primary' borderRadius='base' size={{ base: 'sm', md: 'md' }}>Login</Button>
+                                <Button as={Link} to='/register' colorScheme='primary' variant='outline' size={{ base: 'sm', md: 'md' }}>Sign Up</Button>
+                                <Button as={Link} to='/login' colorScheme='primary' size={{ base: 'sm', md: 'md' }}>Login</Button>
                             </ButtonGroup>
                         }
                     </Box>

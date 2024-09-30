@@ -21,7 +21,7 @@ const partnersLogo = [zapier, spotify, zoom, amazon, adobe, notion, netflix];
 const Partners = () => {
     return (
         <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }}>
-            <Box p={{ base: 2, lg: 6, '2xl': 7 }} border='1px' borderColor='#F1F1F3' rounded='base' bg='#FCFCFD'>
+            <Box p={{ base: 2, lg: 6, '2xl': 7 }} border='1px' borderColor='#F1F1F3' rounded='lg' bg='#FCFCFD'>
                 <Swiper
                     slidesPerView={1}
                     // style={{

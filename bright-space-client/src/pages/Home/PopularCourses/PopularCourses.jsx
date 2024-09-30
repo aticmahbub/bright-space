@@ -13,9 +13,9 @@ const PopularCourses = () => {
     }, []);
 
     return (
-        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} py='20'>
+        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} mt={{ base: 10, md: 20, '2xl': 28 }}>
             <SectionTitle title='Popular Courses' />
-            <Box className='grid grid-cols-1 lg:grid-cols-2 gap-7 mt-10'>
+            <Box className='grid grid-cols-1 lg:grid-cols-2 gap-7 mt-16'>
                 {
                     courses.map((course, idx) => <ClassCard key={idx} course={course} />)
                 }

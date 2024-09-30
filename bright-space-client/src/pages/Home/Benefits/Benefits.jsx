@@ -38,8 +38,11 @@ const benefitInfos = [
 const Benefits = () => {
     return (
         <Box w='full' maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} mt={{ base: 10, md: 20, '2xl': 28 }}>
-            <SectionTitle title='Benefits' />
-            <Box className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7' mt='16'>
+            <SectionTitle
+            title='Benefits'
+            description='Discover the unique advantages of learning with Bright Space—flexible scheduling, expert instructors, and a diverse range of courses tailored to help you succeed in today’s fast-paced world. Empower your learning journey with tools and resources that fit your needs.'
+            />
+            <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7' mt='16'>
                 {
                     benefitInfos.map((info, idx) => <BenefitCard key={idx} info={info} />)
                 }

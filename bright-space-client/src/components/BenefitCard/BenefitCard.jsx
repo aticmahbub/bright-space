@@ -4,14 +4,14 @@ const BenefitCard = ({info}) => {
     const {count, title, description} = info;
 
     return (
-        <Card rounded='lg' shadow='none' p='7'>
+        <Card rounded='lg' shadow='none' p={{base: 'none', lg: 5, '2xl': 7}}>
             <CardHeader display='flex' justifyContent='end'>
                 <Heading as='h3' size='2xl'>{count}</Heading>
             </CardHeader>
 
             <CardBody>
-                <Text fontSize='2xl' fontWeight='600'>{title}</Text>
-                <Text fontSize='lg' mt='3'>{description}</Text>
+                <Text fontSize={{base: 'xl', '2xl': '2xl'}} fontWeight='600'>{title}</Text>
+                <Text fontSize={{base: 'sm', md: 'md', lg: 'lg'}} mt='3'>{description}</Text>
             </CardBody>
 
             <CardFooter justify='end'>

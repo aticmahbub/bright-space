@@ -59,14 +59,14 @@ const LiveSession = () => {
                 interfaceConfigOverwrite={{
                     VIDEO_LAYOUT_FIT: 'nocrop',
                     MOBILE_APP_PROMO: false,
-                    TILE_VIEW_MAX_COLUMNS: 4
+                    TILE_VIEW_MAX_COLUMNS: 4,
                 }}
                 // spinner={SpinnerView}
                 onApiReady={handleAPI}
             />
             {
                 data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
-                    <Text fontSize='lg' fontWeight='600'>Share this meeting code: <span className='text-base italic'>{data.meetCode}</span></Text>
+                    <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='600'>Share this meeting code: <span className='base:text-base md:text-lg italic'>{data.meetCode}</span></Text>
                 </Box>
             }
         </Box>

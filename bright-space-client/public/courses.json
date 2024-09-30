@@ -25,5 +25,32 @@
         "short_description": "Learn the latest techniques in HTML, CSS, and JavaScript.",
         "long_description": "Join Mr. Michael Brown in this comprehensive course on modern web development. Learn to create responsive and dynamic websites using HTML, CSS, and JavaScript. The course also covers popular frameworks and libraries such as React and Node.js. Ideal for aspiring web developers and designers. Gain hands-on experience through projects, and build a professional portfolio to showcase your skills to potential employers.",
         "total_enrolment": 250
-    }
+    },
+    {
+        "title": "Creative Writing Workshop",
+        "posted_by": "Ms. Sarah Davis",
+        "image_url": "https://i.postimg.cc/Ss4wmgcL/4.png",
+        "price": 75.00,
+        "short_description": "Enhance your writing skills with fun and interactive exercises.",
+        "long_description": "Ms. Sarah Davis leads this engaging creative writing workshop designed to boost your storytelling abilities. Through various writing exercises and feedback sessions, you will learn to craft compelling narratives, develop characters, and refine your writing style. Suitable for writers of all levels. Whether you're writing fiction, non-fiction, or poetry, this workshop will help you enhance your creativity, improve your writing skills, and connect with fellow writers.",
+        "total_enrolment": 80
+      },
+      {
+        "title": "Basic Guitar Lessons",
+        "posted_by": "Mr. James Wilson",
+        "image_url": "https://i.postimg.cc/SNRHQ2YP/5.png",
+        "price": 90.00,
+        "short_description": "Learn to play the guitar from scratch with easy-to-follow lessons.",
+        "long_description": "Mr. James Wilson offers an introductory course for those eager to learn guitar. Starting from the basics, you'll progress through chords, strumming patterns, and simple songs. This course is perfect for beginners looking to build a strong foundation in guitar playing. You'll learn proper techniques, music theory basics, and how to play your favorite songs. By the end of the course, you'll be able to play simple tunes and have the confidence to continue your musical journey.",
+        "total_enrolment": 150
+      },
+      {
+        "title": "Digital Marketing Essentials",
+        "posted_by": "Ms. Laura Martinez",
+        "image_url": "https://i.postimg.cc/YqPZvr1C/6.png",
+        "price": 200.00,
+        "short_description": "Master the fundamentals of SEO, social media, and online advertising.",
+        "long_description": "Led by Ms. Laura Martinez, this course covers the core aspects of digital marketing. Learn about search engine optimization (SEO), social media marketing, content marketing, and online advertising. Gain practical skills to create effective marketing strategies and campaigns. Ideal for marketing professionals and business owners. The course includes real-world case studies, hands-on projects, and actionable insights to help you effectively promote your brand and drive business growth.",
+        "total_enrolment": 300
+      }
 ]

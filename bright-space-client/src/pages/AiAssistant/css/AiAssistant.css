@@ -1,0 +1,30 @@
+/* Custom scrollbar styles */
+.custom-scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: #FFCB80 #FFECD6;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 16px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #FFECD6;
+    border-radius: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #FFCB80;
+    border-radius: 8px;
+    border: 3px solid #FFECD6;
+  }
+  
+  /* Hide scrollbar buttons */
+  .custom-scrollbar::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+  /* Optional: Style the corner where vertical and horizontal scrollbars meet */
+  .custom-scrollbar::-webkit-scrollbar-corner {
+    background: #FFECD6;
+  }

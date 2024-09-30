@@ -2,6 +2,7 @@ import { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Navbar from "../shared/Navbar/Navbar";
 import { FaRobot, FaUser } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
 
 const AiAssistant = () => {
   const [inputValue, setInputValue] = useState("");
@@ -95,12 +96,12 @@ const AiAssistant = () => {
           )}
 
           {/* Chat messages */}
-          <div className="flex-1 p-5 rounded-lg overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)', scrollbarWidth: 'revert-layer', scrollbarColor: '#FFCB80 #FFECD6' }}>
+          <div className="flex-1 p-5 rounded-lg overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)', scrollbarWidth: 'revert-layer', scrollbarColor: '#FFCB80 #FFECD6' }} ref={(el) => { if (el) { el.scrollTop = el.scrollHeight; } }}>
             <div className="flex flex-col space-y-4">
               {messages.map((message, index) => (
                 <>
 
-                  <div
+                  <ReactMarkdown
                     key={index}
                     className={`py-4 px-6 text-lg font-medium ${message.sender === "user"
                       ? "text-l bg-primary-400 rounded-l-3xl rounded-t-3xl self-end mr-10 text-white"
@@ -108,7 +109,7 @@ const AiAssistant = () => {
                       }`}
                   >
                     {message.text}
-                  </div>
+                  </ReactMarkdown>
                   {message.sender === "user" ? <FaUser size={35} className="text-primary-300 self-end" /> : <FaRobot size={40} className="text-primary-300" />}
                 </>
               ))}

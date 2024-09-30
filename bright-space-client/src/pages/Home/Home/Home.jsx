@@ -1,5 +1,6 @@
 // import Achievements from "../../About/Achievements/Achievements"
 import Banner from "../Banner/Banner";
+import Benefits from "../Benefits/Benefits";
 import EducationVideo from "../EducationVideo/EducationVideo";
 import Partners from "../Partners/Partners";
 import PopularClasses from "../PopularCourses/PopularCourses";
@@ -13,6 +14,7 @@ const Home = () => {
             {/* <Achievements/> */}
             <Partners />
             <EducationVideo />
+            <Benefits />
             <PopularClasses />
             <Stats/>
         </div>

@@ -33,7 +33,7 @@ const ClassRoom = () => {
         <Box className='h-[calc(100vh-101px)]'>
             <JoinClsModal title='Join Class' isOpen={isOpen} onClose={onClose} />
             <Box h='full' display='flex' gap='8' alignItems='center' justifyContent='center' flexDir='column'>
-                <Lottie className='w-full md:w-96' animationData={classroom} />
+                <Lottie className='w-full md:w-[650px]' animationData={classroom} />
                 <Box>
                     <Text textAlign='center' color='gray' mb='4'>Add a class to get started</Text>
                     <Button onClick={generateMeetingCode} colorScheme='primary' rounded='base' variant='outline'>Create Class</Button>

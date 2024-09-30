@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { JaaSMeeting } from "@jitsi/react-sdk";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
@@ -41,13 +41,13 @@ const LiveSession = () => {
     }
 
     return (
-        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8 }} pt='8' pb='16' className='h-[calc(100vh-101px)]'>
+        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8 }} pt='8' pb='16' className='min-h-screen'>
             <JaaSMeeting
 
                 appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
                 roomName={data.meetCode}
                 getIFrameRef={iframeRef => {
-                    iframeRef.style.height = '100%';
+                    iframeRef.style.height = '75vh';
                 }}
                 // jwt=''
                 configOverwrite={{
@@ -64,6 +64,11 @@ const LiveSession = () => {
                 // spinner={SpinnerView}
                 onApiReady={handleAPI}
             />
+            {
+                data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
+                    <Text fontSize='lg' fontWeight='600'>Share this meeting code: <span className='text-base italic'>{data.meetCode}</span></Text>
+                </Box>
+            }
         </Box>
     );
 };

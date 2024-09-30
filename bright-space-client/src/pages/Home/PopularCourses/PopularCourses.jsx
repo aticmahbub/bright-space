@@ -2,6 +2,7 @@ import { Box, Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ClassCard from "../../../components/CourseCard/CourseCard";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Link } from "react-router-dom";
 
 const PopularCourses = () => {
     const [courses, setCourses] = useState([]);
@@ -19,7 +20,7 @@ const PopularCourses = () => {
                     title='Popular Courses'
                     description='Explore our top-rated courses designed to enhance your skills and knowledge. From coding and data science to creative design and business management, these popular courses are chosen by thousands of students for their relevance and practical value.'
                 />
-                <Button colorScheme='gray' w='max-content' size={{ base: 'md', md: 'lg' }}>View All</Button>
+                <Button as={Link} to='/allCourses' colorScheme='gray' w='max-content' size={{ base: 'md', md: 'lg' }}>View All</Button>
             </Box>
             <Box className='grid grid-cols-1 lg:grid-cols-2 gap-7 mt-16'>
                 {

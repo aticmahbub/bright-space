@@ -5,15 +5,10 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const Registration = () => {
-<<<<<<< HEAD
 
   const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth()
   const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
-=======
-  const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth();
-  const navigate = useNavigate();
->>>>>>> c9d71a88a43776783748a41ba6a58790c941cca4
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -34,7 +29,6 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-<<<<<<< HEAD
     const { email, password, fullName, photoURL } = formData
     createUser(email, password)
       .then(result => {
@@ -55,20 +49,6 @@ const Registration = () => {
               }
             })
             navigate('/')
-=======
-    const { email, password, fullName, role } = formData; // Include role
-    createUser(email, password)
-      .then(result => {
-        const loggedUser = result.user;
-        updateProfile(loggedUser, {
-          displayName: fullName,
-        });
-        console.log(loggedUser);
-        updateUserProfile(fullName, formData.photoURL, role) // Pass role to updateUserProfile
-          .then(() => {
-            console.log('User profile updated');
-            navigate('/');
->>>>>>> c9d71a88a43776783748a41ba6a58790c941cca4
           })
           .catch(error => {
             console.log(error);

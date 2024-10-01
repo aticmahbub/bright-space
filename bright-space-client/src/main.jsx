@@ -9,6 +9,8 @@ import { QueryClient, QueryClientProvider,} from "@tanstack/react-query";
 const fonts = {
   heading: `'Poppins', sans-serif`,
   body: `'Poppins', sans-serif`,
+  // heading: `'Be Vietnam Pro', sans-serif`,
+  // body: `'Be Vietnam Pro', sans-serif`,
 };
 
 const colors = {

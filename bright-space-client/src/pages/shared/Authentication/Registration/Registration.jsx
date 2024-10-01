@@ -2,18 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
 import useAuth from "../../../../hooks/useAuth";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const Registration = () => {
-<<<<<<< HEAD
-
-  const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth()
-  const axiosPublic = useAxiosPublic()
-  const navigate = useNavigate()
-=======
   const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth();
   const navigate = useNavigate();
->>>>>>> c9d71a88a43776783748a41ba6a58790c941cca4
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -34,33 +26,11 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-<<<<<<< HEAD
-    const { email, password, fullName, photoURL } = formData
-    createUser(email, password)
-      .then(result => {
-        const loggedUser = result.user
-        console.log(loggedUser);
-        updateUserProfile(fullName, photoURL)
-          .then(() => {
-            console.log('user profile updated');
-
-            const userInfo={
-              name: fullName,
-              email: email,
-            }
-            axiosPublic.post('/users',userInfo)
-            .then(res =>{
-              if(res.data.insertedI){
-                console.log('user added to database');
-              }
-            })
-            navigate('/')
-=======
     const { email, password, fullName, role } = formData; // Include role
     createUser(email, password)
       .then(result => {
         const loggedUser = result.user;
-        updateProfile(loggedUser, {
+        updateUserProfile(loggedUser, {
           displayName: fullName,
         });
         console.log(loggedUser);
@@ -68,7 +38,6 @@ const Registration = () => {
           .then(() => {
             console.log('User profile updated');
             navigate('/');
->>>>>>> c9d71a88a43776783748a41ba6a58790c941cca4
           })
           .catch(error => {
             console.log(error);

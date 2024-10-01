@@ -19,30 +19,30 @@ const AllCourses = () => {
             .then(res => res.json())
             .then(data => setCourses(data))
     }, []);
-    // const handleAddToCart = (specificCourse) =>{
-    //     if(user && user?.email){
-    //         // send cart to db
-    //         console.log(specificCourse);
-    //         const cartItem = {
-    //             courseId: specificCourse._id,
-    //             email: user.email
-    //         }
-    //         axios.post('http://localhost:3000/enrolls',cartItem)
-    //         .then(res =>{
-    //             console.log(res.data);
-    //             refetch()
-    //         })
-    //     }
-    //     else{
-    //         navigate('/login', {state:{from: location}})
-    //         console.log('user nai');
-    //     }
-    // }
+    const handleAddToCart = (specificCourse) =>{
+        if(user && user?.email){
+            // send cart to db
+            console.log(specificCourse);
+            const cartItem = {
+                courseId: specificCourse._id,
+                email: user.email
+            }
+            axios.post('http://localhost:3000/enrolls',cartItem)
+            .then(res =>{
+                console.log(res.data);
+                refetch()
+            })
+        }
+        else{
+            navigate('/login', {state:{from: location}})
+            console.log('user nai');
+        }
+    }
     return (
         <Box display='flex' alignItems='center' py='20'>
             <Box className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
                 {
-                    courses.map((course, idx) => <CourseCard key={idx} course={course} />)
+                    courses.map((course, idx) => <CourseCard key={idx} course={course} handleAddToCart={handleAddToCart}/>)
                 }
             </Box>
         </Box>

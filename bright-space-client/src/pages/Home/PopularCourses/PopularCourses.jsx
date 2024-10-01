@@ -1,20 +1,21 @@
-import { Box, Button } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import ClassCard from "../../../components/CourseCard/CourseCard";
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import { Link } from "react-router-dom";
+// import { Box, Button } from "@chakra-ui/react";
+// import { useEffect, useState } from "react";
+// import ClassCard from "../../../components/CourseCard/CourseCard";
+// import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+// import { Link } from "react-router-dom";
 
 const PopularCourses = () => {
-    const [courses, setCourses] = useState([]);
+    // const [courses, setCourses] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:3000/courses')
-            .then(res => res.json())
-            .then(data => setCourses(data))
-    }, []);
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/courses')
+    //         .then(res => res.json())
+    //         .then(data => setCourses(data))
+    // }, []);
 
     return (
-        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} mt={{ base: 10, md: 20, '2xl': 28 }}>
+       <div>
+         {/* <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} mt={{ base: 10, md: 20, '2xl': 28 }}>
             <Box display='flex' flexDir={{base: 'column', lg: 'row'}} alignItems={{base: 'left', lg: 'center'}} justifyContent='space-between' gap='6'>
                 <SectionTitle
                     title='Popular Courses'
@@ -27,7 +28,8 @@ const PopularCourses = () => {
                     courses.map((course, idx) => <ClassCard key={idx} course={course} />)
                 }
             </Box>
-        </Box>
+        </Box> */}
+       </div>
     );
 };
 

@@ -27,6 +27,7 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
+        const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
         const usersCollection = client.db('bright-space-db').collection('users-collection')
 
@@ -61,6 +62,22 @@ async function run() {
             // console.log(result);
             res.send(result)
         })
+
+        // Meeting code related apis
+        app.get('/meetCode/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {
+                meetCode: id
+            }
+            const result = await meetingCodeCollection.findOne(query);
+            res.send(result);
+        });
+
+        app.post('/meetingCode', async (req, res) => {
+            const meetingCode = req.body;
+            const result = await meetingCodeCollection.insertOne(meetingCode);
+            res.send(result);
+        });
 
 
 

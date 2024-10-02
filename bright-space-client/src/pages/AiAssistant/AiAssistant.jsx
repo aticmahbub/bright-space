@@ -3,13 +3,14 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Navbar from "../shared/Navbar/Navbar";
 import { FaRobot, FaUser } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
+import useAuth from "../../hooks/useAuth";
 
 const AiAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
   const [headerShow, setHeaderShow] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
-
+  const {user} = useAuth()
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return;
     setIsTyping(true);
@@ -63,10 +64,10 @@ const AiAssistant = () => {
           {/* Header */}
           {headerShow && (
             <div>
-              <p className="bg-[#f1e3a3] inline-block p-2 rounded-full border">
+              {/* <p className="bg-[#f1e3a3] inline-block p-2 rounded-full border">
                 Using unlimited free plan
-              </p>
-              <p className="text-xl lg:text-5xl my-5 text-primary-600 font-bold">Welcome, Saidul</p>
+              </p> */}
+              <p className="text-xl lg:text-5xl my-5 text-primary-600 font-bold">Welcome, {user?.displayName}</p>
               <div>
                 <p className="text-lg mb-4">Here are some questions you can ask:</p>
                 <div className="flex flex-wrap gap-6 mb-6">

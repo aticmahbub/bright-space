@@ -73,11 +73,7 @@ export const router = createBrowserRouter([
             {
                 path: '/userProfile',
                 element: <UserProfile />
-            },
-            {
-                path: 'myCourses',
-                element: <MyCourses />
-            },
+            }
         ]
     },
     {
@@ -93,10 +89,10 @@ export const router = createBrowserRouter([
                 path: 'studentProfile',
                 element: <StudentProfile />
             },
-            // {
-            //     path: 'myCourses',
-            //     element: <MyCourses />
-            // },
+            {
+                path: 'myCourses',
+                element: <MyCourses />
+            },
 
             // teacher routes
             {

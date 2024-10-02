@@ -18,6 +18,7 @@ import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
+import MyCourses from "../components/MyCourses/MyCourses";
 
 
 export const router = createBrowserRouter([
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
             {
                 path: 'studentProfile',
                 element: <StudentProfile />
+            },
+            {
+                path: 'myCourses',
+                element: <MyCourses />
             },
 
             // teacher routes

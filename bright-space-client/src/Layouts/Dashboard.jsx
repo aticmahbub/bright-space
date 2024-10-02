@@ -33,9 +33,9 @@ const Dashboard = () => {
                         {/* teacher dashboard */}
                         {
                             role === 'teacher' && <>
-                                {/* <h2 className="text-4xl font-bold text-primary_color_1 mb-24 mt-20 pl-14">
+                                <h2 className="text-4xl font-bold text-primary_color_1 mb-24 mt-20 pl-14">
                                     Bright<span className='text-[#2A3290]'>Space</span>
-                                </h2> */}
+                                </h2>
                                 <ul>
                                     <li>
                                         <NavLink to='/dashboard/teacherProfile' className="dashboard-sidebar">

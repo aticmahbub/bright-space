@@ -15,10 +15,10 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar />
-            <div className="flex justify-between">
-                <div className="min-w-96 h-screen border-r-2 shadow-2xl relative">
+            <div>
+                <div className="h-screen border-r-2 grid grid-cols-5">
                     {/* sidebar */}
-                    <div className="min-w-64  min-h-screen">
+                    <div className="h-full relative shadow-2xl pt-10">
                         {/* student dashboard */}
                         {
                             role === 'student' && <>
@@ -33,9 +33,9 @@ const Dashboard = () => {
                         {/* teacher dashboard */}
                         {
                             role === 'teacher' && <>
-                                {/* <h2 className="text-4xl font-bold text-primary_color_1 mb-24 mt-20 pl-14">
+                                <h2 className="text-4xl font-bold text-primary_color_1 mb-24 mt-20 pl-14">
                                     Bright<span className='text-[#2A3290]'>Space</span>
-                                </h2> */}
+                                </h2>
                                 <ul>
                                     <li>
                                         <NavLink to='/dashboard/teacherProfile' className="dashboard-sidebar">
@@ -43,8 +43,8 @@ const Dashboard = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to='/dashboard/myCourses' className="dashboard-sidebar">
-                                            <LuGraduationCap /> My Courses
+                                        <NavLink to='/dashboard/CreateCourse' className="dashboard-sidebar">
+                                            <LuGraduationCap /> My Classes
                                         </NavLink>
                                     </li>
                                     <li>
@@ -78,8 +78,10 @@ const Dashboard = () => {
                         </div>
                     </div>
                     {/* content */}
+                    <div className="col-span-4">
+                        <Outlet />
+                    </div>
                 </div>
-                    <div><Outlet /></div>
             </div>
         </div>
     );

@@ -3,12 +3,15 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Navbar from "../shared/Navbar/Navbar";
 import { FaRobot, FaUser } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
+import useAuth from "../../hooks/useAuth";
 
 const AiAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
   const [headerShow, setHeaderShow] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
+
+  const {user} =useAuth()
 
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return;
@@ -94,6 +97,17 @@ const AiAssistant = () => {
               </div>
             </div>
           )}
+    <div className=" p-5">
+      <div className="max-w-4xl mx-auto p-2 lg:p-10 min-h-[300px] md:min-h-[500px] lg:min-h-[800px] rounded-lg flex flex-col  bg-[url('https://www.shutterstock.com/shutterstock/photos/362377472/display_1500/stock-photo-mobile-apps-pattern-362377472.jpg')]"
+     
+      >
+        {/* Header */}
+        <div className="text-center">
+          <p className="bg-[#f1e3a3] inline-block p-2 rounded-full border">
+            Using unlimited free plan
+          </p>
+          <p className="text-xl lg:text-5xl my-5 text-[#95844c]">Welcome, {user?.displayName}</p>
+        </div>
 
           {/* Chat messages */}
           <div className="flex-1 p-5 rounded-lg overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)', scrollbarWidth: 'revert-layer', scrollbarColor: '#FFCB80 #FFECD6' }} ref={(el) => { if (el) { el.scrollTop = el.scrollHeight; } }}>

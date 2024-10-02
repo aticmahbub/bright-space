@@ -27,6 +27,7 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         const coursesCollection = client.db('bright-space-db').collection('courses-collection')
+        const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
         const usersCollection = client.db('bright-space-db').collection('users-collection')
 
@@ -36,40 +37,50 @@ async function run() {
             res.send(result)
         })
 
-
-        // get all enrolls
-        // app.get('/enrolls', async(req, res) =>{
-        //     const result = await cartCollection.find().toArray()
-        //     res.send(result)
-        // })
-
-
         // get specific enrolls
-        app.get('/enrolls', async(req, res) =>{
+        app.get('/enrolls', async (req, res) => {
             const email = req.query.email
-            const query = {email: email}
+            const query = { email: email }
             const result = await cartCollection.find(query).toArray()
             res.send(result)
         })
 
 
         // add to cart
-        app.post('/enrolls', async(req,res)=>{
+        app.post('/enrolls', async (req, res) => {
             const cartItem = req.body
             // console.log(cartItem);
             const result = await cartCollection.insertOne(cartItem)
-            // console.log(result);
+
             res.send(result)
         })
+
+        // Meeting code related apis
+        app.get('/meetCode/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {
+                meetCode: id
+            }
+            const result = await meetingCodeCollection.findOne(query);
+            res.send(result);
+        });
+
+        app.post('/meetingCode', async (req, res) => {
+            const meetingCode = req.body;
+            const result = await meetingCodeCollection.insertOne(meetingCode);
+            res.send(result);
+        });
 
 
 
         // users related api
-        app.post('/users', async(req, res)=>{
+        app.post('/users', async (req, res) => {
             const user = req.body
             const result = await usersCollection.insertOne(user)
             res.send(result)
         })
+
+        
 
 
         // await client.connect();

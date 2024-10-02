@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { updateProfile } from "firebase/auth";
 import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
 import useAuth from "../../../../hooks/useAuth";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const Registration = () => {
-  const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth();
-  const navigate = useNavigate();
+
+  const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth()
+  const axiosPublic = useAxiosPublic()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,18 +29,26 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    const { email, password, fullName, role } = formData; // Include role
+    const { email, password, fullName, photoURL } = formData
     createUser(email, password)
       .then(result => {
-        const loggedUser = result.user;
-        updateProfile(loggedUser, {
-          displayName: fullName,
-        });
+        const loggedUser = result.user
         console.log(loggedUser);
-        updateUserProfile(fullName, formData.photoURL, role) // Pass role to updateUserProfile
+        updateUserProfile(fullName, photoURL)
           .then(() => {
-            console.log('User profile updated');
-            navigate('/');
+            console.log('user profile updated');
+
+            const userInfo={
+              name: fullName,
+              email: email,
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res =>{
+              if(res.data.insertedI){
+                console.log('user added to database');
+              }
+            })
+            navigate('/')
           })
           .catch(error => {
             console.log(error);

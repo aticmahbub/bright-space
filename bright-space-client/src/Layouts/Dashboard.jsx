@@ -20,6 +20,7 @@ const Dashboard = () => {
             <div>
                 <div className="border-r-2 grid grid-cols-5">
                     {/* sidebar */}
+                    
                     <div className="h-full relative shadow-2xl pt-10">
                         {/* student dashboard */}
                         {
@@ -45,13 +46,18 @@ const Dashboard = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to='/dashboard/CreateCourse' className="dashboard-sidebar">
-                                            <LuGraduationCap /> My Classes
+                                        <NavLink to='/dashboard/myCourses' className="dashboard-sidebar">
+                                            <LuGraduationCap /> My Courses
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to='/dashboard/allCourses' className="dashboard-sidebar">
-                                            <LuUser />Instructor
+                                        <NavLink to='/dashboard/allTeachers' className="dashboard-sidebar">
+                                            <LuUser />Teachers
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='/dashboard/allStudents' className="dashboard-sidebar">
+                                            <LuUser />Students
                                         </NavLink>
                                     </li>
                                     <li>
@@ -94,6 +100,8 @@ const Dashboard = () => {
                             </button>
                         </div>
                     </div>
+
+
                     {/* content */}
                     <div className="col-span-4">
                         <Outlet />

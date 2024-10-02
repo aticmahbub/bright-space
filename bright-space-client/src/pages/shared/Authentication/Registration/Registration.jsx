@@ -29,33 +29,35 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    const { email, password, fullName, photoURL } = formData
+    const { email, password, fullName, photoURL,role } = formData
     createUser(email, password)
       .then(result => {
         const loggedUser = result.user
         console.log(loggedUser);
         updateUserProfile(fullName, photoURL)
+        console.log('profile updated');
+        })
           .then(() => {
+
             console.log('user profile updated');
 
-            const userInfo={
+            const userInfo = {
               name: fullName,
               email: email,
+              role: role
             }
-            axiosPublic.post('/users',userInfo)
-            .then(res =>{
-              if(res.data.insertedI){
-                console.log('user added to database');
-              }
-            })
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedI) {
+                  console.log('user added to database');
+                }
+              })
             navigate('/')
           })
           .catch(error => {
             console.log(error);
           });
-      })
-      .catch(err => console.log(err));
-  };
+      }
 
   return (
     <div>

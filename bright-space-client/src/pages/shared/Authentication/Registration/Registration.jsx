@@ -63,8 +63,8 @@ const Registration = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-5 lg:gap-10">
+   
+      <div className="flex flex-col md:flex-row items-center justify-center gap-5 lg:gap-10 max-w-[1440px] mx-auto">
         <div>
           <dotlottie-player
             src="https://lottie.host/d04a48fe-d3f4-4ce1-ba2a-9b6b239d3ee0/cLJoUwPZPC.json"
@@ -199,7 +199,7 @@ const Registration = () => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

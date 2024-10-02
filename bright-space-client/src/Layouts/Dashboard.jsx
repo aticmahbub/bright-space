@@ -6,6 +6,8 @@ import { LuGraduationCap, LuLayoutDashboard, LuLightbulb, LuLogOut, LuSettings, 
 import { IoChatbubblesOutline } from "react-icons/io5";
 // import { Flex } from "@chakra-ui/react";
 import './css/dashboard.css'
+import { IoCreateOutline } from "react-icons/io5";
+
 
 
 
@@ -16,7 +18,7 @@ const Dashboard = () => {
         <div>
             <Navbar />
             <div>
-                <div className="h-screen border-r-2 grid grid-cols-5">
+                <div className="border-r-2 grid grid-cols-5">
                     {/* sidebar */}
                     <div className="h-full relative shadow-2xl pt-10">
                         {/* student dashboard */}
@@ -64,6 +66,21 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to='/dashboard/allCourses' className="dashboard-sidebar">
+                                            <IoCreateOutline />Create Course
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='/dashboard/allCourses' className="dashboard-sidebar">
+                                            <LuSettings />Settings
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='/dashboard/allCourses' className="dashboard-sidebar">
+                                            <IoCreateOutline />Create Course
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='/dashboard/allCourses' className="dashboard-sidebar">
                                             <LuSettings />Settings
                                         </NavLink>
                                     </li>
@@ -71,7 +88,7 @@ const Dashboard = () => {
                             </>
                         }
                         {/* Sign Out Button */}
-                        <div className="absolute bottom-6">
+                        <div className="mt-32">
                             <button className="dashboard-logOut">
                                 <LuLogOut />Sign Out
                             </button>

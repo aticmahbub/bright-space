@@ -19,6 +19,8 @@ import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
 import MyCourses from "../pages/Courses/MyCourses/MyCourses";
+import AllTeachers from "../pages/AllTeachers/AllTeachers";
+import AllStudents from "../pages/AllStudents/AllStudents";
 
 
 export const router = createBrowserRouter([
@@ -90,6 +92,10 @@ export const router = createBrowserRouter([
                 element: <StudentProfile />
             },
             {
+                path: 'allStudents',
+                element: <AllStudents />
+            },
+            {
                 path: 'myCourses',
                 element: <MyCourses />
             },
@@ -98,6 +104,10 @@ export const router = createBrowserRouter([
             {
                 path: 'teacherProfile',
                 element: <TeacherProfile />
+            },
+            {
+                path: 'allTeachers',
+                element: <AllTeachers />
             },
             {
                 path: 'createCourse',

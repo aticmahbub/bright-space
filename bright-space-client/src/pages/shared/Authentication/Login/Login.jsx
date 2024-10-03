@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
+import authentication from '../../../../Lotties/authentication.json'
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import '@dotlottie/player-component';
 import { AuthContext } from "../../../../providers/AuthProvider";
 import SocialLogin from "../../../../components/SocialLogin/SocialLogin";
+import Lottie from "lottie-react";
+import { AbsoluteCenter, Box, Button, Divider } from "@chakra-ui/react";
 
 const Login = () => {
 
@@ -20,6 +22,7 @@ const Login = () => {
   });
 
   const {loginUser, googleLogin} = useContext(AuthContext)
+  const { loginUser, googleLogin } = useContext(AuthContext)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -31,31 +34,20 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     loginUser(formData.email, formData.password)
-    .then(result =>{
-      console.log(result.user)
-      navigate(from, {replace:true})
-    })
+      .then(result => {
+        console.log(result.user)
+        navigate(from, { replace: true })
+      })
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-5 lg:gap-10  max-w-[1440px] mx-auto">
-      <div>
-        <dotlottie-player
-          src="https://lottie.host/d04a48fe-d3f4-4ce1-ba2a-9b6b239d3ee0/cLJoUwPZPC.json"
-          background="transparent"
-          speed="1"
-          loop
-          autoplay
-        ></dotlottie-player>
-      </div>
-
-      <div className="flex justify-center items-center w-full p-2 lg:p-10">
-        <div className="p-8 bg-[#ffff] rounded-lg shadow-lg w-full">
+    <Box maxW='1596px' mx='auto' px={{ base: '2', lg: '60px', '2xl': 0 }} my={{ base: 0, lg: 20, xl: 0 }} mb={{ base: 20, lg: 0 }}>
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-10">
+        <Lottie className='w-full flex-1' animationData={authentication} />
+        <div className="p-7 md:p-10 2xl:p-12 bg-white lg:max-w-[460px] 2xl:max-w-[560px] rounded-lg flex-1">
           <h2 className="text-2xl font-bold text-center mb-4">Sign In</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            
-
             <div className="text-start flex flex-col">
               <label className="mb-2 font-medium text-gray-700">Email</label>
               <input
@@ -81,29 +73,53 @@ const Login = () => {
               <p className="text-end my-2">Forget Password</p>
             </div>
 
-            
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                name="termsAccepted"
+                checked={formData.termsAccepted}
+                onChange={handleChange}
+                className="h-4 w-4 text-orange-500 border-gray-300 rounded"
+              />
+              <label className="ml-2 text-sm text-gray-600">
+                I agree with{" "}
+                <a href="#" className="text-orange-500 hover:underline">
+                  Terms of Use
+                </a>
+                and{" "}
+                <a href="#" className="text-orange-500 hover:underline">
+                  Privacy Policy
+                </a>
+              </label>
+            </div>
 
-            <button
-              type="submit"
-              className="w-full bg-[#FF9500] py-2 rounded-lg text-[#ffff] hover:bg-[#f3b051] focus:outline-none focus:ring-2 focus:ring-[#f3b051] focus:ring-opacity-50"
-            >
+            <Button type="submit" colorScheme='primary' w='full'>
               Sign In
-            </button>
+            </Button>
 
-            <div className="text-center text-gray-500">OR</div>
+            <Box position='relative' padding='3'>
+              <Divider />
+              <AbsoluteCenter bg='white' px='4'>
+                OR
+              </AbsoluteCenter>
+            </Box>
 
-            <SocialLogin googleLogin={googleLogin}/>
+            <SocialLogin googleLogin={googleLogin} />
 
             <p className="text-center text-gray-500 mt-4">
               Do not have an account?{" "}
-              <Link to={"/register"} className="text-orange-500 hover:underline">
+              <Link to={"/registration"} className="text-primary-500 hover:underline">
                 Sign up
               </Link>
             </p>
           </form>
         </div>
+
+        {/* <div className="flex justify-center items-center p-2 flex-1">
+          
+        </div> */}
       </div>
-    </div>
+    </Box>
   );
 };
 

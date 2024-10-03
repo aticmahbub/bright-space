@@ -15,10 +15,10 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar />
-            <div className="flex justify-between">
-                <div className="min-w-96 h-screen border-r-2 shadow-2xl relative">
+            <div>
+                <div className="h-screen border-r-2 grid grid-cols-5">
                     {/* sidebar */}
-                    <div className="min-w-64  min-h-screen">
+                    <div className="h-full relative shadow-2xl pt-10">
                         {/* student dashboard */}
                         {
                             role === 'student' && <>
@@ -78,7 +78,9 @@ const Dashboard = () => {
                         </div>
                     </div>
                     {/* content */}
-                    <div><Outlet /></div>
+                    <div className="col-span-4">
+                        <Outlet />
+                    </div>
                 </div>
             </div>
         </div>

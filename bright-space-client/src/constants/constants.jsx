@@ -69,7 +69,7 @@ const footItems = [
     {
         name: 'Follow Us',
         cls: 'row',
-        description: 'Feel free to connect with us on social media for latest updates.',
+        description: 'Feel free to connect with us on social media for latest news & updates.',
         routes: [
             {
                 name: FaFacebookSquare,

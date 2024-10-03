@@ -1,154 +1,46 @@
-import { Box, Button, Divider, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-// import { div, title } from "framer-motion/client";
-import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
-import { FaSquareGithub } from "react-icons/fa6";
-import { IoLogoSkype } from "react-icons/io";
-import { Text } from '@chakra-ui/react';
+import { Box, Divider, Icon, Image, Text, } from "@chakra-ui/react";
+import logo from '../../../assets/bright-space-logo.svg'
+import { footItems } from "../../../constants/constants";
+import { Link } from "react-router-dom";
+import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 const Footer = () => {
-  const recentPosts = [
-    {
-      image:
-        "https://themewant.com/products/wordpress/edurock/wp-content/uploads/2023/06/Mask-Group-768x497.jpg",
-      title: "We are Playing",
-      date: "20 Jun, 2024",
-    },
-    {
-      image:
-        "https://themewant.com/products/wordpress/edurock/wp-content/uploads/2023/06/Mask-Group-768x497.jpg",
-      title: "We are Playing",
-      date: "20 Jun, 2024",
-    },
-    {
-      image:
-        "https://themewant.com/products/wordpress/edurock/wp-content/uploads/2023/06/Mask-Group-768x497.jpg",
-      title: "We are Playing",
-      date: "20 Jun, 2024",
-    },
-  ];
   return (
-    <Box textColor='white' className="bg-[#0a0a28] pt-10">
-      <Box px={{ base: 4, md: 6, xl: 10, '2xl': 44 }}>
-        <section className="lg:grid grid-cols-2 gap-6 space-y-3 lg:space-y-0">
-          <div className="space-y-2">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              Still Need Our <span className="text-[#FF1949]">Support?</span>
-            </h1>
-            <p className="text-sm font-medium">
-              Don&apos;t Wait, make A Smart & Logical Quote Here. It is Pretty Easy.
-            </p>
-          </div>
-          <InputGroup size='md'>
-            <Input
-              type='email'
-              rounded='none'
-              pr='4.5rem'
-              placeholder='Enter your email'
-              // focusBorderColor="primary.400"
-            />
-            <InputRightElement width='6rem' justifyContent='end'>
-              <Button colorScheme='primary' rounded='none' size='sm' mr='1'>
-                Subscribe
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-          {/* <div className="relative w-full">
-            <input
-              type="text"
-              placeholder="Enter your email"
-              className="px-4 py-3 md:py-4 w-full rounded-md bg-[#202942] text-white focus:outline-none"
-            />
-            <button className="bg-white text-[#612FEE]  absolute right-0 px-4 py-3 md:py-4 rounded-r-md hover:bg-[#F2277E] transition-all duration-300">
-              Subscribe Now
-            </button>
-          </div> */}
-        </section>
-
-        <Divider className="my-8 md:my-16" />
-
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-          <div className="space-y-6">
-            <h1 className="text-2xl font-bold">About Us</h1>
-            <p className="text-base text-[#9FA2CE]">
+    <Box bg='white' pt='10'>
+      <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }}>
+        <Box display='flex' gap='6'>
+          <Box mb='6' w='22%'>
+            <Image w={{ base: 5, md: 7 }} src={logo} alt='bright space logo' />
+            <Text mt='4'>
               Corporate clients and leisure travelers rely on Groundlink for dependable, safe, and professional chauffeured car services in major cities worldwide.
-            </p>
-          </div>
+            </Text>
+          </Box>
+          <Box display='flex' justifyContent='space-between' gap='6' flexGrow='1'>
+            {
+              footItems.map((item, idx) => <Box key={idx} className='flex-1'>
+                <Text fontSize='xl' fontWeight='semibold' mb='4'>{item.name}</Text>
+                <Text>{item.description}</Text>
+                <Box display='flex' gap='2' flexDir={item.cls}>
+                  {
+                    item.routes.map((route, idx) => <Box key={idx}>{
+                      item.name === 'Contact' ? <Box display='flex' alignItems='center' gap='2'>
+                        <Icon as={route.icon} />
+                        <Text>{route.name}</Text>
+                      </Box> : <Link className={`text-gray-500 w-fit hover:text-[#00BADB] ${route.name === FaFacebookSquare ? 'mt-2 text-2xl lg:text-3xl' : route.name === FaInstagramSquare ? 'mt-2 text-2xl lg:text-3xl' : ''}`}>{route.name === FaFacebookSquare ? <FaFacebookSquare /> : route.name === FaInstagramSquare ? <FaInstagramSquare /> : route.name}</Link>}</Box>)
+                  }
+                </Box>
+              </Box>)
+            }
+          </Box>
+        </Box>
 
-          <div className="space-y-6">
-            <h1 className="text-2xl font-bold">Useful Links</h1>
-            <ul className="space-y-4">
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">About Us</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Dashboard</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Instructor Registration</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Course List</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Course Grid</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <h1 className="text-2xl font-bold">Courses</h1>
-            <ul className="space-y-4">
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Master Finance</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Strategy Law</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Machine Learning</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Designer Essential Skills</a>
-              </li>
-              <li className="text-base text-[#9FA2CE]">
-                <a href="#" className="hover:text-[#F2277E]">Design in Figma</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <h1 className="text-2xl font-bold">Recent Posts</h1>
-            {recentPosts?.map((item, idx) => (
-              <div key={idx} className="flex gap-4">
-                <img className="w-[61px] h-[54px]" src={item.image} alt={item.title} />
-                <div>
-                  <p className="text-[#9FA2CE]">{item.date}</p>
-                  <h1 className="font-bold text-white">{item.title}</h1>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
+        <Divider />
         <section className="flex flex-col md:flex-row items-center sm:justify-center sm:items-center justify-between pt-12 pb-8 px-4">
           <div className="lg:flex items-center gap-6 md:gap-16">
-            <Box color="white" fontWeight="bold" fontSize="xl">
-              <Text className='text-3xl'>
-                <span className='text-[#F2277E]'>Bright</span>
-                <span className='text-[#612FEE]'>Space</span>
-              </Text>
-            </Box>
             <h1 className="text-md font-bold">
               © 2024 Powered by{" "}
               <a href="#" className="text-[#612FEE] hover:text-[#F2277E]">NodeNavigators</a>.
             </h1>
-          </div>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <FaFacebookSquare size={25} className="hover:text-[#F2277E]" />
-            <FaTwitterSquare size={25} className="hover:text-[#F2277E]" />
-            <FaLinkedin size={25} className="hover:text-[#F2277E]" />
-            <FaSquareGithub size={25} className="hover:text-[#F2277E]" />
-            <IoLogoSkype size={25} className="hover:text-[#F2277E]" />
           </div>
         </section>
       </Box>

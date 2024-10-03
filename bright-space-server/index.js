@@ -31,11 +31,7 @@ async function run() {
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
         const usersCollection = client.db('bright-space-db').collection('users-collection')
 
-        // get all courses
-        app.get('/courses', async (req, res) => {
-            const result = await coursesCollection.find().toArray()
-            res.send(result)
-        })
+        
 
         // get all users
         app.get('/allUsers', async (req, res) => {
@@ -76,6 +72,24 @@ async function run() {
             const result = await meetingCodeCollection.insertOne(meetingCode);
             res.send(result);
         });
+
+
+        // create new courses or add courses api
+        
+        app.post('/courses', async(req, res)=>{
+            const coursesInfo = req.body;
+            const result = await coursesCollection.insertOne(coursesInfo)
+
+            res.send(result)
+
+        })
+
+        
+        app.get('/courses', async (req, res) => {
+            const result = await coursesCollection.find().toArray()
+            res.send(result)
+        })
+
 
 
 

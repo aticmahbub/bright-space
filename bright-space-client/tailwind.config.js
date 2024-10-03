@@ -17,16 +17,16 @@ export default {
       text_color_1: '#212529',
       white: '#FFFFFF',
       primary: {
-        50: "#FFE6EB",
-        100: "#FCDDE0",
-        200: "#FABACB",
-        300: "#F6969F",
-        400: "#F4716A",
-        500: "#FF1949",
-        600: "#E0003C",
-        700: "#B30030",
-        800: "#860025",
-        900: "#59001A",
+        50: "#FFECD6",   // Lightest tone
+        100: "#FFE3C0",
+        200: "#FFCB80",
+        300: "#FFB340",
+        400: "#FF9B20",
+        500: "#FF9500",   // Base color
+        600: "#E08600",
+        700: "#B36900",
+        800: "#865000",
+        900: "#593600"    // Darkest tone
       },
       secondary: {
         50: "#E5E7F7", // lightest shade

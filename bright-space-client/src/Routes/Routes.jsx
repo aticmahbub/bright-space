@@ -18,6 +18,7 @@ import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
+import ViewCourse from "../pages/Courses/ViewCourse/ViewCourse";
 import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path: '/allCourses',
                 element: <AllCourses />
+            },
+            {
+                path: '/view-course-details',
+                element: <ViewCourse />
             },
             {
                 path: '/userProfile',

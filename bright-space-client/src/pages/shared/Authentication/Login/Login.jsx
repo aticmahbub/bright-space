@@ -22,7 +22,6 @@ const Login = () => {
   });
 
   const {loginUser, googleLogin} = useContext(AuthContext)
-  const { loginUser, googleLogin } = useContext(AuthContext)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({

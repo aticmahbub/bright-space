@@ -1,7 +1,23 @@
+import { useState, useEffect } from "react";
+import useAuth from "./useAuth";
+import useLoadAllUsers from "./useLoadAllUsers";
+
 const useRole = () => {
-    // const role ='teacher'
-    const role = 'teacher'
-    return role
+  const { user } = useAuth();
+  const [allUsers] = useLoadAllUsers(); 
+  const [role, setRole] = useState(null); 
+
+  useEffect(() => {
+    if (allUsers && user) {
+
+      const findRole = allUsers.find(item => item?.email === user?.email);
+      if (findRole) {
+        setRole(findRole.role); 
+      }
+    }
+  }, [allUsers, user]);
+
+  return role;
 };
 
 export default useRole;

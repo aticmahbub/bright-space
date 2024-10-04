@@ -21,7 +21,7 @@ const Registration = () => {
   const [error, setError] = useState(""); // Error state
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked,} = e.target;
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
@@ -33,8 +33,8 @@ const Registration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password, fullName, photoURL, } = formData
     console.log(formData);
-    const { email, password, fullName, photoURL } = formData
     createUser(email, password)
       .then(result => {
         const loggedUser = result.user
@@ -46,6 +46,7 @@ const Registration = () => {
             const userInfo={
               name: fullName,
               email: email,
+              role: formData?.role,
             }
             axiosPublic.post('/users',userInfo)
             .then(res =>{

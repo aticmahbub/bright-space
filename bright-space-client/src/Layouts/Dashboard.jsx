@@ -28,12 +28,12 @@ const Dashboard = () => {
             </Heading>
             <VStack spacing={[3, 4]} align="stretch">
                 {[
-                    { to: '/dashboard/teacherProfile', icon: LuLayoutDashboard, text: 'Dashboard' },
+                    { to: '/dashboard/', icon: LuLayoutDashboard, text: 'Dashboard' },
                     { to: '/dashboard/myCourses', icon: LuGraduationCap, text: 'My Courses' },
                     { to: '/dashboard/allStudents', icon: LuUser, text: 'Students' },
                     { to: '/dashboard/allCourses', icon: LuLightbulb, text: 'Courses' },
+                    { to: '/dashboard/createCourse', icon: IoCreateOutline, text: 'Create Course' },
                     { to: '/dashboard/allCourses', icon: IoChatbubblesOutline, text: 'Group Chat' },
-                    { to: '/dashboard/allCourses', icon: IoCreateOutline, text: 'Create Course' },
                     { to: '/dashboard/allCourses', icon: LuSettings, text: 'Settings' },
                     { to: '/', icon: LuHome, text: 'Hone' }
                 ].map(({ to, icon, text }) => (

@@ -40,11 +40,11 @@ const AllStudents = () => {
             <Tr>
                 <Th>Image</Th>
                 <Th>Instructor</Th>
-                <Th>Phone</Th>
-                <Th>Country</Th>
-                <Th>Description</Th>
+                <Th className='hidden lg:table-cell'>Phone</Th>
+                <Th className='hidden lg:table-cell'>Country</Th>
+                <Th className='hidden lg:table-cell'>Description</Th>
                 <Th>Active courses</Th>
-                <Th>Status</Th>
+                <Th className='hidden lg:table-cell'>Status</Th>
                 <Th><Icon as={BsThreeDots} boxSize={6} /></Th>
             </Tr>
         </Thead>
@@ -58,11 +58,11 @@ const AllStudents = () => {
                         <Avatar src={student.image} name={student.student_name} size="md" />
                     </Td>
                     <Td>{student.student_name}</Td>
-                    <Td>{student.Phone}</Td>
-                    <Td>{student.Country}</Td>
-                    <Td>{student.Description}</Td>
+                    <Td className='hidden lg:table-cell'>{student.Phone}</Td>
+                    <Td className='hidden lg:table-cell'>{student.Country}</Td>
+                    <Td className='hidden lg:table-cell'>{student.Description}</Td>
                     <Td>{student.Active_courses}</Td>
-                    <Td>{student.Status}</Td>
+                    <Td className='hidden lg:table-cell'>{student.Status}</Td>
                     <Td>
                         <Menu>
                             <MenuButton as={IconButton} aria-label='Options' icon={<Icon as={BsThreeDots} />} variant='ghost' />
@@ -98,12 +98,12 @@ const AllStudents = () => {
     );
 
     return (
-        <Flex direction="column" p={4}>
-            <Flex justifyContent="space-between" alignItems="center" mb={4}>
+        <Flex direction="column" p={[0, 0, 4]}>
+            <Flex justifyContent="space-between" wrap="wrap" alignItems="center" mb={4}>
                 <Heading as="h1" size="xl" fontWeight="bold" color="black">
                     Students
                 </Heading>
-                <Flex justifyContent="end" alignItems="center" gap={4} flex={1}>
+                <Flex justifyContent="end" alignItems="center" wrap="wrap" gap={4} flex={1}>
                     <InputGroup maxW="300px">
                         <InputLeftElement pointerEvents="none">
                             <SearchIcon color="gray.300" />

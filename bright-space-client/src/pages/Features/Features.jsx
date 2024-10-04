@@ -1,4 +1,4 @@
-import CreatedCourses from "../Courses/CreatedCourses/CreatedCourses";
+import CreatedCourses from "../Courses/CreateCourse/CreateCourse";
 
 const Features = () => {
     return (

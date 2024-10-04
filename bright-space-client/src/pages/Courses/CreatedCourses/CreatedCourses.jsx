@@ -66,21 +66,21 @@ const axiosPublic = useAxiosPublic();
           </h2>
 
           {/* Course Thumbnail */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="text-sm font-bold mb-2 opacity-70 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className=" text-sm font-bold mb-2 opacity-70 w-full lg:w-[30%]">
               Course Thumbnail
             </label>
             <input
               type="file"
               id="thumbnail"
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded  w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             />
           </Flex>
 
           {/* Course Title */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Title
             </label>
             <input
@@ -88,26 +88,26 @@ const axiosPublic = useAxiosPublic();
               id="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             />
           </Flex>
 
           {/* Course Description */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Description
             </label>
             <input
               id="description"
               value={formData.description}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             ></input>
           </Flex>
 
           {/* Course Price */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Price
             </label>
             <input
@@ -115,20 +115,20 @@ const axiosPublic = useAxiosPublic();
               id="price"
               value={formData.price}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             />
           </Flex>
 
           {/* Course Category */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Category
             </label>
             <select
               id="category"
               value={formData.category}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             >
               <option value="">Select a category</option>
               <option value="web-dev">Web Development</option>
@@ -137,8 +137,8 @@ const axiosPublic = useAxiosPublic();
           </Flex>
 
           {/* Course Sub-Category */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Sub-Category
             </label>
             <input
@@ -146,22 +146,22 @@ const axiosPublic = useAxiosPublic();
               id="subCategory"
               value={formData.subCategory}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             />
           </Flex>
 
           <div className="border-t my-10"></div>
 
           {/* Course Difficulty Level */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Difficulty Level
             </label>
             <select
               id="difficulty"
               value={formData.difficulty}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             >
               <option value="">Select a Level</option>
               <option value="beginner">Beginner</option>
@@ -171,96 +171,96 @@ const axiosPublic = useAxiosPublic();
           </Flex>
 
           {/* Course Features */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Features
             </label>
             <input
               id="features"
               value={formData.features}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
               rows="2"
             ></input>
           </Flex>
 
           {/* Course Tags */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Course Tags
             </label>
             <input
               id="tags"
               value={formData.tags}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             ></input>
           </Flex>
 
           <div className="border-t my-10"></div>
 
           {/* Learner's Accessibility */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Learners Accessibility
             </label>
             <input
               id="accessibility"
               value={formData.accessibility}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             ></input>
           </Flex>
 
           {/* Lesson Video */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="text-sm font-bold mb-2 opacity-70 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="text-sm font-bold mb-2 opacity-70 w-full lg:w-[30%]">
               Lesson Video
             </label>
             <input
               type="file"
               id="lessonVideo"
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             />
           </Flex>
 
           {/* Video Thumbnail */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="text-sm font-bold mb-2 opacity-70 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="text-sm font-bold mb-2 opacity-70 w-full lg:w-[30%]">
               Video Thumbnail
             </label>
             <input
               type="file"
               id="videoThumbnail"
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             />
           </Flex>
 
           {/* Lesson Name */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Lesson Name
             </label>
             <input
               id="lessonName"
               value={formData.lessonName}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
             ></input>
           </Flex>
 
           {/* Lesson Description */}
-          <Flex alignItems="center" className="mb-4">
-            <label className="block opacity-70 text-sm font-bold mb-2 w-[30%]">
+          <Flex alignItems="center" className="mb-4 flex-col lg:flex-row">
+            <label className="block opacity-70 text-sm font-bold mb-2 w-full lg:w-[30%]">
               Lesson Description
             </label>
             <textarea
               id="lessonDescription"
               value={formData.lessonDescription}
               onChange={handleInputChange}
-              className="border border-red-500 p-2 rounded w-[70%] bg-[#F5F8FA] hover:bg-white"
+              className="border border-red-500 p-2 rounded w-full lg:w-[70%] bg-[#F5F8FA] hover:bg-white"
               rows="2"
             ></textarea>
           </Flex>

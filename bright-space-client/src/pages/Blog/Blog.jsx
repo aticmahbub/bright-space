@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FeaturedBlogger from "./Featured blogger/FeaturedBlogger";
 import AllBlogs from "./allBlogs/AllBlogs";
 import SideBlog from "./sideBlog/SideBlog";
+import CreateBlog from "./CreateBlog/CreateBlog";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -17,7 +18,6 @@ const Blog = () => {
 
   return (
     <div className="min-h-[550px] max-w-6xl mx-auto">
-
       <SideBlog></SideBlog>
       <h6 className="font-bold text-3xl my-5 p-3 lg:p-0">Featured Bloggers</h6>
 
@@ -53,6 +53,10 @@ const Blog = () => {
       </div>
 
       <AllBlogs></AllBlogs>
+      <CreateBlog></CreateBlog>
+      
+
+      
     </div>
   );
 };

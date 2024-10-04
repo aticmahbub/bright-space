@@ -2,7 +2,7 @@ import useAuth from './useAuth';
 import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
-const useEnrolled = () => {
+const useEnrolls = () => {
 
     const {user} = useAuth()
     const axiosSecure =useAxiosSecure()
@@ -16,4 +16,4 @@ const useEnrolled = () => {
     return [enrolls, refetch]
 };
 
-export default useEnrolled;
+export default useEnrolls;

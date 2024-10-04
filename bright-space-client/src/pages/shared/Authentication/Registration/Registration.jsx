@@ -5,18 +5,20 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const Registration = () => {
-
-  const { createUser, googleLogin, githubLogin, updateUserProfile } = useAuth()
-  const axiosPublic = useAxiosPublic()
-  const navigate = useNavigate()
+  const { createUser, googleLogin, updateUserProfile } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
-    photoURL: "",
+    confirmPassword: "",
     role: "student", // Set a default role
     termsAccepted: false,
   });
+
+  const [error, setError] = useState(""); // Error state
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -24,9 +26,12 @@ const Registration = () => {
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
+    
+    // Clear error when user starts typing
+    if (error) setError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     const { email, password, fullName, photoURL } = formData
@@ -58,8 +63,8 @@ const Registration = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-5 lg:gap-10">
+   
+      <div className="flex flex-col md:flex-row items-center justify-center gap-5 lg:gap-10 max-w-[1440px] mx-auto">
         <div>
           <dotlottie-player
             src="https://lottie.host/d04a48fe-d3f4-4ce1-ba2a-9b6b239d3ee0/cLJoUwPZPC.json"
@@ -78,6 +83,8 @@ const Registration = () => {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              
+
               <div className="text-start flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Full Name</label>
                 <input
@@ -87,19 +94,10 @@ const Registration = () => {
                   onChange={handleChange}
                   placeholder="Enter your Name"
                   className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD] focus:outline-none focus:ring focus:ring-indigo-200"
+                  required
                 />
               </div>
-              <div className="text-start flex flex-col">
-                <label className="mb-2 font-medium text-gray-700">Photo URL</label>
-                <input
-                  type="text"
-                  name="photoURL"
-                  value={formData.photoURL}
-                  onChange={handleChange}
-                  placeholder="Enter your photo url"
-                  className="w-full px-4 py-3 border border-gray-100 rounded-lg bg-[#FCFCFD] focus:outline-none focus:ring focus:ring-indigo-200"
-                />
-              </div>
+              
               <div className="text-start flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Email</label>
                 <input
@@ -109,8 +107,10 @@ const Registration = () => {
                   onChange={handleChange}
                   placeholder="Enter your Email"
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
+                  required
                 />
               </div>
+              
               <div className="text-start flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Password</label>
                 <input
@@ -120,8 +120,29 @@ const Registration = () => {
                   onChange={handleChange}
                   placeholder="Enter your Password"
                   className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
+                  required
                 />
               </div>
+
+              <div className="text-start flex flex-col">
+                <label className="mb-2 font-medium text-gray-700">Confirm Password</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="Confirm your Password"
+                  className="w-full px-4 py-3 border border-gray-100 bg-[#FCFCFD] rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
+                  required
+                />
+              </div>
+
+              {error && (
+                <div className=" text-[#ff0a0a] ">
+                  {error}
+                </div>
+              )}
+
               <div className="inline-block py-2 px-4 bg-[#FCFCFD] rounded-lg font-medium">
                 Role:
                 <select
@@ -146,26 +167,27 @@ const Registration = () => {
                 <label className="ml-2 text-sm text-gray-600">
                   I agree with{" "}
                   <a href="#" className="text-orange-500 hover:underline">
-                    Terms of Use
+                    Terms of Use {" "}
                   </a>
                   and
                   <a href="#" className="text-orange-500 hover:underline">
-                    Privacy Policy
+                   {" "} Privacy Policy
                   </a>
                 </label>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#FF9500] py-2 rounded-lg text-[#ffff]
-                hover:bg-[#f3b051] focus:outline-none focus:ring-2 focus:ring-[#f3b051] focus:ring-opacity-50"
+                className="w-full py-2 rounded-lg text-[#ffff] 
+                  formData.termsAccepted  bg-[#FF9500] hover:bg-[#f3b051]" 
+                
               >
                 Sign Up
               </button>
 
               <div className="text-center text-gray-500">OR</div>
 
-              <SocialLogin googleLogin={googleLogin} githubLogin={githubLogin} />
+              <SocialLogin googleLogin={googleLogin} />
 
               <p className="text-center text-gray-500 mt-4">
                 Already have an account?{" "}
@@ -177,7 +199,7 @@ const Registration = () => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

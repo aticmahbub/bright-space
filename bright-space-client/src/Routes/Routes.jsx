@@ -14,11 +14,14 @@ import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import LiveSession from "../pages/LiveSession/LiveSession";
-import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
-import MyCourses from "../components/MyCourses/MyCourses";
+import ViewCourse from "../pages/Courses/ViewCourse/ViewCourse";
+import MyCourses from "../pages/Courses/MyCourses/MyCourses";
+import AllTeachers from "../pages/AllTeachers/AllTeachers";
+import AllStudents from "../pages/AllStudents/AllStudents";
+import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
 
 
 export const router = createBrowserRouter([
@@ -71,6 +74,10 @@ export const router = createBrowserRouter([
                 element: <AllCourses />
             },
             {
+                path: '/view-course-details',
+                element: <ViewCourse />
+            },
+            {
                 path: '/userProfile',
                 element: <UserProfile />
             }
@@ -90,6 +97,10 @@ export const router = createBrowserRouter([
                 element: <StudentProfile />
             },
             {
+                path: 'allStudents',
+                element: <AllStudents />
+            },
+            {
                 path: 'myCourses',
                 element: <MyCourses />
             },
@@ -100,8 +111,12 @@ export const router = createBrowserRouter([
                 element: <TeacherProfile />
             },
             {
-                path: 'createCourse',
-                element: <CreateCourse />
+                path: 'allTeachers',
+                element: <AllTeachers />
+            },
+            {
+                path: 'addCourse',
+                element: <CreatedCourses />
             },
             {
                 path: 'allCourses',

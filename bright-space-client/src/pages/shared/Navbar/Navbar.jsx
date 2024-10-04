@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import { HamburgerIcon } from "@chakra-ui/icons";
 import NavAdvertise from "./NavAdvertise";
 import useAuth from '../../../hooks/useAuth';
-import useEnrolls from "../../../hooks/useEnrolled";
+import useEnrolls from "../../../hooks/useEnrolls";
 
 
 

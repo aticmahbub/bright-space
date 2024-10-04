@@ -1,0 +1,278 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.pravatar.cc/150?img=1",
+    "Phone": "+1-555-123-4567",
+    "Country": "United States",
+    "Description": "Enthusiastic computer science major with a passion for AI.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "john.doe@example.com",
+    "student_name": "John Doe"
+  },
+  {
+    "id": 2,
+    "image": "https://i.pravatar.cc/150?img=2",
+    "Phone": "+44-20-7123-4567",
+    "Country": "United Kingdom",
+    "Description": "Aspiring biologist focusing on marine ecosystems.",
+    "Active_courses": 4,
+    "Status": "Active",
+    "email": "emma.smith@example.com",
+    "student_name": "Emma Smith"
+  },
+  {
+    "id": 3,
+    "image": "https://i.pravatar.cc/150?img=3",
+    "Phone": "+81-3-1234-5678",
+    "Country": "Japan",
+    "Description": "Dedicated literature student specializing in classical works.",
+    "Active_courses": 2,
+    "Status": "Pending",
+    "email": "akira.tanaka@example.com",
+    "student_name": "Akira Tanaka"
+  },
+  {
+    "id": 4,
+    "image": "https://i.pravatar.cc/150?img=4",
+    "Phone": "+49-30-1234567",
+    "Country": "Germany",
+    "Description": "Innovative engineering student with a focus on renewable energy.",
+    "Active_courses": 5,
+    "Status": "Active",
+    "email": "lisa.mueller@example.com",
+    "student_name": "Lisa Mueller"
+  },
+  {
+    "id": 5,
+    "image": "https://i.pravatar.cc/150?img=5",
+    "Phone": "+33-1-23-45-67-89",
+    "Country": "France",
+    "Description": "Passionate art history student researching Renaissance painters.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "pierre.dubois@example.com",
+    "student_name": "Pierre Dubois"
+  },
+  {
+    "id": 6,
+    "image": "https://i.pravatar.cc/150?img=6",
+    "Phone": "+61-2-9876-5432",
+    "Country": "Australia",
+    "Description": "Environmental science student focusing on climate change impacts.",
+    "Active_courses": 4,
+    "Status": "Active",
+    "email": "olivia.jones@example.com",
+    "student_name": "Olivia Jones"
+  },
+  {
+    "id": 7,
+    "image": "https://i.pravatar.cc/150?img=7",
+    "Phone": "+55-11-98765-4321",
+    "Country": "Brazil",
+    "Description": "Economics student specializing in emerging markets.",
+    "Active_courses": 3,
+    "Status": "Suspend",
+    "email": "carlos.silva@example.com",
+    "student_name": "Carlos Silva"
+  },
+  {
+    "id": 8,
+    "image": "https://i.pravatar.cc/150?img=8",
+    "Phone": "+91-22-1234-5678",
+    "Country": "India",
+    "Description": "Computer engineering student with a focus on machine learning.",
+    "Active_courses": 5,
+    "Status": "Active",
+    "email": "priya.patel@example.com",
+    "student_name": "Priya Patel"
+  },
+  {
+    "id": 9,
+    "image": "https://i.pravatar.cc/150?img=9",
+    "Phone": "+7-495-123-4567",
+    "Country": "Russia",
+    "Description": "Physics student researching quantum mechanics.",
+    "Active_courses": 4,
+    "Status": "Active",
+    "email": "ivan.petrov@example.com",
+    "student_name": "Ivan Petrov"
+  },
+  {
+    "id": 10,
+    "image": "https://i.pravatar.cc/150?img=10",
+    "Phone": "+27-11-123-4567",
+    "Country": "South Africa",
+    "Description": "Political science student focusing on international relations.",
+    "Active_courses": 3,
+    "Status": "Pending",
+    "email": "zoe.ndlovu@example.com",
+    "student_name": "Zoe Ndlovu"
+  },
+  {
+    "id": 11,
+    "image": "https://i.pravatar.cc/150?img=11",
+    "Phone": "+1-416-123-4567",
+    "Country": "Canada",
+    "Description": "Psychology student specializing in cognitive behavioral therapy.",
+    "Active_courses": 4,
+    "Status": "Active",
+    "email": "michael.chen@example.com",
+    "student_name": "Michael Chen"
+  },
+  {
+    "id": 12,
+    "image": "https://i.pravatar.cc/150?img=12",
+    "Phone": "+34-91-123-4567",
+    "Country": "Spain",
+    "Description": "Architecture student with a passion for sustainable design.",
+    "Active_courses": 5,
+    "Status": "Active",
+    "email": "sofia.garcia@example.com",
+    "student_name": "Sofia Garcia"
+  },
+  {
+    "id": 13,
+    "image": "https://i.pravatar.cc/150?img=13",
+    "Phone": "+46-8-123-456-78",
+    "Country": "Sweden",
+    "Description": "Medical student focusing on neurology research.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "erik.andersson@example.com",
+    "student_name": "Erik Andersson"
+  },
+  {
+    "id": 14,
+    "image": "https://i.pravatar.cc/150?img=14",
+    "Phone": "+31-20-123-4567",
+    "Country": "Netherlands",
+    "Description": "Business administration student specializing in international marketing.",
+    "Active_courses": 4,
+    "Status": "Suspend",
+    "email": "anna.devries@example.com",
+    "student_name": "Anna de Vries"
+  },
+  {
+    "id": 15,
+    "image": "https://i.pravatar.cc/150?img=15",
+    "Phone": "+39-06-1234-5678",
+    "Country": "Italy",
+    "Description": "Fashion design student with a focus on sustainable materials.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "marco.rossi@example.com",
+    "student_name": "Marco Rossi"
+  },
+  {
+    "id": 16,
+    "image": "https://i.pravatar.cc/150?img=16",
+    "Phone": "+82-2-1234-5678",
+    "Country": "South Korea",
+    "Description": "Chemical engineering student researching renewable energy sources.",
+    "Active_courses": 5,
+    "Status": "Active",
+    "email": "ji.soo.kim@example.com",
+    "student_name": "Ji-soo Kim"
+  },
+  {
+    "id": 17,
+    "image": "https://i.pravatar.cc/150?img=17",
+    "Phone": "+52-55-1234-5678",
+    "Country": "Mexico",
+    "Description": "Anthropology student focusing on Mesoamerican cultures.",
+    "Active_courses": 3,
+    "Status": "Pending",
+    "email": "alejandro.lopez@example.com",
+    "student_name": "Alejandro Lopez"
+  },
+  {
+    "id": 18,
+    "image": "https://i.pravatar.cc/150?img=18",
+    "Phone": "+971-4-123-4567",
+    "Country": "United Arab Emirates",
+    "Description": "Finance student specializing in Islamic banking.",
+    "Active_courses": 4,
+    "Status": "Active",
+    "email": "fatima.al-mansouri@example.com",
+    "student_name": "Fatima Al-Mansouri"
+  },
+  {
+    "id": 19,
+    "image": "https://i.pravatar.cc/150?img=19",
+    "Phone": "+64-9-123-4567",
+    "Country": "New Zealand",
+    "Description": "Environmental law student with a focus on marine conservation.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "william.taylor@example.com",
+    "student_name": "William Taylor"
+  },
+  {
+    "id": 20,
+    "image": "https://i.pravatar.cc/150?img=20",
+    "Phone": "+86-10-1234-5678",
+    "Country": "China",
+    "Description": "Data science student specializing in big data analytics.",
+    "Active_courses": 5,
+    "Status": "Active",
+    "email": "li.wei@example.com",
+    "student_name": "Li Wei"
+  },
+  {
+    "id": 21,
+    "image": "https://i.pravatar.cc/150?img=21",
+    "Phone": "+353-1-123-4567",
+    "Country": "Ireland",
+    "Description": "Music composition student focusing on traditional Irish music.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "sean.murphy@example.com",
+    "student_name": "Sean Murphy"
+  },
+  {
+    "id": 22,
+    "image": "https://i.pravatar.cc/150?img=22",
+    "Phone": "+47-22-12-34-56",
+    "Country": "Norway",
+    "Description": "Marine biology student researching Arctic ecosystems.",
+    "Active_courses": 4,
+    "Status": "Suspend",
+    "email": "ingrid.hansen@example.com",
+    "student_name": "Ingrid Hansen"
+  },
+  {
+    "id": 23,
+    "image": "https://i.pravatar.cc/150?img=23",
+    "Phone": "+66-2-123-4567",
+    "Country": "Thailand",
+    "Description": "Culinary arts student specializing in Thai cuisine fusion.",
+    "Active_courses": 3,
+    "Status": "Active",
+    "email": "somchai.wongsa@example.com",
+    "student_name": "Somchai Wongsa"
+  },
+  {
+    "id": 24,
+    "image": "https://i.pravatar.cc/150?img=24",
+    "Phone": "+972-3-123-4567",
+    "Country": "Israel",
+    "Description": "Cybersecurity student focusing on ethical hacking.",
+    "Active_courses": 5,
+    "Status": "Active",
+    "email": "noa.cohen@example.com",
+    "student_name": "Noa Cohen"
+  },
+  {
+    "id": 25,
+    "image": "https://i.pravatar.cc/150?img=25",
+    "Phone": "+351-21-123-4567",
+    "Country": "Portugal",
+    "Description": "Viticulture and Enology student specializing in port wine production.",
+    "Active_courses": 4,
+    "Status": "Active",
+    "email": "joao.silva@example.com",
+    "student_name": "João Silva"
+  }
+]
+

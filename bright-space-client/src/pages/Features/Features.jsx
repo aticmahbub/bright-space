@@ -1,7 +1,9 @@
+import CreatedCourses from "../Courses/CreateCourse/CreateCourse";
+
 const Features = () => {
     return (
         <div>
-            Features
+            <CreatedCourses></CreatedCourses>
         </div>
     );
 };

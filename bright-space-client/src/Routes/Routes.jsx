@@ -76,6 +76,10 @@ export const router = createBrowserRouter([
             {
                 path: '/userProfile',
                 element: <UserProfile />
+            },
+            {
+                path: 'view-course-details',
+                element: <ViewCourse />
             }
         ]
     },
@@ -100,10 +104,7 @@ export const router = createBrowserRouter([
                 path: 'myCourses',
                 element: <MyCourses />
             },
-            {
-                path: 'view-course-details',
-                element: <ViewCourse />
-            },
+            
 
             // teacher routes
             {

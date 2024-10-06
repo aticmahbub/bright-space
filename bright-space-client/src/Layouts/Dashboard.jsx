@@ -13,12 +13,12 @@ const Dashboard = () => {
         <div className="flex">
             {/* Sidebar */}
             <div className={`fixed min-h-screen bg-white shadow-sm shadow-primary-200 z-20 hidden lg:block`}>
-                <div className={`transition-all duration-700  h-screen overflow-hidden group ${isSidebarOpen ? 'w-72' : 'w-16 hover:w-72'}`}>
+                <div className={`transition-all duration-300  h-screen overflow-hidden group ${isSidebarOpen ? 'w-72' : 'w-16 hover:w-72'}`}>
                     {/* Logo And Text */}
                     <div className="p-4 whitespace-nowrap flex items-center w-full justify-between">
                         <div className="flex items-center space-x-3">
                             <img className="w-6" src={brightSpace_logo} alt="Bright Space Logo"/>
-                            <h1 className={`text-lg font-bold transition-opacity duration-700 text-primary-500 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                            <h1 className={`text-lg font-bold transition-opacity duration-300 text-primary-500 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                                 Bright Space
                             </h1>
                         </div>
@@ -30,16 +30,17 @@ const Dashboard = () => {
                         </button>
                     </div>
                     {/* List Item */}
+                    
                 </div>
             </div>
             {/* Main Content */}
-            <div className="w-full">
+            <div className="w-full h-full">
                 {/* Top Bar for Main Content */}
-                <div className={`z-10 bg-white py-2 transition-all duration-700 w-full fixed shadow-sm shadow-primary-200 ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
+                <div className={`z-10 bg-white py-2 transition-all duration-700 w-full fixed shadow-sm shadow-primary-100 ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
                     <h1 className="text-xl font-semibold text-left bg-white">Dashboard</h1>
                 </div>
                 {/* Outlet for Main Content */}
-                <div className={`pt-16 transition-all duration-700 bg-about_banner_background_color ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
+                <div className={`pt-16 h-full transition-all duration-700 bg-about_banner_background_color ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
                     <Outlet />
                 </div>
             </div>

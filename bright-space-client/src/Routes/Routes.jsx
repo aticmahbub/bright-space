@@ -21,7 +21,7 @@ import ViewCourse from "../pages/Courses/ViewCourse/ViewCourse";
 import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
-import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
+import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 
 
 export const router = createBrowserRouter([
@@ -74,10 +74,6 @@ export const router = createBrowserRouter([
                 element: <AllCourses />
             },
             {
-                path: '/view-course-details',
-                element: <ViewCourse />
-            },
-            {
                 path: '/userProfile',
                 element: <UserProfile />
             }
@@ -104,6 +100,10 @@ export const router = createBrowserRouter([
                 path: 'myCourses',
                 element: <MyCourses />
             },
+            {
+                path: 'viewCourseDetails',
+                element: <ViewCourse />
+            },
 
             // teacher routes
             {
@@ -115,8 +115,8 @@ export const router = createBrowserRouter([
                 element: <AllTeachers />
             },
             {
-                path: 'addCourse',
-                element: <CreatedCourses />
+                path: 'createCourse',
+                element: <CreateCourse />
             },
             {
                 path: 'allCourses',

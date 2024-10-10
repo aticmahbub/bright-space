@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import FeaturedBlogger from "./Featured blogger/FeaturedBlogger";
 import AllBlogs from "./allBlogs/AllBlogs";
 import SideBlog from "./sideBlog/SideBlog";
-import CreateBlog from "./CreateBlog/CreateBlog";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -53,7 +52,7 @@ const Blog = () => {
       </div>
 
       <AllBlogs></AllBlogs>
-      <CreateBlog></CreateBlog>
+      {/* <CreateBlog></CreateBlog> */}
       
 
       

@@ -42,34 +42,44 @@ const Dashboard = () => {
 
     const sizes = ['xs'] // Only allow 'xs' size for the drawer
 
+    const userRole = "Student";
+
     const SideNavList = [
         {
             name: 'Dashboard',
             path: '/dashBoard',
             icon: TbLayoutDashboardFilled,
+            roles: ['Admin', 'Teacher', 'Student'],  // Visible to all roles
             exact: true
         },
         {
             name: 'All Students',
             path: 'allStudents',
-            icon: FaUser
+            icon: FaUser,
+            roles: ['Admin', 'Teacher']  // Only for Admin and Teacher
         },
         {
             name: 'All Teachers',
             path: 'allTeachers',
-            icon: PiChalkboardTeacherFill
+            icon: PiChalkboardTeacherFill,
+            roles: ['Admin']  // Only for Admin
         },
         {
             name: 'Courses',
             path: 'Courses',
-            icon: BiSolidBookContent
+            icon: BiSolidBookContent,
+            roles: ['Admin', 'Teacher', 'Student']  // Visible to all roles
         },
         {
             name: 'Setting',
             path: 'Setting',
-            icon: IoMdSettings
+            icon: IoMdSettings,
+            roles: ['Admin']  // Only for Admin
         }
     ];
+
+    // Filter SideNavList based on userRole
+    const filteredNavList = SideNavList.filter(item => item.roles.includes(userRole));
 
     return (
         <Flex className="bg-[#F5F6FA]">
@@ -94,7 +104,7 @@ const Dashboard = () => {
                     {/* List Item */}
                     <nav className="mt-7">
                         <Box className="space-y-2">
-                            {SideNavList.map((item, idx) =>
+                            {filteredNavList.map((item, idx) =>
                                 <Box key={idx}>
                                     <NavLink
                                         to={item.path}
@@ -147,7 +157,7 @@ const Dashboard = () => {
                                         {/* List Item */}
                                         <nav className="mt-7">
                                             <Box className="space-y-2">
-                                                {SideNavList.map((item, idx) =>
+                                                {filteredNavList.map((item, idx) =>
                                                     <Box key={idx}>
                                                         <NavLink
                                                             to={item.path}

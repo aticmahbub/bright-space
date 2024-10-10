@@ -6,7 +6,7 @@ const useRole = () => {
   const { user } = useAuth();
   const [allUsers] = useLoadAllUsers(); 
   const [role, setRole] = useState(null); 
-
+  console.log(role);
   useEffect(() => {
     if (allUsers && user) {
 
@@ -18,6 +18,7 @@ const useRole = () => {
   }, [allUsers, user]);
 
   return role;
+  
 };
 
 export default useRole;

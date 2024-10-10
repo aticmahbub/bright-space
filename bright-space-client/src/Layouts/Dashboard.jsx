@@ -21,12 +21,15 @@ import {
     Input, useDisclosure
 } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
+import useRole from "../hooks/useRole";
 
 
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const pathname = useLocation();
+    const role = useRole()
+    console.log(role);
 
     const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
 
@@ -43,21 +46,21 @@ const Dashboard = () => {
 
     const sizes = ['xs'] // Only allow 'xs' size for the drawer
 
-    const userRole = "Admin";
+    const userRole = role;
 
     const SideNavList = [
         {
             name: 'Dashboard',
             path: '/dashBoard',
             icon: TbLayoutDashboardFilled,
-            roles: ['Admin', 'Teacher', 'Student'],  // Visible to all roles
+            roles: ['Admin', 'teacher', 'student'],  // Visible to all roles
             exact: true
         },
         {
             name: 'All Students',
             path: 'allStudents',
             icon: FaUser,
-            roles: ['Admin', 'Teacher']  // Only for Admin and Teacher
+            roles: ['Admin', 'teacher']  // Only for Admin and Teacher
         },
         {
             name: 'All Teachers',
@@ -69,14 +72,26 @@ const Dashboard = () => {
             name: 'Courses',
             path: 'Courses',
             icon: BiSolidBookContent,
-            roles: ['Admin', 'Teacher', 'Student']  // Visible to all roles
+            roles: ['Admin', 'teacher', 'student']  // Visible to all roles
         },
         {
             name: 'Setting',
             path: 'Setting',
             icon: IoMdSettings,
             roles: ['Admin']  // Only for Admin
-        }
+        },
+        {
+            name: 'Quiz',
+            path: 'quiz',
+            icon: IoMdSettings,
+            roles: ['student']  // Only for Admin
+        },
+        {
+            name: 'Make Quiz',
+            path: 'quizForm',
+            icon: IoMdSettings,
+            roles: ['teacher']  // Only for Admin
+        },
     ];
 
     // Filter SideNavList based on userRole

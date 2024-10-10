@@ -17,6 +17,7 @@ const Quiz = () => {
         setQuizzes(response.data);
         setLoading(false);
       } catch (err) {
+        console.log(err);
         setError('Failed to load quiz data');
         setLoading(false);
       }

@@ -67,7 +67,7 @@ const Dashboard = () => {
         },
         {
             name: 'Courses',
-            path: 'Courses',
+            path: 'myCourses',
             icon: BiSolidBookContent,
             roles: ['Admin', 'Teacher', 'Student']  // Visible to all roles
         },

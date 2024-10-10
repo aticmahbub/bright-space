@@ -30,6 +30,7 @@ async function run() {
         const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
         const usersCollection = client.db('bright-space-db').collection('users-collection')
+        const questionCollection = client.db('bright-space-db').collection('questions-collection')
 
         
 
@@ -87,6 +88,21 @@ async function run() {
         
         app.get('/courses', async (req, res) => {
             const result = await coursesCollection.find().toArray()
+            res.send(result)
+        })
+
+
+        // Question related api 
+
+
+        app.post('/questions', async(req, res)=>{
+            const questionInfo = req.body;
+            const result = await questionCollection.insertOne(questionInfo)
+            res.send(result)
+        })
+
+        app.get('/questions', async (req, res) => {
+            const result = await questionCollection.find().toArray()
             res.send(result)
         })
 

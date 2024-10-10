@@ -6,7 +6,6 @@ import Registration from "../pages/shared/Authentication/Registration/Registrati
 import Dashboard from "../Layouts/Dashboard";
 import Features from "../pages/Features/Features";
 import Contact from "../pages/Contact/Contact";
-import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";

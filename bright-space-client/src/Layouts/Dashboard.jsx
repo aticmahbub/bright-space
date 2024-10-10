@@ -63,6 +63,12 @@ const Dashboard = () => {
             roles: ['Admin', 'teacher']  // Only for Admin and Teacher
         },
         {
+            name: 'Profile',
+            path: 'teacherProfile',
+            icon: FaUser,
+            roles: ['Admin', 'teacher', 'student']  // Only for Admin and Teacher
+        },
+        {
             name: 'All Teachers',
             path: 'allTeachers',
             icon: PiChalkboardTeacherFill,

@@ -61,10 +61,6 @@ export const router = createBrowserRouter([
                 element: <Features />
             },
             {
-                path: '/qna',
-                element: <QnA />
-            },
-            {
                 path: '/contact',
                 element: <Contact />
             },
@@ -112,7 +108,7 @@ export const router = createBrowserRouter([
                 element: <MyCourses />
             },
             {
-                path: 'viewCourseDetails/:id',
+                path: 'viewCourseDetails',
                 element: <ViewCourse />
             },
 

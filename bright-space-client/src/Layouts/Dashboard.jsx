@@ -42,7 +42,7 @@ const Dashboard = () => {
 
     const sizes = ['xs'] // Only allow 'xs' size for the drawer
 
-    const userRole = "Student";
+    const userRole = "Admin";
 
     const SideNavList = [
         {
@@ -125,7 +125,7 @@ const Dashboard = () => {
                 </Box>
             </Box>
             {/* Main Content */}
-            <Box className="w-full h-screen">
+            <Box className="w-full">
                 {/* Top Bar for Main Content */}
                 <Box className={`z-10 bg-white py-2 transition-all duration-500 w-full fixed shadow-sm shadow-primary-100 pr-7 ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
                     <Flex className="w-full items-center justify-between">
@@ -196,7 +196,7 @@ const Dashboard = () => {
                     </Flex>
                 </Box>
                 {/* Outlet for Main Content */}
-                <Box className={`pt-16 h-full transition-all duration-700 ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
+                <Box className={`pt-24 h-full transition-all duration-700 ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
                     <Outlet />
                 </Box>
             </Box>

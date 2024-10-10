@@ -118,7 +118,7 @@ const Dashboard = () => {
             <Box className="w-full h-screen">
                 {/* Top Bar for Main Content */}
                 <Box className={`z-10 bg-white py-2 transition-all duration-500 w-full fixed shadow-sm shadow-primary-100 pr-7 ${isSidebarOpen ? 'pl-80' : 'lg:pl-24'}`}>
-                    <Flex className="w-full justify-between items-center">
+                    <Flex className="w-full items-center justify-between">
 
                         {/* Sidebar Small */}
                         <Box className="md:block lg:hidden">
@@ -168,12 +168,19 @@ const Dashboard = () => {
                                 </DrawerContent>
                             </Drawer>
                         </Box>
+                        <Flex items-center display={['flex', 'flex', 'flex', 'none']}>
+                            <Image className="w-6 mr-3" src={brightSpace_logo} alt="Bright Space Logo" />
+                            <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500`}>
+                                Bright Space
+                            </Text>
+                        </Flex>
 
-                        <Flex className="items-center w-1/6 text-[#8094AE] text-sm">
+                        <Box display={['none', 'none', 'none', 'flex']} flexDirection={'row'} className="items-center text-[#8094AE] text-sm">
                             <Icon as={FaSearch} className="text-gray-500" />
                             <Input placeholder="Search Anything..." border="none" _focus={{ boxShadow: 'none' }} fontSize={'14px'} className="w-full" />
-                        </Flex>
-                        <Flex>
+                        </Box>
+
+                        <Flex justifyItems={'end'} className="ml-auto">
                             <Messages />
                         </Flex>
                     </Flex>

@@ -22,6 +22,7 @@ import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
+import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
 
 
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
             {
                 path: '/features',
                 element: <Features />
+            },
+            {
+                path: '/qna',
+                element: <QnA />
             },
             {
                 path: '/contact',
@@ -105,7 +110,10 @@ export const router = createBrowserRouter([
                 path: 'myCourses',
                 element: <MyCourses />
             },
-            
+            {
+                path: 'viewCourseDetails/:id',
+                element: <ViewCourse />
+            },
 
             // teacher routes
             {

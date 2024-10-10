@@ -47,7 +47,7 @@ const LiveSession = () => {
         <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} pt='8' pb='16' className='min-h-screen'>
             <Box rounded='lg' overflow='hidden'>
                 <JaaSMeeting
-
+                    jwt={`${import.meta.env.VITE_JITSI_JWT}`}
                     appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
                     roomName={data.meetCode}
                     getIFrameRef={iframeRef => {

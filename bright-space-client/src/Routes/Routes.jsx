@@ -104,7 +104,10 @@ export const router = createBrowserRouter([
                 path: 'myCourses',
                 element: <MyCourses />
             },
-            
+            {
+                path: 'viewCourseDetails/:id',
+                element: <ViewCourse />
+            },
 
             // teacher routes
             {

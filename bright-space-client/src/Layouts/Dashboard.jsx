@@ -4,7 +4,7 @@ import { LuGraduationCap, LuHome, LuLayoutDashboard, LuLightbulb, LuLogOut, LuSe
 import { IoChatbubblesOutline, IoCreateOutline } from "react-icons/io5";
 import './css/dashboard.css';
 import { Box, Button, Container, Flex, Heading, HStack, Icon, Text, VStack, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody, IconButton, useMediaQuery } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, QuestionIcon } from "@chakra-ui/icons";
 
 const Dashboard = () => {
     const role = useRole();
@@ -17,6 +17,7 @@ const Dashboard = () => {
             <VStack align="stretch" spacing={2}>
                 <Link as={NavLink} to='/dashboard/studentProfile'>Profile</Link>
                 <Link as={NavLink} to='/dashboard/studentProfile'>Profile</Link>
+                <Link as={NavLink} to='/dashboard/quiz'>Quiz</Link>
             </VStack>
         </Box>
     );
@@ -33,6 +34,7 @@ const Dashboard = () => {
                     { to: '/dashboard/allStudents', icon: LuUser, text: 'Students' },
                     { to: '/dashboard/allCourses', icon: LuLightbulb, text: 'Courses' },
                     { to: '/dashboard/createCourse', icon: IoCreateOutline, text: 'Create Course' },
+                    { to: '/dashboard/quizForm', icon: QuestionIcon, text: 'Create Quiz' },
                     { to: '/dashboard/allCourses', icon: IoChatbubblesOutline, text: 'Group Chat' },
                     { to: '/dashboard/allCourses', icon: LuSettings, text: 'Settings' },
                     { to: '/', icon: LuHome, text: 'Hone' }

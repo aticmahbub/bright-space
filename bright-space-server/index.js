@@ -30,12 +30,19 @@ async function run() {
         const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
         const usersCollection = client.db('bright-space-db').collection('users-collection')
+        const quizCollection = client.db('bright-space-db').collection('quiz-collection')
 
         
 
         // get all users
         app.get('/allUsers', async (req, res) => {
             const result = await usersCollection.find().toArray()
+            res.send(result)
+        })
+
+        // get all quizes
+        app.get('/quiz', async (req, res) => {
+            const result = await quizCollection.find().toArray()
             res.send(result)
         })
 
@@ -53,6 +60,14 @@ async function run() {
             const cartItem = req.body
             // console.log(cartItem);
             const result = await cartCollection.insertOne(cartItem)
+
+            res.send(result)
+        })
+        // add quiz
+        app.post('/quiz', async (req, res) => {
+            const newQuestion = req.body
+            // console.log(cartItem);
+            const result = await quizCollection.insertOne(newQuestion)
 
             res.send(result)
         })

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import CourseContentType from "./CourseContentType";
 
 const CourseContent = () => {
-  const [advancedContent, setAdvancedContent] = useState(false);
+  const [advancedContent, setAdvancedContent] = useState(true);
   const [basicContent, setBasicContent] = useState(false);
   return (
     <Box mt={"70px"}>

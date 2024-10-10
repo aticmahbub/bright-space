@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "userName": "John Doe",
+        "userImage": "https://randomuser.me/api/portraits/men/1.jpg",
+        "userMessage": "This is a test message",
+        "userActiveStatus": true,
+        "messageTime": "12:00 PM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 2,
+        "userName": "Jane Doe",
+        "userImage": "https://randomuser.me/api/portraits/women/2.jpg",
+        "userMessage": "This is another test message",
+        "userActiveStatus": false,
+        "messageTime": "1:00 PM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 3,
+        "userName": "Alice",
+        "userImage": "https://randomuser.me/api/portraits/women/3.jpg",
+        "userMessage": "Hello, how are you?",
+        "userActiveStatus": true,
+        "messageTime": "2:00 PM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 4,
+        "userName": "Bob",
+        "userImage": "https://randomuser.me/api/portraits/men/4.jpg",
+        "userMessage": "I'm good, thank you!",
+        "userActiveStatus": false,
+        "messageTime": "3:00 PM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 5,
+        "userName": "Eve",
+        "userImage": "https://randomuser.me/api/portraits/women/5.jpg",
+        "userMessage": "What are you doing?",
+        "userActiveStatus": true,
+        "messageTime": "4:00 PM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 6,
+        "userName": "Mallory",
+        "userImage": "https://randomuser.me/api/portraits/women/6.jpg",
+        "userMessage": "I'm just relaxing.",
+        "userActiveStatus": false,
+        "messageTime": "5:00 PM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 7,
+        "userName": "Trudy",
+        "userImage": "https://randomuser.me/api/portraits/women/7.jpg",
+        "userMessage": "That sounds nice.",
+        "userActiveStatus": true,
+        "messageTime": "6:00 PM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 8,
+        "userName": "Oscar",
+        "userImage": "https://randomuser.me/api/portraits/men/8.jpg",
+        "userMessage": "Yes, it is.",
+        "userActiveStatus": false,
+        "messageTime": "7:00 PM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 9,
+        "userName": "Charlie",
+        "userImage": "https://randomuser.me/api/portraits/men/9.jpg",
+        "userMessage": "I'm going to sleep now.",
+        "userActiveStatus": true,
+        "messageTime": "8:00 PM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 10,
+        "userName": "David",
+        "userImage": "https://randomuser.me/api/portraits/men/10.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": false,
+        "messageTime": "9:00 PM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 11,
+        "userName": "Eve",
+        "userImage": "https://randomuser.me/api/portraits/women/11.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": true,
+        "messageTime": "10:00 PM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 12,
+        "userName": "Mallory",
+        "userImage": "https://randomuser.me/api/portraits/women/12.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": false,
+        "messageTime": "11:00 PM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 13,
+        "userName": "Trudy",
+        "userImage": "https://randomuser.me/api/portraits/women/13.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": true,
+        "messageTime": "12:00 AM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 14,
+        "userName": "Oscar",
+        "userImage": "https://randomuser.me/api/portraits/men/14.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": false,
+        "messageTime": "1:00 AM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 15,
+        "userName": "Charlie",
+        "userImage": "https://randomuser.me/api/portraits/men/15.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": true,
+        "messageTime": "2:00 AM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 16,
+        "userName": "David",
+        "userImage": "https://randomuser.me/api/portraits/men/16.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": false,
+        "messageTime": "3:00 AM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 17,
+        "userName": "Eve",
+        "userImage": "https://randomuser.me/api/portraits/women/17.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": true,
+        "messageTime": "4:00 AM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 18,
+        "userName": "Mallory",
+        "userImage": "https://randomuser.me/api/portraits/women/18.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": false,
+        "messageTime": "5:00 AM",
+        "messageStatus": "unseen"
+    },
+    {
+        "id": 19,
+        "userName": "Trudy",
+        "userImage": "https://randomuser.me/api/portraits/women/19.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": true,
+        "messageTime": "6:00 AM",
+        "messageStatus": "seen"
+    },
+    {
+        "id": 20,
+        "userName": "Oscar",
+        "userImage": "https://randomuser.me/api/portraits/men/20.jpg",
+        "userMessage": "Good night!",
+        "userActiveStatus": false,
+        "messageTime": "7:00 AM",
+        "messageStatus": "unseen"
+    }
+]

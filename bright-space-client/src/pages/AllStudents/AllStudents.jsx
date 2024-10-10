@@ -1,132 +1,67 @@
-import { AddIcon, ChevronLeftIcon, ChevronRightIcon, SearchIcon } from '@chakra-ui/icons';
-import { Avatar, Button, Flex, Heading, Icon, IconButton, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Select, Stack, Table, Tbody, Td, Text, Th, Thead, Tr, useToast } from '@chakra-ui/react';
-import { useEffect, useState, useCallback } from 'react';
-import { BsThreeDots } from "react-icons/bs";
+import { Avatar, Box, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, Wrap, WrapItem } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+
 
 const AllStudents = () => {
-    const [allStudents, setAllStudents] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const toast = useToast();
-
-    const fetchStudents = useCallback(async () => {
-        try {
-            setIsLoading(true);
-            const response = await fetch('/allStudents.json');
-            if (!response.ok) {
-                throw new Error('Failed to fetch students');
-            }
-            const data = await response.json();
-            setAllStudents(data);
-        } catch (error) {
-            console.error('Error fetching students:', error);
-            toast({
-                title: "Error",
-                description: "Failed to load students. Please try again.",
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-            });
-        } finally {
-            setIsLoading(false);
-        }
-    }, [toast]);
+    const [students, setStudents] = useState([]);
 
     useEffect(() => {
-        fetchStudents();
-    }, [fetchStudents]);
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/allStudents.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setStudents(data);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        };
 
-    const renderTableHeader = () => (
-        <Thead>
-            <Tr>
-                <Th>Image</Th>
-                <Th>Instructor</Th>
-                <Th>Phone</Th>
-                <Th>Country</Th>
-                <Th>Description</Th>
-                <Th>Active courses</Th>
-                <Th>Status</Th>
-                <Th><Icon as={BsThreeDots} boxSize={6} /></Th>
-            </Tr>
-        </Thead>
-    );
-
-    const renderTableBody = () => (
-        <Tbody>
-            {allStudents.map((student) => (
-                <Tr key={student.id}>
-                    <Td>
-                        <Avatar src={student.image} name={student.student_name} size="md" />
-                    </Td>
-                    <Td>{student.student_name}</Td>
-                    <Td>{student.Phone}</Td>
-                    <Td>{student.Country}</Td>
-                    <Td>{student.Description}</Td>
-                    <Td>{student.Active_courses}</Td>
-                    <Td>{student.Status}</Td>
-                    <Td>
-                        <Menu>
-                            <MenuButton as={IconButton} aria-label='Options' icon={<Icon as={BsThreeDots} />} variant='ghost' />
-                            <MenuList>
-                                <MenuItem>View Profile</MenuItem>
-                                <MenuItem>Edit</MenuItem>
-                                <MenuItem>Delete</MenuItem>
-                            </MenuList>
-                        </Menu>
-                    </Td>
-                </Tr>
-            ))}
-        </Tbody>
-    );
-
-    const renderPagination = () => (
-        <Flex justifyContent="space-between" alignItems="center" mt={4}>
-            <Text>
-                Showing {Math.min(allStudents.length, 10)} of {allStudents.length} entries
-            </Text>
-            <Stack direction="row" spacing={2}>
-                <Button size="sm" leftIcon={<ChevronLeftIcon />} disabled>
-                    Previous
-                </Button>
-                <Button size="sm" variant="outline">1</Button>
-                <Button size="sm" variant="outline">2</Button>
-                <Button size="sm" variant="outline">3</Button>
-                <Button size="sm" rightIcon={<ChevronRightIcon />}>
-                    Next
-                </Button>
-            </Stack>
-        </Flex>
-    );
-
+        fetchData();
+    }, []);
     return (
-        <Flex direction="column" p={4}>
-            <Flex justifyContent="space-between" alignItems="center" mb={4}>
-                <Heading as="h1" size="xl" fontWeight="bold" color="black">
-                    Students
-                </Heading>
-                <Flex justifyContent="end" alignItems="center" gap={4} flex={1}>
-                    <InputGroup maxW="300px">
-                        <InputLeftElement pointerEvents="none">
-                            <SearchIcon color="gray.300" />
-                        </InputLeftElement>
-                        <Input type="text" placeholder="Search students" focusBorderColor="primary.500" />
-                    </InputGroup>
-                    <Select placeholder="Status" maxW="200px" focusBorderColor="primary.500">
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="suspended">Suspended</option>
-                    </Select>
-                    <Button leftIcon={<AddIcon />} colorScheme="primary" variant="solid">
-                        Add Student
-                    </Button>
-                </Flex>
-            </Flex>
-            <Table variant="simple" size="md">
-                {renderTableHeader()}
-                {!isLoading && renderTableBody()}
-            </Table>
-            {!isLoading && renderPagination()}
-        </Flex>
-    );
-};
+        <Box>
+            <Text className="text-xl font-bold text-center mb-16">All Students</Text>
+            <TableContainer>
+                <Table variant='simple'>
+                    <Thead>
+                        <Tr>
+                            <Th>Photo</Th>
+                            <Th>User</Th>
+                            <Th>Phone</Th>
+                            <Th>Country</Th>
+                            <Th>Status</Th>
+                            <Th>Email</Th>
+                            <Th>Active Courses</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {
+                            students.map((student, idx) =>
+                                <Tr key={idx}>
+                                    <Td>
+                                        <Wrap>
+                                            <WrapItem>
+                                                <Avatar name={student.student_name} src={student.image} />
+                                            </WrapItem>
+                                        </Wrap>
+                                    </Td>
+                                    <Td>{student.student_name}</Td>
+                                    <Td>{student.Phone}</Td>
+                                    <Td>{student.Country}</Td>
+                                    <Td>{student.Status}</Td>
+                                    <Td>{student.email}</Td>
+                                    <Td>{student.Active_courses}</Td>
+                                </Tr>
+                            )
+                        }
+                    </Tbody>
+                </Table>
+            </TableContainer>
+        </Box>
+    )
+}
 
 export default AllStudents;

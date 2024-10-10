@@ -118,7 +118,7 @@ export const router = createBrowserRouter([
             // teacher routes
             {
                 path: 'teacherProfile',
-                element: <TeacherProfile />
+                element:  <StudentProfile />
             },
             {
                 path: 'allTeachers',

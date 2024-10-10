@@ -1,20 +1,29 @@
-import { Box, Button, Icon, IconButton, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Icon,
+  IconButton,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdCall } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import PersonalDetails from "../../components/StudentTeacherProfile/PersonalDetails";
 import { useState } from "react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-} from "@chakra-ui/react";
-import { AddIcon, EditIcon, ExternalLinkIcon, RepeatIcon } from "@chakra-ui/icons";
+  AddIcon,
+  EditIcon,
+  ExternalLinkIcon,
+  RepeatIcon,
+} from "@chakra-ui/icons";
+import { FaSave } from "react-icons/fa";
 
 const StudentProfile = () => {
-  const [option, SetOption] = useState(false);
+  const [update, setUpdate] = useState(false);
   return (
     <Box border={"1px solid"} borderColor={"primary.100"} p={4} rounded={"2xl"}>
       <Box
@@ -40,37 +49,41 @@ const StudentProfile = () => {
           />
         </Box>
         <Box>
-          <Box display="flex" justifyContent="end" userSelect="none">
-                {/* <BsThreeDots size={30} cursor={"pointer"} onClick={()=> SetOption(true)} />
-                 */}
-                 <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<BsThreeDots />}
-              variant="ghost"
-              _hover={{bg:"none"}}
-              fontSize="2xl"
-              mx={4}
-            />
-            <MenuList>
-              <MenuItem icon={<AddIcon />} command="⌘T">
-                New Tab
-              </MenuItem>
-              <MenuItem icon={<ExternalLinkIcon />} command="⌘N">
-                New Window
-              </MenuItem>
-              <MenuItem icon={<RepeatIcon />} command="⌘⇧N">
-                Open Closed Tab
-              </MenuItem>
-              <MenuItem  justifyContent={"center"} bg="primary.300">
-                Close
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          <Box display="flex" justifyContent="end" userSelect="none" mt={2}>
+            {/* <BsThreeDots size={30} cursor={"pointer"} onClick={()=> SetOption(true)} />
+             */}
+            <Menu>
+              {!update ? (
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<BsThreeDots />}
+                  variant="ghost"
+                  _hover={{ bg: "none" }}
+                  fontSize="2xl"
+                  mx={4}
+                />
+              ) : (
+               <Button mx={4} onClick={()=>setUpdate(!update)}>Save</Button>
+              )}
+
+              <MenuList>
+                <MenuItem icon={<AddIcon />}>All Exam Sheet</MenuItem>
+                <MenuItem icon={<ExternalLinkIcon />}>Attendance</MenuItem>
+                <MenuItem
+                  onClick={() => setUpdate(!update)}
+                  icon={<RepeatIcon />}
+                >
+                  Update Profile
+                </MenuItem>
+                <MenuItem justifyContent={"center"} bg="primary.300">
+                  Close
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
         </Box>
-              </Box>
-              {/* {
+        {/* {
                 option && 
                 <Box bg={"primary.100"} p="4" rounded={"xl"}>
                 <Stack>
@@ -82,8 +95,6 @@ const StudentProfile = () => {
                 </Stack>
               </Box>
               } */}
-
-          
 
         <Box>
           {/* Profile overview */}
@@ -153,7 +164,7 @@ const StudentProfile = () => {
             </Box>
           </Box>
           <Box px={4}>
-            <PersonalDetails />
+            <PersonalDetails update={update} />
           </Box>
         </Box>
       </Box>

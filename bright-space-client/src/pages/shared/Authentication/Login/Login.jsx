@@ -21,7 +21,7 @@ const Login = () => {
     termsAccepted: false,
   });
 
-  const {loginUser, googleLogin} = useContext(AuthContext)
+  const { loginUser, googleLogin } = useContext(AuthContext)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -45,6 +45,9 @@ const Login = () => {
         <Lottie className='w-full flex-1' animationData={authentication} />
         <div className="p-7 md:p-10 2xl:p-12 bg-white lg:max-w-[460px] 2xl:max-w-[560px] rounded-lg flex-1">
           <h2 className="text-2xl font-bold text-center mb-4">Sign In</h2>
+          <p className="text-center text-gray-500 mb-6">
+            Login to your account and enjoy exclusive features.
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="text-start flex flex-col">

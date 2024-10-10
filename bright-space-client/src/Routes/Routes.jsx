@@ -6,11 +6,11 @@ import Registration from "../pages/shared/Authentication/Registration/Registrati
 import Dashboard from "../Layouts/Dashboard";
 import Features from "../pages/Features/Features";
 import Contact from "../pages/Contact/Contact";
-import StudentProfile from "../pages/StudentProfile/StudentProfile";
+import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
-import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
+
 import About from "../pages/About/About/About";
 import ClassRoom from "../pages/ClassRoom/ClassRoom";
 import LiveSession from "../pages/LiveSession/LiveSession";
@@ -24,6 +24,8 @@ import AllStudents from "../pages/AllStudents/AllStudents";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
+import QnA from "../pages/QnA/QnA";
+import StudentProfile from "../pages/StudentProfile/StudentProfile";
 
 
 export const router = createBrowserRouter([
@@ -60,6 +62,10 @@ export const router = createBrowserRouter([
                 element: <Features />
             },
             {
+                path: '/qna',
+                element: <QnA />
+            },
+            {
                 path: '/contact',
                 element: <Contact />
             },
@@ -78,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path: '/userProfile',
                 element: <UserProfile />
+            },
+            {
+                path: 'view-course-details',
+                element: <ViewCourse />
             }
         ]
     },
@@ -103,7 +113,7 @@ export const router = createBrowserRouter([
                 element: <MyCourses />
             },
             {
-                path: 'viewCourseDetails',
+                path: 'viewCourseDetails/:id',
                 element: <ViewCourse />
             },
 

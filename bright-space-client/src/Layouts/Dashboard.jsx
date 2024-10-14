@@ -28,7 +28,8 @@ import useRole from "../hooks/useRole";
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const pathname = useLocation();
-    const role = useRole()
+    // const role = useRole()
+    const role = "student"
     console.log(role);
 
     const toggleSidebar = () => setIsSidebarOpen(prev => !prev);

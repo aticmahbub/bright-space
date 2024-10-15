@@ -34,8 +34,41 @@ async function run() {
 
         //jwt related api
         app.post('/meetingToken', (req, res) => {
-            const userInfo = req.body;
-            const token = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+            const { name, email, role, userId } = req.body;
+
+            if (!name || !email || !role || !userId) {
+                return res.status(400).send({ error: 'Missing user information' });
+            }
+
+            const payload = {
+                "aud": "jitsi",
+                "iss": "chat",
+                "iat": 1729014163,
+                "exp": 1729021363,
+                "nbf": 1729014158,
+                "sub": process.env.JITSI_API_KEY,
+                "context": {
+                    "features": {
+                        "livestreaming": true,
+                        "outbound-call": true,
+                        "sip-outbound-call": false,
+                        "transcription": true,
+                        "recording": role === 'teacher' ? true : false
+                    },
+                    "user": {
+                        "hidden-from-recorder": false,
+                        "moderator": role === 'teacher' ? true : false,
+                        "name": name,
+                        "id": userId,
+                        "avatar": "",
+                        "email": email
+                    }
+                },
+                "room": "*"
+            }
+
+            const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
+
             res.send({ token });
         });
 

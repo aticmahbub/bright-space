@@ -25,7 +25,6 @@ const LiveSession = () => {
                 icon: "error",
                 title: "Invalid Code",
                 text: "Please enter the valid classroom code!",
-                // footer: '<a href="#">Why do I have this issue?</a>'
             });
             navigate('/classroom')
         }

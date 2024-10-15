@@ -14,7 +14,7 @@ const ClassRoom = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
     const role = useRole();
-    console.log(user.uid, role);
+    console.log(user?.uid, role);
 
     const { mutate } = useMutation({
         mutationKey: ['meetingCode'],
@@ -29,13 +29,25 @@ const ClassRoom = () => {
         }
     });
 
+    const { mutate: mutateUserInfo } = useMutation({
+        mutationKey: ['meetingToken'],
+        mutationFn: async (info) => {
+            const res = await axiosPublic.post('/meetingToken', info);
+            return res.data;
+        },
+        onSuccess: (data) => {
+            localStorage.setItem('meetToken', data.token);
+        }
+    });
+
     const generateMeetingCode = () => {
         const userInfo = {
-            name: user.displayName,
-            email: user.email,
-            userId: user.uid,
+            name: user?.displayName,
+            email: user?.email,
+            userId: user?.uid,
             role: role
         }
+        mutateUserInfo(userInfo);
 
         const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
         mutate({ meetCode: meetingCode });

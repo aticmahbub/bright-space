@@ -2,11 +2,12 @@ const express = require('express')
 const cors = require('cors')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config()
+const jwt = require('jsonwebtoken');
 const app = express()
 const port = process.env.PORT || 3000
 
 
-//middlewires
+//middlewares
 app.use(cors())
 app.use(express.json())
 
@@ -31,7 +32,12 @@ async function run() {
         const cartCollection = client.db('bright-space-db').collection('cart-collection')
         const usersCollection = client.db('bright-space-db').collection('users-collection')
 
-        
+        //jwt related api
+        app.post('/meetingToken', (req, res) => {
+            const userInfo = req.body;
+            const token = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+            res.send({ token });
+        });
 
         // get all users
         app.get('/allUsers', async (req, res) => {
@@ -46,7 +52,6 @@ async function run() {
             const result = await cartCollection.find(query).toArray()
             res.send(result)
         })
-
 
         // add to cart
         app.post('/enrolls', async (req, res) => {
@@ -73,25 +78,17 @@ async function run() {
             res.send(result);
         });
 
-
         // create new courses or add courses api
-        
-        app.post('/courses', async(req, res)=>{
+        app.post('/courses', async (req, res) => {
             const coursesInfo = req.body;
             const result = await coursesCollection.insertOne(coursesInfo)
-
             res.send(result)
-
         })
 
-        
         app.get('/courses', async (req, res) => {
             const result = await coursesCollection.find().toArray()
             res.send(result)
         })
-
-
-
 
         // users related api
         app.post('/users', async (req, res) => {
@@ -99,9 +96,6 @@ async function run() {
             const result = await usersCollection.insertOne(user)
             res.send(result)
         })
-
-        
-
 
         // await client.connect();
         // Send a ping to confirm a successful connection

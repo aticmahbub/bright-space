@@ -10,6 +10,7 @@ const LiveSession = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const { id } = useParams();
+    const meetingToken = localStorage.getItem('meetToken');
 
     const { data = {}, isSuccess: isMeetCodeSuccess, isLoading } = useQuery({
         queryKey: ['meetCode'],
@@ -39,6 +40,7 @@ const LiveSession = () => {
         // api.executeCommand('subject', roomName)
         api.addListener('readyToClose', () => {
             navigate('/classroom');
+            localStorage.removeItem('meetToken');
         });
     };
 
@@ -46,8 +48,8 @@ const LiveSession = () => {
         <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} pt='8' pb='16' className='min-h-screen'>
             <Box rounded='lg' overflow='hidden'>
                 <JaaSMeeting
-                    jwt={`${import.meta.env.VITE_JITSI_JWT}`}
-                    appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
+                    jwt={meetingToken}
+                    appId={`${import.meta.env.VITE_JITSI_APP_ID}`}
                     roomName={data.meetCode}
                     getIFrameRef={iframeRef => {
                         iframeRef.style.height = '75vh';

@@ -42,13 +42,13 @@ async function run() {
             }
 
             const currentTime = Math.floor(Date.now() / 1000);
-            const exTime = currentTime + (60 * 60);
+            const expTime = currentTime + (60 * 60);
 
             const payload = {
                 "aud": "jitsi",
                 "iss": "chat",
                 "iat": currentTime,
-                "exp": exTime,
+                "exp": expTime,
                 "nbf": currentTime,
                 "sub": process.env.JITSI_APP_ID,
                 "context": {

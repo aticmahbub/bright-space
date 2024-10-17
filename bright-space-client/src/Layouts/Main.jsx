@@ -6,7 +6,6 @@ import { Box } from '@chakra-ui/react';
 const Main = () => {
     const { pathname } = useLocation();
     const { id } = useParams();
-    console.log(pathname, id);
 
     return (
         <Box bg='#F7F7F8'>

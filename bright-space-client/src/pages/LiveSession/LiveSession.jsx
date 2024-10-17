@@ -27,6 +27,7 @@ const LiveSession = () => {
                 title: "Invalid Code",
                 text: "Please enter the valid classroom code!",
             });
+            localStorage.removeItem('meetToken');
             navigate('/classroom');
         }
     }, [data, isMeetCodeSuccess, navigate]);

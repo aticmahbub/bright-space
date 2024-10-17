@@ -1,5 +1,6 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config()
 const jwt = require('jsonwebtoken');
@@ -40,13 +41,16 @@ async function run() {
                 return res.status(400).send({ error: 'Missing user information' });
             }
 
+            const currentTime = Math.floor(Date.now() / 1000);
+            const exTime = currentTime + (60 * 60);
+
             const payload = {
                 "aud": "jitsi",
                 "iss": "chat",
-                "iat": 1729014163,
-                "exp": 1729021363,
-                "nbf": 1729014158,
-                "sub": process.env.JITSI_API_KEY,
+                "iat": currentTime,
+                "exp": exTime,
+                "nbf": currentTime,
+                "sub": process.env.JITSI_APP_ID,
                 "context": {
                     "features": {
                         "livestreaming": true,
@@ -65,11 +69,19 @@ async function run() {
                     }
                 },
                 "room": "*"
+            };
+
+            try {
+                const privateKey = fs.readFileSync(process.env.JITSI_PRIVATE_KEY, 'utf8');
+                const kid = process.env.JITSI_API_KEY;
+
+                const token = jwt.sign(payload, privateKey, { algorithm: 'RS256', header: { kid } });
+
+                res.send({ token });
+            } catch (error) {
+                console.error(error);
+                res.status(500).send({ error: 'Failed to generate token' });
             }
-
-            const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
-
-            res.send({ token });
         });
 
         // get all users

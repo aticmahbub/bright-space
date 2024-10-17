@@ -27,7 +27,7 @@ const LiveSession = () => {
                 title: "Invalid Code",
                 text: "Please enter the valid classroom code!",
             });
-            navigate('/classroom')
+            navigate('/classroom');
         }
     }, [data, isMeetCodeSuccess, navigate]);
 

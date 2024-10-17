@@ -7,14 +7,15 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useMutation } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
 import useRole from '../../hooks/useRole';
+import useMeetToken from '../../hooks/useMeetToken';
 
 const ClassRoom = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const axiosPublic = useAxiosPublic();
+    const mutateUserInfo = useMeetToken();
     const navigate = useNavigate();
     const { user } = useAuth();
     const role = useRole();
-    console.log(user?.uid, role);
 
     const { mutate } = useMutation({
         mutationKey: ['meetingCode'],
@@ -26,17 +27,6 @@ const ClassRoom = () => {
             if (variables?.meetCode) {
                 navigate(`/live/${variables.meetCode}`);
             }
-        }
-    });
-
-    const { mutate: mutateUserInfo } = useMutation({
-        mutationKey: ['meetingToken'],
-        mutationFn: async (info) => {
-            const res = await axiosPublic.post('/meetingToken', info);
-            return res.data;
-        },
-        onSuccess: (data) => {
-            localStorage.setItem('meetToken', data.token);
         }
     });
 

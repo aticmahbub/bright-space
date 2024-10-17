@@ -148,13 +148,13 @@ async function run() {
                     question.voters = [];
                 }
 
-                // const userVote = question.voters.find(voter => voter.userId === userId);
+                const userVote = question.voters.find(voter => voter.userId === userId);
 
-                // if (userVote) {
-                //     return res.status(400).send({
-                //         message: "user has already taken"
-                //     })
-                // }
+                if (userVote) {
+                    return res.status(400).send({
+                        message: "user has already taken"
+                    })
+                }
 
                 let updateQuery;
                 if (voteType === 'upvote') {
@@ -189,6 +189,38 @@ async function run() {
 
 
             } catch (error) {
+                console.log(error);
+            }
+        })
+
+        // answer on Q and A  page 
+
+        app.post('/questions/:id/answer', async (req, res)=>{
+            try{
+
+                const {id} = req.params;
+                const {questionId, userEmail, userName, answer} = req.body;
+                const query = {_id: new ObjectId(id)};
+                const question = await questionCollection.findOne(query);
+
+                const newAnswer = {
+                    questionId: questionId,
+                    userEmail: userEmail,
+                    userName: userName,
+                    answer: answer,
+                    date: new Date()
+                }
+
+                const updateQuery = {
+                    $push:{answers: newAnswer}
+                }
+
+                const result = await questionCollection.updateOne(query, updateQuery);
+
+                res.send(result)
+                
+
+            }catch(error){
                 console.log(error);
             }
         })

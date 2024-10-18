@@ -87,8 +87,10 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'qna',
-                element: <QnA />
-            },
+                element: <PrivateRoute>
+                    <QnA />
+                </PrivateRoute>
+            }
         ]
     },
     {

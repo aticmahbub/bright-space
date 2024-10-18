@@ -14,10 +14,16 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useMeetToken from '../../hooks/useMeetToken';
+import useRole from '../../hooks/useRole';
+import useAuth from '../../hooks/useAuth';
 
 const JoinClsModal = ({ title, isOpen, onClose }) => {
     const [meetCode, setMeetCode] = useState('');
+    const mutateUserInfo = useMeetToken();
     const navigate = useNavigate();
+    const { user } = useAuth();
+    const role = useRole();
 
     const handleMeetCode = e => {
         e.preventDefault();
@@ -26,6 +32,14 @@ const JoinClsModal = ({ title, isOpen, onClose }) => {
     };
 
     const handleJoinMeeting = () => {
+        const userInfo = {
+            name: user?.displayName,
+            email: user?.email,
+            userId: user?.uid,
+            role: role
+        }
+        mutateUserInfo(userInfo);
+
         navigate(`/live/${meetCode}`);
     };
 
@@ -39,10 +53,10 @@ const JoinClsModal = ({ title, isOpen, onClose }) => {
                     <Box border='1px' borderColor='gray' rounded='md' p='4'>
                         <Text>You&apos;re currently signed in as</Text>
                         <Box display='flex' gap='3' mt='3'>
-                            <Avatar size='md' name='Ryan Florence' src='https://bit.ly/ryan-florence' />
+                            <Avatar size='md' name='Ryan Florence' src={user?.photoUrl ? user.photoUrl : 'https://bit.ly/ryan-florence'} />
                             <Box>
-                                <Text fontWeight='600'>John Doe</Text>
-                                <Text>johndoe@mail.com</Text>
+                                <Text fontWeight='600'>{user?.displayName}</Text>
+                                <Text>{user?.email}</Text>
                             </Box>
                         </Box>
                     </Box>

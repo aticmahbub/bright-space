@@ -33,110 +33,127 @@ const Contact = () => {
       >
         Contact Us
       </Box>
-      <Grid
-        templateColumns="repeat(10, 1fr)"
-        width="container.xl"
-        mx="auto"
-        my="16"
-        gap={4}
+      <Box
+        bgImage="url(https://esmarts.qodeinteractive.com/wp-content/uploads/2017/10/contact-background-img-1.png)"
+        bgRepeat="no-repeat"
+        bgPos="center"
+        bgSize="cover"
+        py={16}
       >
-        <GridItem colSpan="4" className="space-y-8">
-          <Box className="space-y-3 line">
-            <Text fontSize="3xl" fontWeight="medium">
-              Contact Details
-            </Text>
-            <Text lineHeight={1.8} color="gray.600">
-              Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum,
-              facilisis vel mollis vitae, mollis nec ante. Quisque aliquam
-              dictumfacilisis vel mollis vitae. Lorem ipsum dolor sit amet,
-              ubique admodum euripidis has no, in luptatum nominati.
-            </Text>
-          </Box>
-          <Box className="space-y-5">
-            <Text fontSize="xl" fontWeight="medium">
-              New York Office
-            </Text>
+        <Grid
+          templateColumns="repeat(10, 1fr)"
+          width="container.xl"
+          mx="auto"
+          my="16"
+          gap={4}
+        >
+          <GridItem colSpan="4" className="space-y-8">
+            <Box className="space-y-3 line">
+              <Text fontSize="3xl" fontWeight="medium">
+                Contact Details
+              </Text>
+              <Text lineHeight={1.8} color="gray.600">
+                Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum,
+                facilisis vel mollis vitae, mollis nec ante. Quisque aliquam
+                dictumfacilisis vel mollis vitae. Lorem ipsum dolor sit amet,
+                ubique admodum euripidis has no, in luptatum nominati.
+              </Text>
+            </Box>
+            <Box className="space-y-5">
+              <Text fontSize="xl" fontWeight="medium">
+                New York Office
+              </Text>
 
-            <VStack align="start" spacing="4" color="gray.500">
-              <Text display="flex" gap={3} alignContent={"center"}>
-                <IoCallOutline size={20} />
-                1-677-124-44227
+              <VStack align="start" spacing="4" color="gray.500">
+                <Text display="flex" gap={3} alignContent={"center"}>
+                  <IoCallOutline size={20} />
+                  1-677-124-44227
+                </Text>
+                <Text display="flex" gap={3} alignContent={"center"}>
+                  <BiMessageRounded size={20} />
+                  esmarts@qodeinteractive.com
+                </Text>
+                <Text display="flex" gap={3} alignContent={"center"}>
+                  <PiBuildingOfficeLight size={20} />
+                  184 Main Collins Street, West Victoria
+                </Text>
+              </VStack>
+            </Box>
+            <Box className="space-y-5">
+              <Text fontSize="xl" fontWeight="medium">
+                Hamburg Office
               </Text>
-              <Text display="flex" gap={3} alignContent={"center"}>
-                <BiMessageRounded size={20} />
-                esmarts@qodeinteractive.com
-              </Text>
-              <Text display="flex" gap={3} alignContent={"center"}>
-                <PiBuildingOfficeLight size={20} />
-                184 Main Collins Street, West Victoria
-              </Text>
-            </VStack>
-          </Box>
-          <Box className="space-y-5">
-            <Text fontSize="xl" fontWeight="medium">
-              Hamburg Office
-            </Text>
-            <VStack align="start" spacing="4" color="gray.500">
-              <Text display="flex" gap={3} alignContent={"center"}>
-                <IoCallOutline size={20} />
-                1-677-124-44227
-              </Text>
-              <Text display="flex" gap={3} alignContent={"center"}>
-                <BiMessageRounded size={20} />
-                esmarts@qodeinteractive.com
-              </Text>
-              <Text display="flex" gap={3} alignContent={"center"}>
-                <PiBuildingOfficeLight size={20} />
-                184 Main Collins Street, West Victoria
-              </Text>
-            </VStack>
-          </Box>
-        </GridItem>
+              <VStack align="start" spacing="4" color="gray.500">
+                <Text display="flex" gap={3} alignContent={"center"}>
+                  <IoCallOutline size={20} />
+                  1-677-124-44227
+                </Text>
+                <Text display="flex" gap={3} alignContent={"center"}>
+                  <BiMessageRounded size={20} />
+                  esmarts@qodeinteractive.com
+                </Text>
+                <Text display="flex" gap={3} alignContent={"center"}>
+                  <PiBuildingOfficeLight size={20} />
+                  184 Main Collins Street, West Victoria
+                </Text>
+              </VStack>
+            </Box>
+          </GridItem>
 
-        <GridItem colSpan={6} bg="white" p="8" rounded="md" shadow="base">
-          <Text mb={16} fontSize={"2xl"} fontWeight={"bold"} letterSpacing={1}>
-            Get in touch
-          </Text>
-          <form>
-            <VStack align="start" spacing="12">
-              <Box display="flex" gap={6} w="full">
+          <GridItem
+            colSpan={6}
+            bg="white"
+            p="8"
+            rounded="lg"
+            boxShadow="0 8px 30px rgba(0, 0, 0, 0.2)" // Strong shadow for popup effect
+            transform="translateX(20px)" // Slight vertical offset for the floating effect
+            zIndex={2} // Ensure the section appears on top of the background
+          >
+            <Text mb={16} fontSize="2xl" fontWeight="bold" letterSpacing={1}>
+              Get in touch
+            </Text>
+            <form>
+              <VStack align="start" spacing="12">
+                <Box display="flex" gap={6} w="full">
+                  <Input
+                    size="sm"
+                    type="text"
+                    placeholder="Your Name"
+                    variant="flushed"
+                  />
+                  <Input
+                    size="sm"
+                    type="email"
+                    placeholder="Your email Address"
+                    variant="flushed"
+                  />
+                </Box>
                 <Input
                   size="sm"
                   type="text"
-                  placeholder="Your Name"
-                  variant={"flushed"}
+                  placeholder="Your website address"
+                  variant="flushed"
                 />
-                <Input
+                <Textarea
                   size="sm"
-                  type="email"
-                  placeholder="Your email Adress"
-                  variant={"flushed"}
+                  placeholder="Your Message"
+                  variant="flushed"
                 />
-              </Box>
-              <Input
-                size="sm"
-                type="text"
-                placeholder="Your website adress"
-                variant={"flushed"}
-              />
-              <Textarea
-                size="sm"
-                placeholder="Your Message"
-                variant={"flushed"}
-              />
-              <Button
-                size="lg"
-                bg="primary.500"
-                rounded="full"
-                w="full"
-                textTransform={"uppercase"}
-              >
-                Get it now
-              </Button>
-            </VStack>
-          </form>
-        </GridItem>
-      </Grid>
+                <Button
+                  size="lg"
+                  bg="primary.500"
+                  _hover={{bg:"primary.300"}}
+                  rounded="full"
+                  w="full"
+                  textTransform="uppercase"
+                >
+                  Get it now
+                </Button>
+              </VStack>
+            </form>
+          </GridItem>
+        </Grid>
+      </Box>
     </Box>
   );
 };

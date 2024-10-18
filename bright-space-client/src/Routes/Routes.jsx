@@ -23,9 +23,9 @@ import AllStudents from "../pages/AllStudents/AllStudents";
 import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
-import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
 import MyClasses from "../Student/MyClasses";
+import QnA from "../pages/QnA/QnA";
 
 
 export const router = createBrowserRouter([
@@ -84,7 +84,11 @@ export const router = createBrowserRouter([
             {
                 path: 'view-course-details',
                 element: <ViewCourse />
-            }
+            },
+            {
+                path: 'qna',
+                element: <QnA />
+            },
         ]
     },
     {

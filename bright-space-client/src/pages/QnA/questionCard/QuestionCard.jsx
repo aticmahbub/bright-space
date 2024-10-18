@@ -1,12 +1,29 @@
 import { useContext, useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { AuthContext } from "../../../providers/AuthProvider";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+  Box,
+  Flex,
+  Text,
+  Avatar,
+} from "@chakra-ui/react";
 
 const QuestionCard = ({ question, setQuestions }) => {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
 
   const [answer, setAnswer] = useState("");
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+
   const userId = user?.email;
 
   const handleVote = async (questionId, voteType) => {
@@ -25,8 +42,6 @@ const QuestionCard = ({ question, setQuestions }) => {
         }
       );
 
-      // const updatedVotes = response.data.updatedQuestion.upVotes;
-
       if (response.data.modifiedCount) {
         setQuestions((prevQuestions) =>
           prevQuestions.map((question) =>
@@ -44,7 +59,7 @@ const QuestionCard = ({ question, setQuestions }) => {
         console.log("successfully added vote");
       }
     } catch (error) {
-      console.log(error.response.data.message);
+      alert(error.response.data.message);
     }
   };
 
@@ -71,12 +86,29 @@ const QuestionCard = ({ question, setQuestions }) => {
       );
 
       if (response.data.modifiedCount) {
-        console.log("successful");
-        setAnswer("");
+         setQuestions((prevQuestions) =>
+        prevQuestions.map((question) =>
+          question._id === questionId
+            ? {
+                ...question,
+                answers: [...question.answers, newAnswer], // Add the new answer to the existing answers
+              }
+            : question
+        )
+      );
+
+      setAnswer("");
       }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleOpenModal = (question) => {
+    setSelectedQuestion(question);
+    onOpen();
   };
 
   return (
@@ -84,9 +116,12 @@ const QuestionCard = ({ question, setQuestions }) => {
       {/* User Info */}
       <div className="flex items-center space-x-4 mb-3">
         <img
-          src="https://i.pravatar.cc/40"
-          alt="user-avatar"
-          className="w-10 h-10 rounded-full"
+          src={
+            user.photoURL
+              ? user.photoURL
+              : "https://static.thenounproject.com/png/561365-200.png"
+          }
+          className="w-8 h-8 rounded-full"
         />
         <div>
           <div className="flex items-center space-x-2">
@@ -94,22 +129,26 @@ const QuestionCard = ({ question, setQuestions }) => {
             <span className="bg-yellow-400 text-white px-2 py-1 text-xs rounded-md">
               Enlightened
             </span>
-            <span className="text-gray-500 text-xs">Asked: April 19, 2023</span>
-            <span className="text-blue-500 text-xs">In: Language</span>
+
+            <span className="text-blue-500 text-xs">In: English</span>
           </div>
         </div>
       </div>
 
       {/* Question and Description */}
       <h2 className="text-xl font-semibold mb-2">{question.question}</h2>
-      <p className="text-gray-700 mb-4">
-        {question.answers ? "" : "No answer for this question"}
-      </p>
+      <div className="text-gray-700 mb-4">
+        {question?.answers?.length > 0 && (
+          <p className="opacity-90 font-medium">
+           Answer: <span className=" opacity-70"> {question.answers[0].answer}</span>
+          </p>
+        )}
+      </div>
 
       {/* Upvote/Downvote System */}
-      <div className="flex items-center justify-between bg-[#ebe9e9] rounded-md">
+      <div className="flex items-center justify-between  rounded-md">
         {/* Upvote Buttons */}
-        <div className="flex items-center space-x-4 ml-5 bg-white px-3 py-2 rounded-md">
+        <div className="flex items-center space-x-4 ml-5 bg-[#e5eaf0] px-3 py-2 rounded-md">
           <button onClick={() => handleVote(question._id, "upvote")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -149,31 +188,83 @@ const QuestionCard = ({ question, setQuestions }) => {
 
         {/* Answer and Views */}
         <div className="flex items-center space-x-4 px-5 py-2 rounded-xl">
-          <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-md">
-            <svg
-              className="h-5 w-5 opacity-60"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <path d="M64 0C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3 5.4 2.7 11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
-            </svg>
-            <span className="hover:cursor-pointer hover:underline opacity-60">
-              2 Answers
-            </span>
-          </div>
-          {/* <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-md">
-            <svg
-              className="h-5 w-5 opacity-60"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-            >
-              <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4 142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64-7.1 0-13.9-1.2-20.3-3.3-5.5-1.8-11.9 1.6-11.7 7.4.3 6.9 1.3 13.8 3.2 20.7 13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1-5.8-.2-9.2 6.1-7.4 11.7 2.1 6.4 3.3 13.2 3.3 20.3z" />
-            </svg>
+          <div className="flex items-center gap-2  px-3 py-2 rounded-md">
+            {/* Trigger the modal */}
+            <Button onClick={() => handleOpenModal(question)}>
+              <div className="flex items-center gap-2  px-3 py-2 rounded-md opacity-70">
+                <svg
+                  className="h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path d="M64 0C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3 5.4 2.7 11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
+                </svg>
+                <span className="hover:cursor-pointer hover:underline">
+                  More Answers {question?.answers?.length}
+                </span>
+              </div>
+            </Button>
+            <>
+              <Modal onClose={onClose} size={"6xl"} isOpen={isOpen}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader textAlign={"center"}>
+                    <span className="opacity-60">
+                      {selectedQuestion?.question}
+                    </span>
+                  </ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    {selectedQuestion?.answers?.length ? (
+                      selectedQuestion.answers.map((answer, index) => (
+                        <Box
+                          key={index}
+                          border="1px"
+                          borderColor="gray.200"
+                          p={5}
+                          borderRadius="md"
+                          shadow="md"
+                          bg="white"
+                          maxW="700px"
+                          mx="auto"
+                          mb={6}
+                        >
+                          <Flex alignItems="center" mb={2}>
+                            <Avatar size="sm" name={answer.userName} mr={3} />
+                            <Box className="flex justify-between w-full">
+                              <Text fontWeight="semibold">
+                                {answer.userName}
+                              </Text>
 
-            <span className="hover:cursor-pointer hover:underline opacity-60">
-              3k Views
-            </span>
-          </div> */}
+                              <Text fontSize="sm" color="gray.500">
+                                {new Date(answer.date).toLocaleString()}
+                              </Text>
+                            </Box>
+                          </Flex>
+
+                          <Text
+                            className="opacity-50"
+                            fontSize="md"
+                            fontWeight="medium"
+                            mb={2}
+                          >
+                            {answer?.answer}
+                          </Text>
+                        </Box>
+                      ))
+                    ) : (
+                      <p className="text-center">
+                        No answer for this question.
+                      </p>
+                    )}
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button onClick={onClose}>Close</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            </>
+          </div>
         </div>
       </div>
 

@@ -1,20 +1,14 @@
-
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PostQ from "./postQuestions/PostQ";
 import QnABanner from "./qnaBanner/QnABanner";
 
 import QuestionCard from "./questionCard/QuestionCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-
-
-
 const QnA = () => {
-
   const axiosPublic = useAxiosPublic();
 
   const [questions, setQuestions] = useState([]);
-
 
 
   useEffect(() => {
@@ -29,29 +23,22 @@ const QnA = () => {
     fetchQuestions();
   }, [axiosPublic]);
 
-  console.log(questions);
-
-  
   return (
     <div>
       <QnABanner></QnABanner>
-
       <div className="max-w-7xl mx-auto flex items-start gap-5">
-      <div className="w-[70%] flex flex-col gap-8">
-
-        {
-          questions.map(question =><QuestionCard key={question._id}
-          question={question}
-          setQuestions={setQuestions}
-          ></QuestionCard>)
-        }
-
-      
-
-      </div>
-
-       
-       
+        <div
+          className="w-[70%] flex flex-col gap-8 overflow-y-auto"
+          style={{ height: "calc(100vh - 100px)", overflowY: "scroll" }}
+        >
+          {questions.map((question) => (
+            <QuestionCard
+              key={question._id}
+              question={question}
+              setQuestions={setQuestions}
+            ></QuestionCard>
+          ))}
+        </div>
 
         <div className="w-[30%]">
           <PostQ></PostQ>
@@ -63,7 +50,7 @@ const QnA = () => {
 
               <div className="px-10 text-center w-full">
                 <h2 className="text-[#2D6FF7]">Questions</h2>
-                <p className="font-bold text-xl">21</p>
+                <p className="font-bold text-xl">{questions.length}</p>
               </div>
             </div>
 

@@ -25,6 +25,7 @@ import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
 import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
+import MyClasses from "../Student/MyClasses";
 
 
 export const router = createBrowserRouter([
@@ -38,11 +39,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/classroom',
-                element: <ClassRoom />
+                element: <PrivateRoute><ClassRoom /></PrivateRoute>
             },
             {
                 path: '/live/:id',
-                element: <LiveSession />
+                element: <PrivateRoute><LiveSession /></PrivateRoute>
             },
             {
                 path: '/login',
@@ -134,6 +135,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allCourses',
                 element: <AllCourses />
+            },
+            {
+                path: 'my-classes',
+                element: <MyClasses />
             },
             {
                 path: 'quiz',

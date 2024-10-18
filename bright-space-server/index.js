@@ -5,12 +5,14 @@ const {
     ServerApiVersion,
     ObjectId
 } = require('mongodb');
+
 require('dotenv').config()
+const jwt = require('jsonwebtoken');
 const app = express()
 const port = process.env.PORT || 3000
 
 
-//middlewires
+//middlewares
 app.use(cors())
 app.use(express.json())
 
@@ -38,6 +40,57 @@ async function run() {
         const questionCollection = client.db('bright-space-db').collection('questions-collection')
 
 
+        //jwt related api
+        app.post('/meetingToken', (req, res) => {
+            const { name, email, role, userId } = req.body;
+
+            if (!name || !email || !role || !userId) {
+                return res.status(400).send({ error: 'Missing user information' });
+            }
+
+            const currentTime = Math.floor(Date.now() / 1000);
+            const expTime = currentTime + (60 * 60);
+
+            const payload = {
+                "aud": "jitsi",
+                "iss": "chat",
+                "iat": currentTime,
+                "exp": expTime,
+                "nbf": currentTime,
+                "sub": process.env.JITSI_APP_ID,
+                "context": {
+                    "features": {
+                        "livestreaming": true,
+                        "outbound-call": true,
+                        "sip-outbound-call": false,
+                        "transcription": true,
+                        "recording": role === 'teacher' ? true : false
+                    },
+                    "user": {
+                        "hidden-from-recorder": false,
+                        "moderator": role === 'teacher' ? true : false,
+                        "name": name,
+                        "id": userId,
+                        "avatar": "",
+                        "email": email
+                    }
+                },
+                "room": "*"
+            };
+
+            try {
+                const privateKey = fs.readFileSync(process.env.JITSI_PRIVATE_KEY, 'utf8');
+                const kid = process.env.JITSI_API_KEY;
+
+                const token = jwt.sign(payload, privateKey, { algorithm: 'RS256', header: { kid } });
+
+                res.send({ token });
+            } catch (error) {
+                console.error(error);
+                res.status(500).send({ error: 'Failed to generate token' });
+            }
+        });
+
 
         // get all users
         app.get('/allUsers', async (req, res) => {
@@ -60,7 +113,6 @@ async function run() {
             const result = await cartCollection.find(query).toArray()
             res.send(result)
         })
-
 
         // add to cart
         app.post('/enrolls', async (req, res) => {
@@ -95,22 +147,19 @@ async function run() {
             res.send(result);
         });
 
-
         // create new courses or add courses api
 
         app.post('/courses', async (req, res) => {
             const coursesInfo = req.body;
             const result = await coursesCollection.insertOne(coursesInfo)
-
             res.send(result)
-
         })
-
 
         app.get('/courses', async (req, res) => {
             const result = await coursesCollection.find().toArray()
             res.send(result)
         })
+
 
 
         // Question related api 
@@ -226,15 +275,13 @@ async function run() {
         })
 
 
+
         // users related api
         app.post('/users', async (req, res) => {
             const user = req.body
             const result = await usersCollection.insertOne(user)
             res.send(result)
         })
-
-
-
 
         // await client.connect();
         // Send a ping to confirm a successful connection

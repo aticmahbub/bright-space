@@ -9,6 +9,7 @@ import { PiChalkboardTeacherFill } from "react-icons/pi";
 import { BiSolidBookContent } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 import Messages from "../components/Messages/Messages";
+import { GiOpenBook } from "react-icons/gi";
 import {
     Drawer,
     DrawerBody,
@@ -79,6 +80,12 @@ const Dashboard = () => {
             name: 'Courses',
             path: 'myCourses',
             icon: BiSolidBookContent,
+            roles: ['Admin', 'teacher', 'student']  // Visible to all roles
+        },
+        {
+            name: 'My Classes',
+            path: 'my-classes',
+            icon: GiOpenBook ,
             roles: ['Admin', 'teacher', 'student']  // Visible to all roles
         },
         {

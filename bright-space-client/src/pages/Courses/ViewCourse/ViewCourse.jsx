@@ -16,6 +16,7 @@ import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import CourseOverview from "../../../components/CourseOverview/CourseOverview";
 import CourseContent from "../../../components/CourseContent/CourseContent";
+import StudentReviews from "../../../components/CourseContent/StudentReviews";
 
 const ratingStyles = {
   itemShapes: Star,
@@ -95,9 +96,10 @@ const ViewCourse = () => {
             </Box>
           </Box>
         </Box>
-          {/* Overview */}
-          <CourseOverview />
-          <CourseContent/>
+        {/* Overview */}
+        <CourseOverview />
+        <CourseContent />
+        <StudentReviews />
       </Box>
 
       {/* Right side: Course Video and Features */}

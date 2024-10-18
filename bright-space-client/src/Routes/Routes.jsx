@@ -25,6 +25,7 @@ import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
 import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
+import ViewMyClasses from "../components/ViewMyClasses/ViewMyClasses";
 
 
 export const router = createBrowserRouter([
@@ -111,11 +112,15 @@ export const router = createBrowserRouter([
                 path: 'viewCourseDetails',
                 element: <ViewCourse />
             },
+            {
+                path: 'ViewMyClasses',
+                element: <ViewMyClasses />
+            },
 
             // teacher routes
             {
                 path: 'teacherProfile',
-                element:  <StudentProfile />
+                element: <StudentProfile />
             },
             {
                 path: 'allTeachers',

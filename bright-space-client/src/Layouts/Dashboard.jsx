@@ -48,7 +48,8 @@ const Dashboard = () => {
 
     const sizes = ['xs'] // Only allow 'xs' size for the drawer
 
-    const userRole = role;
+    // const userRole = role;
+    const userRole = "student"
 
     const SideNavList = [
         {

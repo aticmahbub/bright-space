@@ -29,7 +29,7 @@ const MyClasses = () => {
     ]
   return (
     <Grid
-    templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} // 1 column on small screens, 2 on medium and above
+    templateColumns={{ base: "1fr", md: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }} // 1 column on small screens, 2 on medium and above
     gap={{ base: 4, md: 8 }} // Smaller gap on mobile, larger on medium+
     px={{ base: 4, md: 6 }} // Smaller padding on mobile, larger on medium+
   >

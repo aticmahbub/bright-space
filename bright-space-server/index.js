@@ -1,7 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const fs = require('fs');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const express = require('express')
+const cors = require('cors')
+const {
+    MongoClient,
+    ServerApiVersion,
+    ObjectId
+} = require('mongodb');
+
 require('dotenv').config()
 const jwt = require('jsonwebtoken');
 const app = express()
@@ -34,6 +38,7 @@ async function run() {
         const usersCollection = client.db('bright-space-db').collection('users-collection')
         const quizCollection = client.db('bright-space-db').collection('quiz-collection')
         const questionCollection = client.db('bright-space-db').collection('questions-collection')
+
 
         //jwt related api
         app.post('/meetingToken', (req, res) => {
@@ -86,6 +91,7 @@ async function run() {
             }
         });
 
+
         // get all users
         app.get('/allUsers', async (req, res) => {
             const result = await usersCollection.find().toArray()
@@ -101,7 +107,9 @@ async function run() {
         // get specific enrolls
         app.get('/enrolls', async (req, res) => {
             const email = req.query.email
-            const query = { email: email }
+            const query = {
+                email: email
+            }
             const result = await cartCollection.find(query).toArray()
             res.send(result)
         })
@@ -140,6 +148,7 @@ async function run() {
         });
 
         // create new courses or add courses api
+
         app.post('/courses', async (req, res) => {
             const coursesInfo = req.body;
             const result = await coursesCollection.insertOne(coursesInfo)
@@ -156,7 +165,7 @@ async function run() {
         // Question related api 
 
 
-        app.post('/questions', async(req, res)=>{
+        app.post('/questions', async (req, res) => {
             const questionInfo = req.body;
             const result = await questionCollection.insertOne(questionInfo)
             res.send(result)
@@ -168,6 +177,102 @@ async function run() {
         })
 
 
+        // upvote and downvote related 
+
+
+        app.post('/questions/:id/vote', async (req, res) => {
+
+            try {
+                const {
+                    id
+                } = req.params;
+                const {userId,voteType} = req.body;
+                const query = {_id: new ObjectId(id)};
+                const question = await questionCollection.findOne(query);
+
+                console.log(question)
+
+
+                if (!question.voters) {
+                    question.voters = [];
+                }
+
+                const userVote = question.voters.find(voter => voter.userId === userId);
+
+                if (userVote) {
+                    return res.status(400).send({
+                        message: "user has already taken"
+                    })
+                }
+
+                let updateQuery;
+                if (voteType === 'upvote') {
+                    updateQuery = {
+                        $inc: {
+                            upVotes: 1
+                        }, 
+                        $push: {
+                            voters: {
+                                userId,
+                                voteType
+                            }
+                        } 
+                    };
+                } else if (voteType === 'downvote') {
+                    updateQuery = {
+                        $inc: {
+                            upVotes: -1
+                        }, 
+                        $push: {
+                            voters: {
+                                userId,
+                                voteType
+                            }
+                        }
+                    };
+                }
+
+                const result = await questionCollection.updateOne(query, updateQuery)
+
+                res.send(result)
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
+        // answer on Q and A  page 
+
+        app.post('/questions/:id/answer', async (req, res)=>{
+            try{
+
+                const {id} = req.params;
+                const {questionId, userEmail, userName, answer} = req.body;
+                const query = {_id: new ObjectId(id)};
+                const question = await questionCollection.findOne(query);
+
+                const newAnswer = {
+                    questionId: questionId,
+                    userEmail: userEmail,
+                    userName: userName,
+                    answer: answer,
+                    date: new Date()
+                }
+
+                const updateQuery = {
+                    $push:{answers: newAnswer}
+                }
+
+                const result = await questionCollection.updateOne(query, updateQuery);
+
+                res.send(result)
+                
+
+            }catch(error){
+                console.log(error);
+            }
+        })
 
 
 
@@ -180,7 +285,9 @@ async function run() {
 
         // await client.connect();
         // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
+        await client.db("admin").command({
+            ping: 1
+        });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error

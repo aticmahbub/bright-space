@@ -84,6 +84,12 @@ export const router = createBrowserRouter([
             {
                 path: 'view-course-details',
                 element: <ViewCourse />
+            },
+            {
+                path: 'qna',
+                element: <PrivateRoute>
+                    <QnA />
+                </PrivateRoute>
             }
         ]
     },

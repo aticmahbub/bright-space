@@ -39,11 +39,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/classroom',
-                element: <ClassRoom />
+                element: <PrivateRoute><ClassRoom /></PrivateRoute>
             },
             {
                 path: '/live/:id',
-                element: <LiveSession />
+                element: <PrivateRoute><LiveSession /></PrivateRoute>
             },
             {
                 path: '/login',

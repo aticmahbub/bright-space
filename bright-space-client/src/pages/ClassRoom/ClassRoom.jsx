@@ -5,11 +5,17 @@ import JoinClsModal from '../../components/JoinClsModal/JoinClsModal';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useMutation } from '@tanstack/react-query';
+import useAuth from '../../hooks/useAuth';
+import useRole from '../../hooks/useRole';
+import useMeetToken from '../../hooks/useMeetToken';
 
 const ClassRoom = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const axiosPublic = useAxiosPublic();
+    const mutateUserInfo = useMeetToken();
     const navigate = useNavigate();
+    const { user } = useAuth();
+    const role = useRole();
 
     const { mutate } = useMutation({
         mutationKey: ['meetingCode'],
@@ -25,6 +31,14 @@ const ClassRoom = () => {
     });
 
     const generateMeetingCode = () => {
+        const userInfo = {
+            name: user?.displayName,
+            email: user?.email,
+            userId: user?.uid,
+            role: role
+        }
+        mutateUserInfo(userInfo);
+
         const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
         mutate({ meetCode: meetingCode });
     };

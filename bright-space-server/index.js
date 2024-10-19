@@ -100,7 +100,8 @@ async function run() {
 
         // real time interactions or notifications with socket
         io.on('connection', (socket) => {
-            console.log('user connected', socket.id);
+            socket.emit('test-event', 'hello world!');
+            console.log(socket.handshake.auth);
 
             socket.on('disconnect', () => {
                 console.log('user disconnected');
@@ -301,6 +302,6 @@ app.get('/', (req, res) => {
     res.send('BrightSpace is running')
 })
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`BrightSpace is running listening on port ${port}`)
 })

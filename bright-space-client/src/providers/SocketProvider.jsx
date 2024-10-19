@@ -1,8 +1,13 @@
-import { createContext } from "react";
+import { createContext, useEffect } from 'react';
+import { io } from 'socket.io-client';
 
 export const SocketContext = createContext(null);
 
 const SocketProvider = ({ children }) => {
+
+    useEffect(() => {
+        const socket = io('http://localhost:3000');
+    }, []);
 
     const socketInfo = {};
 

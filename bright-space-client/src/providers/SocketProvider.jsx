@@ -6,7 +6,14 @@ export const SocketContext = createContext(null);
 const SocketProvider = ({ children }) => {
 
     useEffect(() => {
-        const socket = io('http://localhost:3000');
+        const socket = io('http://localhost:3000', {
+            auth: {
+                token: 'abcd'
+            }
+        });
+        socket.on('test-event', (msg) => {
+            console.log(msg);
+        })
     }, []);
 
     const socketInfo = {};

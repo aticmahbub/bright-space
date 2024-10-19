@@ -8,12 +8,10 @@ const {
     ServerApiVersion,
     ObjectId
 } = require('mongodb');
-
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 3000;
-
 
 //middlewares
 app.use(cors());
@@ -24,10 +22,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: 'http://localhost:5173',
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
     }
 });
-
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.u0npy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -49,7 +46,6 @@ async function run() {
         const usersCollection = client.db('bright-space-db').collection('users-collection');
         const quizCollection = client.db('bright-space-db').collection('quiz-collection');
         const questionCollection = client.db('bright-space-db').collection('questions-collection');
-
 
         //jwt related api
         app.post('/meetingToken', (req, res) => {
@@ -102,6 +98,14 @@ async function run() {
             }
         });
 
+        // real time interactions or notifications with socket
+        io.on('connection', (socket) => {
+            console.log('user connected', socket.id);
+
+            socket.on('disconnect', () => {
+                console.log('user disconnected');
+            });
+        });
 
         // get all users
         app.get('/allUsers', async (req, res) => {
@@ -159,7 +163,6 @@ async function run() {
         });
 
         // create new courses or add courses api
-
         app.post('/courses', async (req, res) => {
             const coursesInfo = req.body;
             const result = await coursesCollection.insertOne(coursesInfo)
@@ -171,11 +174,7 @@ async function run() {
             res.send(result)
         })
 
-
-
         // Question related api 
-
-
         app.post('/questions', async (req, res) => {
             const questionInfo = req.body;
             const result = await questionCollection.insertOne(questionInfo)
@@ -187,10 +186,7 @@ async function run() {
             res.send(result)
         })
 
-
         // upvote and downvote related 
-
-
         app.post('/questions/:id/vote', async (req, res) => {
 
             try {
@@ -244,17 +240,13 @@ async function run() {
                 }
 
                 const result = await questionCollection.updateOne(query, updateQuery)
-
                 res.send(result)
-
-
             } catch (error) {
                 console.log(error);
             }
         })
 
         // answer on Q and A  page 
-
         app.post('/questions/:id/answer', async (req, res) => {
             try {
 
@@ -285,8 +277,6 @@ async function run() {
             }
         })
 
-
-
         // users related api
         app.post('/users', async (req, res) => {
             const user = req.body
@@ -306,8 +296,6 @@ async function run() {
     }
 }
 run().catch(console.dir);
-
-
 
 app.get('/', (req, res) => {
     res.send('BrightSpace is running')

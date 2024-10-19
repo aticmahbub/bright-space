@@ -1,21 +1,32 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
+const http = require('http');
+const { Server } = require('socket.io');
 const {
     MongoClient,
     ServerApiVersion,
     ObjectId
 } = require('mongodb');
 
-require('dotenv').config()
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const app = express()
-const port = process.env.PORT || 3000
+const app = express();
+const port = process.env.PORT || 3000;
 
 
 //middlewares
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
+// create http server
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: 'http://localhost:5173',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
+    }
+});
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.u0npy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
@@ -32,12 +43,12 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        const coursesCollection = client.db('bright-space-db').collection('courses-collection')
-        const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
-        const cartCollection = client.db('bright-space-db').collection('cart-collection')
-        const usersCollection = client.db('bright-space-db').collection('users-collection')
-        const quizCollection = client.db('bright-space-db').collection('quiz-collection')
-        const questionCollection = client.db('bright-space-db').collection('questions-collection')
+        const coursesCollection = client.db('bright-space-db').collection('courses-collection');
+        const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes');
+        const cartCollection = client.db('bright-space-db').collection('cart-collection');
+        const usersCollection = client.db('bright-space-db').collection('users-collection');
+        const quizCollection = client.db('bright-space-db').collection('quiz-collection');
+        const questionCollection = client.db('bright-space-db').collection('questions-collection');
 
 
         //jwt related api
@@ -186,8 +197,8 @@ async function run() {
                 const {
                     id
                 } = req.params;
-                const {userId,voteType} = req.body;
-                const query = {_id: new ObjectId(id)};
+                const { userId, voteType } = req.body;
+                const query = { _id: new ObjectId(id) };
                 const question = await questionCollection.findOne(query);
 
                 console.log(question)
@@ -210,19 +221,19 @@ async function run() {
                     updateQuery = {
                         $inc: {
                             upVotes: 1
-                        }, 
+                        },
                         $push: {
                             voters: {
                                 userId,
                                 voteType
                             }
-                        } 
+                        }
                     };
                 } else if (voteType === 'downvote') {
                     updateQuery = {
                         $inc: {
                             upVotes: -1
-                        }, 
+                        },
                         $push: {
                             voters: {
                                 userId,
@@ -244,12 +255,12 @@ async function run() {
 
         // answer on Q and A  page 
 
-        app.post('/questions/:id/answer', async (req, res)=>{
-            try{
+        app.post('/questions/:id/answer', async (req, res) => {
+            try {
 
-                const {id} = req.params;
-                const {questionId, userEmail, userName, answer} = req.body;
-                const query = {_id: new ObjectId(id)};
+                const { id } = req.params;
+                const { questionId, userEmail, userName, answer } = req.body;
+                const query = { _id: new ObjectId(id) };
                 const question = await questionCollection.findOne(query);
 
                 const newAnswer = {
@@ -261,15 +272,15 @@ async function run() {
                 }
 
                 const updateQuery = {
-                    $push:{answers: newAnswer}
+                    $push: { answers: newAnswer }
                 }
 
                 const result = await questionCollection.updateOne(query, updateQuery);
 
                 res.send(result)
-                
 
-            }catch(error){
+
+            } catch (error) {
                 console.log(error);
             }
         })

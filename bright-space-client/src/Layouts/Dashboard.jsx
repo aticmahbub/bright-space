@@ -19,10 +19,12 @@ import {
     DrawerCloseButton,
     Box, Flex, Image,
     Text, Button, Icon,
-    Input, useDisclosure
+    Input, useDisclosure,
+    Badge
 } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
-import useRole from "../hooks/useRole";
+// import useRole from "../hooks/useRole";
+import { MdNotifications } from "react-icons/md";
 
 
 
@@ -85,7 +87,7 @@ const Dashboard = () => {
         {
             name: 'My Classes',
             path: 'my-classes',
-            icon: GiOpenBook ,
+            icon: GiOpenBook,
             roles: ['Admin', 'teacher', 'student']  // Visible to all roles
         },
         {
@@ -118,7 +120,7 @@ const Dashboard = () => {
                 <Box className="p-4 h-screen group overflow-hidden whitespace-nowrap">
                     {/* Logo And Text */}
                     <Flex className="pl-3 items-center w-full justify-between">
-                        <Flex items-center spaceX="3">
+                        <Flex items-center='true'>
                             <Image className="w-6" src={brightSpace_logo} alt="Bright Space Logo" />
                             <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                                 Bright Space
@@ -176,7 +178,7 @@ const Dashboard = () => {
                                 <DrawerContent>
                                     <DrawerCloseButton><ArrowBackIcon w={"30px"} h={"30px"} /></DrawerCloseButton>
                                     <DrawerHeader>
-                                        <Flex items-center>
+                                        <Flex items-center='true'>
                                             <Image className="w-6 mr-3" src={brightSpace_logo} alt="Bright Space Logo" />
                                             <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500`}>
                                                 Bright Space
@@ -208,7 +210,7 @@ const Dashboard = () => {
                                 </DrawerContent>
                             </Drawer>
                         </Box>
-                        <Flex items-center display={['flex', 'flex', 'flex', 'none']}>
+                        <Flex items-center='true' display={['flex', 'flex', 'flex', 'none']}>
                             <Image className="w-6 mr-3" src={brightSpace_logo} alt="Bright Space Logo" />
                             <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500`}>
                                 Bright Space
@@ -220,7 +222,13 @@ const Dashboard = () => {
                             <Input placeholder="Search Anything..." border="none" _focus={{ boxShadow: 'none' }} fontSize={'14px'} className="w-full" />
                         </Box>
 
-                        <Flex justifyItems={'end'} className="ml-auto">
+                        <Flex alignItems='center' justifyItems='end' gap='4' className="ml-auto">
+                            <Box pos='relative' cursor='pointer'>
+                                <Icon as={MdNotifications} fontSize='2xl' />
+                                <Badge pos='absolute' right='0' top='-0.5' variant='solid' colorScheme='red' fontSize='0.6em' rounded='full'>
+                                    7
+                                </Badge>
+                            </Box>
                             <Messages />
                         </Flex>
                     </Flex>

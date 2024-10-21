@@ -20,7 +20,11 @@ import {
     Box, Flex, Image,
     Text, Button, Icon,
     Input, useDisclosure,
-    Badge
+    Badge,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem
 } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 // import useRole from "../hooks/useRole";
@@ -223,12 +227,22 @@ const Dashboard = () => {
                         </Box>
 
                         <Flex alignItems='center' justifyItems='end' gap='4' className="ml-auto">
-                            <Box pos='relative' cursor='pointer'>
-                                <Icon as={MdNotifications} fontSize='2xl' />
-                                <Badge pos='absolute' right='0' top='-0.5' variant='solid' colorScheme='red' fontSize='0.6em' rounded='full'>
-                                    7
-                                </Badge>
-                            </Box>
+                            <Menu isLazy>
+                                <MenuButton>
+                                    <Box pos='relative'>
+                                        <Icon as={MdNotifications} fontSize='2xl' />
+                                        <Badge pos='absolute' right='0' top='-0.5' variant='solid' colorScheme='red' fontSize='0.6em' rounded='full'>
+                                            7
+                                        </Badge>
+                                    </Box>
+                                </MenuButton>
+                                <MenuList overflowY='auto'>
+                                    {/* MenuItems are not rendered unless Menu is open */}
+                                    <MenuItem>Notification 1</MenuItem>
+                                    <MenuItem>Notification 2</MenuItem>
+                                    <MenuItem>Notification 3</MenuItem>
+                                </MenuList>
+                            </Menu>
                             <Messages />
                         </Flex>
                     </Flex>

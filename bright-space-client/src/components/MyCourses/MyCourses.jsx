@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useEnrolls from "../../hooks/useEnrolled";
 import CourseCard from "../CourseCard/CourseCard";
 
-const MyCourses = () => {
+const enrolledCourses = () => {
     const [courses, setCourses] = useState([]);
     // console.log(courses);
 
@@ -39,4 +39,4 @@ const MyCourses = () => {
     );
 };
 
-export default MyCourses;
+export default enrolledCourses;

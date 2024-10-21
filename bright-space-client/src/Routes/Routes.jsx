@@ -17,15 +17,16 @@ import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
 import ViewCourse from "../pages/Courses/ViewCourse/ViewCourse";
-import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
-import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
 import MyClasses from "../Student/MyClasses";
 import QnA from "../pages/QnA/QnA";
+import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
+import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";
+import EnrolledCourses from "../pages/Courses/EnrolledCourses/EnrolledCourses";
 
 
 export const router = createBrowserRouter([
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <PrivateRoute><About /></PrivateRoute>
+                element: <About />
             },
             {
                 path: '/features',
@@ -111,8 +112,8 @@ export const router = createBrowserRouter([
                 element: <AllStudents />
             },
             {
-                path: 'myCourses',
-                element: <MyCourses />
+                path: 'enrolledCourses',
+                element: <EnrolledCourses />
             },
             {
                 path: 'viewCourseDetails',
@@ -130,14 +131,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'createCourse',
-                element: <CreateCourse />
+                element: <CreateCourses />
+            },
+            {
+                path: 'createdCourses',
+                element: <CreatedCourses />
             },
             {
                 path: 'allCourses',
                 element: <AllCourses />
             },
             {
-                path: 'my-classes',
+                path: 'myClasses',
                 element: <MyClasses />
             },
             {

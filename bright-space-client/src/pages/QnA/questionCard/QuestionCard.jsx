@@ -28,7 +28,6 @@ const QuestionCard = ({ question, setQuestions }) => {
 
   const handleVote = async (questionId, voteType) => {
     try {
-      console.log("Sending vote request with:", { userId, voteType });
       const response = await axiosPublic.post(
         `/questions/${questionId}/vote`,
         {
@@ -208,7 +207,7 @@ const QuestionCard = ({ question, setQuestions }) => {
               <Modal onClose={onClose} size={"6xl"} isOpen={isOpen}>
                 <ModalOverlay />
                 <ModalContent>
-                  <ModalHeader textAlign={"center"}>
+                  <ModalHeader marginTop={'10'} textAlign={"center"}>
                     <span className="opacity-60">
                       {selectedQuestion?.question}
                     </span>
@@ -273,7 +272,7 @@ const QuestionCard = ({ question, setQuestions }) => {
         onSubmit={(e) => handleAnswer(e, question._id)}
         className="my-5 flex items-center gap-5 bg-[#f7f5f5]"
       >
-        <input
+        <input required
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           type="text"

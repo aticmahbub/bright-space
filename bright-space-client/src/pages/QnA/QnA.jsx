@@ -15,7 +15,12 @@ const QnA = () => {
     const fetchQuestions = async () => {
       try {
         const response = await axiosPublic.get("/questions");
-        setQuestions(response.data);
+
+
+        const sortedQuestions = response.data.sort((a, b) => b.upVotes - a.upVotes);
+
+
+        setQuestions(sortedQuestions);
       } catch (error) {
         console.log(error);
       }
@@ -97,60 +102,12 @@ const QnA = () => {
                       <path d="M64 0C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3 5.4 2.7 11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
                     </svg>
                     <span className="hover:cursor-pointer hover:underline">
-                      2 Answers
+                      4 Answers
                     </span>
                   </div>
                 </div>
               </div>
-              {/* cards */}
-              <div className="flex items-start  gap-5 border-b py-5">
-                <img
-                  src="https://i.pravatar.cc/40"
-                  alt="user-avatar"
-                  className="w-6 h-6 rounded-full"
-                />
-                <div>
-                  <h4 className="font-medium">
-                    How do native speakers tell I’m foreign based on my English
-                    alone?
-                  </h4>
-                  <div className="flex items-center gap-2  py-2 rounded-md opacity-50">
-                    <svg
-                      className="h-3 w-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M64 0C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3 5.4 2.7 11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
-                    </svg>
-                    <span className="hover:cursor-pointer hover:underline">
-                      2 Answers
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/* cards */}
-              <div className="flex items-start gap-5 border-b py-5">
-                <img
-                  src="https://i.pravatar.cc/40"
-                  alt="user-avatar"
-                  className="w-6 h-6 rounded-full"
-                />
-                <div>
-                  <h4 className="font-medium">How do native speakers tell?</h4>
-                  <div className="flex items-center gap-2  py-2 rounded-md opacity-50">
-                    <svg
-                      className="h-3 w-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M64 0C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3 5.4 2.7 11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
-                    </svg>
-                    <span className="hover:cursor-pointer hover:underline">
-                      2 Answers
-                    </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>

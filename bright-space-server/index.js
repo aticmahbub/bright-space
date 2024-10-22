@@ -36,6 +36,7 @@ async function run() {
         const usersCollection = client.db('bright-space-db').collection('users-collection')
         const quizCollection = client.db('bright-space-db').collection('quiz-collection')
         const questionCollection = client.db('bright-space-db').collection('questions-collection')
+        const blogCollection = client.db('bright-space-db').collection('blogs-collection')
 
 
 
@@ -137,11 +138,14 @@ async function run() {
                 const {
                     id
                 } = req.params;
-                const {userId,voteType} = req.body;
-                const query = {_id: new ObjectId(id)};
+                const {
+                    userId,
+                    voteType
+                } = req.body;
+                const query = {
+                    _id: new ObjectId(id)
+                };
                 const question = await questionCollection.findOne(query);
-
-                console.log(question)
 
 
                 if (!question.voters) {
@@ -152,7 +156,7 @@ async function run() {
 
                 if (userVote) {
                     return res.status(400).send({
-                        message: "user has already taken"
+                        message: "You have already voted one time."
                     })
                 }
 
@@ -161,19 +165,19 @@ async function run() {
                     updateQuery = {
                         $inc: {
                             upVotes: 1
-                        }, 
+                        },
                         $push: {
                             voters: {
                                 userId,
                                 voteType
                             }
-                        } 
+                        }
                     };
                 } else if (voteType === 'downvote') {
                     updateQuery = {
                         $inc: {
                             upVotes: -1
-                        }, 
+                        },
                         $push: {
                             voters: {
                                 userId,
@@ -195,12 +199,21 @@ async function run() {
 
         // answer on Q and A  page 
 
-        app.post('/questions/:id/answer', async (req, res)=>{
-            try{
+        app.post('/questions/:id/answer', async (req, res) => {
+            try {
 
-                const {id} = req.params;
-                const {questionId, userEmail, userName, answer} = req.body;
-                const query = {_id: new ObjectId(id)};
+                const {
+                    id
+                } = req.params;
+                const {
+                    questionId,
+                    userEmail,
+                    userName,
+                    answer
+                } = req.body;
+                const query = {
+                    _id: new ObjectId(id)
+                };
                 const question = await questionCollection.findOne(query);
 
                 const newAnswer = {
@@ -212,17 +225,32 @@ async function run() {
                 }
 
                 const updateQuery = {
-                    $push:{answers: newAnswer}
+                    $push: {
+                        answers: newAnswer
+                    }
                 }
 
                 const result = await questionCollection.updateOne(query, updateQuery);
 
                 res.send(result)
-                
 
-            }catch(error){
+
+            } catch (error) {
                 console.log(error);
             }
+        })
+
+        // blog related api 
+
+        app.post('/blogs', async(req, res)=>{
+            const blogInfo = req.body;
+            const result = await blogCollection.insertOne(blogInfo)
+            res.send(result)
+        })
+
+        app.get('/blogs', async (req, res) => {
+            const result = await blogCollection.find().toArray()
+            res.send(result)
         })
 
 

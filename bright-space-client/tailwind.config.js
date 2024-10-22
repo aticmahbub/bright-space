@@ -5,7 +5,8 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
     fontFamily: {
       english_font_family: 'Poppins, system-ui',
       bengal_font_family: 'Noto Serif Bengali, system-ui'

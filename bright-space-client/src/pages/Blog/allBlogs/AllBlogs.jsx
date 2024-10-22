@@ -12,16 +12,14 @@ const AllBlogs = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(AllBlogs);
-
   return (
     <div>
-       <h6 className="font-bold text-3xl my-5">All Blog Posts</h6>
+      <h6 className="font-bold text-3xl my-5">All Blog Posts</h6>
       <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* cards */}
         {AllBlogs.map((blog) => (
           <div
-            key={blog?.id}         
+            key={blog?.id}
             className="flex flex-col lg:flex-row items-center gap-5 rounded-md shadow-md p-4 lg:p-0"
           >
             <div className="w-full lg:w-64 h-36 overflow-hidden flex-shrink-0">
@@ -46,7 +44,19 @@ const AllBlogs = () => {
         ))}
       </div>
       <div className="flex justify-center my-10">
-      <button className="text-green-500 font-bold px-12 py-4 rounded-3xl border border-green-400 hover:bg-green-400 hover:text-white">View More Posts</button>
+        <button
+          className="
+          text-green-500 
+           px-8 py-2 
+         text-[#f7ab3f] 
+          hover:text-white 
+           border border-[#f7ab3f] 
+           font-medium 
+           rounded-md 
+          hover:bg-[#f1ae50]"
+        >
+          View More Posts
+        </button>
       </div>
     </div>
   );

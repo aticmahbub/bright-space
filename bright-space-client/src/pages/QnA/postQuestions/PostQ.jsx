@@ -30,7 +30,7 @@ const PostQ = () => {
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
 
-  const handlePostClick = async () => {
+  const handlePostQuestion = async () => {
     const questionInfo = {
       name: name,
       question: question,
@@ -53,10 +53,10 @@ const PostQ = () => {
       console.log(error);
     }
 
-    // Optionally reset the form
+   
     setName("");
     setQuestion("");
-    onClose(); // Close the modal after posting
+    onClose();
   };
 
   return (
@@ -102,7 +102,7 @@ const PostQ = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handlePostClick}>
+            <Button colorScheme="blue" mr={3} onClick={handlePostQuestion}>
               Post
             </Button>
             <Button onClick={onClose}>Cancel</Button>

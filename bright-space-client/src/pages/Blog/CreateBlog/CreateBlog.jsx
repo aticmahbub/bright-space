@@ -1,106 +1,149 @@
+import  { useContext, useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { AuthContext } from "../../../providers/AuthProvider";
+
 const CreateBlog = () => {
+  // State to store form data
+  const [formData, setFormData] = useState({
+    name: "",
+    title: "",
+    image: "",
+    description: "",
+  });
+
+  const axiosPublic = useAxiosPublic();
+  const {user} = useContext(AuthContext);
+
+
+
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Handle form submission
+  const handlePostBlog = async (e) => {
+    e.preventDefault();
+
+
+    const currentDate = new Date().toISOString().split('T')[0];
+    
+
+    const blogInfo = {
+      name: formData.name,
+      email: user?.email,
+      title: formData.title,
+      image: formData.image,
+      description: formData.description,
+      currentDate,
+    }
+
+ 
+
+    try {
+      
+      const response = await axiosPublic.post("/blogs", blogInfo,{
+        headers:{
+          "Content-Type": "application/json",
+        }
+      })
+      
+      if(response.data.insertedId){
+        console.log("successfully added");
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+    
+    console.log(blogInfo);
+    
+  };
+
+  
+
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md">
-      <form>
-        {/* First Name and Last Name */}
+      <form onSubmit={handlePostBlog}>
+        {/* Author Name and Title */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
             <label
-              htmlFor="firstName"
+              htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
-              First Name
+              Author Name
             </label>
-            <input
+            <input required
               type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="Enter First Name"
+              id="name"
+              name="name"
+              placeholder="Enter Author Name"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+              value={formData.name}
+              onChange={handleInputChange}
+              
             />
           </div>
           <div>
             <label
-              htmlFor="lastName"
+              htmlFor="title"
               className="block text-sm font-medium text-gray-700"
             >
-              Last Name
+              Title
             </label>
-            <input
+            <input required
               type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Enter Last Name"
+              id="title"
+              name="title"
+              placeholder="Enter Title"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+              value={formData.title}
+              onChange={handleInputChange}
             />
           </div>
         </div>
 
-        {/* Email and Phone */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-6">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your Email"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Phone
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Enter Phone Number"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
-            />
-          </div>
-        </div>
-
-        {/* Subject */}
+        {/* Thumbnail Image */}
         <div className="mt-6">
           <label
-            htmlFor="subject"
+            htmlFor="image"
             className="block text-sm font-medium text-gray-700"
           >
-            Subject
+            Thumbnail Image
           </label>
-          <input
+          <input required
             type="text"
-            id="subject"
-            name="subject"
-            placeholder="Enter your Subject"
+            id="image"
+            name="image"
+            placeholder="Image Link"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            value={formData.image}
+            onChange={handleInputChange}
           />
         </div>
 
-        {/* Message */}
+        {/* Description */}
         <div className="mt-6">
           <label
-            htmlFor="message"
+            htmlFor="description"
             className="block text-sm font-medium text-gray-700"
           >
-            Message
+            Description
           </label>
-          <textarea
-            id="message"
-            name="message"
+          <textarea required
+            id="description"
+            name="description"
             rows="4"
-            placeholder="Enter your Message here..."
+            placeholder="Enter your text here..."
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+            value={formData.description}
+            onChange={handleInputChange}
           />
         </div>
 

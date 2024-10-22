@@ -5,6 +5,8 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const { sendEmail } = require("./nodemailer");
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -286,6 +288,18 @@ async function run() {
         console.log(error);
       }
     });
+
+    //nodemailer
+    app.post('/contact-us', async (req, res) => {
+      const { name, emailAddress, webAddress, message } = req.body;
+      
+      try {
+          const info = await sendEmail(name, emailAddress, webAddress, message);
+          res.status(200).send(`Email sent successfully: ${info.messageId}`);
+      } catch (error) {
+          res.status(500).send('Failed to send email');
+      }
+  });
 
     // await client.connect();
     // Send a ping to confirm a successful connection

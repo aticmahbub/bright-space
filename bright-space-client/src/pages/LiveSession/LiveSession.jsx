@@ -10,6 +10,7 @@ const LiveSession = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const { id } = useParams();
+    const meetingToken = localStorage.getItem('meetToken');
 
     const { data = {}, isSuccess: isMeetCodeSuccess, isLoading } = useQuery({
         queryKey: ['meetCode'],
@@ -25,9 +26,9 @@ const LiveSession = () => {
                 icon: "error",
                 title: "Invalid Code",
                 text: "Please enter the valid classroom code!",
-                // footer: '<a href="#">Why do I have this issue?</a>'
             });
-            navigate('/classroom')
+            localStorage.removeItem('meetToken');
+            navigate('/classroom');
         }
     }, [data, isMeetCodeSuccess, navigate]);
 
@@ -40,40 +41,43 @@ const LiveSession = () => {
         // api.executeCommand('subject', roomName)
         api.addListener('readyToClose', () => {
             navigate('/classroom');
+            localStorage.removeItem('meetToken');
         });
     };
 
     return (
-        <Box maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} pt='8' pb='16' className='min-h-screen'>
-            <Box rounded='lg' overflow='hidden'>
-                <JaaSMeeting
-                    jwt={`${import.meta.env.VITE_JITSI_JWT}`}
-                    appId={`${import.meta.env.VITE_JITSI_API_KEY}`}
-                    roomName={data.meetCode}
-                    getIFrameRef={iframeRef => {
-                        iframeRef.style.height = '75vh';
-                    }}
-                    // jwt=''
-                    configOverwrite={{
-                        subject: data.meetCode,
-                        disableThirdPartyRequests: true,
-                        disableLocalVideoFlip: true,
-                        backgroundAlpha: 0.5,
-                    }}
-                    interfaceConfigOverwrite={{
-                        VIDEO_LAYOUT_FIT: 'nocrop',
-                        MOBILE_APP_PROMO: false,
-                        TILE_VIEW_MAX_COLUMNS: 4,
-                    }}
-                    // spinner={SpinnerView}
-                    onApiReady={handleAPI}
-                />
-            </Box>
-            {
-                data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
-                    <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='600'>Share this meeting code: <span className='base:text-base md:text-lg italic'>{data.meetCode}</span></Text>
+        <Box maxW='1596px' mx='auto' display='flex' alignItems='center' px={{ base: '2', lg: 8, '2xl': 0 }} py='4' className='min-h-screen'>
+            <Box w='full'>
+                <Box rounded='lg' overflow='hidden'>
+                    <JaaSMeeting
+                        jwt={meetingToken}
+                        appId={`${import.meta.env.VITE_JITSI_APP_ID}`}
+                        roomName={data.meetCode}
+                        getIFrameRef={iframeRef => {
+                            iframeRef.style.height = '80vh';
+                        }}
+                        // jwt=''
+                        configOverwrite={{
+                            subject: data.meetCode,
+                            disableThirdPartyRequests: true,
+                            disableLocalVideoFlip: true,
+                            backgroundAlpha: 0.5,
+                        }}
+                        interfaceConfigOverwrite={{
+                            VIDEO_LAYOUT_FIT: 'nocrop',
+                            MOBILE_APP_PROMO: false,
+                            TILE_VIEW_MAX_COLUMNS: 4,
+                        }}
+                        // spinner={SpinnerView}
+                        onApiReady={handleAPI}
+                    />
                 </Box>
-            }
+                {
+                    data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
+                        <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='600'>Share this meeting code: <span className='base:text-base md:text-lg italic'>{data.meetCode}</span></Text>
+                    </Box>
+                }
+            </Box>
         </Box>
     );
 };

@@ -1,10 +1,33 @@
-import { Avatar, AvatarBadge, Button, IconButton, Input, Popover, PopoverBody, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Text } from '@chakra-ui/react'
+import { Avatar, AvatarBadge, IconButton, Input, Popover, PopoverBody, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Text } from '@chakra-ui/react'
 import { IoIosPaperPlane, IoMdChatboxes } from 'react-icons/io';
 import { SiGoogleassistant } from "react-icons/si";
-import { CiPaperplane } from "react-icons/ci";
-import { FaPaperPlane } from 'react-icons/fa';
+import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
 
 const Assistant = () => {
+    const [inputValue, setInputValue] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
+    const [messages, setMessages] = useState([]);
+
+    const { mutate: promptMutate, data } = useMutation({
+        mutationKey: ['prompt'],
+        mutationFn: async (prompt) => {
+            const res = await axios.post('https://bright-space-server-abid-hasan-rafis-projects.vercel.app/generate', prompt);
+            return res.data;
+        }
+    });
+
+    console.log(data);
+
+    const handleTypingPrompt = () => {
+
+    }
+
+    const handleSendMessage = () => {
+        promptMutate({ prompt: 'hello' });
+    };
+
     return (
         <Popover placement='top-end' isLazy>
             <PopoverTrigger>
@@ -36,10 +59,11 @@ const Assistant = () => {
                     tempor incididunt ut labore et dolore.
                 </PopoverBody>
                 <PopoverFooter display='flex' py='3'>
-                    <Input placeholder='Write a message' focusBorderColor='primary.500' />
+                    <Input onChange={handleTypingPrompt} type='text' placeholder='Write a message' name='message' focusBorderColor='primary.500' />
                     <IconButton
+                        onClick={handleSendMessage}
                         variant='ghost'
-                        _hover={{bg: 'none'}}
+                        _hover={{ bg: 'none' }}
                         colorScheme='primary'
                         aria-label='Call Sage'
                         fontSize='24px'

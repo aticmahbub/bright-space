@@ -6,26 +6,31 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
 const Assistant = () => {
-    const [inputValue, setInputValue] = useState('');
+    const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([]);
 
-    const { mutate: promptMutate, data } = useMutation({
+    const { mutate: promptMutate } = useMutation({
         mutationKey: ['prompt'],
         mutationFn: async (prompt) => {
             const res = await axios.post('https://bright-space-server-abid-hasan-rafis-projects.vercel.app/generate', prompt);
             return res.data;
+        },
+        onSuccess: (data) => {
+            setMessages((prev) => [...prev, data.response]);
+            setIsTyping(false);
         }
     });
 
-    console.log(data);
-
-    const handleTypingPrompt = () => {
-
-    }
+    const handleTypingPrompt = (e) => {
+        const text = e.target.value;
+        setInputText(text);
+    };
 
     const handleSendMessage = () => {
-        promptMutate({ prompt: 'hello' });
+        setIsTyping(true);
+        promptMutate({ prompt: inputText });
+        setInputText('');
     };
 
     return (
@@ -59,7 +64,7 @@ const Assistant = () => {
                     tempor incididunt ut labore et dolore.
                 </PopoverBody>
                 <PopoverFooter display='flex' py='3'>
-                    <Input onChange={handleTypingPrompt} type='text' placeholder='Write a message' name='message' focusBorderColor='primary.500' />
+                    <Input onChange={handleTypingPrompt} value={inputText} type='text' placeholder='Write a message' name='message' focusBorderColor='primary.500' />
                     <IconButton
                         onClick={handleSendMessage}
                         variant='ghost'

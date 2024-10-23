@@ -17,7 +17,11 @@ const Assistant = () => {
             return res.data;
         },
         onSuccess: (data) => {
-            setMessages((prev) => [...prev, data.response]);
+            const assistantRes = {
+                message: data.response,
+                role: 'assistant'
+            };
+            setMessages((prev) => [...prev, assistantRes]);
             setIsTyping(false);
         }
     });
@@ -28,7 +32,16 @@ const Assistant = () => {
     };
 
     const handleSendMessage = () => {
+        if(!inputText) {
+            return;
+        }
         setIsTyping(true);
+        const userRes = {
+                message: inputText,
+                role: 'user'
+            };
+            setMessages((prev) => [...prev, userRes]);
+            setIsTyping(false);
         promptMutate({ prompt: inputText });
         setInputText('');
     };

@@ -236,7 +236,7 @@ const Dashboard = () => {
                                         </Badge>
                                     </Box>
                                 </MenuButton>
-                                <MenuList overflowY='auto'>
+                                <MenuList overflowY='auto' mt='10px'>
                                     {/* MenuItems are not rendered unless Menu is open */}
                                     <MenuItem>Notification 1</MenuItem>
                                     <MenuItem>Notification 2</MenuItem>

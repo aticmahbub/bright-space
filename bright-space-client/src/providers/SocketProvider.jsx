@@ -13,7 +13,7 @@ const SocketProvider = ({ children }) => {
         });
         socket.on('test-event', (msg) => {
             console.log(msg);
-        })
+        });
     }, []);
 
     const socketInfo = {};

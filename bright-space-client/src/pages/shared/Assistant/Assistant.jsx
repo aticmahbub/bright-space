@@ -1,7 +1,7 @@
-import { Avatar, AvatarBadge, IconButton, Input, Popover, PopoverBody, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Text } from '@chakra-ui/react'
+import { Avatar, AvatarBadge, Box, IconButton, Input, Popover, PopoverBody, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Text } from '@chakra-ui/react'
 import { IoIosPaperPlane, IoMdChatboxes } from 'react-icons/io';
 import { SiGoogleassistant } from "react-icons/si";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -23,8 +23,13 @@ const Assistant = () => {
             };
             setMessages((prev) => [...prev, assistantRes]);
             setIsTyping(false);
+            console.log(data);
         }
     });
+
+    useEffect(() => {
+        promptMutate({ prompt: 'Please just write this: Hello! 👋 How can I help you today? 😊' });
+    }, [promptMutate]);
 
     const handleTypingPrompt = (e) => {
         const text = e.target.value;
@@ -32,16 +37,16 @@ const Assistant = () => {
     };
 
     const handleSendMessage = () => {
-        if(!inputText) {
+        if (!inputText) {
             return;
         }
         setIsTyping(true);
         const userRes = {
-                message: inputText,
-                role: 'user'
-            };
-            setMessages((prev) => [...prev, userRes]);
-            setIsTyping(false);
+            message: inputText,
+            role: 'user'
+        };
+        setMessages((prev) => [...prev, userRes]);
+        setIsTyping(false);
         promptMutate({ prompt: inputText });
         setInputText('');
     };
@@ -62,19 +67,20 @@ const Assistant = () => {
                     icon={<IoMdChatboxes />}
                 />
             </PopoverTrigger>
-            <PopoverContent>
-                <PopoverHeader display='flex' alignItems='center' gap='2' py='3' fontWeight='semibold' roundedTop='base' bg='primary.500'>
+            <PopoverContent w='400px' h='460px' flexShrink=''>
+                <PopoverHeader display='flex' alignItems='center' gap='2' py='3' fontWeight='semibold' roundedTop='md' bg='primary.500'>
                     <Avatar size='sm' bg='black' border='2px' icon={<SiGoogleassistant fontSize='1rem' />}>
                         <AvatarBadge boxSize='0.9em' bg='green.500' />
                     </Avatar>
                     <Text textColor='white'>Assistant</Text>
                 </PopoverHeader>
-                <PopoverBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore.
+                <PopoverBody overflowY='auto' flex='1'>
+                    {
+                        messages.map((message, idx) => <Box key={idx} display='flex' gap='2' mt='2' justifyContent={message.role !== 'user' ? 'left' : 'right'}>
+                            <Avatar display={message.role !== 'assistant' ? 'none' : 'flex'} size='sm' bg='black' border='2px' icon={<SiGoogleassistant fontSize='1rem' />} />
+                            <Text w='max-content' maxW='317px' bg={message.role !== 'assistant' ? 'primary.500' : 'primary.50'} px='4' py='3' roundedBottom='md' roundedTopRight='md'>{message.message}</Text>
+                        </Box>)
+                    }
                 </PopoverBody>
                 <PopoverFooter display='flex' py='3'>
                     <Input onChange={handleTypingPrompt} value={inputText} type='text' placeholder='Write a message' name='message' focusBorderColor='primary.500' />

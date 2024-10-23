@@ -10,6 +10,16 @@ const Assistant = () => {
     const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([]);
 
+    const now = new Date();
+    let minutes = now.getMinutes();
+    let hours = now.getHours();
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    console.log(hours)
+    hours = hours ? hours : 12;
+    const formatMinutes = minutes < 10 ? '0' + minutes : minutes;
+    const currentTime = `${hours}:${formatMinutes} ${amPm}`;
+
     const { mutate: promptMutate } = useMutation({
         mutationKey: ['prompt'],
         mutationFn: async (prompt) => {
@@ -78,7 +88,10 @@ const Assistant = () => {
                     {
                         messages.map((message, idx) => <Box key={idx} display='flex' gap='2' mt='2' justifyContent={message.role !== 'user' ? 'left' : 'right'}>
                             <Avatar display={message.role !== 'assistant' ? 'none' : 'flex'} size='sm' bg='black' border='2px' icon={<SiGoogleassistant fontSize='1rem' />} />
-                            <Text w='max-content' maxW='317px' bg={message.role !== 'assistant' ? 'primary.500' : 'primary.50'} px='4' py='3' roundedBottom='md' roundedTopRight='md'>{message.message}</Text>
+                            <Box>
+                                <Text w='max-content' maxW='317px' bg={message.role !== 'assistant' ? 'primary.500' : 'primary.50'} px='4' py='2' roundedBottom='md' roundedTopRight='md'>{message.message}</Text>
+                                <Text fontSize='xs' mt='1' textAlign={message.role !== 'user' ? 'start' : 'end'}>{currentTime}</Text>
+                            </Box>
                         </Box>)
                     }
                 </PopoverBody>

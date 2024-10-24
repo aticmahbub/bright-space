@@ -14,7 +14,6 @@ const Assistant = () => {
     let hours = now.getHours();
     const amPm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
-    console.log(hours)
     hours = hours ? hours : 12;
     const formatMinutes = minutes < 10 ? '0' + minutes : minutes;
     const currentTime = `${hours}:${formatMinutes} ${amPm}`;
@@ -72,7 +71,7 @@ const Assistant = () => {
                     icon={<IoMdChatboxes />}
                 />
             </PopoverTrigger>
-            <PopoverContent w={{base: '360px', md: '400px'}} h='460px'>
+            <PopoverContent w={{ base: '360px', md: '400px' }} h='460px'>
                 <PopoverHeader display='flex' alignItems='center' gap='2' py='3' fontWeight='semibold' roundedTop='md' bg='primary.500'>
                     <Avatar size='sm' bg='black' border='2px' icon={<SiGoogleassistant fontSize='1rem' />}>
                         <AvatarBadge boxSize='0.9em' bg='green.500' />
@@ -92,14 +91,14 @@ const Assistant = () => {
                         messages.map((message, idx) => <Box key={idx} display='flex' gap='2' mt='2' justifyContent={message.role !== 'user' ? 'left' : 'right'}>
                             <Avatar display={message.role !== 'assistant' ? 'none' : 'flex'} size='sm' bg='black' border='2px' icon={<SiGoogleassistant fontSize='1rem' />} />
                             <Box>
-                                <Text w='max-content' maxW={{base: '295px', md: '317px'}} bg={message.role !== 'assistant' ? 'primary.500' : 'primary.50'} px='4' py='2' roundedBottom='md' roundedTopRight='md'>{message.message}</Text>
+                                <Text w='max-content' maxW={{ base: '295px', md: '317px' }} bg={message.role !== 'assistant' ? 'primary.500' : 'primary.50'} px='4' py='2' roundedBottom='md' roundedTopRight='md'>{message.message}</Text>
                                 <Text fontSize='xs' mt='1' textAlign={message.role !== 'user' ? 'start' : 'end'}>{message.time}</Text>
                             </Box>
                         </Box>)
                     }
                 </PopoverBody>
                 <PopoverFooter display='flex' py='3'>
-                    <Input onChange={handleTypingPrompt} value={inputText} type='text' placeholder='Write a message' name='message' focusBorderColor='primary.500' />
+                    <Input onChange={handleTypingPrompt} onKeyUp={(e) => e.key === 'Enter' && handleSendMessage()} value={inputText} type='text' placeholder='Write a message' name='message' focusBorderColor='primary.500' />
                     <IconButton
                         onClick={handleSendMessage}
                         variant='ghost'

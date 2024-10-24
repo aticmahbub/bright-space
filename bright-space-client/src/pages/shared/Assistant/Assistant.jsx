@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const Assistant = () => {
     const [inputText, setInputText] = useState('');
-    const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([]);
 
     const now = new Date();
@@ -29,10 +28,10 @@ const Assistant = () => {
         onSuccess: (data) => {
             const assistantRes = {
                 message: data.response,
-                role: 'assistant'
+                role: 'assistant',
+                time: currentTime
             };
             setMessages((prev) => [...prev, assistantRes]);
-            setIsTyping(false);
             console.log(data);
         }
     });
@@ -50,13 +49,12 @@ const Assistant = () => {
         if (!inputText) {
             return;
         }
-        setIsTyping(true);
         const userRes = {
             message: inputText,
-            role: 'user'
+            role: 'user',
+            time: currentTime
         };
         setMessages((prev) => [...prev, userRes]);
-        setIsTyping(false);
         promptMutate({ prompt: inputText });
         setInputText('');
     };
@@ -84,13 +82,21 @@ const Assistant = () => {
                     </Avatar>
                     <Text textColor='white'>Assistant</Text>
                 </PopoverHeader>
-                <PopoverBody overflowY='auto' flex='1'>
+                <PopoverBody
+                    overflowY='auto'
+                    flex='1'
+                    ref={(el) => {
+                        if (el) {
+                            el.scrollTop = el.scrollHeight;
+                        }
+                    }}
+                >
                     {
                         messages.map((message, idx) => <Box key={idx} display='flex' gap='2' mt='2' justifyContent={message.role !== 'user' ? 'left' : 'right'}>
                             <Avatar display={message.role !== 'assistant' ? 'none' : 'flex'} size='sm' bg='black' border='2px' icon={<SiGoogleassistant fontSize='1rem' />} />
                             <Box>
                                 <Text w='max-content' maxW='317px' bg={message.role !== 'assistant' ? 'primary.500' : 'primary.50'} px='4' py='2' roundedBottom='md' roundedTopRight='md'>{message.message}</Text>
-                                <Text fontSize='xs' mt='1' textAlign={message.role !== 'user' ? 'start' : 'end'}>{currentTime}</Text>
+                                <Text fontSize='xs' mt='1' textAlign={message.role !== 'user' ? 'start' : 'end'}>{message.time}</Text>
                             </Box>
                         </Box>)
                     }

@@ -18,7 +18,7 @@ const QnABanner = () => {
       ></div>
 
       {/* Content */}
-      <div className="relative z-10 flex items-center justify-between gap-10 h-full px-8 text-white max-w-7xl mx-auto">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-normal lg:justify-between  gap-4 lg:gap-10 h-full px-8 text-white max-w-7xl mx-auto">
         {/* Text Section */}
         <div>
           <h1 className="text-3xl font-bold mb-4">
@@ -33,9 +33,9 @@ const QnABanner = () => {
         </div>
 
         {/* Button Section */}
-        <div className="w-full text-end mt-20">
-        <button className="px-10 bg-[#3f54f7] text-white font-medium py-2 rounded-md hover:bg-[#45caf3]">
-          Create a account
+        <div className="w-full  text-center lg:text-end mt-2 lg:mt-20">
+        <button className="px-10 bg-[#d4a946] text-white font-medium py-2 rounded-md hover:bg-[#45caf3]">
+          Explore Questions
         </button>
         </div>
       </div>

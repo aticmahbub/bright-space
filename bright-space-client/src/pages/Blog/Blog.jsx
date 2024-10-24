@@ -17,7 +17,7 @@ import CreateBlog from "./CreateBlog/CreateBlog";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
-  const { isOpen, onOpen, onClose } = useDisclosure(); 
+  const { isOpen, onOpen, onClose } = useDisclosure();
   useEffect(() => {
     fetch("/blogs.json")
       .then((res) => res.json())
@@ -68,12 +68,12 @@ const Blog = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#edf4fb47] via-[#ef8f5314] to-[#fd620217]">
           <div className="flex justify-center items-center h-full text-black">
             <div>
-              <h6 className="font-semibold text-5xl text-center leading-[1.75]">
-                Turn your passion into words <br />{" "}
-                <span className="inline-block bg-gradient-to-r from-[#183979] to-[#FF6600] text-transparent bg-clip-text">
-                  create a blog
+              <h1 className="text-[32px] lg:text-[56px] font-semibold tracking-[-1.5%] leading-[44px] md:leading-[68px] mt-4 mb-4 md:mb-[22px]">
+                UGC Videos with our <br />{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#183979] to-[#FF6600]">
+                  Diwali Templates
                 </span>
-              </h6>
+              </h1>
               <p className="mb-8 text-center">
                 Complete the form and post your blog to inspire others with your
                 unique perspective.
@@ -91,7 +91,9 @@ const Blog = () => {
               <Modal onClose={onClose} size={"5xl"} isOpen={isOpen}>
                 <ModalOverlay />
                 <ModalContent>
-                  <ModalHeader textAlign={"center"}  marginY={4}>Create Your Blog</ModalHeader>
+                  <ModalHeader textAlign={"center"} marginY={4}>
+                    Create Your Blog
+                  </ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
                     <CreateBlog></CreateBlog>

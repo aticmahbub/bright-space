@@ -17,17 +17,16 @@ const AllCourses = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const axiosSecure = useAxiosSecure()
-    // const { title, posted_by, image_url, short_description, price } = courses;
 
     const handleAddToCart = (specificCourse) => {
         if (user && user?.email) {
             // send cart to db
             console.log(specificCourse);
-            const cartItem = {
+            const enrolledCourses = {
                 course: specificCourse,
                 email: user?.email
             }
-            axiosSecure.post('/enrolls', cartItem)
+            axiosSecure.post('/enrolls', enrolledCourses)
                 .then(res => {
                     console.log(res.data);
                     refetch()

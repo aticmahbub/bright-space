@@ -16,6 +16,10 @@ import {
   Text,
   Avatar,
 } from "@chakra-ui/react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const QuestionCard = ({ question, setQuestions }) => {
   const axiosPublic = useAxiosPublic();
@@ -42,6 +46,8 @@ const QuestionCard = ({ question, setQuestions }) => {
       );
 
       if (response.data.modifiedCount) {
+
+        
         setQuestions((prevQuestions) =>
           prevQuestions.map((question) =>
             question._id === questionId
@@ -58,7 +64,7 @@ const QuestionCard = ({ question, setQuestions }) => {
         console.log("successfully added vote");
       }
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -85,6 +91,11 @@ const QuestionCard = ({ question, setQuestions }) => {
       );
 
       if (response.data.modifiedCount) {
+
+        toast.success('successfully answered')
+
+
+
          setQuestions((prevQuestions) =>
         prevQuestions.map((question) =>
           question._id === questionId
@@ -99,7 +110,7 @@ const QuestionCard = ({ question, setQuestions }) => {
       setAnswer("");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("something went wrong");
     }
   };
 
@@ -123,13 +134,11 @@ const QuestionCard = ({ question, setQuestions }) => {
           className="w-8 h-8 rounded-full"
         />
         <div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center  gap-10">
             <h3 className="font-bold text-blue-600">{question.name}</h3>
-            <span className="bg-yellow-400 text-white px-2 py-1 text-xs rounded-md">
-              Enlightened
-            </span>
+            
 
-            <span className="text-blue-500 text-xs">In: English</span>
+            <p className="text-blue-500 text-xs">In: English</p>
           </div>
         </div>
       </div>
@@ -147,7 +156,7 @@ const QuestionCard = ({ question, setQuestions }) => {
       {/* Upvote/Downvote System */}
       <div className="flex items-center justify-between  rounded-md">
         {/* Upvote Buttons */}
-        <div className="flex items-center space-x-4 ml-5 bg-[#e5eaf0] px-3 py-2 rounded-md">
+        <div className="flex items-center space-x-4 ml-0 lg:ml-5 bg-[#e5eaf0] px-1 lg:px-3 py-2 rounded-md">
           <button onClick={() => handleVote(question._id, "upvote")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +173,7 @@ const QuestionCard = ({ question, setQuestions }) => {
               />
             </svg>
           </button>
-          <span className="text-xl font-bold opacity-60">
+          <span className="text-lg lg:text-xl font-bold opacity-60">
             {question.upVotes}
           </span>
           <button onClick={() => handleVote(question._id, "downvote")}>
@@ -185,9 +194,9 @@ const QuestionCard = ({ question, setQuestions }) => {
           </button>
         </div>
 
-        {/* Answer and Views */}
-        <div className="flex items-center space-x-4 px-5 py-2 rounded-xl">
-          <div className="flex items-center gap-2  px-3 py-2 rounded-md">
+        {/* Answer */}
+        <div className="flex items-center  px-1 lg:px-5 py-2 rounded-xl">
+          <div className="flex items-center gap-2 px-1 lg:px-3 py-2 rounded-md">
             {/* Trigger the modal */}
             <Button onClick={() => handleOpenModal(question)}>
               <div className="flex items-center gap-2  px-3 py-2 rounded-md opacity-70">

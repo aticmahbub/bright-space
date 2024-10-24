@@ -15,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const PostQ = () => {
   const axiosPublic = useAxiosPublic();
@@ -48,12 +50,12 @@ const PostQ = () => {
         },
       });
 
-      console.log("successfully sended", response.data);
+      toast.success("You have a successfully posted a question.");
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
 
-   
+    
     setName("");
     setQuestion("");
     onClose();

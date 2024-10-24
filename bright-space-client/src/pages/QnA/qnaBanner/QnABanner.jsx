@@ -20,7 +20,7 @@ const QnABanner = () => {
       {/* Content */}
       <div className="relative z-10 flex items-center justify-between gap-10 h-full px-8 text-white max-w-7xl mx-auto">
         {/* Text Section */}
-        <div className="">
+        <div>
           <h1 className="text-3xl font-bold mb-4">
             Share & grow the world{"'"}s knowledge!
           </h1>

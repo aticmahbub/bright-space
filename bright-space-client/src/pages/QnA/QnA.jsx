@@ -31,9 +31,8 @@ const QnA = () => {
   return (
     <div>
       <QnABanner></QnABanner>
-      <div className="max-w-7xl mx-auto flex items-start gap-5">
-        <div
-          className="w-[70%] flex flex-col gap-8 overflow-y-auto"
+      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-start gap-5">
+        <div className="w-full lg:w-[70%] flex flex-col gap-8 overflow-y-auto"
           style={{ height: "calc(100vh - 100px)", overflowY: "scroll" }}
         >
           {questions.map((question) => (
@@ -45,7 +44,7 @@ const QnA = () => {
           ))}
         </div>
 
-        <div className="w-[30%]">
+        <div className="w-full lg:w-[30%]">
           <PostQ></PostQ>
 
           {/* Stats Cards */}

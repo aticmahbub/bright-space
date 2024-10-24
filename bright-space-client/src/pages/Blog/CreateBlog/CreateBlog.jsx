@@ -1,6 +1,8 @@
 import  { useContext, useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { AuthContext } from "../../../providers/AuthProvider";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateBlog = () => {
   // State to store form data
@@ -54,14 +56,24 @@ const CreateBlog = () => {
       })
       
       if(response.data.insertedId){
-        console.log("successfully added");
+        toast.success("successfully added");
+
+        setFormData({
+          name: "",
+          title: "",
+          image: "",
+          description: "",
+        });
       }
 
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      toast.error("something went wrong");
+      console.log(err);
     }
     
-    console.log(blogInfo);
+   
+
+ 
     
   };
 

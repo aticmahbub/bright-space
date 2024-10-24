@@ -1,6 +1,6 @@
 
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import brightSpace_logo from "../assets/bright-space-logo.svg";
 import { FcMenu } from "react-icons/fc";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
@@ -29,23 +29,28 @@ import {
 import { ArrowBackIcon } from '@chakra-ui/icons'
 // import useRole from "../hooks/useRole";
 import { MdNotifications } from "react-icons/md";
+import { SocketContext } from "../providers/SocketProvider";
 
 
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const pathname = useLocation();
+    const [notifications, setNotifications] = useState([]);
+    const { socket } = useContext(SocketContext);
+    // const pathname = useLocation();
     // const role = useRole()
     const role = "student"
-    console.log(role);
-
     const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
-
-    console.log(pathname);
 
     // For Responsive
     const [size, setSize] = React.useState('')
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    useEffect(() => {
+        socket?.on('getNotification', (notification) => {
+            setNotifications(prev => [...prev, notification.notification]);
+        });
+    }, [socket]);
 
     const handleClick = (newSize) => {
         setSize(newSize)
@@ -232,15 +237,15 @@ const Dashboard = () => {
                                     <Box pos='relative'>
                                         <Icon as={MdNotifications} fontSize='2xl' />
                                         <Badge pos='absolute' right='0' top='-0.5' variant='solid' colorScheme='red' fontSize='0.6em' rounded='full'>
-                                            7
+                                            {notifications.length}
                                         </Badge>
                                     </Box>
                                 </MenuButton>
                                 <MenuList overflowY='auto' mt='10px'>
                                     {/* MenuItems are not rendered unless Menu is open */}
-                                    <MenuItem>Notification 1</MenuItem>
-                                    <MenuItem>Notification 2</MenuItem>
-                                    <MenuItem>Notification 3</MenuItem>
+                                    {
+                                        notifications.map((notification, idx) => <Text key={idx} px='4'>{notification ? notification : ''}</Text>)
+                                    }
                                 </MenuList>
                             </Menu>
                             <Messages />

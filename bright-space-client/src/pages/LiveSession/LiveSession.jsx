@@ -40,7 +40,7 @@ const LiveSession = () => {
     }
 
     const handleSendClassCode = () => {
-        socket.emit('sendNotification', `You are invited to the class. Classroom Code: ${data?.meetCode}`)
+        socket?.emit('sendNotification', `You are invited to the class. Classroom Code: ${data?.meetCode}`)
     }
 
     const handleAPI = api => {
@@ -82,7 +82,7 @@ const LiveSession = () => {
                 {
                     data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' gap='3' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
                         <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='600'>Share this meeting code: <span className='base:text-base md:text-lg italic'>{data.meetCode}</span></Text>
-                        <Button colorScheme='primary' onClick={handleSendClassCode}>Share</Button>
+                        <Button colorScheme='primary' size='sm' onClick={handleSendClassCode}>Share</Button>
                     </Box>
                 }
             </Box>

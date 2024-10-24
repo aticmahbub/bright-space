@@ -1,22 +1,20 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 export const SocketContext = createContext(null);
 
 const SocketProvider = ({ children }) => {
+    const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        const socket = io('http://localhost:3000', {
+        setSocket(io('http://localhost:3000', {
             auth: {
                 token: 'abcd'
             }
-        });
-        socket.on('test-event', (msg) => {
-            console.log(msg);
-        });
+        }));
     }, []);
 
-    const socketInfo = {};
+    const socketInfo = { socket };
 
     return (
         <SocketContext.Provider value={socketInfo}>

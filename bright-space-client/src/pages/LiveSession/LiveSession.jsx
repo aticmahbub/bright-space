@@ -1,12 +1,15 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { JaaSMeeting } from "@jitsi/react-sdk";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Swal from 'sweetalert2'
+import { SocketContext } from "../../providers/SocketProvider";
 
 const LiveSession = () => {
+    const { socket } = useContext(SocketContext);
+    console.log(socket);
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const { id } = useParams();
@@ -34,6 +37,10 @@ const LiveSession = () => {
 
     if (isLoading) {
         return <h1>Loading...</h1>
+    }
+
+    const handleSendClassCode = () => {
+        socket.emit('sendNotification', `You are invited to the class. Classroom Code: ${data?.meetCode}`)
     }
 
     const handleAPI = api => {
@@ -73,8 +80,9 @@ const LiveSession = () => {
                     />
                 </Box>
                 {
-                    data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
+                    data?.meetCode && <Box display='flex' alignItems='center' justifyContent='center' gap='3' p='5' mt='5' rounded='lg' border='1px' borderColor='#F1F1F3' bg='#FCFCFD'>
                         <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='600'>Share this meeting code: <span className='base:text-base md:text-lg italic'>{data.meetCode}</span></Text>
+                        <Button colorScheme='primary' onClick={handleSendClassCode}>Share</Button>
                     </Box>
                 }
             </Box>

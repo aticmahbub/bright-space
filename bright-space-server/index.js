@@ -100,8 +100,10 @@ async function run() {
 
         // real time interactions or notifications with socket
         io.on('connection', (socket) => {
-            socket.emit('test-event', 'hello world!');
-            console.log(socket.handshake.auth);
+            socket.on('sendNotification', (notification) => {
+                io.emit('getNotification', { notification });
+            });
+            // console.log(socket.handshake.auth);
 
             socket.on('disconnect', () => {
                 console.log('user disconnected');

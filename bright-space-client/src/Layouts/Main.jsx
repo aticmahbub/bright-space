@@ -17,7 +17,9 @@ const Main = () => {
             <Box display={pathname === `/live/${id}` ? 'none' : 'block'}>
                 <Footer />
             </Box>
-            <Assistant />
+            <Box pos='fixed' bottom='5' right={{base: 2, lg: 8}}>
+                <Assistant />
+            </Box>
         </Box>
     );
 };

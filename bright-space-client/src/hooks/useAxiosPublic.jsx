@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://bright-space-server-fnwkazze9-atic-mahbubs-projects.vercel.app'
 });
 
 const useAxiosPublic = () => {

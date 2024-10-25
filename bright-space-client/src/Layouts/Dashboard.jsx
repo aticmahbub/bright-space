@@ -1,5 +1,5 @@
 
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import brightSpace_logo from "../assets/bright-space-logo.svg";
 import { FcMenu } from "react-icons/fc";
@@ -24,12 +24,13 @@ import {
     Menu,
     MenuButton,
     MenuList,
-    MenuItem
+    
 } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 // import useRole from "../hooks/useRole";
 import { MdNotifications } from "react-icons/md";
 import { SocketContext } from "../providers/SocketProvider";
+import useRole from "../hooks/useRole";
 
 
 
@@ -39,9 +40,9 @@ const Dashboard = () => {
     const { socket } = useContext(SocketContext);
     // const pathname = useLocation();
     // const role = useRole()
-    const role = "student"
-    const pathname = useLocation();
+    // const pathname = useLocation();
     const role = useRole()
+    console.log(role)
     const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
 
     // For Responsive
@@ -62,7 +63,7 @@ const Dashboard = () => {
     const sizes = ['xs'] // Only allow 'xs' size for the drawer
 
     // const userRole = role;
-    const userRole = "student"
+    const userRole = role
 
     const SideNavList = [
 

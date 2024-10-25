@@ -25,8 +25,6 @@ import QuizForm from "../pages/Quiz/QuizForm";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
 import MyClasses from "../Student/MyClasses";
 import Analysis from "../pages/Analysis/Analysis";
-import StudentProfile from "../pages/StudentProfile/StudentProfile";
-import MyClasses from "../Student/MyClasses";
 import QnA from "../pages/QnA/QnA";
 import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
 import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";

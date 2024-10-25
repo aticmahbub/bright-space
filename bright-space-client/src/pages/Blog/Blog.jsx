@@ -68,10 +68,10 @@ const Blog = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#edf4fb47] via-[#ef8f5314] to-[#fd620217]">
           <div className="flex justify-center items-center h-full text-black">
             <div>
-              <h1 className="text-[32px] lg:text-[56px] font-semibold tracking-[-1.5%] leading-[44px] md:leading-[68px] mt-4 mb-4 md:mb-[22px]">
-                UGC Videos with our <br />{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#183979] to-[#FF6600]">
-                  Diwali Templates
+              <h1 className="text-[32px] lg:text-[56px] font-semibold text-center">
+              Tell Your Story, Empower the Community <br />{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#eacd39] to-[#FF6600]">
+                Create Blogs
                 </span>
               </h1>
               <p className="mb-8 text-center">

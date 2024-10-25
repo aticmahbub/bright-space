@@ -67,7 +67,7 @@ async function run() {
       const query = {
         email: email,
       };
-      const result = await enrolledCourses.find(query).toArray();
+      const result = await coursesCollection.find(query).toArray();
       res.send(result);
     });
 
@@ -196,7 +196,6 @@ async function run() {
         const query = { _id: new ObjectId(id) };
         const question = await questionCollection.findOne(query);
 
-        console.log(question);
 
         if (!question.voters) {
           question.voters = [];

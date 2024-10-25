@@ -39,6 +39,7 @@ const AiAssistant = () => {
         text: data.response, // Use the response from the API
         sender: "ai",
       };
+      console.log(data.response);
 
       setMessages((prevMessages) => [...prevMessages, aiResponse]);
     } catch (error) {

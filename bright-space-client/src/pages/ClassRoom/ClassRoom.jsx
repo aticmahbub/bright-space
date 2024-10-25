@@ -5,11 +5,17 @@ import JoinClsModal from '../../components/JoinClsModal/JoinClsModal';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useMutation } from '@tanstack/react-query';
+import useAuth from '../../hooks/useAuth';
+import useRole from '../../hooks/useRole';
+import useMeetToken from '../../hooks/useMeetToken';
 
 const ClassRoom = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const axiosPublic = useAxiosPublic();
+    const mutateUserInfo = useMeetToken();
     const navigate = useNavigate();
+    const { user } = useAuth();
+    const role = useRole();
 
     const { mutate } = useMutation({
         mutationKey: ['meetingCode'],
@@ -25,14 +31,22 @@ const ClassRoom = () => {
     });
 
     const generateMeetingCode = () => {
+        const userInfo = {
+            name: user?.displayName,
+            email: user?.email,
+            userId: user?.uid,
+            role: role
+        }
+        mutateUserInfo(userInfo);
+
         const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
         mutate({ meetCode: meetingCode });
     };
 
     return (
-        <Box className='min-h-[calc(100vh-101px)]'>
+        <Box display='flex' justifyContent='center' className='min-h-[calc(100vh-149px)]'>
             <JoinClsModal title='Join Class' isOpen={isOpen} onClose={onClose} />
-            <Box display='flex' gap='8' alignItems='center' justifyContent='center' flexDir='column' my='20'>
+            <Box display='flex' gap='8' alignItems='center' justifyContent='center' flexDir='column'>
                 <Lottie className='w-full md:w-[650px]' animationData={classroom} />
                 <Box>
                     <Text textAlign='center' color='gray' mb='4'>Add a class to get started</Text>

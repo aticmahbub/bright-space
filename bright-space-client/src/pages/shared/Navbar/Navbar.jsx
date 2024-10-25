@@ -220,7 +220,7 @@ const Navbar = () => {
                       <MenuItem as={Link} to="/dashboard">
                         Dashboard
                       </MenuItem>
-                      <MenuItem as={Link} to="dashboard/myCourses">
+                      <MenuItem as={Link} to="dashboard/enrolledCourses">
                         Enrolled: {enrolls.length}
                       </MenuItem>
                       <MenuItem textColor="primary.500" onClick={handleLogout}>

@@ -1,6 +1,5 @@
 import useRole from "../../hooks/useRole";
 import TeacherProfile from "../TeacherProfile/TeacherProfile";
-import StudentProfile from "../StudentProfile/StudentProfile";
 
 const UserProfile = () => {
     const user = useRole()

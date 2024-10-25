@@ -1,6 +1,6 @@
 
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import brightSpace_logo from "../assets/bright-space-logo.svg";
 import { FcMenu } from "react-icons/fc";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
@@ -19,25 +19,40 @@ import {
     DrawerCloseButton,
     Box, Flex, Image,
     Text, Button, Icon,
-    Input, useDisclosure
+    Input, useDisclosure,
+    Badge,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem
 } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
-import useRole from "../hooks/useRole";
+// import useRole from "../hooks/useRole";
+import { MdNotifications } from "react-icons/md";
+import { SocketContext } from "../providers/SocketProvider";
 
 
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [notifications, setNotifications] = useState([]);
+    const { socket } = useContext(SocketContext);
+    // const pathname = useLocation();
+    // const role = useRole()
+    const role = "student"
     const pathname = useLocation();
     const role = useRole()
-
     const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
-
-    console.log(pathname);
 
     // For Responsive
     const [size, setSize] = React.useState('')
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    useEffect(() => {
+        socket?.on('getNotification', (notification) => {
+            setNotifications(prev => [...prev, notification.notification]);
+        });
+    }, [socket]);
 
     const handleClick = (newSize) => {
         setSize(newSize)
@@ -46,7 +61,8 @@ const Dashboard = () => {
 
     const sizes = ['xs'] // Only allow 'xs' size for the drawer
 
-    const userRole = role;
+    // const userRole = role;
+    const userRole = "student"
 
     const SideNavList = [
 
@@ -101,9 +117,9 @@ const Dashboard = () => {
         },
         {
             name: 'My Classes',
-            path: 'myClasses',
-            icon: GiOpenBook ,
-            roles: ['admin',  'student']  // Visible to all roles
+            path: 'my-classes',
+            icon: GiOpenBook,
+            roles: ['Admin', 'teacher', 'student']  // Visible to all roles
         },
         {
             name: 'Live Sessions',
@@ -165,7 +181,7 @@ const Dashboard = () => {
                 <Box className="p-4 h-screen group overflow-hidden whitespace-nowrap">
                     {/* Logo And Text */}
                     <Flex className="pl-3 items-center w-full justify-between">
-                        <Flex items-center spaceX="3">
+                        <Flex items-center='true'>
                             <Image className="w-6" src={brightSpace_logo} alt="Bright Space Logo" />
                             <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                                 Bright Space
@@ -223,7 +239,7 @@ const Dashboard = () => {
                                 <DrawerContent>
                                     <DrawerCloseButton><ArrowBackIcon w={"30px"} h={"30px"} /></DrawerCloseButton>
                                     <DrawerHeader>
-                                        <Flex items-center>
+                                        <Flex items-center='true'>
                                             <Image className="w-6 mr-3" src={brightSpace_logo} alt="Bright Space Logo" />
                                             <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500`}>
                                                 Bright Space
@@ -255,7 +271,7 @@ const Dashboard = () => {
                                 </DrawerContent>
                             </Drawer>
                         </Box>
-                        <Flex items-center display={['flex', 'flex', 'flex', 'none']}>
+                        <Flex items-center='true' display={['flex', 'flex', 'flex', 'none']}>
                             <Image className="w-6 mr-3" src={brightSpace_logo} alt="Bright Space Logo" />
                             <Text className={`text-lg font-bold transition-opacity duration-300 text-primary-500`}>
                                 Bright Space
@@ -267,7 +283,23 @@ const Dashboard = () => {
                             <Input placeholder="Search Anything..." border="none" _focus={{ boxShadow: 'none' }} fontSize={'14px'} className="w-full" />
                         </Box>
 
-                        <Flex justifyItems={'end'} className="ml-auto">
+                        <Flex alignItems='center' justifyItems='end' gap='4' className="ml-auto">
+                            <Menu isLazy>
+                                <MenuButton>
+                                    <Box pos='relative'>
+                                        <Icon as={MdNotifications} fontSize='2xl' />
+                                        <Badge pos='absolute' right='0' top='-0.5' variant='solid' colorScheme='red' fontSize='0.6em' rounded='full'>
+                                            {notifications.length}
+                                        </Badge>
+                                    </Box>
+                                </MenuButton>
+                                <MenuList overflowY='auto' mt='10px'>
+                                    {/* MenuItems are not rendered unless Menu is open */}
+                                    {
+                                        notifications.map((notification, idx) => <Text key={idx} px='4'>{notification ? notification : ''}</Text>)
+                                    }
+                                </MenuList>
+                            </Menu>
                             <Messages />
                         </Flex>
                     </Flex>

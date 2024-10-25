@@ -21,6 +21,10 @@ import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
+// import QnA from "../pages/QnA/QnA";
+import StudentProfile from "../pages/StudentProfile/StudentProfile";
+import MyClasses from "../Student/MyClasses";
+import Analysis from "../pages/Analysis/Analysis";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
 import MyClasses from "../Student/MyClasses";
 import QnA from "../pages/QnA/QnA";
@@ -104,6 +108,10 @@ export const router = createBrowserRouter([
         children: [
             // student routes
             {
+                path: '/dashboard',
+                element: <Analysis />
+            },
+            {
                 path: 'studentProfile',
                 element: <StudentProfile />
             },
@@ -119,11 +127,15 @@ export const router = createBrowserRouter([
                 path: 'viewCourseDetails',
                 element: <ViewCourse />
             },
+            // {
+            //     path: 'ViewMyClasses',
+            //     element: <ViewMyClasses />
+            // },
 
             // teacher routes
             {
                 path: 'teacherProfile',
-                element:  <StudentProfile />
+                element: <StudentProfile />
             },
             {
                 path: 'allTeachers',

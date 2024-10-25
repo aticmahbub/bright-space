@@ -44,9 +44,9 @@ const ClassRoom = () => {
     };
 
     return (
-        <Box className='min-h-[calc(100vh-101px)]'>
+        <Box display='flex' justifyContent='center' className='min-h-[calc(100vh-149px)]'>
             <JoinClsModal title='Join Class' isOpen={isOpen} onClose={onClose} />
-            <Box display='flex' gap='8' alignItems='center' justifyContent='center' flexDir='column' my='20'>
+            <Box display='flex' gap='8' alignItems='center' justifyContent='center' flexDir='column'>
                 <Lottie className='w-full md:w-[650px]' animationData={classroom} />
                 <Box>
                     <Text textAlign='center' color='gray' mb='4'>Add a class to get started</Text>

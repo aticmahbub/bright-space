@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Course 1",
+    "posted_by": "John Doe",
+    "image_url": "https://picsum.photos/200/300",
+    "short_description": "This is a short description of course 1",
+    "long_description": "This is a long description of course 1. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 100
+  },
+  {
+    "id": 2,
+    "title": "Course 2",
+    "posted_by": "Jane Doe",
+    "image_url": "https://picsum.photos/200/301",
+    "short_description": "This is a short description of course 2",
+    "long_description": "This is a long description of course 2. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 200
+  },
+  {
+    "id": 3,
+    "title": "Course 3",
+    "posted_by": "Bob Smith",
+    "image_url": "https://picsum.photos/200/302",
+    "short_description": "This is a short description of course 3",
+    "long_description": "This is a long description of course 3. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 300
+  },
+  {
+    "id": 4,
+    "title": "Course 4",
+    "posted_by": "Alice Johnson",
+    "image_url": "https://picsum.photos/200/303",
+    "short_description": "This is a short description of course 4",
+    "long_description": "This is a long description of course 4. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 400
+  },
+  {
+    "id": 5,
+    "title": "Course 5",
+    "posted_by": "Mike Brown",
+    "image_url": "https://picsum.photos/200/304",
+    "short_description": "This is a short description of course 5",
+    "long_description": "This is a long description of course 5. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 500
+  },
+  {
+    "id": 6,
+    "title": "Course 6",
+    "posted_by": "Emily Davis",
+    "image_url": "https://picsum.photos/200/305",
+    "short_description": "This is a short description of course 6",
+    "long_description": "This is a long description of course 6. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 600
+  },
+  {
+    "id": 7,
+    "title": "Course 7",
+    "posted_by": "Tom Harris",
+    "image_url": "https://picsum.photos/200/306",
+    "short_description": "This is a short description of course 7",
+    "long_description": "This is a long description of course 7. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 700
+  },
+  {
+    "id": 8,
+    "title": "Course 8",
+    "posted_by": "Linda Martin",
+    "image_url": "https://picsum.photos/200/307",
+    "short_description": "This is a short description of course 8",
+    "long_description": "This is a long description of course 8. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 800
+  },
+  {
+    "id": 9,
+    "title": "Course 9",
+    "posted_by": "Kevin White",
+    "image_url": "https://picsum.photos/200/308",
+    "short_description": "This is a short description of course 9",
+    "long_description": "This is a long description of course 9. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 900
+  },
+  {
+    "id": 10,
+    "title": "Course 10",
+    "posted_by": "Sarah Taylor",
+    "image_url": "https://picsum.photos/200/309",
+    "short_description": "This is a short description of course 10",
+    "long_description": "This is a long description of course 10. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1000
+  },
+  {
+    "id": 11,
+    "title": "Course 11",
+    "posted_by": "David Lee",
+    "image_url": "https://picsum.photos/200/310",
+    "short_description": "This is a short description of course 11",
+    "long_description": "This is a long description of course 11. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1100
+  },
+  {
+    "id": 12,
+    "title": "Course 12",
+    "posted_by": "Olivia Hall",
+    "image_url": "https://picsum.photos/200/311",
+    "short_description": "This is a short description of course 12",
+    "long_description": "This is a long description of course 12. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1200
+  },
+  {
+    "id": 13,
+    "title": "Course 13",
+    "posted_by": "William Kim",
+    "image_url": "https://picsum.photos/200/312",
+    "short_description": "This is a short description of course 13",
+    "long_description": "This is a long description of course 13. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1300
+  },
+  {
+    "id": 14,
+    "title": "Course 14",
+    "posted_by": "Ava Chen",
+    "image_url": "https://picsum.photos/200/313",
+    "short_description": "This is a short description of course 14",
+    "long_description": "This is a long description of course 14. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1400
+  },
+  {
+    "id": 15,
+    "title": "Course 15",
+    "posted_by": "Ethan Patel",
+    "image_url": "https://picsum.photos/200/314",
+    "short_description": "This is a short description of course 15",
+    "long_description": "This is a long description of course 15. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1500
+  },
+  {
+    "id": 16,
+    "title": "Course 16",
+    "posted_by": "Sophia Rodriguez",
+    "image_url": "https://picsum.photos/200/315",
+    "short_description": "This is a short description of course 16",
+    "long_description": "This is a long description of course 16. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1600
+  },
+  {
+    "id": 17,
+    "title": "Course 17",
+    "posted_by": "Mason Brooks",
+    "image_url": "https://picsum.photos/200/316",
+    "short_description": "This is a short description of course 17",
+    "long_description": "This is a long description of course 17. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1700
+  },
+  {
+    "id": 18,
+    "title": "Course 18",
+    "posted_by": "Isabella Garcia",
+    "image_url": "https://picsum.photos/200/317",
+    "short_description": "This is a short description of course 18",
+    "long_description": "This is a long description of course 18. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1800
+  },
+  {
+    "id": 19,
+    "title": "Course 19",
+    "posted_by": "Logan Hernandez",
+    "image_url": "https://picsum.photos/200/318",
+    "short_description": "This is a short description of course 19",
+    "long_description": "This is a long description of course 19. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 1900
+  },
+  {
+    "id": 20,
+    "title": "Course 20",
+    "posted_by": "Charlotte Thompson",
+    "image_url": "https://picsum.photos/200/319",
+    "short_description": "This is a short description of course 20",
+    "long_description": "This is a long description of course 20. It is a comprehensive course that covers all the basic concepts and advanced techniques in the field. The course is designed to provide a strong foundation for beginners and to help experienced professionals enhance their skills. The course is taught by industry experts and includes hands-on projects and real-world applications. By the end of the course, you will have a deep understanding of the subject and be ready to apply your knowledge in the real world.",
+    "price": 2000
+  }
+]

@@ -10,7 +10,7 @@ const {
 } = require('mongodb');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-
+const { sendEmail } = require("./nodemailer");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -100,6 +100,166 @@ async function run() {
             }
         });
 
+        res.send({ token });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: "Failed to generate token" });
+      }
+    });
+
+    // get all quizes
+    app.get("/quiz", async (req, res) => {
+      const result = await quizCollection.find().toArray();
+      res.send(result);
+    });
+    // add quiz
+    app.post("/quiz", async (req, res) => {
+      const newQuestion = req.body;
+      // console.log(enrolledCourses);
+      const result = await quizCollection.insertOne(newQuestion);
+      res.send(result);
+    });
+
+    // Meeting code related apis
+    app.get("/meetCode/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = {
+        meetCode: id,
+      };
+      const result = await meetingCodeCollection.findOne(query);
+      res.send(result);
+    });
+
+    app.post("/meetingCode", async (req, res) => {
+      const meetingCode = req.body;
+      const result = await meetingCodeCollection.insertOne(meetingCode);
+      res.send(result);
+    });
+
+    // Question related api
+    app.post("/questions", async (req, res) => {
+      const questionInfo = req.body;
+      const result = await questionCollection.insertOne(questionInfo);
+      res.send(result);
+    });
+
+    app.get("/questions", async (req, res) => {
+      const result = await questionCollection.find().toArray();
+      res.send(result);
+    });
+
+    // upvote and downvote related
+    app.post("/questions/:id/vote", async (req, res) => {
+      try {
+        const { id } = req.params;
+        const { userId, voteType } = req.body;
+        const query = { _id: new ObjectId(id) };
+        const question = await questionCollection.findOne(query);
+
+        console.log(question);
+
+        if (!question.voters) {
+          question.voters = [];
+        }
+
+        const userVote = question.voters.find(
+          (voter) => voter.userId === userId
+        );
+
+        if (userVote) {
+          return res.status(400).send({
+            message: "user has already taken",
+          });
+        }
+
+        let updateQuery;
+        if (voteType === "upvote") {
+          updateQuery = {
+            $inc: {
+              upVotes: 1,
+            },
+            $push: {
+              voters: {
+                userId,
+                voteType,
+              },
+            },
+          };
+        } else if (voteType === "downvote") {
+          updateQuery = {
+            $inc: {
+              upVotes: -1,
+            },
+            $push: {
+              voters: {
+                userId,
+                voteType,
+              },
+            },
+          };
+        }
+
+        const result = await questionCollection.updateOne(query, updateQuery);
+
+        res.send(result);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+    // answer on Q and A  page
+
+    app.post("/questions/:id/answer", async (req, res) => {
+      try {
+        const { id } = req.params;
+        const { questionId, userEmail, userName, answer } = req.body;
+        const query = { _id: new ObjectId(id) };
+        const question = await questionCollection.findOne(query);
+
+        const newAnswer = {
+          questionId: questionId,
+          userEmail: userEmail,
+          userName: userName,
+          answer: answer,
+          date: new Date(),
+        };
+
+        const updateQuery = {
+          $push: { answers: newAnswer },
+        };
+
+        const result = await questionCollection.updateOne(query, updateQuery);
+
+        res.send(result);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+    //nodemailer
+    app.post('/contact-us', async (req, res) => {
+      const { name, emailAddress, webAddress, message } = req.body;
+      
+      try {
+          const info = await sendEmail(name, emailAddress, webAddress, message);
+          res.status(200).send(`Email sent successfully: ${info.messageId}`);
+      } catch (error) {
+          res.status(500).send('Failed to send email');
+      }
+  });
+
+    // await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({
+      ping: 1,
+    });
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!"
+    );
+  } finally {
+    // Ensures that the client will close when you finish/error
+    // await client.close();
+  }
         // real time interactions or notifications with socket
         io.on('connection', (socket) => {
             socket.on('sendNotification', (notification) => {

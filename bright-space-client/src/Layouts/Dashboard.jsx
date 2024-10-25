@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import brightSpace_logo from "../assets/bright-space-logo.svg";
 import { FcMenu } from "react-icons/fc";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
-import { FaSearch, FaUser } from "react-icons/fa";
+import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import { PiChalkboardTeacherFill } from "react-icons/pi";
 import { BiSolidBookContent } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
@@ -91,15 +91,16 @@ const Dashboard = () => {
             icon: IoMdSettings,
             roles: ['teacher']  // Only for admin
         },
+
         {
-            name: 'Make Quiz',
-            path: 'quizForm',
+            name: 'Created Courses',
+            path: 'createdCourses',
             icon: IoMdSettings,
             roles: ['teacher']  // Only for admin
         },
         {
-            name: 'Created Courses',
-            path: 'createdCourses',
+            name: 'Make Quiz',
+            path: 'quizForm',
             icon: IoMdSettings,
             roles: ['teacher']  // Only for admin
         },
@@ -154,21 +155,21 @@ const Dashboard = () => {
         {
             name: 'Home',
             path: '/',
-            icon: IoMdSettings,
+            icon: FaHome,
             roles: ['admin', 'teacher', 'student']  // Only for admin
         },
-        {
-            name: 'Setting',
-            path: 'Setting',
-            icon: IoMdSettings,
-            roles: ['admin', 'teacher', 'student']  // Only for admin
-        },
-        {
-            name: 'Logout',
-            path: '/logout',
-            icon: IoMdSettings,
-            roles: ['admin', 'teacher', 'student']  // Only for admin
-        },
+        // {
+        //     name: 'Setting',
+        //     path: 'Setting',
+        //     icon: IoMdSettings,
+        //     roles: ['admin', 'teacher', 'student']  // Only for admin
+        // },
+        // {
+        //     name: 'Logout',
+        //     path: '/logout',
+        //     icon: IoMdSettings,
+        //     roles: ['admin', 'teacher', 'student']  // Only for admin
+        // },
 
     ];
 

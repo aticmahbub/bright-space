@@ -6,6 +6,7 @@ const { Server } = require("socket.io");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const { sendEmail } = require("./nodemailer");
 
 const app = express();
 const port = process.env.PORT || 3000;

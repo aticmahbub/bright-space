@@ -2,7 +2,7 @@
 import { Card, CardBody, CardFooter, Stack, Heading, Text, Divider, ButtonGroup, Button, Box } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
 
-const MyCourses = () => {
+const EnrolledCourses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
@@ -61,4 +61,4 @@ const MyCourses = () => {
     );
 };
 
-export default MyCourses;
+export default EnrolledCourses;

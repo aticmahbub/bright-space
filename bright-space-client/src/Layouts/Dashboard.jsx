@@ -40,6 +40,8 @@ const Dashboard = () => {
     // const pathname = useLocation();
     // const role = useRole()
     const role = "student"
+    const pathname = useLocation();
+    const role = useRole()
     const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
 
     // For Responsive
@@ -62,36 +64,55 @@ const Dashboard = () => {
     const userRole = role;
 
     const SideNavList = [
+
+        // admin / all
+        
         {
             name: 'Dashboard',
             path: '/dashBoard',
             icon: TbLayoutDashboardFilled,
-            roles: ['Admin', 'teacher', 'student'],  // Visible to all roles
+            roles: ['admin', 'teacher', 'student'],  // Visible to all roles
             exact: true
         },
-        {
-            name: 'All Students',
-            path: 'allStudents',
-            icon: FaUser,
-            roles: ['Admin', 'teacher']  // Only for Admin and Teacher
-        },
+
+        
+        // instructor
         {
             name: 'Profile',
             path: 'teacherProfile',
             icon: FaUser,
-            roles: ['Admin', 'teacher', 'student']  // Only for Admin and Teacher
+            roles: ['admin', 'teacher',]  // Only for admin and Teacher
         },
         {
-            name: 'All Teachers',
-            path: 'allTeachers',
-            icon: PiChalkboardTeacherFill,
-            roles: ['Admin']  // Only for Admin
+            name: 'Create Course',
+            path: 'createCourse',
+            icon: IoMdSettings,
+            roles: ['teacher']  // Only for admin
         },
         {
-            name: 'Courses',
-            path: 'myCourses',
+            name: 'Make Quiz',
+            path: 'quizForm',
+            icon: IoMdSettings,
+            roles: ['teacher']  // Only for admin
+        },
+        {
+            name: 'Created Courses',
+            path: 'createdCourses',
+            icon: IoMdSettings,
+            roles: ['teacher']  // Only for admin
+        },
+        // student
+        {
+            name: 'Profile',
+            path: 'studentProfile',
+            icon: FaUser,
+            roles: ['admin', 'student']  // Only for admin and Teacher
+        },
+        {
+            name: 'Enrolled Courses',
+            path: 'enrolledCourses',
             icon: BiSolidBookContent,
-            roles: ['Admin', 'teacher', 'student']  // Visible to all roles
+            roles: ['admin', 'student']  // Visible to all roles
         },
         {
             name: 'My Classes',
@@ -100,23 +121,53 @@ const Dashboard = () => {
             roles: ['Admin', 'teacher', 'student']  // Visible to all roles
         },
         {
-            name: 'Setting',
-            path: 'Setting',
-            icon: IoMdSettings,
-            roles: ['Admin']  // Only for Admin
+            name: 'Live Sessions',
+            path: 'liveSessions',
+            icon: GiOpenBook ,
+            roles: ['admin', 'student']  // Visible to all roles
         },
+
         {
             name: 'Quiz',
             path: 'quiz',
             icon: IoMdSettings,
-            roles: ['student']  // Only for Admin
+            roles: ['student']  // Only for admin
+        },
+
+        {
+            name: 'All Students',
+            path: 'allStudents',
+            icon: FaUser,
+            roles: ['admin', 'teacher']  // Only for admin and Teacher
+        },
+
+        {
+            name: 'All Teachers',
+            path: 'allTeachers',
+            icon: PiChalkboardTeacherFill,
+            roles: ['admin', 'teacher']  // Only for admin
+        },
+        
+        // additional
+        {
+            name: 'Home',
+            path: '/',
+            icon: IoMdSettings,
+            roles: ['admin', 'teacher', 'student']  // Only for admin
         },
         {
-            name: 'Make Quiz',
-            path: 'quizForm',
+            name: 'Setting',
+            path: 'Setting',
             icon: IoMdSettings,
-            roles: ['teacher']  // Only for Admin
+            roles: ['admin', 'teacher', 'student']  // Only for admin
         },
+        {
+            name: 'Logout',
+            path: '/logout',
+            icon: IoMdSettings,
+            roles: ['admin', 'teacher', 'student']  // Only for admin
+        },
+
     ];
 
     // Filter SideNavList based on userRole

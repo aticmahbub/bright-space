@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-const useLoadAllUsers = () => {
+const useLoadUsers = () => {
     
-    const [allUsers, setAllUsers] = useState([]);
+    const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:3000/allUsers')
+        fetch('http://localhost:3000/users')
             .then(res => res.json())
-            .then(data => setAllUsers(data))
+            .then(data => setUsers(data))
     }, []);
 
-    return [allUsers]
+    return [users]
 };
 
-export default useLoadAllUsers;
+export default useLoadUsers;

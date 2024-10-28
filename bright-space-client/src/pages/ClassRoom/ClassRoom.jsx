@@ -36,7 +36,6 @@ const ClassRoom = () => {
             name: user?.displayName,
             email: user?.email,
             userId: user?.uid,
-            room: meetingCode,
             role: role
         }
         mutateUserInfo(userInfo);

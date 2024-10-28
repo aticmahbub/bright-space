@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 
 //middlewares
 app.use(cors({
-  origin: ["http://localhost:5173", "https://bright-space.netlify.app"],
+  origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
   optionsSuccessStatus: 200
 }));
 app.use(express.json());
@@ -21,7 +21,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://bright-space.netlify.app"],
+    origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });

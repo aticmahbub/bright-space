@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FeaturedBlogger from "./Featured blogger/FeaturedBlogger";
 import AllBlogs from "./allBlogs/AllBlogs";
 import SideBlog from "./sideBlog/SideBlog";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -28,34 +29,35 @@ const Blog = () => {
         {/* card */}
 
         {blogs.map((blog) => (
-          <div
-            key={blog.id}
-            className=" rounded-md shadow-md bg-[#F7F8FA] text-gray-100"
-          >
-            <div className="overflow-hidden">
-              <img
-                src={blog.image}
-                alt=""
-                className="w-full rounded-t-md h-64 bg-gray-500 transform transition-transform duration-300 hover:scale-125"
-              />
-            </div>
-            <div className="flex flex-col justify-between p-6 space-y-8">
-              <div className="space-y-2">
-                <h2 className="text-2xl font-semibold text-black hover:text-blue-600">
-                  {blog.title}
-                </h2>
-                <p className="text-gray-700">{blog.description}</p>
+          <Link key={blog.id} to={`/viewBlog/${blog.id}`}>
+            <div
+              className=" rounded-md shadow-md bg-[#F7F8FA] text-gray-100"
+            >
+              <div className="overflow-hidden">
+                <img
+                  src={blog.image}
+                  alt=""
+                  className="w-full rounded-t-md h-64 bg-gray-500 transform transition-transform duration-300 hover:scale-125"
+                />
+              </div>
+              <div className="flex flex-col justify-between p-6 space-y-8">
+                <div className="space-y-2">
+                  <h2 className="text-2xl font-semibold text-black hover:text-blue-600">
+                    {blog.title}
+                  </h2>
+                  <p className="text-gray-700">{blog.description}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
       <AllBlogs></AllBlogs>
       {/* <CreateBlog></CreateBlog> */}
-      
 
-      
+
+
     </div>
   );
 };

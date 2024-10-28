@@ -29,6 +29,7 @@ import QnA from "../pages/QnA/QnA";
 import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
 import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";
 import EnrolledCourses from "../pages/Courses/EnrolledCourses/EnrolledCourses";
+import ViewBlog from "../pages/Blog/ViewBlog/ViewBlog";
 
 
 export const router = createBrowserRouter([
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog />
+            },
+            {
+                path: 'viewBlog/:id',
+                element: <ViewBlog />
             },
             {
                 path: '/forum',

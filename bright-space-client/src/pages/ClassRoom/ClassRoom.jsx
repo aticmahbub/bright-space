@@ -36,7 +36,7 @@ const ClassRoom = () => {
             name: user?.displayName,
             email: user?.email,
             userId: user?.uid,
-            role: role
+            role: role ? role : 'teacher'
         }
         mutateUserInfo(userInfo);
 

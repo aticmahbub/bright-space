@@ -14,6 +14,7 @@ const LiveSession = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const meetingToken = localStorage.getItem('meetToken');
+    console.log('JITSITOKEN', meetingToken);
 
     const { data = {}, isSuccess: isMeetCodeSuccess, isLoading } = useQuery({
         queryKey: ['meetCode'],

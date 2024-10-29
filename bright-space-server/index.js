@@ -11,14 +11,17 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 //middlewares
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 
 // create http server
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
@@ -300,14 +303,14 @@ async function run() {
     //nodemailer
     app.post('/contact-us', async (req, res) => {
       const { name, emailAddress, webAddress, message } = req.body;
-      
+
       try {
-          const info = await sendEmail(name, emailAddress, webAddress, message);
-          res.status(200).send(`Email sent successfully: ${info.messageId}`);
+        const info = await sendEmail(name, emailAddress, webAddress, message);
+        res.status(200).send(`Email sent successfully: ${info.messageId}`);
       } catch (error) {
-          res.status(500).send('Failed to send email');
+        res.status(500).send('Failed to send email');
       }
-  });
+    });
 
     // await client.connect();
     // Send a ping to confirm a successful connection

@@ -1,43 +1,36 @@
-import { useEffect, useState } from "react";
 
-const AllBlogs = () => {
-  const [AllBlogs, setAllBlogs] = useState([]);
 
-  useEffect(() => {
-    fetch("/allBlogs.json")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => setAllBlogs(data))
-      .catch((err) => console.log(err));
-  }, []);
+const AllBlogs = ({blogs}) => {
+
+
+ 
 
   return (
     <div>
       <h6 className="font-bold text-3xl my-5">All Blog Posts</h6>
       <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* cards */}
-        {AllBlogs.map((blog) => (
+        {blogs?.slice(5, 13).map((blog) => (
           <div
-            key={blog?.id}
-            className="flex flex-col lg:flex-row items-center gap-5 rounded-md shadow-md p-4 lg:p-0"
+            key={blog?._id}
+            className="flex flex-col lg:flex-row  gap-5 rounded-md shadow-md p-4 lg:p-0"
           >
             <div className="w-full lg:w-64 h-36 overflow-hidden flex-shrink-0">
               <img
                 className="object-cover w-full h-full rounded-md"
                 src={blog.image}
-                alt={blog.Title}
+                alt={blog.title}
               />
             </div>
 
             {/* text section */}
-            <div className="flex flex-col gap-8">
-              <p className="font-bold text-base lg:text-lg">{blog.Title}</p>
+            <div className="flex flex-col justify-between p-1">
+              <p className="font-bold text-base lg:text-lg">{blog.title}</p>
               <div className="flex justify-between lg:justify-normal items-center gap-5">
                 <p className="text-gray-600">
                   By <span>{blog.authorName}</span>
                 </p>
-                <p className="text-gray-400 ">{blog.date}</p>
+                <p className="text-gray-400 ">{blog.time}</p>
               </div>
             </div>
           </div>

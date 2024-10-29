@@ -34,7 +34,7 @@ const SideBlog = () => {
       </div>
       {/* right side  */}
       <div className="grid grid-cols-1 gap-4">
-        <div className="flex flex-col lg:flex-row items-center gap-5 rounded-md shadow-md p-4 lg:p-0">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-5 rounded-md shadow-md p-4 lg:p-0">
           <div className="w-full lg:w-60 h-40 lg:h-full overflow-hidden flex-shrink-0">
             <img
               className="object-cover w-full h-full rounded-md"
@@ -44,7 +44,7 @@ const SideBlog = () => {
           </div>
 
           {/* text section */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col justify-between h-full p-1">
             <p className="font-bold text-lg">Blues must treat Qualifiers like playoffs, Allen says</p>
             <div className="flex items-center justify-between lg:justify-normal gap-5">
               <p className="text-gray-600">
@@ -54,6 +54,8 @@ const SideBlog = () => {
             </div>
           </div>
         </div>
+
+        
         <div className="flex flex-col lg:flex-row items-center gap-5 rounded-md shadow-md p-4 lg:p-0">
           <div className="w-full lg:w-60 h-40 lg:h-full overflow-hidden flex-shrink-0">
             <img

@@ -14,30 +14,39 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import CreateBlog from "./CreateBlog/CreateBlog";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
+  const axiosPublic = useAxiosPublic();
   const { isOpen, onOpen, onClose } = useDisclosure();
   useEffect(() => {
-    fetch("/blogs.json")
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-      .catch((error) => console.error("Error fetching the data:", error));
-  }, []);
+    const fetchBlogs = async () => {
+      try {
+        const response = await axiosPublic.get("/blogs");
+        setBlogs(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchBlogs();
+  }, [axiosPublic]);
+
+  console.log(blogs);
 
   return (
     <div>
       <div className="min-h-[550px] max-w-6xl mx-auto">
-        <SideBlog />
+        <SideBlog  />
         <h6 className="font-bold text-3xl my-5 p-3 lg:p-0">
           Featured Bloggers
         </h6>
-        <FeaturedBlogger />
+        <FeaturedBlogger blogs={blogs}/>
         <h6 className="font-bold text-3xl my-5 p-3 lg:p-0">Recent Posts</h6>
 
         {/* Recent post card container */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-3 lg:p-0">
-          {blogs.map((blog) => (
+          {blogs?.slice(0, 5).map((blog) => (
             <div
               key={blog.id}
               className="rounded-md shadow-md bg-[#F7F8FA] text-gray-100"
@@ -54,24 +63,28 @@ const Blog = () => {
                   <h2 className="text-2xl font-semibold text-black hover:text-blue-600">
                     {blog.title}
                   </h2>
-                  <p className="text-gray-700">{blog.description}</p>
+                  <p className="text-gray-700">
+                    {blog.description?.slice(0, 100)}......
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <AllBlogs />
+        <AllBlogs blogs={blogs} />
       </div>
+
+      {/* create blog  */}
 
       <div className="relative h-[500px]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#edf4fb47] via-[#ef8f5314] to-[#fd620217]">
           <div className="flex justify-center items-center h-full text-black">
             <div>
               <h1 className="text-[32px] lg:text-[56px] font-semibold text-center">
-              Tell Your Story, Empower the Community <br />{" "}
+                Tell Your Story, Empower the Community <br />{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#eacd39] to-[#FF6600]">
-                Create Blogs
+                  Create Blogs
                 </span>
               </h1>
               <p className="mb-8 text-center">

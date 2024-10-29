@@ -4,7 +4,7 @@ import { FaCheckCircle, FaCircle } from "react-icons/fa";
 const MessageItem = ({ message }) => {
     const { userName, userImage, userMessage, userActiveStatus, messageTime, messageStatus } = message;
     return (
-        <MenuItem display="flex" flexDirection="column" my={'10px'} rounded={'xl'} py={'18px'} px={'18px'}>
+        <MenuItem display="flex" flexDirection="column" my={'10px'} py={'18px'} px={'18px'}>
             <Flex justifyContent={'space-between'} w={'full'}>
                 <Box position="relative" >
                     <Image src={userImage} borderRadius="full" boxSize="40px" />

@@ -2,7 +2,7 @@ import img1 from '../../../assets/about/cards/atic.png'
 import img2 from '../../../assets/about/cards/hisam.png'
 import img3 from '../../../assets/about/cards/naim.png'
 import img4 from '../../../assets/about/cards/rafi.jpg'
-import img5 from '../../../assets/about/cards/saidul.png'
+import img5 from '../../../assets/about/cards/IMG_6712.jpg'
 import img6 from '../../../assets/about/cards/sharif.png'
 
 const infos = [
@@ -128,7 +128,7 @@ const Team = () => {
             <img
               src={info.image}
               alt=""
-              className="w-32 h-32 mx-auto rounded-full bg-gray-500 aspect-square"
+              className="w-32 h-32 mx-auto rounded-full bg-gray-500 object-cover aspect-square"
             />
             <div className="space-y-4 text-center">
               <div className="my-2 space-y-1">

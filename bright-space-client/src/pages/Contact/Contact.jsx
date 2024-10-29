@@ -3,8 +3,6 @@ import {
   Button,
   Grid,
   GridItem,
-  HStack,
-  Icon,
   Input,
   Text,
   Textarea,
@@ -13,15 +11,60 @@ import {
 import { IoCallOutline } from "react-icons/io5";
 import { BiMessageRounded } from "react-icons/bi";
 import { PiBuildingOfficeLight } from "react-icons/pi";
+import { useState } from "react";
+import axios from "axios";
+import Swal from 'sweetalert2'
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    emailAddress: "",
+    webAddress: "",
+    message: "",
+  });
+  const [buttonStatus, setButtonStatus] = useState("Get it Now");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    setButtonStatus("Submitting...");
+
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/contact-us`,
+        formData
+      );
+      // console.log("Email sent successfully", response.data);
+      Swal.fire({
+        icon: "success",
+        title: "Thanks for contact us. We reach you soon",
+        showConfirmButton: true,
+      });
+      setButtonStatus("Get it now");
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Failed to contact. Try again",
+        showConfirmButton: true,
+      });
+      setButtonStatus("Try again")
+    }
+  };
+
   return (
     <Box>
       {/* parallax bg */}
       <Box
         minH="530px"
         bgAttachment=""
-        bgImage="url(https://i.imghippo.com/files/zw7TK1729179425.jpg)"
+        bgImage="url(https://i.postimg.cc/XnrX7s1H/zw7-TK1729179425.jpg)"
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -112,42 +155,58 @@ const Contact = () => {
             <Text mb={16} fontSize="2xl" fontWeight="bold" letterSpacing={1}>
               Get in touch
             </Text>
-            <form>
+            <form onSubmit={handleSubmit}>
               <VStack align="start" spacing="12">
                 <Box display="flex" gap={6} w="full">
                   <Input
+                    isRequired
                     size="sm"
                     type="text"
+                    name="name"
                     placeholder="Your Name"
                     variant="flushed"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                   <Input
+                    isRequired
                     size="sm"
                     type="email"
+                    name="emailAddress"
                     placeholder="Your email Address"
                     variant="flushed"
+                    value={formData.emailAddress}
+                    onChange={handleChange}
                   />
                 </Box>
                 <Input
                   size="sm"
                   type="text"
+                  name="webAddress"
                   placeholder="Your website address"
                   variant="flushed"
+                  value={formData.webAddress}
+                  onChange={handleChange}
                 />
                 <Textarea
+                  isRequired
                   size="sm"
+                  name="message"
                   placeholder="Your Message"
                   variant="flushed"
+                  value={formData.message}
+                  onChange={handleChange}
                 />
                 <Button
                   size="lg"
                   bg="primary.500"
-                  _hover={{bg:"primary.300"}}
+                  _hover={{ bg: "primary.300" }}
                   rounded="full"
                   w="full"
                   textTransform="uppercase"
+                  type="submit"
                 >
-                  Get it now
+                  {buttonStatus}
                 </Button>
               </VStack>
             </form>

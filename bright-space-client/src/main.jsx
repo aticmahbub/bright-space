@@ -5,8 +5,9 @@ import { router } from "./Routes/Routes";
 import "./index.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import AuthProvider from "./providers/AuthProvider";
-import { QueryClient, QueryClientProvider,} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider, } from "@tanstack/react-query";
 import { ToastContainer } from 'react-toastify';
+import SocketProvider from "./providers/SocketProvider";
 const fonts = {
   heading: `'Poppins', sans-serif`,
   body: `'Poppins', sans-serif`,
@@ -56,13 +57,15 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <ChakraProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ChakraProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <SocketProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ChakraProvider theme={theme}>
+            <RouterProvider router={router} />
+          </ChakraProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </SocketProvider>
     <ToastContainer />
   </StrictMode>
 );

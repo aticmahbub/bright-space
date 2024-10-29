@@ -1,16 +1,30 @@
 const express = require("express");
-const fs = require("fs");
 const cors = require("cors");
+const fs = require("fs");
+const http = require("http");
+const { Server } = require("socket.io");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
-
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+
 const app = express();
 const port = process.env.PORT || 3000;
 
 //middlewares
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
+
+// create http server
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  },
+});
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.u0npy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -147,16 +161,54 @@ async function run() {
       }
     });
 
+    // real time interactions or notifications with socket
+    io.on("connection", (socket) => {
+      socket.on("sendNotification", (notification) => {
+        io.emit("getNotification", { notification });
+      });
+      // console.log(socket.handshake.auth);
+
+      socket.on("disconnect", () => {
+        console.log("user disconnected");
+      });
+    });
+
+    // get all users
+    app.get("/users", async (req, res) => {
+      const result = await usersCollection.find().toArray();
+      res.send(result);
+    });
+
     // get all quizes
     app.get("/quiz", async (req, res) => {
       const result = await quizCollection.find().toArray();
       res.send(result);
     });
+
+    // get specific enrolls
+    app.get("/enrolls", async (req, res) => {
+      const email = req.query.email;
+      const query = {
+        email: email,
+      };
+      const result = await cartCollection.find(query).toArray();
+      res.send(result);
+    });
+
+    // add to cart
+    app.post("/enrolls", async (req, res) => {
+      const cartItem = req.body;
+      // console.log(cartItem);
+      const result = await cartCollection.insertOne(cartItem);
+
+      res.send(result);
+    });
     // add quiz
     app.post("/quiz", async (req, res) => {
       const newQuestion = req.body;
-      // console.log(enrolledCourses);
+      // console.log(cartItem);
       const result = await quizCollection.insertOne(newQuestion);
+
       res.send(result);
     });
 
@@ -173,6 +225,18 @@ async function run() {
     app.post("/meetingCode", async (req, res) => {
       const meetingCode = req.body;
       const result = await meetingCodeCollection.insertOne(meetingCode);
+      res.send(result);
+    });
+
+    // create new courses or add courses api
+    app.post("/courses", async (req, res) => {
+      const coursesInfo = req.body;
+      const result = await coursesCollection.insertOne(coursesInfo);
+      res.send(result);
+    });
+
+    app.get("/courses", async (req, res) => {
+      const result = await coursesCollection.find().toArray();
       res.send(result);
     });
 
@@ -239,7 +303,6 @@ async function run() {
         }
 
         const result = await questionCollection.updateOne(query, updateQuery);
-
         res.send(result);
       } catch (error) {
         console.log(error);
@@ -247,7 +310,6 @@ async function run() {
     });
 
     // answer on Q and A  page
-
     app.post("/questions/:id/answer", async (req, res) => {
       try {
         const { id } = req.params;
@@ -272,6 +334,25 @@ async function run() {
         res.send(result);
       } catch (error) {
         console.log(error);
+      }
+    });
+
+    // users related api
+    app.post("/users", async (req, res) => {
+      const user = req.body;
+      const result = await usersCollection.insertOne(user);
+      res.send(result);
+    });
+
+    //nodemailer
+    app.post('/contact-us', async (req, res) => {
+      const { name, emailAddress, webAddress, message } = req.body;
+
+      try {
+        const info = await sendEmail(name, emailAddress, webAddress, message);
+        res.status(200).send(`Email sent successfully: ${info.messageId}`);
+      } catch (error) {
+        res.status(500).send('Failed to send email');
       }
     });
 
@@ -423,6 +504,6 @@ app.get("/", (req, res) => {
   res.send("BrightSpace is running");
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`BrightSpace is running listening on port ${port}`);
 });

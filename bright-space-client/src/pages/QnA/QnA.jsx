@@ -109,7 +109,7 @@ const QnA = () => {
             <div className="border-2 w-24 border-b-text_color_1"></div>
             <div className="flex flex-col gap-8">
               {/* cards */}
-              {questions.sort((a, b) => b.answers.length - a.answers.length).slice(0, 2).map((question, index) => (
+              {questions.sort((a, b) => b.answers.length - a.answers.length).slice(0, 3).map((question, index) => (
                   <div
                     key={index}
                     className="flex items-start  gap-5 border-b py-5"
@@ -130,7 +130,7 @@ const QnA = () => {
                           <path d="M64 0C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3 5.4 2.7 11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
                         </svg>
                         <span className="hover:cursor-pointer hover:underline">
-                          {question?.answers?.length}
+                          {question?.answers?.length} Answers
                         </span>
                       </div>
                     </div>

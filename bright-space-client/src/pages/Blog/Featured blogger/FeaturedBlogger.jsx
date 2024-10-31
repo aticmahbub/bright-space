@@ -38,7 +38,7 @@ const FeaturedBlogger = ({ blogs }) => {
                 <img
                   alt="Blogger"
                   className="w-12 h-12 rounded-full ring-4 object-cover"
-                  src="https://plus.unsplash.com/premium_photo-1673866484792-c5a36a6c025e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src={blogger.authorProfile}
                 />
                 <div>
                   <p className="text-black font-semibold">{blogger.authorName}</p>

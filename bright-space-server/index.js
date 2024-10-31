@@ -91,7 +91,7 @@ async function run() {
       const query = {
         email: email,
       };
-      const result = await enrolledCourses.find(query).toArray();
+      const result = await coursesCollection.find(query).toArray();
       res.send(result);
     });
 
@@ -99,7 +99,7 @@ async function run() {
     app.post("/enrolls", async (req, res) => {
       const enrolledCourses = req.body;
       // console.log(enrolledCourses);
-      const result = await enrolledCourses.insertOne(enrolledCourses);
+      const result = await coursesCollection.insertOne(enrolledCourses);
 
       res.send(result);
     });
@@ -476,6 +476,16 @@ async function run() {
         app.get('/blogs', async (req, res) => {
             const result = await blogCollection.find().toArray()
             res.send(result)
+        })
+
+        // blog details page 
+        
+        app.get('/blogDetails/:id', async (req, res)=>{
+
+          const id = req.params.id;
+          const query = {_id: new ObjectId(id)}
+          const result = await blogCollection.findOne(query)
+          res.json(result)
         })
 
 

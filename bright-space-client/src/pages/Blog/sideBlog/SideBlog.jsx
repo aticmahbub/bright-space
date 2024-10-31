@@ -1,103 +1,103 @@
-const SideBlog = () => {
+import { FaArrowRight } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
+
+const SideBlog = ({ blogs }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-10">
       {/* left side  */}
-      <div className="space-y-8 p-4 lg:p-0">
-        <img
-          className="object-cover w-full rounded-md"
-          src="https://images.unsplash.com/photo-1659301254614-8d6a9d46f26a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-        />
-        <div>
-          <p className="font-semibold text-xl">
-            Training camp preview: Rookies under the radar entering Qualifiers
-          </p>
+      {blogs.slice(0, 1).map((blog) => (
+        <div key={blog._id} className="space-y-8 p-4 lg:p-0">
+          <img
+            className="object-cover w-full rounded-md"
+            src={blog.image}
+            alt=""
+          />
           <div>
-            <div className="py-4">
-              <div className="flex gap-5">
-                <img
-                  alt=""
-                  className="w-16 h-16  object-cover rounded-lg bg-gray-400"
-                  src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  style={{
-                    clipPath: 'polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)',
-                  }}
-                />
-                <div className="flex items-center gap-2 lg:gap-10">
-                  <p className="text-black font-semibold">By Gabie Sheber</p>
-                  <p className="text-gray-400">May 22, 2020</p>
+            <p className="font-semibold text-xl">{blog.title}</p>
+            <div>
+              <div className="py-4">
+                <div className="flex gap-5">
+                  <img
+                    alt=""
+                    className="w-16 h-16  object-cover rounded-lg bg-gray-400"
+                    src={blog.authorProfile}
+                    style={{
+                      clipPath: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)",
+                    }}
+                  />
+                  <div className="flex items-center justify-between  w-full gap-2 lg:gap-10">
+                    <p className="text-black font-semibold">
+                      By {blog.authorName.split(" ").slice(0, -1).join(" ")}
+                    </p>
+                    <p className="text-gray-400">{blog.time}</p>
+                    <Link to={`/blogDetails/${blog._id}`}>
+                      <button className="border px-5 py-2 bg-[#E2E8F0]  rounded-md hover:bg-[#d2e0f2] hover:underline">
+                        <FaArrowRight className="text-[#FF9500]" />
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      ))}
+
       {/* right side  */}
       <div className="grid grid-cols-1 gap-4">
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-5 rounded-md shadow-md p-4 lg:p-0">
-          <div className="w-full lg:w-60 h-40 lg:h-full overflow-hidden flex-shrink-0">
-            <img
-              className="object-cover w-full h-full rounded-md"
-              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
+        {blogs?.slice(1, 4).map((blog) => (
+          <div
+            key={blog._id}
+            className="flex flex-col lg:flex-row items-start lg:items-stretch justify-between gap-5 rounded-md shadow-md p-4 lg:p-0"
+          >
+            {/* Image Section */}
+            <div className="w-full lg:w-60 h-40 lg:h-full overflow-hidden flex-shrink-0">
+              <img
+                src={blog.image}
+                alt="Blues must treat Qualifiers like playoffs, Allen says"
+                className="object-cover w-full h-full rounded-md"
+              />
+            </div>
 
-          {/* text section */}
-          <div className="flex flex-col justify-between h-full p-1">
-            <p className="font-bold text-lg">Blues must treat Qualifiers like playoffs, Allen says</p>
-            <div className="flex items-center justify-between lg:justify-normal gap-5">
-              <p className="text-gray-600">
-                By <span>Mike Fink</span>
-              </p>
-              <p className="text-gray-400">Mar 28, 2020</p>
+            {/* Content Section */}
+            <div className="flex flex-col justify-between h-full p-1">
+              {/* Title */}
+              <p className="font-bold text-lg mb-1">{blog.title}</p>
+
+              {/* Meta Information */}
+              <div className="flex items-center justify-between w-full text-sm text-gray-600">
+                <p className="w-32">
+                  By{" "}
+                  <span className="font-medium">
+                    {blog.authorName.split(" ").slice(0, -1).join(" ")}
+                  </span>
+                </p>
+                <p className="text-gray-400">{blog.time}</p>
+                <Link to={`/blogDetails/${blog._id}`}>
+                  <button
+                    className="py-2 
+                  "
+                  >
+                    <FiArrowUpRight
+                     className="text-2xl text-[#FF9500] hover:text-[#f9a735] hover:rotate-45 duration-500" />
+                  </button>
+                </Link>
+                
+              </div>
+              {/* <div className="flex justify-end">
+                <Link to={`/blogDetails/${blog._id}`}>
+                  <button
+                    className="px-5 py-2 
+                  "
+                  >
+                    <FaArrowRight className="text-[#FF9500]" />
+                  </button>
+                </Link>
+              </div> */}
             </div>
           </div>
-        </div>
-
-        
-        <div className="flex flex-col lg:flex-row items-center gap-5 rounded-md shadow-md p-4 lg:p-0">
-          <div className="w-full lg:w-60 h-40 lg:h-full overflow-hidden flex-shrink-0">
-            <img
-              className="object-cover w-full h-full rounded-md"
-              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-
-          {/* text section */}
-          <div className="flex flex-col gap-8">
-            <p className="font-bold text-lg">Blues must treat Qualifiers like playoffs, Allen says</p>
-            <div className="flex items-center justify-between lg:justify-normal gap-5">
-              <p className="text-gray-600">
-                By <span>Mike Fink</span>
-              </p>
-              <p className="text-gray-400">Mar 28, 2020</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row items-center gap-5 rounded-md shadow-md p-4 lg:p-0">
-          <div className="w-full lg:w-60 h-40 lg:h-full overflow-hidden flex-shrink-0">
-            <img
-              className="object-cover w-full h-full rounded-md"
-              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-
-          {/* text section */}
-          <div className="flex flex-col gap-8">
-            <p className="font-bold text-lg">Blues must treat Qualifiers like playoffs, Allen says</p>
-            <div className="flex items-center justify-between lg:justify-normal gap-5">
-              <p className="text-gray-600">
-                By <span>Mike Fink</span>
-              </p>
-              <p className="text-gray-400">Mar 28, 2020</p>
-            </div>
-          </div>
-        </div>
-       
-        
+        ))}
       </div>
     </div>
   );

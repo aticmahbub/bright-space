@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FeaturedBlogger from "./Featured blogger/FeaturedBlogger";
 import AllBlogs from "./allBlogs/AllBlogs";
 import SideBlog from "./sideBlog/SideBlog";
+import { Link } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -15,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import CreateBlog from "./CreateBlog/CreateBlog";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { FaArrowRight } from "react-icons/fa";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -32,24 +34,24 @@ const Blog = () => {
     fetchBlogs();
   }, [axiosPublic]);
 
-  console.log(blogs);
+
 
   return (
     <div>
       <div className="min-h-[550px] max-w-6xl mx-auto">
-        <SideBlog  />
+        <SideBlog blogs={blogs} />
         <h6 className="font-bold text-3xl my-5 p-3 lg:p-0">
           Featured Bloggers
         </h6>
-        <FeaturedBlogger blogs={blogs}/>
+        <FeaturedBlogger blogs={blogs} />
         <h6 className="font-bold text-3xl my-5 p-3 lg:p-0">Recent Posts</h6>
 
         {/* Recent post card container */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-3 lg:p-0">
-          {blogs?.slice(0, 5).map((blog) => (
+          {blogs?.slice(4, 9).map((blog) => (
             <div
-              key={blog.id}
-              className="rounded-md shadow-md bg-[#F7F8FA] text-gray-100"
+              key={blog._id}
+              className="rounded-md shadow-md bg-[#F7F8FA] text-gray-100 "
             >
               <div className="overflow-hidden">
                 <img
@@ -66,6 +68,18 @@ const Blog = () => {
                   <p className="text-gray-700">
                     {blog.description?.slice(0, 100)}......
                   </p>
+
+                  <div className="flex justify-end">
+                  <Link to={`/blogDetails/${blog._id}`}>
+                    <button className="border px-5 py-2 bg-[#E2E8F0] text-[#FF9500] rounded-md hover:bg-[#d2e0f2]">
+
+                    <FaArrowRight />
+
+
+
+                    </button>
+                  </Link>
+                  </div>
                 </div>
               </div>
             </div>

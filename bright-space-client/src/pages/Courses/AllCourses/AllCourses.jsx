@@ -1,57 +1,96 @@
-    import { Box } from "@chakra-ui/react";
-// import { useEffect, useState } from "react";
-import CourseCard from "../../../components/CourseCard/CourseCard";
-import useAuth from "../../../hooks/useAuth";
-import {useNavigate, useLocation } from "react-router-dom"
-import useEnrolls from "../../../hooks/useEnrolls";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useLoadAllCourses from "../../../hooks/useLoadAllCourses";
+import  { useEffect, useState } from 'react';
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Spinner,
+  Alert,
+  AlertIcon,
+  Button,
+} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Enroll from '../Enroll';
 
 const AllCourses = () => {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-
-    const [courses] = useLoadAllCourses()
-    console.log(courses);
-    const { user } = useAuth()
-    const [, refetch] = useEnrolls()
-    const navigate = useNavigate()
-    const location = useLocation()
-    const axiosSecure = useAxiosSecure()
-
-    const handleAddToCart = (specificCourse) => {
-        if (user && user?.email) {
-            // send cart to db
-            console.log(specificCourse);
-            const enrolledCourses = {
-                course: specificCourse,
-                email: user?.email
-            }
-            axiosSecure.post('/enrolls', enrolledCourses)
-                .then(res => {
-                    console.log(res.data);
-                    refetch()
-                })
-        }
-        else {
-            navigate('/login', { state: { from: location } })
-            console.log('user null');
-        }
+  // Fetch all courses from the API
+  const fetchCourses = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/courses');
+      setCourses(response.data);
+    } catch (err) {
+      setError('Failed to load courses.');
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  if (loading) {
+    return <Spinner size="xl" />;
+  }
+
+  if (error) {
     return (
-        <Box display='flex' alignItems='center' maxW='1596px' mx='auto' px={{ base: '2', lg: 8, '2xl': 0 }} py='20'>
-            <Box className='grid grid-cols-1 lg:grid-cols-2 gap-7 mt-10'>
-                {
-                    courses.map((course,idx) =>(
-                        <CourseCard 
-                        key={idx}
-                        course={course}
-                        handleAddToCart={handleAddToCart}
-                        ></CourseCard>
-                    ))
-                }
-            </Box>
-        </Box>
+      <Alert status="error" mt={4}>
+        <AlertIcon />
+        {error}
+      </Alert>
     );
+  }
+
+  return (
+    <Box p={4}>
+      <Heading as="h1" mb={4}>
+        All Courses
+      </Heading>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+        {courses.map((course) => (
+          <Box
+            key={course._id}
+            border="1px solid"
+            borderColor="#FF9500"
+            borderRadius="md"
+            overflow="hidden"
+            transition="0.3s"
+            _hover={{ transform: 'scale(1.05)', boxShadow: 'lg' }}
+            p={4}
+          >
+            <Box
+              as="img"
+              src={course.image_url || 'https://via.placeholder.com/300x200'}
+              alt={course.title}
+              borderRadius="md"
+              mb={2}
+              width="100%"
+              height="auto"
+            />
+            <Heading as="h3" size="md" mb={2}>
+              {course.title}
+            </Heading>
+            <Box fontSize="sm" color="gray.600" mb={4}>
+              {course.short_description || 'No description available.'}
+            </Box>
+            <Link to={`/dashboard/viewCourseDetails/${course._id}`}>
+              <Button colorScheme="orange" variant="outline" width="100%">
+                View Course Details
+              </Button>
+            </Link>
+            {/* Enroll Now button */}
+            <Enroll courseId={course._id} onEnrollSuccess={(data) => console.log(data)} />
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Box>
+  );
 };
 
 export default AllCourses;

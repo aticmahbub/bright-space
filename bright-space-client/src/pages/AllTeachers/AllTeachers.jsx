@@ -1,66 +1,72 @@
-import { Avatar, Box, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, Wrap, WrapItem } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-
-const AllTeachers = () => {
-    const [students, setStudents] = useState([]);
-
+import {
+    Avatar,
+    Box,
+    Table,
+    TableContainer,
+    Tbody,
+    Td,
+    Text,
+    Th,
+    Thead,
+    Tr,
+    Wrap,
+    WrapItem,
+  } from "@chakra-ui/react";
+  import { useEffect, useState } from "react";
+  import useLoadAllUsers from "../../hooks/useLoadAllUsers"; // Adjust path as necessary
+  
+  const AllTeachers = () => {
+    const [allUsers] = useLoadAllUsers(); // Load all users from the custom hook
+    const [teachers, setTeachers] = useState([]);
+  
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/allStudents.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setStudents(data);
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+      if (allUsers) {
+        // Filter for users with the role of "teacher"
+        const teacherList = allUsers.filter((item) => item?.role === "teacher");
+        setTeachers(teacherList);
+      }
+    }, [allUsers]);
+  
     return (
-        <Box>
-            <Text className="text-xl font-bold text-center mb-16">All Teachers</Text>
-            <TableContainer>
-                <Table variant='simple'>
-                    <Thead>
-                        <Tr>
-                            <Th>Photo</Th>
-                            <Th>User</Th>
-                            <Th>Phone</Th>
-                            <Th>Country</Th>
-                            <Th>Status</Th>
-                            <Th>Email</Th>
-                            <Th>Active Courses</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {
-                            students.map((student, idx) =>
-                                <Tr key={idx}>
-                                    <Td>
-                                        <Wrap>
-                                            <WrapItem>
-                                                <Avatar name={student.student_name} src={student.image} />
-                                            </WrapItem>
-                                        </Wrap>
-                                    </Td>
-                                    <Td>{student.student_name}</Td>
-                                    <Td>{student.Phone}</Td>
-                                    <Td>{student.Country}</Td>
-                                    <Td>{student.Status}</Td>
-                                    <Td>{student.email}</Td>
-                                    <Td>{student.Active_courses}</Td>
-                                </Tr>
-                            )
-                        }
-                    </Tbody>
-                </Table>
-            </TableContainer>
-        </Box>
+      <Box>
+        <Text className="text-xl font-bold text-center mb-16">All Teachers</Text>
+        <TableContainer>
+          <Table variant="simple">
+            <Thead>
+              <Tr>
+                <Th>Photo</Th>
+                <Th>User</Th>
+                <Th>Phone</Th>
+                <Th>Country</Th>
+                <Th>Status</Th>
+                <Th>Email</Th>
+                <Th>Courses Taught</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {teachers.map((teacher, idx) => (
+                <Tr key={idx}>
+                  <Td>
+                    <Wrap>
+                      <WrapItem>
+                        <Avatar name={teacher.name || "Unknown"} src={teacher.image || null} />
+                      </WrapItem>
+                    </Wrap>
+                  </Td>
+                  <Td>{teacher.name || "Unknown"}</Td>
+                  <Td>{teacher.phone || "0"}</Td>
+                  <Td>{teacher.country || "Unknown"}</Td>
+                  <Td>{teacher.status || "Inactive"}</Td>
+                  <Td>{teacher.email || "notprovided@example.com"}</Td>
+                  <Td>{teacher.coursesTaught || 0}</Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
+      </Box>
     );
-};
-
-export default AllTeachers;
+  };
+  
+  export default AllTeachers;
+  

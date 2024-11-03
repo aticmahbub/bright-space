@@ -17,7 +17,7 @@ import LiveSession from "../pages/LiveSession/LiveSession";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
-import ViewCourse from "../pages/Courses/ViewCourse/ViewCourse";
+import ViewCourse from "../pages/Courses/ViewCourse/SingleCourseView";
 import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
@@ -26,6 +26,8 @@ import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
 import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
+import UpdateStudentProfile from "../pages/UpdateStudentProfile/UpdateStudentProfile";
+import SingleCourseView from "../pages/Courses/ViewCourse/SingleCourseView";
 
 
 export const router = createBrowserRouter([
@@ -105,6 +107,10 @@ export const router = createBrowserRouter([
                 element: <StudentProfile />
             },
             {
+                path: 'updateStudentProfile',
+                element: <UpdateStudentProfile />
+            },
+            {
                 path: 'allStudents',
                 element: <AllStudents />
             },
@@ -114,7 +120,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'viewCourseDetails/:id',
-                element: <ViewCourse />
+                element: <SingleCourseView />
             },
 
             // teacher routes

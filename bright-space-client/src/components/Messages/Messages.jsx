@@ -22,7 +22,7 @@ const Messages = () => {
         fetchData();
     }, []);
 
-    console.log(messages);
+    // console.log(messages);
 
     return (
         <div>

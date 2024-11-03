@@ -1,144 +1,128 @@
 import {
   Box,
-  FormLabel,
-  Grid,
-  Input,
-  Radio,
-  RadioGroup,
-  Select,
+  IconButton,
+  Image,
   Stack,
+  Text,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Icon,
+  VStack,
 } from "@chakra-ui/react";
-import React from "react";
-import { Form } from "react-router-dom";
+import { BsThreeDots } from "react-icons/bs";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { IoMdCall } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
+import { AddIcon, ExternalLinkIcon, RepeatIcon } from "@chakra-ui/icons";
+import PersonalDetails from "../../components/StudentTeacherProfile/PersonalDetails";
+import useLoadAllUsers from "../../hooks/useLoadAllUsers";
+import { useState } from "react";
 
-const PersonalDetails = () => {
+const StudentProfile = () => {
+  const [allUsers] = useLoadAllUsers();
+  const [option, setOption] = useState(false);
+
+  // Set default dummy data
+  const defaultProfile = {
+    name: "John Doe",
+    bio: "Passionate student and lifelong learner with a keen interest in technology.",
+    location: "New York, USA",
+    phone: "+1 234-567-8901",
+    email: "johndoe@example.com",
+    bannerImage: "https://via.placeholder.com/1200x400?text=Profile+Banner",
+    profileImage: "https://via.placeholder.com/150?text=Profile+Image",
+  };
+
+  // Filter students from all users or use default
+  const students = allUsers.filter((user) => user.role === "student");
+  const profile = students.length > 0 ? students[0] : defaultProfile;
+
   return (
-    <Form>
-      <>
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          borderBottom="1px solid"
-          borderBottomColor="primary.100"
-          py={4}
-          gap={12}
-        >
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">First Name</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Last Name</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Occupation</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-        </Grid>
+    <Box
+      border="1px solid"
+      borderColor="#FF9500"
+      p={6}
+      rounded="xl"
+      maxW="3xl"
+      mx="auto"
+    >
+      {/* Banner and Profile Image Section */}
+      <Box border="1px solid" borderColor="#FF9500" rounded="xl" overflow="hidden">
+        <Box position="relative">
+          <Image
+            src={profile.bannerImage || defaultProfile.bannerImage}
+            h="200px"
+            w="100%"
+            objectFit="cover"
+            alt="Profile Banner"
+          />
+          <Image
+            src={profile.profileImage || defaultProfile.profileImage}
+            boxSize={24}
+            rounded="full"
+            position="absolute"
+            top="50%"
+            left={6}
+            transform="translateY(-50%)"
+            border="4px solid white"
+            alt="Profile Picture"
+          />
+        </Box>
 
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          borderBottom="1px solid"
-          borderBottomColor="primary.100"
-          py={4}
-          gap={12}
-        >
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Father's Name</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="130px">Mother's Name</FormLabel>{" "}
-            {/* Increased minW */}
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Date of Birth</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-        </Grid>
+        {/* Options Menu */}
+        <Box display="flex" justifyContent="flex-end" p={4}>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              icon={<BsThreeDots />}
+              aria-label="Options"
+              variant="ghost"
+              fontSize="2xl"
+              _hover={{ bg: "none" }}
+            />
+            <MenuList>
+              <MenuItem icon={<AddIcon />}>New Tab</MenuItem>
+              <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
+              <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>
+              <MenuItem color="red.500">Close</MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
 
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          borderBottom="1px solid"
-          borderBottomColor="primary.100"
-          py={4}
-          gap={12}
-        >
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Gender</FormLabel>
-            <RadioGroup>
-              <Stack direction="row">
-                <Radio value="1">Male</Radio>
-                <Radio value="2">Female</Radio>
-              </Stack>
-            </RadioGroup>
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Religion</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Email</FormLabel>
-            <Input type="email" w="full" />
-          </Box>
-        </Grid>
+        {/* Profile Overview */}
+        <Box p={6} borderBottom="1px solid #FF9500">
+          <Text fontSize="lg" mb={4}>
+            {profile.bio || defaultProfile.bio}
+          </Text>
 
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          borderBottom="1px solid"
-          borderBottomColor="primary.100"
-          py={4}
-          gap={12}
-        >
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Admission Roll</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Class</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Subject</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-        </Grid>
+          {/* Contact Information */}
+          <Stack direction={{ base: "column", sm: "row" }} spacing={8} mt={4}>
+            <ContactInfo icon={FaMapMarkerAlt} text={profile.location || defaultProfile.location} />
+            <ContactInfo icon={IoMdCall} text={profile.phone || defaultProfile.phone} />
+            <ContactInfo icon={MdEmail} text={profile.email || defaultProfile.email} />
+          </Stack>
+        </Box>
 
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          borderBottom="1px solid"
-          borderBottomColor="primary.100"
-          py={4}
-          gap={12}
-        >
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Roll</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Address</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">Random</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-        </Grid>
-
-        <Grid templateColumns="repeat(3, 1fr)" py={4} gap={12}>
-          <Box display="flex" alignItems="center" w="full">
-            <FormLabel minW="120px">ID</FormLabel>
-            <Input type="text" w="full" />
-          </Box>
-          <Box display="flex" alignItems="center" gridColumn="span 2">
-            <FormLabel minW="120px">Civil Status</FormLabel>
-            <Select variant="outline" placeholder="Outline" />
-          </Box>
-        </Grid>
-      </>
-    </Form>
+        {/* Personal Details Section */}
+        <Box p={6}>
+          <PersonalDetails />
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
-export default PersonalDetails;
+// ContactInfo Component for Reusability
+const ContactInfo = ({ icon, text }) => (
+  <Stack direction="row" align="center" spacing={3}>
+    <Icon as={icon} boxSize={5} color="#FF9500" />
+    <Text color="blue.500" fontSize="md">
+      {text}
+    </Text>
+  </Stack>
+);
+
+export default StudentProfile;
+

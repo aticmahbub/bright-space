@@ -1,164 +1,149 @@
-import { Box, Button, Icon, IconButton, Image, Stack, Text } from "@chakra-ui/react";
-import { BsThreeDots } from "react-icons/bs";
-import { FaLocationDot } from "react-icons/fa6";
+import {
+  Box,
+  Image,
+  Text,
+  Stack,
+  Icon,
+  Button,
+  ScaleFade,
+} from "@chakra-ui/react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdCall } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
-import PersonalDetails from "../../components/StudentTeacherProfile/PersonalDetails";
-import { useState } from "react";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-} from "@chakra-ui/react";
-import { AddIcon, EditIcon, ExternalLinkIcon, RepeatIcon } from "@chakra-ui/icons";
+import useLoadAllUsers from "../../hooks/useLoadAllUsers";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const StudentProfile = () => {
-  const [option, SetOption] = useState(false);
+  const [allUsers] = useLoadAllUsers();
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  // Default dummy data
+  const defaultProfile = {
+    name: "John Doe",
+    bio: "Passionate student and lifelong learner with a keen interest in technology.",
+    location: "New York, USA",
+    phone: "+1 234-567-8901",
+    email: "johndoe@example.com",
+    dateOfBirth: "2003-05-15",
+    courseOfStudy: "Computer Science",
+    hobbies: "Coding, Reading, Traveling",
+    bannerImage: "https://via.placeholder.com/1200x400?text=Profile+Banner",
+    profileImage: "https://via.placeholder.com/150?text=Profile+Image",
+  };
+
+  // Fetch the profile for the current user or fall back to default data
+  const profile = allUsers.find(item => item.email === user?.email) || defaultProfile;
+
+  // Handle update profile click
+  const handleUpdateProfile = () => {
+    navigate('/dashboard/updateStudentProfile');
+  };
+
   return (
-    <Box border={"1px solid"} borderColor={"primary.100"} p={4} rounded={"2xl"}>
+    <ScaleFade initialScale={0.9} in>
       <Box
-        border={"1px solid"}
-        borderColor={"primary.100"}
-        rounded={"2xl"}
-        overflow={"hidden"}
+        border="1px solid"
+        borderColor="#FF9500"
+        p={6}
+        rounded="xl"
+        maxW="3xl"
+        mx="auto"
+        boxShadow="lg"
+        transition="0.3s"
+        _hover={{ boxShadow: "xl", transform: "scale(1.02)" }} // Hover effect
       >
-        <Box pos="relative">
-          <Image
-            src="https://i.imghippo.com/files/r7bNH1728411035.jpg"
-            h={"32"}
-            w={"full"}
+        <Box border="1px solid" borderColor="#FF9500" rounded="xl" overflow="hidden">
+          <ProfileBanner
+            bannerImage={profile.bannerImage}
+            profileImage={profile.profileImage}
+            name={profile.name}
+            bio={profile.bio}
           />
-          <Image
-            src="https://i.imghippo.com/files/M10af1728411363.jpg"
-            h={"36"}
-            w={"36"}
-            rounded={"full"}
-            pos="absolute"
-            top={50}
-            left={5}
+          <ProfileDetails
+            location={profile.location}
+            phone={profile.phone}
+            email={profile.email}
+            dateOfBirth={profile.dateOfBirth}
+            courseOfStudy={profile.courseOfStudy}
+            hobbies={profile.hobbies}
           />
-        </Box>
-        <Box>
-          <Box display="flex" justifyContent="end" userSelect="none">
-                {/* <BsThreeDots size={30} cursor={"pointer"} onClick={()=> SetOption(true)} />
-                 */}
-                 <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<BsThreeDots />}
-              variant="ghost"
-              _hover={{bg:"none"}}
-              fontSize="2xl"
-              mx={4}
-            />
-            <MenuList>
-              <MenuItem icon={<AddIcon />} command="⌘T">
-                New Tab
-              </MenuItem>
-              <MenuItem icon={<ExternalLinkIcon />} command="⌘N">
-                New Window
-              </MenuItem>
-              <MenuItem icon={<RepeatIcon />} command="⌘⇧N">
-                Open Closed Tab
-              </MenuItem>
-              <MenuItem  justifyContent={"center"} bg="primary.300">
-                Close
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
-              </Box>
-              {/* {
-                option && 
-                <Box bg={"primary.100"} p="4" rounded={"xl"}>
-                <Stack>
-                  <Text>All Exam Result</Text>
-                  <Text>Attendence</Text>
-                  <Button size="xs" colorScheme="orange" w="full" onClick={()=> SetOption(false)}>
-                    Close
-                  </Button>
-                </Stack>
-              </Box>
-              } */}
-
-          
-
-        <Box>
-          {/* Profile overview */}
-          <Box
-            mt={10}
-            display={"flex"}
-            justifyContent={"space-between"}
-            p={4}
-            borderBottom={"1px solid orange"}
-          >
-            <Box>
-              {/* <Image
-                src="https://i.imghippo.com/files/M10af1728411363.jpg"
-                h={"36"}
-                w={"36"}
-                rounded={"full"}
-              /> */}
-              <Text w={"700px"} my={4}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                totam blanditiis dolores nemo ducimus fugiat magnam laboriosam
-                labore expedita corporis.
-              </Text>
-              {/* Contact  */}
-              <Box display={"flex"} gap={8}>
-                <Box display={"flex"} alignItems={"center"} gap={1}>
-                  <Icon
-                    bg={"primary.400"}
-                    p={1}
-                    rounded={"full"}
-                    as={FaLocationDot}
-                    textColor={"white"}
-                    className="text-xl"
-                  />
-                  <Text textColor={"blue.500"} fontSize={18}>
-                    {" "}
-                    Rangunia,Chittagong, Sukhbilas
-                  </Text>
-                </Box>
-                <Box display={"flex"} alignItems={"center"} gap={1}>
-                  <Icon
-                    bg={"primary.400"}
-                    p={1}
-                    rounded={"full"}
-                    as={IoMdCall}
-                    textColor={"white"}
-                    className="text-xl"
-                  />
-                  <Text textColor={"blue.500"} fontSize={18}>
-                    +880 1518-786-405
-                  </Text>
-                </Box>
-                <Box display={"flex"} alignItems={"center"} gap={1}>
-                  <Icon
-                    bg={"primary.400"}
-                    p={1}
-                    rounded={"full"}
-                    as={MdEmail}
-                    textColor={"white"}
-                    className="text-xl"
-                  />
-                  <Text textColor={"blue.500"} fontSize={18}>
-                    {" "}
-                    itsharifofficial@gmail.com{" "}
-                  </Text>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-          <Box px={4}>
-            <PersonalDetails />
-          </Box>
+          <UpdateButton onClick={handleUpdateProfile} />
         </Box>
       </Box>
-    </Box>
+    </ScaleFade>
   );
 };
+
+// ProfileBanner Component
+const ProfileBanner = ({ bannerImage, profileImage, name, bio }) => (
+  <Box position="relative">
+    <Image
+      src={bannerImage}
+      h="200px"
+      w="100%"
+      objectFit="cover"
+      alt="Profile Banner"
+      transition="0.3s"
+      _hover={{ filter: "brightness(0.8)" }} // Image hover effect
+    />
+    <Image
+      src={profileImage}
+      boxSize={24}
+      rounded="full"
+      position="absolute"
+      top="50%"
+      left={6}
+      transform="translateY(-50%)"
+      border="4px solid white"
+      alt="Profile Picture"
+      boxShadow="lg"
+    />
+    <Box p={6} borderBottom="1px solid #FF9500">
+      <Text fontSize="2xl" fontWeight="bold" mb={2}>{name}</Text>
+      <Text fontSize="lg" mb={4}>{bio}</Text>
+    </Box>
+  </Box>
+);
+
+// ProfileDetails Component
+const ProfileDetails = ({ location, phone, email, dateOfBirth, courseOfStudy, hobbies }) => (
+  <Box p={6}>
+    <Stack direction={{ base: "column", sm: "row" }} spacing={8} mt={4}>
+      <ContactInfo icon={FaMapMarkerAlt} text={location} />
+      <ContactInfo icon={IoMdCall} text={phone} />
+      <ContactInfo icon={MdEmail} text={email} />
+    </Stack>
+    <Stack spacing={4} mt={6}>
+      <Text fontSize="lg">Date of Birth: {dateOfBirth}</Text>
+      <Text fontSize="lg">Course of Study: {courseOfStudy}</Text>
+      <Text fontSize="lg">Hobbies: {hobbies}</Text>
+    </Stack>
+  </Box>
+);
+
+// UpdateButton Component
+const UpdateButton = ({ onClick }) => (
+  <Box display="flex" justifyContent="flex-end" p={4}>
+    <Button
+      colorScheme="orange"
+      onClick={onClick}
+      transition="0.2s"
+      _hover={{ bg: "orange.600", transform: "scale(1.05)" }} // Button hover effect
+    >
+      Update Profile
+    </Button>
+  </Box>
+);
+
+// ContactInfo Component
+const ContactInfo = ({ icon, text }) => (
+  <Stack direction="row" align="center" spacing={3}>
+    <Icon as={icon} boxSize={5} color="#FF9500" />
+    <Text color="blue.500" fontSize="md">{text}</Text>
+  </Stack>
+);
 
 export default StudentProfile;

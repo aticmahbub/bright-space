@@ -41,7 +41,7 @@ const sendEmail = async (name, emailAddress, webAddress, message) => {
     try {
         const info = await transporter.sendMail({
             from: `"Bright Space" <${process.env.NODEMAIL_USER}>`, // sender address
-            to: "itsharifofficial@gmail.com", // recipient email
+            to: "atiqmahbub@gmail.com", // recipient email
             subject: "User Contact Info", // subject
             text: "User contact details", // plain text
             html: htmlBody, // html email body

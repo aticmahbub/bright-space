@@ -20,7 +20,7 @@ const AllCourses = () => {
   // Fetch all courses from the API
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/courses');
+      const response = await axios.get('https://bright-space-server.vercel.app/courses');
       setCourses(response.data);
     } catch (err) {
       setError('Failed to load courses.');

@@ -39,7 +39,7 @@ const QuizForm = () => {
 
     try {
       // Send data to backend using Axios
-      await axios.post("http://localhost:3000/quiz", newQuestion);
+      await axios.post("https://bright-space-server.vercel.app/quiz", newQuestion);
 
       // Success: Reset the form
       alert("Quiz question added successfully!");

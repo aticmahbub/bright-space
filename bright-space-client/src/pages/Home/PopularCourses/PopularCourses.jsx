@@ -8,7 +8,7 @@ const PopularCourses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/courses')
+        fetch('https://bright-space-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => setCourses(data))
     }, []);

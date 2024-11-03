@@ -27,7 +27,7 @@ const SingleCourseView = () => {
   // Fetch the course details from the API
   const fetchCourseDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/courses/${id}`);
+      const response = await axios.get(`https://bright-space-server.vercel.app/courses/${id}`);
       setCourse(response.data);
     } catch (err) {
       setError('Failed to load course details.');
@@ -43,7 +43,7 @@ const SingleCourseView = () => {
     setEnrollError(null);
     setEnrollSuccess(false);
     try {
-      const response = await axios.post(`http://localhost:3000/enroll`, {
+      const response = await axios.post(`https://bright-space-server.vercel.app/enroll`, {
         courseId: course._id, // Assuming your course object has an _id
         enrolledStudentEmail: user?.email, // Replace with the actual user ID or retrieve it from your context/auth system
       });

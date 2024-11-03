@@ -38,7 +38,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/contact-us`,
+        `https://bright-space-server.vercel.app/contact-us`,
         formData
       );
       // console.log("Email sent successfully", response.data);

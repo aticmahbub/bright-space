@@ -14,7 +14,7 @@ const MyCourses = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`http://localhost:3000/enrollments/${user?.email}`);
+            const response = await axios.get(`https://bright-space-server.vercel.app/enrollments/${user?.email}`);
             setEnrolledCourses(response.data);
         } catch (err) {
             setError(`Failed to load enrolled courses: ${err.response?.data?.message || err.message}`);

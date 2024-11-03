@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import brightSpace_logo from "../assets/bright-space-logo.svg";
 import { TbLayoutDashboard } from "react-icons/tb"; // Dashboard icon
 import { FaUserCircle, FaGraduationCap, FaBook } from "react-icons/fa"; // Profile, All Students, Enrolled Courses
@@ -83,7 +83,7 @@ const Dashboard = () => {
                 <Flex direction="column" h="100%">
                     <Flex align="center" p="4">
                         <Image src={brightSpace_logo} alt="Logo" w="8" />
-                        <Text ml="4" fontWeight="bold" color="orange.500">Bright Space</Text>
+                        <Text ml="4" fontWeight="bold" color="orange.500"><Link to='/'>Bright Space</Link></Text>
                     </Flex>
                     <Box flex="1" p="4">
                         {filteredNavList.map((item, idx) => (

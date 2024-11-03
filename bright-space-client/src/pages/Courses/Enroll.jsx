@@ -5,7 +5,7 @@ const Enroll = ({ courseId, onEnrollSuccess }) => {
     console.log(courseId)
   const handleEnroll = async () => {
     try {
-      const response = await axios.post(`http://localhost:3000/enroll`, { courseId });
+      const response = await axios.post(`https://bright-space-server.vercel.app/enroll`, { courseId });
       onEnrollSuccess(response.data); // Pass data back to parent if needed
       alert('Successfully enrolled in the course!'); // Or handle it as you wish
     } catch (error) {

@@ -13,7 +13,7 @@ const Quiz = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/quiz'); // API endpoint
+        const response = await axios.get('https://bright-space-server.vercel.app/quiz'); // API endpoint
         setQuizzes(response.data);
         setLoading(false);
       } catch (err) {

@@ -31,6 +31,7 @@ import EnrolledCourses from "../pages/Courses/EnrolledCourses/EnrolledCourses";
 import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";
 import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
 import MyClasses from "../Student/MyClasses";
+import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 
 
 export const router = createBrowserRouter([
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
             {
                 path: 'studentProfile',
                 element: <StudentProfile />
+            },
+            {
+                path: 'myCourses',
+                element: <MyCourses />
             },
             {
                 path: 'updateStudentProfile',

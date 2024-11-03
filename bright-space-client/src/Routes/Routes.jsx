@@ -6,7 +6,6 @@ import Registration from "../pages/shared/Authentication/Registration/Registrati
 import Dashboard from "../Layouts/Dashboard";
 import Features from "../pages/Features/Features";
 import Contact from "../pages/Contact/Contact";
-import TeacherProfile from "../pages/TeacherProfile/TeacherProfile";
 import Blog from "../pages/Blog/Blog";
 import Forum from "../pages/Forum/Forum";
 import UserProfile from "../pages/UserProfile/UserProfile";
@@ -18,16 +17,20 @@ import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
 import ViewCourse from "../pages/Courses/ViewCourse/SingleCourseView";
-import MyCourses from "../pages/Courses/MyCourses/MyCourses";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
-import CreateCourse from "../pages/Courses/CreateCourse/CreateCourse";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
-import QnA from "../pages/QnA/QnA";
+// import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
 import UpdateStudentProfile from "../pages/UpdateStudentProfile/UpdateStudentProfile";
 import SingleCourseView from "../pages/Courses/ViewCourse/SingleCourseView";
+import QnA from "../pages/QnA/QnA";
+import Analytics from "../components/Analytics/Analytics";
+import EnrolledCourses from "../pages/Courses/EnrolledCourses/EnrolledCourses";
+import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";
+import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
+import MyClasses from "../Student/MyClasses";
 
 
 export const router = createBrowserRouter([
@@ -41,11 +44,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/classroom',
-                element: <ClassRoom />
+                element: <PrivateRoute><ClassRoom /></PrivateRoute>
             },
             {
                 path: '/live/:id',
-                element: <LiveSession />
+                element: <PrivateRoute><LiveSession /></PrivateRoute>
             },
             {
                 path: '/login',
@@ -57,15 +60,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <PrivateRoute><About /></PrivateRoute>
+                element: <About />
             },
             {
                 path: '/features',
                 element: <Features />
-            },
-            {
-                path: '/qna',
-                element: <QnA />
             },
             {
                 path: '/contact',
@@ -90,6 +89,12 @@ export const router = createBrowserRouter([
             {
                 path: 'view-course-details',
                 element: <ViewCourse />
+            },
+            {
+                path: 'qna',
+                element: <PrivateRoute>
+                    <QnA />
+                </PrivateRoute>
             }
         ]
     },
@@ -103,6 +108,10 @@ export const router = createBrowserRouter([
         children: [
             // student routes
             {
+                path: '/dashboard',
+                element: <Analytics />
+            },
+            {
                 path: 'studentProfile',
                 element: <StudentProfile />
             },
@@ -115,18 +124,22 @@ export const router = createBrowserRouter([
                 element: <AllStudents />
             },
             {
-                path: 'myCourses',
-                element: <MyCourses />
+                path: 'enrolledCourses',
+                element: <EnrolledCourses />
             },
             {
                 path: 'viewCourseDetails/:id',
                 element: <SingleCourseView />
             },
+            // {
+            //     path: 'ViewMyClasses',
+            //     element: <ViewMyClasses />
+            // },
 
             // teacher routes
             {
                 path: 'teacherProfile',
-                element: <TeacherProfile />
+                element: <StudentProfile />
             },
             {
                 path: 'allTeachers',
@@ -134,11 +147,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'createCourse',
-                element: <CreateCourse />
+                element: <CreateCourses />
+            },
+            {
+                path: 'createdCourses',
+                element: <CreatedCourses />
             },
             {
                 path: 'allCourses',
                 element: <AllCourses />
+            },
+            {
+                path: 'myClasses',
+                element: <MyClasses />
             },
             {
                 path: 'quiz',

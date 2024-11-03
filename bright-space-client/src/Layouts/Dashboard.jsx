@@ -1,5 +1,4 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
 import brightSpace_logo from "../assets/bright-space-logo.svg";
 import { TbLayoutDashboard } from "react-icons/tb"; // Dashboard icon
 import { FaUserCircle, FaGraduationCap, FaBook } from "react-icons/fa"; // Profile, All Students, Enrolled Courses
@@ -9,50 +8,17 @@ import {
     Icon,
     Box, Flex, Image,
     Text,
-    Stat,
-    StatLabel,
-    StatNumber,
-    StatHelpText
+
 } from '@chakra-ui/react';
 
-const Analytics = () => {
-    return (
-        <Flex wrap="wrap" justify="space-between" p="6">
-            <AnalyticsCard title="Total Students" number={120} helpText="+5 since last week" />
-            <AnalyticsCard title="Total Courses" number={30} helpText="+2 since last week" />
-            <AnalyticsCard title="Active Enrollments" number={75} helpText="+10 since last week" />
-            <AnalyticsCard title="New Feedback" number={15} helpText="+3 since last week" />
-        </Flex>
-    );
-};
-
-const AnalyticsCard = ({ title, number, helpText }) => {
-    return (
-        <Box
-            w={{ base: "100%", md: "45%", lg: "22%" }}
-            p="4"
-            mb="4"
-            borderWidth="1px"
-            borderRadius="lg"
-            shadow="md"
-            bg="white"
-            transition="transform 0.2s"
-            _hover={{ transform: "scale(1.05)" }} // Hover effect
-        >
-            <Stat>
-                <StatLabel>{title}</StatLabel>
-                <StatNumber>{number}</StatNumber>
-                <StatHelpText>{helpText}</StatHelpText>
-            </Stat>
-        </Box>
-    );
-};
 
 const Dashboard = () => {
     const userRole = "Admin";
-    const location = useLocation();
 
     const SideNavList = [
+
+        // admin / all
+        
         {
             name: 'Dashboard',
             path: '/dashboard',
@@ -84,6 +50,7 @@ const Dashboard = () => {
             icon: FaGraduationCap,
             roles: ['Admin', 'Teacher']
         },
+
         {
             name: 'All Teachers',
             path: 'allTeachers',
@@ -140,7 +107,7 @@ const Dashboard = () => {
 
                 <Box pt="24" pl="250px">
                     {/* Render Analytics only on /dashboard */}
-                    {location.pathname === '/dashboard' && <Analytics />}
+                    {/* {location.pathname === '/dashboard' && <Analytics />} */}
                     <Outlet />
                 </Box>
             </Box>

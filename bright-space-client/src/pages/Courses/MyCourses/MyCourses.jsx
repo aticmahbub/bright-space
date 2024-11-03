@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { Box, Spinner, Alert, AlertIcon, Heading, Button, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import { AuthContext } from '../../../providers/AuthProvider';

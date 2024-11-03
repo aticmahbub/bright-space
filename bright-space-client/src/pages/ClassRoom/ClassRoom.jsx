@@ -31,15 +31,15 @@ const ClassRoom = () => {
     });
 
     const generateMeetingCode = () => {
+        const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
         const userInfo = {
             name: user?.displayName,
             email: user?.email,
             userId: user?.uid,
-            role: role
+            role: role ? role : 'teacher'
         }
         mutateUserInfo(userInfo);
 
-        const meetingCode = 'classroom-' + Math.random().toString(36).substr(2, 8);
         mutate({ meetCode: meetingCode });
     };
 

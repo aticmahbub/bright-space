@@ -1,25 +1,26 @@
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs");
-const http = require("http");
-const { Server } = require("socket.io");
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
-require("dotenv").config();
-const jwt = require("jsonwebtoken");
-const { sendEmail } = require("./nodemailer");
+const express = require('express')
+const cors = require('cors')
+const { Server } = require('socket.io'); // Import Server from socket.io
 
-const app = express();
-const port = process.env.PORT || 3000;
+const { MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
+require('dotenv').config()
+const http = require('http'); // Import the http module
+const app = express()
+const port = process.env.PORT || 3000
+
 
 //middlewares
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 
 // create http server
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173","https://bright-space.netlify.app"],
+    origin: ["http://localhost:5173", "https://bright-space.netlify.app", "https://bright-space-web.netlify.app"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
@@ -36,26 +37,15 @@ const client = new MongoClient(uri, {
 });
 
 async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    const coursesCollection = client
-      .db("bright-space-db")
-      .collection("courses-collection");
-    const meetingCodeCollection = client
-      .db("bright-space-db")
-      .collection("meetingCodes");
-    const cartCollection = client
-      .db("bright-space-db")
-      .collection("cart-collection");
-    const usersCollection = client
-      .db("bright-space-db")
-      .collection("users-collection");
-    const quizCollection = client
-      .db("bright-space-db")
-      .collection("quiz-collection");
-    const questionCollection = client
-      .db("bright-space-db")
-      .collection("questions-collection");
+    try {
+        // Connect the client to the server	(optional starting in v4.7)
+        const coursesCollection = client.db('bright-space-db').collection('courses-collection')
+        const meetingCodeCollection = client.db('bright-space-db').collection('meetingCodes')
+        const cartCollection = client.db('bright-space-db').collection('cart-collection')
+        const usersCollection = client.db('bright-space-db').collection('users-collection')
+        const quizCollection = client.db('bright-space-db').collection('quiz-collection')
+        const questionCollection = client.db('bright-space-db').collection('questions-collection')
+        const enrollmentsCollection = client.db('bright-space-db').collection('enrollment-collection')
 
     //jwt related api
     app.post("/meetingToken", (req, res) => {
@@ -181,17 +171,90 @@ async function run() {
       res.send(result);
     });
 
-    // create new courses or add courses api
-    app.post("/courses", async (req, res) => {
-      const coursesInfo = req.body;
-      const result = await coursesCollection.insertOne(coursesInfo);
-      res.send(result);
-    });
+        // create new courses or add courses api
+        
+        app.post('/courses', async(req, res)=>{
+            const coursesInfo = req.body;
+            const result = await coursesCollection.insertOne(coursesInfo)
 
-    app.get("/courses", async (req, res) => {
-      const result = await coursesCollection.find().toArray();
-      res.send(result);
-    });
+            res.send(result)
+
+        })
+
+        
+        app.get('/courses', async (req, res) => {
+            const result = await coursesCollection.find().toArray()
+            res.send(result)
+        })
+
+        app.get('/courses/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {
+                _id: new ObjectId(id) // Assuming you're still using ObjectId
+            };
+            
+            try {
+                const result = await coursesCollection.findOne(query);
+                if (result) {
+                    res.send(result);
+                } else {
+                    res.status(404).send({ message: 'Course not found' });
+                }
+            } catch (error) {
+                console.error(error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
+        });
+
+        app.post('/enroll', async (req, res) => {
+            const { courseId, enrolledStudentEmail } = req.body; // Adjust based on what data you need
+        
+            if (!courseId || !enrolledStudentEmail) {
+                return res.status(400).send({ message: "Course ID and User ID are required." });
+            }
+        
+            const enrollmentData = {
+                courseId,
+                enrolledStudentEmail,
+                enrolledAt: new Date(), // Store the enrollment date
+            };
+        
+            try {
+                const result = await enrollmentsCollection.insertOne(enrollmentData); // Insert the enrollment record
+                res.status(201).send(result); // Respond with the result
+            } catch (error) {
+                console.error('Error enrolling in course:', error);
+                res.status(500).send({ message: "Internal server error" });
+            }
+        });
+        
+        app.get('/enrollments/:email', async (req, res) => {
+            const email = req.params.email;
+        
+            try {
+                // Fetch enrollments where enrolledStudentEmail matches the email parameter
+                const enrollments = await enrollmentsCollection.find({ enrolledStudentEmail: email }).toArray();
+        
+                // If no enrollments are found, return a 404 message
+                if (enrollments.length === 0) {
+                    return res.status(404).send({ message: 'No enrollments found for this email.' });
+                }
+        
+                // Extract courseIds and convert them to ObjectId
+                const courseIds = enrollments.map(enroll => new ObjectId(enroll.courseId));
+        
+                // Fetch courses that match these courseIds from coursesCollection
+                const courses = await coursesCollection.find({ _id: { $in: courseIds } }).toArray();
+        
+                res.send(courses);
+            } catch (error) {
+                console.error("Error fetching enrolled courses:", error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
+        });
+        
+          
+
 
     // Question related api
     app.post("/questions", async (req, res) => {
@@ -291,24 +354,35 @@ async function run() {
       }
     });
 
-    // users related api
-    app.post("/users", async (req, res) => {
-      const user = req.body;
-      const result = await usersCollection.insertOne(user);
-      res.send(result);
-    });
+        // users related api
+        app.post('/users', async (req, res) => {
+            const user = req.body
+            const result = await usersCollection.insertOne(user)
+            res.send(result)
+        })
+        app.put('/users/:email', async (req, res) => {
+            const email = req.params.email; // Get the email from the URL
+            const updatedUserData = req.body; // Get updated data from request body
+            console.log(email, updatedUserData)
+            try {
+              const result = await usersCollection.updateOne(
+                { email: email }, // Find the user by email
+                { $set: updatedUserData } // Update user data
+              );
+          
+              if (result.matchedCount === 0) {
+                return res.status(404).send('User not found');
+              }
+          
+              res.send({ message: 'Profile updated successfully', result });
+            } catch (error) {
+              console.error('Error updating user:', error);
+              res.status(500).send('Internal Server Error');
+            }
+          });
 
-    //nodemailer
-    app.post('/contact-us', async (req, res) => {
-      const { name, emailAddress, webAddress, message } = req.body;
-      
-      try {
-          const info = await sendEmail(name, emailAddress, webAddress, message);
-          res.status(200).send(`Email sent successfully: ${info.messageId}`);
-      } catch (error) {
-          res.status(500).send('Failed to send email');
-      }
-  });
+        
+
 
     // await client.connect();
     // Send a ping to confirm a successful connection

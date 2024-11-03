@@ -16,19 +16,21 @@ import LiveSession from "../pages/LiveSession/LiveSession";
 import AiAssistant from "../pages/AiAssistant/AiAssistant";
 import AllCourses from "../pages/Courses/AllCourses/AllCourses";
 import PrivateRoute from "./PrivateRoute";
-import ViewCourse from "../pages/Courses/ViewCourse/ViewCourse";
+import ViewCourse from "../pages/Courses/ViewCourse/SingleCourseView";
 import AllTeachers from "../pages/AllTeachers/AllTeachers";
 import AllStudents from "../pages/AllStudents/AllStudents";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizForm from "../pages/Quiz/QuizForm";
 // import QnA from "../pages/QnA/QnA";
 import StudentProfile from "../pages/StudentProfile/StudentProfile";
-import MyClasses from "../Student/MyClasses";
-import Analysis from "../pages/Analysis/Analysis";
+import UpdateStudentProfile from "../pages/UpdateStudentProfile/UpdateStudentProfile";
+import SingleCourseView from "../pages/Courses/ViewCourse/SingleCourseView";
 import QnA from "../pages/QnA/QnA";
-import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
-import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";
+import Analytics from "../components/Analytics/Analytics";
 import EnrolledCourses from "../pages/Courses/EnrolledCourses/EnrolledCourses";
+import CreateCourses from "../pages/Courses/CreateCourse/CreateCourse";
+import CreatedCourses from "../pages/Courses/CreatedCourses/CreatedCourses";
+import MyClasses from "../Student/MyClasses";
 
 
 export const router = createBrowserRouter([
@@ -107,11 +109,15 @@ export const router = createBrowserRouter([
             // student routes
             {
                 path: '/dashboard',
-                element: <Analysis />
+                element: <Analytics />
             },
             {
                 path: 'studentProfile',
                 element: <StudentProfile />
+            },
+            {
+                path: 'updateStudentProfile',
+                element: <UpdateStudentProfile />
             },
             {
                 path: 'allStudents',
@@ -122,8 +128,8 @@ export const router = createBrowserRouter([
                 element: <EnrolledCourses />
             },
             {
-                path: 'viewCourseDetails',
-                element: <ViewCourse />
+                path: 'viewCourseDetails/:id',
+                element: <SingleCourseView />
             },
             // {
             //     path: 'ViewMyClasses',

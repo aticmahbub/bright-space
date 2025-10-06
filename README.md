@@ -1,5 +1,5 @@
 
-# Bright Space  
+# Bright Space 
 
 Bright Space is an interactive and scalable teacher-student platform, offering features such as live sessions, whiteboards, AI-powered quizzes, and role-based dashboards. Designed with the MERN stack and utilizing Redux for state management, Bright Space aims to provide an all-encompassing educational experience tailored for seamless teacher-student interaction.
 
